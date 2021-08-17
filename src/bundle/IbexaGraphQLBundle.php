@@ -4,9 +4,9 @@
  * @copyright Copyright (C) eZ Systems AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-namespace Ibexa\GraphQL;
+namespace Ibexa\Bundle\GraphQL;
 
-use Ibexa\GraphQL\DependencyInjection\Compiler;
+use Ibexa\Bundle\GraphQL\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
