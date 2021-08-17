@@ -1,7 +1,7 @@
 <?php
-namespace spec\EzSystems\EzPlatformGraphQL\Tools;
+namespace Ibexa\Spec\GraphQL\Tools;
 
-use EzSystems\EzPlatformGraphQL\Schema\Builder\Input;
+use Ibexa\GraphQL\Schema\Builder\Input;
 use Prophecy\Argument\Token\CallbackToken;
 
 class EnumValueArgument
@@ -30,3 +30,4 @@ class EnumValueArgument
         );
     }
 }
+class_alias(EnumValueArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\EnumValueArgument');
