@@ -2,4 +2,4 @@ definitions:
     config_validation: '%kernel.debug%'
     builders:
         args:
-            Item: 'EzSystems\EzPlatformGraphQL\Overblog\ArgsBuilder\ItemArgsBuilder'
+            Item: 'Ibexa\GraphQL\Overblog\ArgsBuilder\ItemArgsBuilder'

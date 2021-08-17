@@ -4,40 +4,40 @@ services:
         autowire: true
         public: false
 
-    EzSystems\EzPlatformGraphQL\Command\GeneratePlatformSchemaCommand:
+    Ibexa\Bundle\GraphQL\Command\GeneratePlatformSchemaCommand:
         arguments:
             $schemaRootDir: '%ezplatform.graphql.schema.ezplatform_dir%'
         tags:
             -  { name: console.command }
 
-    EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\:
+    Ibexa\GraphQL\GraphQL\InputMapper\:
         resource: '../../GraphQL/InputMapper'
 
-    EzSystems\EzPlatformGraphQL\Security\NonAdminGraphQLRequestMatcher:
+    Ibexa\GraphQL\Security\NonAdminGraphQLRequestMatcher:
         arguments:
             $siteAccessGroups: '%ezpublish.siteaccess.groups%'
 
-    EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory $currentSiteItemFactory: '@EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory\CurrentSite'
+    Ibexa\GraphQL\ItemFactory $currentSiteItemFactory: '@Ibexa\GraphQL\GraphQL\ItemFactory\CurrentSite'
 
-    EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory $relatedContentItemFactory: '@EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory\RelatedContent'
+    Ibexa\GraphQL\ItemFactory $relatedContentItemFactory: '@Ibexa\GraphQL\GraphQL\ItemFactory\RelatedContent'
 
-    EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory\CurrentSite:
-        class: 'EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory'
+    Ibexa\GraphQL\GraphQL\ItemFactory\CurrentSite:
+        class: 'Ibexa\GraphQL\ItemFactory'
         arguments:
-            $locationGuesser: '@EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser\CurrentSiteContent'
+            $locationGuesser: '@Ibexa\GraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser\CurrentSiteContent'
 
-    EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory\RelatedContent:
-        class: 'EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory'
+    Ibexa\GraphQL\GraphQL\ItemFactory\RelatedContent:
+        class: 'Ibexa\GraphQL\ItemFactory'
         arguments:
-            $locationGuesser: '@EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser\RelatedContent'
+            $locationGuesser: '@Ibexa\GraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser\RelatedContent'
 
-    EzSystems\EzPlatformGraphQL\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser:
+    Ibexa\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser:
         arguments:
             $siteAccessService: '@ezpublish.siteaccess_service'
             $configResolver: '@ezpublish.config.resolver'
             $provider: '@ezpublish.siteaccess.provider'
             $siteAccessGroups: '%ezpublish.siteaccess.groups%'
 
-    EzSystems\EzPlatformGraphQL\Schema\Domain\Content\NameHelper:
+    Ibexa\GraphQL\Schema\Domain\Content\NameHelper:
         arguments:
             $fieldNameOverrides: '%ezplatform_graphql.schema.content.field_name.override%'
