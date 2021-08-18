@@ -23,8 +23,8 @@ class IbexaGraphQLExtension extends Extension implements PrependExtensionInterfa
 {
     private const SCHEMA_DIR_PATH = '/config/graphql/types';
     private const EZPLATFORM_SCHEMA_DIR_PATH = '/ezplatform';
-    private const PACKAGE_DIR_PATH = '/vendor/ezsystems/ezplatform-graphql';
-    private const PACKAGE_SCHEMA_DIR_PATH = '/src/Resources/config/graphql';
+    private const PACKAGE_DIR_PATH = '/vendor/ibexa/graphql';
+    private const PACKAGE_SCHEMA_DIR_PATH = '/src/bundle/Resources/config/graphql';
     private const FIELDS_DEFINITION_FILE_NAME = 'Field.types.yaml';
 
     /**

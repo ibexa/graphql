@@ -4,8 +4,8 @@ services:
         autowire: true
         public: false
 
-    Ibexa\GraphQL\GraphQL\DataLoader\:
-        resource: ../../GraphQL/DataLoader
+    Ibexa\GraphQL\DataLoader\:
+        resource: '../../../../lib/DataLoader'
 
     Ibexa\GraphQL\DataLoader\SearchContentLoader:
         arguments:

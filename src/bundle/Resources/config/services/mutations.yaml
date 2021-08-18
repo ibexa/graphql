@@ -10,7 +10,7 @@ services:
       - { name: overblog_graphql.mutation, alias: "DeleteDomainContent", method: "deleteDomainContent" }
       - { name: overblog_graphql.mutation, alias: "UpdateDomainContent", method: "updateDomainContent" }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Author:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\Author:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezauthor'
@@ -21,14 +21,14 @@ services:
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezbinaryfile' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Boolean:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\Boolean:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezboolean'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezboolean' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Country:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\Country:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezcountry'
@@ -36,27 +36,26 @@ services:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezcountry' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Date:
-    class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\Date'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezdate'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezdate' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\DateAndTime:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\DateAndTime:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\Date'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezdatetime'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezdatetime' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Float:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\Float:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezfloat'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezfloat' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Email:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\Email:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezemail'
@@ -67,28 +66,28 @@ services:
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezimage' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Integer:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\Integer:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezinteger'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezinteger' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\ISBN:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\ISBN:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezisbn'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezisbn' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Keyword:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\Keyword:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezkeyword'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezkeyword' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\MapLocation:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\MapLocation:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezgmaplocation'
@@ -100,14 +99,12 @@ services:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezmedia' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Relation:
-    class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\Relation'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezobjectrelation'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezobjectrelation' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\RelationList:
-    class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\RelationList'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezobjectrelationlist'
     tags:
@@ -133,28 +130,28 @@ services:
     tags:
       - { name: ezplatform_graphql.richtext_input_converter, format: markdown }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Selection:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\Selection:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezselection'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezselection' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\TextBlock:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\TextBlock:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.eztext'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'eztext' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\TextLine:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\TextLine:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezstring'
     tags:
       - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: 'ezstring' }
 
-  Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Url:
+  Ibexa\GraphQL\Mutation\InputHandler\FieldType\Url:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@ezpublish.fieldType.ezurl'

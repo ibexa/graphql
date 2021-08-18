@@ -5,7 +5,7 @@ services:
         public: false
 
     Ibexa\GraphQL\Schema\:
-        resource: '../../Schema/*'
+        resource: '../../../../lib/Schema/*'
 
     _instanceof:
         Ibexa\GraphQL\Schema\Domain\Content\Worker\BaseWorker:

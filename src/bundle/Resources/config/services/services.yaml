@@ -10,26 +10,26 @@ services:
         tags:
             -  { name: console.command }
 
-    Ibexa\GraphQL\GraphQL\InputMapper\:
-        resource: '../../GraphQL/InputMapper'
+    Ibexa\GraphQL\InputMapper\:
+        resource: '../../../../lib/InputMapper'
 
     Ibexa\GraphQL\Security\NonAdminGraphQLRequestMatcher:
         arguments:
             $siteAccessGroups: '%ezpublish.siteaccess.groups%'
 
-    Ibexa\GraphQL\ItemFactory $currentSiteItemFactory: '@Ibexa\GraphQL\GraphQL\ItemFactory\CurrentSite'
+    Ibexa\GraphQL\ItemFactory $currentSiteItemFactory: '@Ibexa\GraphQL\ItemFactory\CurrentSite'
 
-    Ibexa\GraphQL\ItemFactory $relatedContentItemFactory: '@Ibexa\GraphQL\GraphQL\ItemFactory\RelatedContent'
+    Ibexa\GraphQL\ItemFactory $relatedContentItemFactory: '@Ibexa\GraphQL\ItemFactory\RelatedContent'
 
-    Ibexa\GraphQL\GraphQL\ItemFactory\CurrentSite:
+    Ibexa\GraphQL\ItemFactory\CurrentSite:
         class: 'Ibexa\GraphQL\ItemFactory'
         arguments:
-            $locationGuesser: '@Ibexa\GraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser\CurrentSiteContent'
+            $locationGuesser: '@Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser\CurrentSiteContent'
 
-    Ibexa\GraphQL\GraphQL\ItemFactory\RelatedContent:
+    Ibexa\GraphQL\ItemFactory\RelatedContent:
         class: 'Ibexa\GraphQL\ItemFactory'
         arguments:
-            $locationGuesser: '@Ibexa\GraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser\RelatedContent'
+            $locationGuesser: '@Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser\RelatedContent'
 
     Ibexa\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser:
         arguments:
