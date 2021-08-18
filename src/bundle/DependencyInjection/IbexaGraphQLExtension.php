@@ -43,6 +43,8 @@ class IbexaGraphQLExtension extends Extension implements PrependExtensionInterfa
         $loader->load('services/schema.yaml');
         $loader->load('services/services.yaml');
         $loader->load('default_settings.yaml');
+
+        $loader->load('services/bc_aliases.yaml');
     }
 
     /**
