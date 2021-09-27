@@ -1,0 +1,51 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    Ibexa\GraphQL\Schema\:
+        resource: '../../../../lib/Schema/*'
+
+    _instanceof:
+        Ibexa\GraphQL\Schema\Domain\Content\Worker\BaseWorker:
+            calls:
+                - [setNameHelper, ['@Ibexa\GraphQL\Schema\Domain\Content\NameHelper']]
+
+        Ibexa\GraphQL\Schema\Worker:
+            tags:
+                - {name: 'ezplatform_graphql.domain_schema_worker'}
+
+        Ibexa\GraphQL\Schema\Domain\Iterator:
+            tags:
+                - {name: 'ezplatform_graphql.schema_domain_iterator'}
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldValueToDomainContent: ~
+
+    Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper:
+        alias: Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DefaultFieldDefinitionMapper
+
+    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DefaultFieldDefinitionMapper: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ResolverVariables:
+        decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+        decoration_priority: -5
+        arguments:
+            $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ResolverVariables.inner'
+
+    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ConfigurableFieldDefinitionMapper:
+        decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+        arguments:
+            $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ConfigurableFieldDefinitionMapper.inner'
+            $typesMap: '%ezplatform_graphql.schema.content.mapping.field_definition_type%'
+
+    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\RelationFieldDefinitionMapper:
+        decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+        arguments:
+            $contentTypeService: '@ezpublish.siteaccessaware.service.content_type'
+            $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\RelationFieldDefinitionMapper.inner'
+
+    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\SelectionFieldDefinitionMapper:
+        decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+        arguments:
+            $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\SelectionFieldDefinitionMapper.inner'
