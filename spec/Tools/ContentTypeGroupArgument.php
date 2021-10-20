@@ -1,5 +1,5 @@
 <?php
-namespace spec\EzSystems\EzPlatformGraphQL\Tools;
+namespace Ibexa\Spec\GraphQL\Tools;
 
 use eZ\Publish\API\Repository\Values\ContentType\ContentTypeGroup;
 use Prophecy\Argument\Token\CallbackToken;
@@ -20,3 +20,4 @@ class ContentTypeGroupArgument
         );
     }
 }
+class_alias(ContentTypeGroupArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\ContentTypeGroupArgument');

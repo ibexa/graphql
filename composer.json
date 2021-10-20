@@ -1,7 +1,7 @@
 {
-    "name": "ezsystems/ezplatform-graphql",
-    "description": "GraphQL server for the eZ Platform Open Source CMS Repository.",
-    "type": "ezplatform-bundle",
+    "name": "ibexa/graphql",
+    "description": "GraphQL server for Ibexa",
+    "type": "ibexa-bundle",
     "license": "GPL-2.0-only",
     "authors": [
         {
@@ -10,6 +10,7 @@
         }
     ],
     "replace": {
+        "ezsystems/ezplatform-graphql": "*",
         "bdunogier/ezplatform-graphql-bundle": "self.version"
     },
     "require": {
@@ -46,18 +47,24 @@
     },
     "autoload": {
         "psr-4": {
-            "EzSystems\\EzPlatformGraphQL\\": "src"
+            "EzSystems\\EzPlatformGraphQL\\": "src",
+            "Ibexa\\GraphQL\\": "src/lib/",
+            "Ibexa\\Bundle\\GraphQL\\": "src/bundle/",
+            "Ibexa\\Contracts\\GraphQL\\": "src/contracts/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "spec\\EzSystems\\EzPlatformGraphQL\\Tools\\": "spec/Tools",
-            "spec\\EzSystems\\EzPlatformGraphQL\\": "spec/EzSystems/EzPlatformGraphQL"
+            "spec\\EzSystems\\EzPlatformGraphQL\\": "spec/EzSystems/EzPlatformGraphQL",
+            "Ibexa\\Spec\\GraphQL\\": "spec/",
+            "Ibexa\\Tests\\Bundle\\GraphQL\\": "tests/bundle/",
+            "Ibexa\\Tests\\GraphQL\\": "tests/lib/"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.0.x-dev"
+            "dev-main": "4.0.x-dev"
         }
     },
     "scripts": {
