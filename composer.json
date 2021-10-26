@@ -57,6 +57,7 @@
         "psr-4": {
             "spec\\EzSystems\\EzPlatformGraphQL\\Tools\\": "spec/Tools",
             "spec\\EzSystems\\EzPlatformGraphQL\\": "spec/EzSystems/EzPlatformGraphQL",
+            "spec\\Ibexa\\GraphQL\\": "spec/",
             "Ibexa\\Spec\\GraphQL\\": "spec/",
             "Ibexa\\Tests\\Bundle\\GraphQL\\": "tests/bundle/",
             "Ibexa\\Tests\\GraphQL\\": "tests/lib/"
