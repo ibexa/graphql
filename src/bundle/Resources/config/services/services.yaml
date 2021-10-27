@@ -10,8 +10,14 @@ services:
         tags:
             -  { name: console.command }
 
-    Ibexa\GraphQL\InputMapper\:
-        resource: '../../../../lib/InputMapper'
+    Ibexa\GraphQL\InputMapper\QueryMapper:
+        alias: Ibexa\GraphQL\InputMapper\SearchQueryMapper
+
+    Ibexa\GraphQL\InputMapper\SearchQueryMapper: ~
+
+    Ibexa\GraphQL\InputMapper\SearchQuerySortByMapper: ~
+
+    Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder: ~
 
     Ibexa\GraphQL\Security\NonAdminGraphQLRequestMatcher:
         arguments:
