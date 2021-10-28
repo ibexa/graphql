@@ -47,7 +47,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EzSystems\\EzPlatformGraphQL\\": "src",
+            "EzSystems\\EzPlatformGraphQL\\": "src/lib/",
             "Ibexa\\GraphQL\\": "src/lib/",
             "Ibexa\\Bundle\\GraphQL\\": "src/bundle/",
             "Ibexa\\Contracts\\GraphQL\\": "src/contracts/"
