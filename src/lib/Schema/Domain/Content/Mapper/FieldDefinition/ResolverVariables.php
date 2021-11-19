@@ -50,7 +50,7 @@ class ResolverVariables implements FieldDefinitionMapper
                 'value.getContent()',
                 'value.getLocation()',
                 'value',
-                'resolver("ItemFieldValue", [value, "' . $fieldDefinition->identifier . '"])',
+                'resolver("ItemFieldValue", [value, "' . $fieldDefinition->identifier . '", args])',
             ],
             $resolver
         );
