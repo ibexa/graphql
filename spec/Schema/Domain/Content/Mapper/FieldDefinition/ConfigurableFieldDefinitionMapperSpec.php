@@ -3,7 +3,7 @@
 namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ConfigurableFieldDefinitionMapper;
-use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 use PhpSpec\ObjectBehavior;
 
@@ -82,7 +82,7 @@ class ConfigurableFieldDefinitionMapperSpec extends ObjectBehavior
     }
 
     /**
-     * @return FieldDefinition
+     * @return \Ibexa\Core\Repository\Values\ContentType\FieldDefinition
      */
     protected function createConfiguredFieldDefinition(): FieldDefinition
     {
@@ -93,7 +93,7 @@ class ConfigurableFieldDefinitionMapperSpec extends ObjectBehavior
     }
 
     /**
-     * @return FieldDefinition
+     * @return \Ibexa\Core\Repository\Values\ContentType\FieldDefinition
      */
     protected function createUnconfiguredFieldDefinition(): FieldDefinition
     {

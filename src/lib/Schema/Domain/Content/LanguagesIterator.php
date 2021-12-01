@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content;
 
-use eZ\Publish\API\Repository\LanguageService;
+use Ibexa\Contracts\Core\Repository\LanguageService;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Domain\Iterator;
 use Generator;
@@ -14,7 +14,7 @@ use Generator;
 class LanguagesIterator implements Iterator
 {
     /**
-     * @var \eZ\Publish\API\Repository\LanguageService
+     * @var \Ibexa\Contracts\Core\Repository\LanguageService
      */
     private $languageService;
 

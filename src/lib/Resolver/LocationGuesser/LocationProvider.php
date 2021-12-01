@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 
 interface LocationProvider
 {

@@ -6,8 +6,8 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
 use Ibexa\GraphQL\Value\Field;
 
@@ -17,7 +17,7 @@ use Ibexa\GraphQL\Value\Field;
 class SelectionFieldResolver
 {
     /**
-     * @var ContentTypeLoader
+     * @var \Ibexa\GraphQL\DataLoader\ContentTypeLoader
      */
     private $contentTypeLoader;
 

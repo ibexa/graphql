@@ -6,16 +6,16 @@
  */
 namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType;
 
-use eZ\Publish\SPI\FieldType\Value;
+use Ibexa\Contracts\Core\FieldType\Value;
 use Ibexa\GraphQL\Exception\UnsupportedFieldInputFormatException;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
-use EzSystems\EzPlatformRichText\eZ\FieldType\RichText as RichTextFieldType;
+use Ibexa\FieldTypeRichText\eZ\FieldType\RichText as RichTextFieldType;
 
 class RichText implements FieldTypeInputHandler
 {
     /**
-     * @var RichTextInputConverter[]
+     * @var \Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter[]
      */
     private $inputConverters;
 
@@ -28,7 +28,7 @@ class RichText implements FieldTypeInputHandler
      * @param array $input
      * @param null $inputFormat
      *
-     * @return \EzSystems\EzPlatformRichText\eZ\FieldType\RichText\Value
+     * @return \Ibexa\FieldTypeRichText\FieldType\RichText\Value
      */
     public function toFieldValue($input, $inputFormat = null): Value
     {

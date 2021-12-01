@@ -7,8 +7,8 @@
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationList;
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\Location;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 use Ibexa\GraphQL\Exception;
 use SplObjectStorage;
 
@@ -17,7 +17,7 @@ final class ObjectStorageLocationList implements LocationList
     /**
      * The content item locations were guessed for.
      *
-     * @var \eZ\Publish\API\Repository\Values\Content\Content
+     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content
      */
     private $content;
 

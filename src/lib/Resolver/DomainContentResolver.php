@@ -6,11 +6,11 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\Repository;
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\Query;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
-use eZ\Publish\Core\FieldType;
+use Ibexa\Contracts\Core\Repository\Repository;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Core\FieldType;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
 use Ibexa\GraphQL\InputMapper\QueryMapper;
@@ -36,17 +36,17 @@ class DomainContentResolver
     private $queryMapper;
 
     /**
-     * @var Repository
+     * @var \Ibexa\Contracts\Core\Repository\Repository
      */
     private $repository;
 
     /**
-     * @var ContentLoader
+     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
      */
     private $contentLoader;
 
     /**
-     * @var ContentTypeLoader
+     * @var \Ibexa\GraphQL\DataLoader\ContentTypeLoader
      */
     private $contentTypeLoader;
 
@@ -75,7 +75,7 @@ class DomainContentResolver
      * @param \Overblog\GraphQLBundle\Definition\Argument|array $args
      * @param string|null $contentTypeIdentifier
      *
-     * @return \eZ\Publish\API\Repository\Values\Content\Content
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content
      *
      * @throws \GraphQL\Error\UserError if $contentTypeIdentifier was specified, and the loaded item's type didn't match it
      * @throws \GraphQL\Error\UserError if no argument was provided
@@ -106,7 +106,7 @@ class DomainContentResolver
     /**
      * @param string $contentTypeIdentifier
      *
-     * @return \eZ\Publish\API\Repository\Values\Content\Content[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
      */
     private function findContentItemsByTypeIdentifier($contentTypeIdentifier, Argument $args): array
     {
@@ -182,7 +182,7 @@ class DomainContentResolver
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\LocationService
+     * @return \Ibexa\Contracts\Core\Repository\LocationService
      */
     private function getLocationService()
     {
@@ -192,7 +192,7 @@ class DomainContentResolver
     /**
      * @return array
      *
-     * @throws UserError if the field isn't a Relation or RelationList value
+     * @throws \GraphQL\Error\UserError if the field isn't a Relation or RelationList value
      */
     private function getContentIds(Field $field)
     {

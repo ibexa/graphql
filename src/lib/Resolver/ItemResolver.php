@@ -6,9 +6,9 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\Query;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
 use Ibexa\GraphQL\DataLoader\LocationLoader;
@@ -30,19 +30,19 @@ final class ItemResolver
     /** @var \Overblog\GraphQLBundle\Resolver\TypeResolver */
     private $typeResolver;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\QueryMapper */
+    /** @var \Ibexa\GraphQL\InputMapper\QueryMapper */
     private $queryMapper;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\ContentLoader */
+    /** @var \Ibexa\GraphQL\DataLoader\ContentLoader */
     private $contentLoader;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\ContentTypeLoader */
+    /** @var \Ibexa\GraphQL\DataLoader\ContentTypeLoader */
     private $contentTypeLoader;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\LocationLoader */
+    /** @var \Ibexa\GraphQL\DataLoader\LocationLoader */
     private $locationLoader;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory */
+    /** @var \Ibexa\GraphQL\ItemFactory */
     private $itemFactory;
 
     public function __construct(

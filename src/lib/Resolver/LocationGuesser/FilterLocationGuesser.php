@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser;
-use eZ\Publish\API\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 
 /**
  * Guesses locations for a site by filtering out a provided list.
@@ -17,12 +17,12 @@ use eZ\Publish\API\Repository\Values\Content\Content;
 class FilterLocationGuesser implements LocationGuesser
 {
     /**
-     * @var \EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationFilter[]
+     * @var \Ibexa\GraphQL\Resolver\LocationGuesser\LocationFilter[]
      */
     private $filters;
 
     /**
-     * @var \EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationProvider
+     * @var \Ibexa\GraphQL\Resolver\LocationGuesser\LocationProvider
      */
     private $provider;
 

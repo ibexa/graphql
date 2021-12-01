@@ -9,12 +9,12 @@ declare(strict_types=1);
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationFilter;
-use eZ\Publish\API\Repository\LocationService;
-use eZ\Publish\API\Repository\URLAliasService;
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\Location;
-use eZ\Publish\API\Repository\Values\Content\URLAlias;
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
+use Ibexa\Contracts\Core\Repository\LocationService;
+use Ibexa\Contracts\Core\Repository\URLAliasService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
+use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
+use Ibexa\Core\MVC\ConfigResolverInterface;
 
 /**
  * Filters a Location based on the tree root site settings.
@@ -23,21 +23,21 @@ use eZ\Publish\Core\MVC\ConfigResolverInterface;
 class TreeRootLocationFilter implements LocationFilter
 {
     /**
-     * @var \eZ\Publish\API\Repository\LocationService
+     * @var \Ibexa\Contracts\Core\Repository\LocationService
      */
     private $locationService;
 
     /**
-     * @var \eZ\Publish\Core\MVC\ConfigResolverInterface
+     * @var \Ibexa\Core\MVC\ConfigResolverInterface
      */
     private $configResolver;
 
     /**
-     * @var \eZ\Publish\API\Repository\URLAliasService
+     * @var \Ibexa\Contracts\Core\Repository\URLAliasService
      */
     private $urlAliasService;
 
-    public function __construct(LocationService $locationService, UrlAliasService $urlAliasService, ConfigResolverInterface $configResolver)
+    public function __construct(LocationService $locationService, URLAliasService $urlAliasService, ConfigResolverInterface $configResolver)
     {
         $this->locationService = $locationService;
         $this->configResolver = $configResolver;
@@ -56,10 +56,10 @@ class TreeRootLocationFilter implements LocationFilter
     /**
      * Checks if a location is valid in regards to the tree root setting.
      *
-     * @param \eZ\Publish\API\Repository\Values\Content\Location $location
+     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Location $location
      *
-     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
-     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      */
     private function locationIsInTreeRoot(Location $location): bool
     {
@@ -76,11 +76,11 @@ class TreeRootLocationFilter implements LocationFilter
     /**
      * Tests if the location is excluded from tree root.
      *
-     * @param \eZ\Publish\API\Repository\Values\Content\Location $candidateLocation
+     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Location $candidateLocation
      *
-     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
-     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      */
     private function locationPrefixIsExcluded(Location $candidateLocation): bool
     {

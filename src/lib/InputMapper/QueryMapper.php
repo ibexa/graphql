@@ -6,8 +6,8 @@
  */
 namespace Ibexa\GraphQL\InputMapper;
 
-use eZ\Publish\API\Repository\Values\Content\LocationQuery;
-use eZ\Publish\API\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 
 interface QueryMapper
 {

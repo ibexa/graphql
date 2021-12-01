@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
 
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Builder\Input;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\BaseWorker;

@@ -8,7 +8,7 @@ namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType\RichText;
 
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter;
 use DOMDocument;
-use EzSystems\EzPlatformRichText\eZ\RichText as RichTextFieldType;
+use Ibexa\FieldTypeRichText\eZ\RichText as RichTextFieldType;
 
 class HtmlRichTextConverter implements RichTextInputConverter
 {

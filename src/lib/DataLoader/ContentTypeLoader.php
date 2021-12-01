@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\DataLoader;
 
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 
 /**
  * @internal

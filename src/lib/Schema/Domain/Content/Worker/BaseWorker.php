@@ -11,7 +11,7 @@ use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 class BaseWorker
 {
     /**
-     * @var \EzSystems\EzPlatformGraphQL\Schema\Domain\Content\NameHelper
+     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
      */
     private $nameHelper;
 

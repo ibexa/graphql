@@ -6,10 +6,10 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository as API;
-use eZ\Publish\API\Repository\Exceptions as RepositoryExceptions;
-use eZ\Publish\API\Repository\Values as RepositoryValues;
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Contracts\Core\Repository as API;
+use Ibexa\Core\Repository\Exceptions as RepositoryExceptions;
+use Ibexa\Core\Repository\Values as RepositoryValues;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\Exception\UnsupportedFieldTypeException;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
@@ -30,11 +30,11 @@ class DomainContentMutationResolver
     private $repository;
 
     /**
-     * @var FieldTypeInputHandler[]
+     * @var \Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler[]
      */
     private $fieldInputHandlers = [];
     /**
-     * @var \EzSystems\EzPlatformGraphQL\Schema\Domain\Content\NameHelper
+     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
      */
     private $nameHelper;
 
@@ -294,7 +294,7 @@ class DomainContentMutationResolver
      * Returns the GraphQL schema input field for a field definition.
      * Example: text_line -> textLine.
      *
-     * @param \eZ\Publish\API\Repository\Values\ContentType\FieldDefinition $fieldDefinition
+     * @param \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition $fieldDefinition
      *
      * @return string
      */

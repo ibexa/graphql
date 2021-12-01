@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType;
 
-use eZ\Publish\SPI\FieldType\Value;
+use Ibexa\Contracts\Core\FieldType\Value;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 
 /**

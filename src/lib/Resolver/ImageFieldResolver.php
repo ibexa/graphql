@@ -6,11 +6,11 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\ContentService;
-use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
-use eZ\Publish\Core\FieldType;
-use eZ\Publish\Core\FieldType\Image\Value as ImageFieldValue;
-use eZ\Publish\SPI\Variation\VariationHandler;
+use Ibexa\Contracts\Core\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
+use Ibexa\Core\FieldType;
+use Ibexa\Core\FieldType\Image\Value as ImageFieldValue;
+use Ibexa\Contracts\Core\Variation\VariationHandler;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Overblog\GraphQLBundle\Error\UserError;
 
@@ -20,12 +20,12 @@ use Overblog\GraphQLBundle\Error\UserError;
 class ImageFieldResolver
 {
     /**
-     * @var \eZ\Publish\SPI\Variation\VariationHandler
+     * @var \Ibexa\Contracts\Core\Variation\VariationHandler
      */
     private $variationHandler;
 
     /**
-     * @var \eZ\Publish\API\Repository\ContentService
+     * @var \Ibexa\Contracts\Core\Repository\ContentService
      */
     private $contentService;
     /**
@@ -33,7 +33,7 @@ class ImageFieldResolver
      */
     private $fieldType;
     /**
-     * @var ContentLoader
+     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
      */
     private $contentLoader;
 
@@ -79,8 +79,8 @@ class ImageFieldResolver
     /**
      * @return [Content, Field]
      *
-     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
-     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      */
     protected function getImageField(ImageFieldValue $fieldValue): array
     {

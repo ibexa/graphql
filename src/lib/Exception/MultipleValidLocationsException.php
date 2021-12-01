@@ -8,24 +8,24 @@ declare(strict_types=1);
 
 namespace Ibexa\GraphQL\Exception;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\Location;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 
 class MultipleValidLocationsException extends \Exception
 {
     /**
-     * @var \eZ\Publish\API\Repository\Values\Content\Location[]
+     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
      */
     private $locations = [];
 
     /**
-     * @var \eZ\Publish\API\Repository\Values\Content\Content
+     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content
      */
     private $content;
 
     /**
-     * @param \eZ\Publish\API\Repository\Values\Content\Content $content
-     * @param \eZ\Publish\API\Repository\Values\Content\Location[] $locations
+     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Content $content
+     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Location[] $locations
      */
     public function __construct(Content $content, array $locations)
     {
@@ -41,7 +41,7 @@ class MultipleValidLocationsException extends \Exception
     }
 
     /**
-     * @return Location[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
      */
     public function getLocations(): array
     {

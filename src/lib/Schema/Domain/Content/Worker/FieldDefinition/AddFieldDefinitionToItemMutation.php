@@ -6,8 +6,8 @@
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition;
 
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\BaseWorker;
@@ -19,12 +19,12 @@ class AddFieldDefinitionToItemMutation extends BaseWorker implements Worker
     const OPERATION_UPDATE = 'update';
 
     /**
-     * @var \EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+     * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
      */
     private $mapper;
 
     /**
-     * @param \EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper $mapper
+     * @param \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper $mapper
      */
     public function __construct(FieldDefinitionMapper $mapper)
     {

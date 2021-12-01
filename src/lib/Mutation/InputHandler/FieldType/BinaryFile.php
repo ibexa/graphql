@@ -6,8 +6,8 @@
  */
 namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType;
 
-use eZ\Publish\Core\FieldType\BinaryFile as BInaryFileFieldType;
-use eZ\Publish\SPI\FieldType\Value;
+use Ibexa\Core\FieldType\BinaryFile as BInaryFileFieldType;
+use Ibexa\Contracts\Core\FieldType\Value;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 

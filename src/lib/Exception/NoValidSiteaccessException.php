@@ -7,12 +7,12 @@
 namespace Ibexa\GraphQL\Exception;
 
 use Exception;
-use eZ\Publish\API\Repository\Values\Content\Location;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 
 class NoValidSiteaccessException extends Exception
 {
     /**
-     * @var \eZ\Publish\API\Repository\Values\Content\Location
+     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Location
      */
     private $location;
 

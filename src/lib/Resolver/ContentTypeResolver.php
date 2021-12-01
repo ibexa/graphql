@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
 
 /**
@@ -15,12 +15,12 @@ use Overblog\GraphQLBundle\Resolver\TypeResolver;
 class ContentTypeResolver
 {
     /**
-     * @var \eZ\Publish\API\Repository\ContentTypeService
+     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
      */
     private $contentTypeService;
 
     /**
-     * @var TypeResolver
+     * @var \Overblog\GraphQLBundle\Resolver\TypeResolver
      */
     private $typeResolver;
 
@@ -31,7 +31,7 @@ class ContentTypeResolver
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\ContentType\ContentType[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType[]
      */
     public function resolveContentTypesFromGroup($args)
     {

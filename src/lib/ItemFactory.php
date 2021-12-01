@@ -6,18 +6,18 @@
  */
 namespace Ibexa\GraphQL;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\Location;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 use Ibexa\GraphQL\Value\Item;
 
 class ItemFactory
 {
     /**
-     * @var \EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser
+     * @var \Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser
      */
     private $locationGuesser;
     /**
-     * @var \EzSystems\EzPlatformGraphQL\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser
+     * @var \Ibexa\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser
      */
     private $siteaccessGuesser;
 

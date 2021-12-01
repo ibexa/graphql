@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationFilter;
-use eZ\Publish\API\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 
 /**
  * Selects a location, if there are several, by picking the main one if it is part of the current tree root.

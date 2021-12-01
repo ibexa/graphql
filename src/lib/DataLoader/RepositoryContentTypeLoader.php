@@ -7,8 +7,8 @@
 namespace Ibexa\GraphQL\DataLoader;
 
 use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
-use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 
 /**
  * @internal
@@ -16,7 +16,7 @@ use eZ\Publish\API\Repository\Values\ContentType\ContentType;
 class RepositoryContentTypeLoader implements ContentTypeLoader
 {
     /**
-     * @var ContentTypeService
+     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
      */
     private $contentTypeService;
 

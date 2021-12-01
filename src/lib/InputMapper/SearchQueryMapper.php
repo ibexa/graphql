@@ -7,14 +7,14 @@
 namespace Ibexa\GraphQL\InputMapper;
 
 use Ibexa\GraphQL\InputMapper\QueryMapper;
-use eZ\Publish\API\Repository\Values\Content\LocationQuery;
-use eZ\Publish\API\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use InvalidArgumentException;
 
 final class SearchQueryMapper implements QueryMapper
 {
     /**
-     * @var \EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\ContentCollectionFilterBuilder
+     * @var \Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder
      */
     private $filterBuilder;
 
@@ -24,7 +24,7 @@ final class SearchQueryMapper implements QueryMapper
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\Content\LocationQuery
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery
      */
     public function mapInputToLocationQuery(array $inputArray): LocationQuery
     {
@@ -35,7 +35,7 @@ final class SearchQueryMapper implements QueryMapper
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\Content\Query
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query
      */
     public function mapInputToQuery(array $inputArray): Query
     {
@@ -128,7 +128,7 @@ final class SearchQueryMapper implements QueryMapper
     /**
      * @param $dateMetadata
      *
-     * @return \eZ\Publish\API\Repository\Values\Content\Query\Criterion\DateMetadata[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\DateMetadata[]
      */
     private function mapDateMetadata(array $queryArg = [], $dateMetadata)
     {

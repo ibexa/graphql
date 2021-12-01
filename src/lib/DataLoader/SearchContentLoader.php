@@ -7,12 +7,12 @@
 namespace Ibexa\GraphQL\DataLoader;
 
 use Ibexa\GraphQL\DataLoader\ContentLoader;
-use eZ\Publish\API\Repository\Exceptions as ApiException;
-use eZ\Publish\API\Repository\SearchService;
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\Query;
-use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
-use eZ\Publish\API\Repository\Values\Content\Search\SearchHit;
+use Ibexa\Core\Repository\Exceptions as ApiException;
+use Ibexa\Contracts\Core\Repository\SearchService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
+use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
 use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 
 /**
@@ -21,7 +21,7 @@ use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 class SearchContentLoader implements ContentLoader
 {
     /**
-     * @var SearchService
+     * @var \Ibexa\Contracts\Core\Repository\SearchService
      */
     private $searchService;
 
@@ -33,11 +33,11 @@ class SearchContentLoader implements ContentLoader
     /**
      * Loads a list of content items given a Query Criterion.
      *
-     * @param Query $query A Query Criterion. To use multiple criteria, group them with a LogicalAnd.
+     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query $query A Query Criterion. To use multiple criteria, group them with a LogicalAnd.
      *
-     * @return \eZ\Publish\API\Repository\Values\Content\Content[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
      *
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      */
     public function find(Query $query): array
     {
@@ -52,9 +52,9 @@ class SearchContentLoader implements ContentLoader
     /**
      * Loads a single content item given a Query Criterion.
      *
-     * @param Criterion $filter A Query Criterion. Use Criterion\ContentId, Criterion\RemoteId or Criterion\LocationId for basic loading.
+     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion $filter A Query Criterion. Use Criterion\ContentId, Criterion\RemoteId or Criterion\LocationId for basic loading.
      *
-     * @throws ArgumentsException
+     * @throws \Ibexa\GraphQL\DataLoader\Exception\ArgumentsException
      */
     public function findSingle(Criterion $filter): Content
     {
@@ -71,7 +71,7 @@ class SearchContentLoader implements ContentLoader
      *
      * @return int
      *
-     * @throws ArgumentsException
+     * @throws \Ibexa\GraphQL\DataLoader\Exception\ArgumentsException
      */
     public function count(Query $query)
     {

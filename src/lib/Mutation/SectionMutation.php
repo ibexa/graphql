@@ -6,13 +6,13 @@
  */
 namespace Ibexa\GraphQL\Mutation;
 
-use eZ\Publish\API\Repository\SectionService;
-use eZ\Publish\API\Repository\Values\Content\SectionCreateStruct;
+use Ibexa\Contracts\Core\Repository\SectionService;
+use Ibexa\Contracts\Core\Repository\Values\Content\SectionCreateStruct;
 
 class SectionMutation
 {
     /**
-     * @var SectionService
+     * @var \Ibexa\Contracts\Core\Repository\SectionService
      */
     private $sectionService;
 

@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content;
 
-use eZ\Publish\API\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Builder\Input;
 use Ibexa\GraphQL\Schema\Domain\Iterator;
@@ -20,7 +20,7 @@ class ContentDomainIterator implements Iterator, LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
-    /** @var \eZ\Publish\API\Repository\ContentTypeService */
+    /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
     private $contentTypeService;
 
     /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */

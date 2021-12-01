@@ -6,8 +6,8 @@
  */
 namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType;
 
-use eZ\Publish\Core\FieldType\FieldType;
-use eZ\Publish\SPI\FieldType\Value;
+use Ibexa\Core\FieldType\FieldType;
+use Ibexa\Contracts\Core\FieldType\Value;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 
 /**
@@ -16,7 +16,7 @@ use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 class FromHash implements FieldTypeInputHandler
 {
     /**
-     * @var FieldType
+     * @var \Ibexa\Core\FieldType\FieldType
      */
     private $fieldType;
 

@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\SectionService;
+use Ibexa\Contracts\Core\Repository\SectionService;
 
 /**
  * @internal
@@ -14,7 +14,7 @@ use eZ\Publish\API\Repository\SectionService;
 class SectionResolver
 {
     /**
-     * @var \eZ\Publish\API\Repository\SectionService
+     * @var \Ibexa\Contracts\Core\Repository\SectionService
      */
     private $sectionService;
 

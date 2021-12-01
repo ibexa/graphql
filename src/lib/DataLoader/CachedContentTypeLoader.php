@@ -7,7 +7,7 @@
 namespace Ibexa\GraphQL\DataLoader;
 
 use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 
 /**
  * @internal
@@ -15,12 +15,12 @@ use eZ\Publish\API\Repository\Values\ContentType\ContentType;
 class CachedContentTypeLoader implements ContentTypeLoader
 {
     /**
-     * @var ContentTypeLoader
+     * @var \Ibexa\GraphQL\DataLoader\ContentTypeLoader
      */
     private $innerLoader;
 
     /**
-     * @var ContentType[]
+     * @var \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType[]
      */
     private $loadedItems = [];
 

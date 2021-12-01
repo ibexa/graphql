@@ -9,19 +9,19 @@ declare(strict_types=1);
 namespace Ibexa\GraphQL\Exception;
 
 use Exception;
-use eZ\Publish\API\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 
 class NoValidLocationsException extends Exception
 {
     /**
-     * @var \eZ\Publish\API\Repository\Values\Content\Content|\eZ\Publish\API\Repository\Values\Content\Content[]
+     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content|\Ibexa\Contracts\Core\Repository\Values\Content\Content[]
      */
     private $content;
 
     /**
      * NoValidLocationsException constructor.
      *
-     * @param \eZ\Publish\API\Repository\Values\Content\Content $content
+     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Content $content
      */
     public function __construct(Content $content)
     {

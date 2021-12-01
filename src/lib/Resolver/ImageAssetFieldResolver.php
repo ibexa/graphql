@@ -6,8 +6,8 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
-use eZ\Publish\Core\FieldType\ImageAsset\AssetMapper;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
+use Ibexa\Core\FieldType\ImageAsset\AssetMapper;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\Value\Field;
 
@@ -21,11 +21,11 @@ class ImageAssetFieldResolver
      */
     private $domainContentResolver;
     /**
-     * @var ContentLoader
+     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
      */
     private $contentLoader;
     /**
-     * @var AssetMapper
+     * @var \Ibexa\Core\FieldType\ImageAsset\AssetMapper
      */
     private $assetMapper;
 

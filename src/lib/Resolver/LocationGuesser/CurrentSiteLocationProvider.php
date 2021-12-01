@@ -9,10 +9,10 @@ declare(strict_types=1);
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationProvider;
-use eZ\Publish\API\Repository\SearchService;
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\LocationQuery;
-use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
+use Ibexa\Contracts\Core\Repository\SearchService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder;
 
 /**
@@ -21,11 +21,11 @@ use Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder;
 class CurrentSiteLocationProvider implements LocationProvider
 {
     /**
-     * @var \eZ\Publish\API\Repository\SearchService
+     * @var \Ibexa\Contracts\Core\Repository\SearchService
      */
     private $searchService;
     /**
-     * @var \EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\ContentCollectionFilterBuilder
+     * @var \Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder
      */
     private $filterBuilder;
 

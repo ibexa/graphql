@@ -1,7 +1,7 @@
 <?php
 namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup;
 
-use eZ\Publish\Core\Repository\Values\ContentType\ContentTypeGroup;
+use Ibexa\Core\Repository\Values\ContentType\ContentTypeGroup;
 use PhpSpec\ObjectBehavior;
 
 abstract class ContentTypeGroupWorkerBehavior extends ObjectBehavior

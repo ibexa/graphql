@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
-use eZ\Publish\API\Repository\Values\Content\Location;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 
 /**
  * List of locations used by the LocationGuesser.
@@ -16,15 +16,15 @@ interface LocationList
     public function addLocation(Location $location): void;
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\Content\Location
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location
      *
-     * @throws \EzSystems\EzPlatformGraphQL\Exception\MultipleValidLocationsException
-     * @throws \EzSystems\EzPlatformGraphQL\Exception\NoValidLocationsException
+     * @throws \Ibexa\GraphQL\Exception\MultipleValidLocationsException
+     * @throws \Ibexa\GraphQL\Exception\NoValidLocationsException
      */
     public function getLocation(): Location;
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\Content\Location[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
      */
     public function getLocations(): array;
 

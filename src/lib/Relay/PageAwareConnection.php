@@ -14,10 +14,10 @@ use Overblog\GraphQLBundle\Relay\Connection\Output\PageInfo;
 
 final class PageAwareConnection
 {
-    /** @var Edge[] */
+    /** @var \Overblog\GraphQLBundle\Relay\Connection\Output\Edge[] */
     public $edges = [];
 
-    /** @var PageInfo */
+    /** @var \Overblog\GraphQLBundle\Relay\Connection\Output\PageInfo */
     public $pageInfo;
 
     /** @var int */

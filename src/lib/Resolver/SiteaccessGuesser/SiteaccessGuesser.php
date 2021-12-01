@@ -8,27 +8,27 @@ declare(strict_types=1);
 
 namespace Ibexa\GraphQL\Resolver\SiteaccessGuesser;
 
-use eZ\Publish\API\Repository\Values\Content\Location;
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use eZ\Publish\Core\MVC\Symfony\SiteAccess;
-use eZ\Publish\Core\MVC\Symfony\SiteAccess\SiteAccessProviderInterface;
-use EzSystems\EzPlatformAdminUi\Specification\SiteAccess\IsAdmin;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
+use Ibexa\Core\MVC\ConfigResolverInterface;
+use Ibexa\Core\MVC\Symfony\SiteAccess;
+use Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessProviderInterface;
+use Ibexa\AdminUi\Specification\SiteAccess\IsAdmin;
 use Ibexa\GraphQL\Exception\NoValidSiteaccessException;
 
 class SiteaccessGuesser
 {
     /**
-     * @var \eZ\Publish\Core\MVC\Symfony\SiteAccess\SiteAccessProviderInterface
+     * @var \Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessProviderInterface
      */
     private $provider;
 
     /**
-     * @var \eZ\Publish\Core\MVC\ConfigResolverInterface
+     * @var \Ibexa\Core\MVC\ConfigResolverInterface
      */
     private $configResolver;
 
     /**
-     * @var \eZ\Publish\Core\MVC\Symfony\SiteAccess\SiteAccessServiceInterface
+     * @var \Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessServiceInterface
      */
     private $siteAccessService;
     /**
@@ -49,7 +49,7 @@ class SiteaccessGuesser
     }
 
     /**
-     * @throws \EzSystems\EzPlatformGraphQL\Exception\NoValidSiteaccessException
+     * @throws \Ibexa\GraphQL\Exception\NoValidSiteaccessException
      */
     public function guessForLocation(Location $location): SiteAccess
     {
@@ -62,7 +62,7 @@ class SiteaccessGuesser
         // we won't look into siteaccesses that don't use the same repository
         $currentRepository = $this->configResolver->getParameter('repository');
 
-        /** @var \eZ\Publish\Core\MVC\Symfony\SiteAccess[] $saList */
+        /** @var \Ibexa\Core\MVC\Symfony\SiteAccess[] $saList */
         $matchingSiteaccessRootDepth = 0;
         $saList = iterator_to_array($this->provider->getSiteAccesses());
 

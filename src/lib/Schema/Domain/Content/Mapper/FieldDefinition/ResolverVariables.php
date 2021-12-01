@@ -7,8 +7,8 @@
 namespace Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 
 /**
  * Maps a Field Definition to its GraphQL components.
@@ -16,7 +16,7 @@ use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
 class ResolverVariables implements FieldDefinitionMapper
 {
     /**
-     * @var \EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+     * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
      */
     private $innerMapper;
 

@@ -6,8 +6,8 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\Values\Content\Query;
-use eZ\Publish\Core\FieldType;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Core\FieldType;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Value\Field;
@@ -15,10 +15,10 @@ use GraphQL\Error\UserError;
 
 final class RelationFieldResolver
 {
-    /** @var ContentLoader */
+    /** @var \Ibexa\GraphQL\DataLoader\ContentLoader */
     private $contentLoader;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory */
+    /** @var \Ibexa\GraphQL\ItemFactory */
     private $itemFactory;
 
     public function __construct(ContentLoader $contentLoader, ItemFactory $relatedContentItemFactory)
@@ -56,7 +56,7 @@ final class RelationFieldResolver
     /**
      * @return array
      *
-     * @throws UserError if the field isn't a Relation or RelationList value
+     * @throws \GraphQL\Error\UserError if the field isn't a Relation or RelationList value
      */
     private function getContentIds(Field $field): array
     {

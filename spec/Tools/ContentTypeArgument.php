@@ -1,13 +1,13 @@
 <?php
 namespace Ibexa\Spec\GraphQL\Tools;
 
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Prophecy\Argument\Token\CallbackToken;
 
 class ContentTypeArgument
 {
     /**
-     * @return ContentType|CallbackToken
+     * @return \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType|\Prophecy\Argument\Token\CallbackToken
      */
     public static function withIdentifier($identifier)
     {

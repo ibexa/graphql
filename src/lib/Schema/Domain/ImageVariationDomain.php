@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Schema\Domain;
 
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
+use Ibexa\Core\MVC\ConfigResolverInterface;
 use Ibexa\GraphQL\Schema;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Domain;
@@ -26,7 +26,7 @@ class ImageVariationDomain implements Domain\Iterator, Schema\Worker, LoggerAwar
     const TYPE = 'ImageVariationIdentifier';
     const ARG = 'ImageVariation';
 
-    /** @var \eZ\Publish\Core\MVC\ConfigResolverInterface */
+    /** @var \Ibexa\Core\MVC\ConfigResolverInterface */
     private $configResolver;
 
     /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */

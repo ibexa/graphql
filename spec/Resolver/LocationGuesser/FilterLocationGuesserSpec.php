@@ -2,8 +2,8 @@
 
 namespace Ibexa\Spec\GraphQL\Resolver\LocationGuesser;
 
-use eZ\Publish\Core\Repository\Values\Content\Content;
-use eZ\Publish\Core\Repository\Values\Content\Location;
+use Ibexa\Core\Repository\Values\Content\Content;
+use Ibexa\Core\Repository\Values\Content\Location;
 use Ibexa\GraphQL\Resolver\LocationGuesser\FilterLocationGuesser;
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationFilter;
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuess;

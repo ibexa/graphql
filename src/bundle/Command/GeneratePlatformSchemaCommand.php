@@ -6,7 +6,7 @@
  */
 namespace Ibexa\Bundle\GraphQL\Command;
 
-use eZ\Bundle\EzPublishCoreBundle\Command\BackwardCompatibleCommand;
+use Ibexa\Bundle\Core\Command\BackwardCompatibleCommand;
 use Ibexa\GraphQL\Schema\Generator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,7 +19,7 @@ use Symfony\Component\Yaml\Yaml;
 class GeneratePlatformSchemaCommand extends Command implements BackwardCompatibleCommand
 {
     /**
-     * @var \EzSystems\EzPlatformGraphQL\Schema\Generator
+     * @var \Ibexa\GraphQL\Schema\Generator
      */
     private $generator;
 

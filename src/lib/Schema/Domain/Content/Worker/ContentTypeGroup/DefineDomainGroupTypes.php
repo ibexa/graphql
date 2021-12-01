@@ -6,8 +6,8 @@
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup;
 
-use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\API\Repository\Values\ContentType\ContentTypeGroup;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\BaseWorker;
 use Ibexa\GraphQL\Schema\Worker;
@@ -19,7 +19,7 @@ use Ibexa\GraphQL\Schema\Worker;
 class DefineDomainGroupTypes extends BaseWorker implements Worker
 {
     /**
-     * @var ContentTypeService
+     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
      */
     private $contentTypeService;
 

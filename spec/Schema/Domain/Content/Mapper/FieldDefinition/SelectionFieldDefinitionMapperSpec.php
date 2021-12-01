@@ -2,7 +2,7 @@
 
 namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 
-use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\SelectionFieldDefinitionMapper;
 use PhpSpec\ObjectBehavior;

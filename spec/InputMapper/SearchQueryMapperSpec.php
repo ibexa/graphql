@@ -2,10 +2,10 @@
 
 namespace Ibexa\Spec\GraphQL\InputMapper;
 
-use eZ\Publish\API\Repository\Values\Content\Query\Criterion\Subtree;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\Subtree;
 use Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder;
 use Ibexa\GraphQL\InputMapper\SearchQueryMapper;
-use eZ\Publish\API\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use PhpSpec\ObjectBehavior;
 
 class SearchQueryMapperSpec extends ObjectBehavior
@@ -14,7 +14,7 @@ class SearchQueryMapperSpec extends ObjectBehavior
     {
         $this->beConstructedWith($filterBuilder);
 
-        $filterBuilder->buildFilter()->willReturn(new SubTree('/1/2/'));
+        $filterBuilder->buildFilter()->willReturn(new Subtree('/1/2/'));
     }
 
     function it_is_initializable()
