@@ -33,7 +33,7 @@
         "symfony/serializer": "^5.0"
     },
     "require-dev": {
-        "ibexa/doctrine-dbal-schema": "^4.0@dev",
+        "ibexa/doctrine-schema": "^4.0@dev",
         "ibexa/content-forms": "^4.0@dev",
         "ibexa/design-engine": "^4.0@dev",
         "ibexa/user": "^4.0@dev",
