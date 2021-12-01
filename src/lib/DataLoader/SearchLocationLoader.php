@@ -1,13 +1,11 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\DataLoader;
 
-use Ibexa\GraphQL\DataLoader\LocationLoader;
-use Ibexa\Core\Repository\Exceptions as ApiException;
 use Ibexa\Contracts\Core\Repository\LocationService;
 use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\URLAliasService;
@@ -17,6 +15,7 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
 use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
 use Ibexa\Core\MVC\ConfigResolverInterface;
 use Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator;
+use Ibexa\Core\Repository\Exceptions as ApiException;
 use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 
 /**
@@ -38,10 +37,12 @@ class SearchLocationLoader implements LocationLoader
      * @var \Ibexa\Contracts\Core\Repository\URLAliasService
      */
     private $urlAliasService;
+
     /**
      * @var \Ibexa\Core\MVC\ConfigResolverInterface
      */
     private $configResolver;
+
     /**
      * @var \Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator
      */
@@ -59,7 +60,7 @@ class SearchLocationLoader implements LocationLoader
     public function find(LocationQuery $query): array
     {
         return array_map(
-            function (SearchHit $searchHit) {
+            static function (SearchHit $searchHit) {
                 return $searchHit->valueObject;
             },
             $this->searchService->findLocations($query)->searchHits

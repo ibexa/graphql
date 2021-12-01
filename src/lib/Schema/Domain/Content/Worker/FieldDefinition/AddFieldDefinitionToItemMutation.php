@@ -1,22 +1,22 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition;
 
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
-use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
+use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\BaseWorker;
 use Ibexa\GraphQL\Schema\Worker;
 
 class AddFieldDefinitionToItemMutation extends BaseWorker implements Worker
 {
-    const OPERATION_CREATE = 'create';
-    const OPERATION_UPDATE = 'update';
+    public const OPERATION_CREATE = 'create';
+    public const OPERATION_UPDATE = 'update';
 
     /**
      * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
@@ -18,7 +18,7 @@ use Ibexa\GraphQL\Schema\Worker;
  */
 class AddItemTypeToItemTypeIdentifierList extends BaseWorker implements Worker, Initializer
 {
-    const TYPE = 'ContentTypeIdentifier';
+    public const TYPE = 'ContentTypeIdentifier';
 
     public function work(Builder $schema, array $args)
     {

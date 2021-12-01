@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
@@ -34,12 +34,14 @@ class AddItemOfTypeConnectionToGroup extends BaseWorker implements Worker
         ));
 
         $schema->addArgToField($this->groupName($args), $this->connectionField($args), new Input\Arg(
-            'query', 'ContentSearchQuery',
+            'query',
+            'ContentSearchQuery',
             ['description' => 'A Content query used to filter results']
         ));
 
         $schema->addArgToField($this->groupName($args), $this->connectionField($args), new Input\Arg(
-            'sortBy', '[SortByOptions]',
+            'sortBy',
+            '[SortByOptions]',
             ['description' => 'A Sort Clause, or array of Clauses. Add _desc after a Clause to reverse it']
         ));
     }

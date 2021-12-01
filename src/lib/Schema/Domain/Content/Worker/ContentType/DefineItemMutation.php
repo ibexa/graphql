@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
@@ -14,7 +14,7 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class DefineItemMutation extends BaseWorker implements Worker, Initializer
 {
-    const MUTATION_TYPE = 'ItemMutation';
+    public const MUTATION_TYPE = 'ItemMutation';
 
     public function init(Builder $schema)
     {
@@ -30,7 +30,8 @@ class DefineItemMutation extends BaseWorker implements Worker, Initializer
         $contentType = $args['ContentType'];
 
         // ex: createArticle
-        $schema->addFieldToType(self::MUTATION_TYPE,
+        $schema->addFieldToType(
+            self::MUTATION_TYPE,
             new Builder\Input\Field(
                 $this->getCreateField($contentType),
                 $this->getNameHelper()->itemName($contentType) . '!',
@@ -38,7 +39,7 @@ class DefineItemMutation extends BaseWorker implements Worker, Initializer
                     'resolve' => sprintf(
                         '@=mutation("CreateDomainContent", [args["input"], "%s", args["parentLocationId"], args["language"]])',
                         $contentType->identifier
-                ), ]
+                    ), ]
             )
         );
 

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType;
 
-use Ibexa\Core\FieldType\FieldType;
 use Ibexa\Contracts\Core\FieldType\Value;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
+use Ibexa\Core\FieldType\FieldType;
 
 /**
  * Converts input to a Field Value using the type's fromHash method.

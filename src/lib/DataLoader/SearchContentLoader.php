@@ -1,18 +1,17 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\DataLoader;
 
-use Ibexa\GraphQL\DataLoader\ContentLoader;
-use Ibexa\Core\Repository\Exceptions as ApiException;
 use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
+use Ibexa\Core\Repository\Exceptions as ApiException;
 use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 
 /**
@@ -42,7 +41,7 @@ class SearchContentLoader implements ContentLoader
     public function find(Query $query): array
     {
         return array_map(
-            function (SearchHit $searchHit) {
+            static function (SearchHit $searchHit) {
                 return $searchHit->valueObject;
             },
             $this->searchService->findContent($query)->searchHits

@@ -1,11 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
+use GraphQL\Error\UserError;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
@@ -16,7 +17,6 @@ use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Value\Field;
 use Ibexa\GraphQL\Value\Item;
-use GraphQL\Error\UserError;
 use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;

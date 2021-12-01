@@ -1,12 +1,11 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\InputMapper;
 
-use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use InvalidArgumentException;
@@ -88,7 +87,7 @@ final class SearchQueryMapper implements QueryMapper
 
         if (isset($inputArray['sortBy'])) {
             $query->sortClauses = array_map(
-                function ($sortClauseClass) {
+                static function ($sortClauseClass) {
                     /** @var Query\SortClause $lastSortClause */
                     static $lastSortClause;
 

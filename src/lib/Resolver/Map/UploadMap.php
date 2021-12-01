@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver\Map;
@@ -14,7 +14,7 @@ class UploadMap extends ResolverMap
     protected function map()
     {
         return [
-            'FileUpload' => [self::SCALAR_TYPE => function () { return new GraphQLUploadType(); }],
+            'FileUpload' => [self::SCALAR_TYPE => static function () { return new GraphQLUploadType(); }],
         ];
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain;
 
-use Ibexa\GraphQL\Schema\Builder;
 use Generator;
+use Ibexa\GraphQL\Schema\Builder;
 
 /**
  * Iterates on a domain, and returns sets of items a schema can be generated from.

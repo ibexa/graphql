@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
@@ -46,6 +46,7 @@ class UrlAliasResolver
      * @var \Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator
      */
     private $urlGenerator;
+
     /**
      * @var \Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessService
      */
@@ -57,7 +58,8 @@ class UrlAliasResolver
         LocationService $locationService,
         ConfigResolverInterface $configResolver,
         UrlAliasGenerator $urlGenerator,
-        SiteAccessServiceInterface $siteAccessService)
+        SiteAccessServiceInterface $siteAccessService
+    )
     {
         $this->urlAliasService = $urlAliasService;
         $this->typeResolver = $typeResolver;

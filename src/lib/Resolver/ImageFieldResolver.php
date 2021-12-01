@@ -1,16 +1,16 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\Contracts\Core\Repository\ContentService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
+use Ibexa\Contracts\Core\Variation\VariationHandler;
 use Ibexa\Core\FieldType;
 use Ibexa\Core\FieldType\Image\Value as ImageFieldValue;
-use Ibexa\Contracts\Core\Variation\VariationHandler;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Overblog\GraphQLBundle\Error\UserError;
 
@@ -28,10 +28,12 @@ class ImageFieldResolver
      * @var \Ibexa\Contracts\Core\Repository\ContentService
      */
     private $contentService;
+
     /**
      * @var FieldType\Image\Type
      */
     private $fieldType;
+
     /**
      * @var \Ibexa\GraphQL\DataLoader\ContentLoader
      */

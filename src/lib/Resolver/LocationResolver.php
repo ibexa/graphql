@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
@@ -16,7 +16,6 @@ use Ibexa\GraphQL\DataLoader\LocationLoader;
 use Ibexa\GraphQL\InputMapper\SearchQuerySortByMapper;
 use Ibexa\GraphQL\Relay\PageAwareConnection;
 use Overblog\GraphQLBundle\Definition\Argument;
-use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 /**
@@ -24,7 +23,7 @@ use Overblog\GraphQLBundle\Relay\Connection\Paginator;
  */
 class LocationResolver
 {
-    const DEFAULT_LIMIT = 10;
+    public const DEFAULT_LIMIT = 10;
 
     /**
      * @var \Ibexa\Contracts\Core\Repository\LocationService

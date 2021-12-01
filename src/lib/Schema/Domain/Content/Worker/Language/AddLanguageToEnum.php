@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\Language;
@@ -13,7 +13,7 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class AddLanguageToEnum implements Worker, Initializer
 {
-    const ENUM_NAME = 'RepositoryLanguage';
+    public const ENUM_NAME = 'RepositoryLanguage';
 
     public function init(Builder $schema)
     {

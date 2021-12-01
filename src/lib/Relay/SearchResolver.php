@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Relay;
@@ -9,7 +9,6 @@ namespace Ibexa\GraphQL\Relay;
 use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
-use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Output\ConnectionBuilder;
 
 class SearchResolver
@@ -55,7 +54,7 @@ class SearchResolver
         $searchResult = $this->searchService->findContentInfo($query);
 
         $contentItems = array_map(
-            function (SearchHit $hit) {
+            static function (SearchHit $hit) {
                 return $hit->valueObject;
             },
             $searchResult->searchHits

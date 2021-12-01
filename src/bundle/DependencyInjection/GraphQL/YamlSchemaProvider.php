@@ -1,12 +1,11 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\Bundle\GraphQL\DependencyInjection\GraphQL;
 
-use Ibexa\Bundle\GraphQL\DependencyInjection\GraphQL\SchemaProvider;
 use Ibexa\GraphQL\Resolver\Map\UploadMap;
 
 /**
@@ -14,11 +13,11 @@ use Ibexa\GraphQL\Resolver\Map\UploadMap;
  */
 class YamlSchemaProvider implements SchemaProvider
 {
-    const PLATFORM_SCHEMA_PATH = 'ezplatform/';
-    const PLATFORM_SCHEMA_FILE = self::PLATFORM_SCHEMA_PATH . 'Domain.types.yaml';
-    const PLATFORM_MUTATION_FILE = self::PLATFORM_SCHEMA_PATH . 'DomainContentMutation.types.yaml';
-    const APP_QUERY_SCHEMA_FILE = 'Query.types.yaml';
-    const APP_MUTATION_SCHEMA_FILE = 'Mutation.types.yaml';
+    public const PLATFORM_SCHEMA_PATH = 'ezplatform/';
+    public const PLATFORM_SCHEMA_FILE = self::PLATFORM_SCHEMA_PATH . 'Domain.types.yaml';
+    public const PLATFORM_MUTATION_FILE = self::PLATFORM_SCHEMA_PATH . 'DomainContentMutation.types.yaml';
+    public const APP_QUERY_SCHEMA_FILE = 'Query.types.yaml';
+    public const APP_MUTATION_SCHEMA_FILE = 'Mutation.types.yaml';
 
     /**
      * The path to the graphql configuration root.

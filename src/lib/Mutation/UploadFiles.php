@@ -1,16 +1,16 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Mutation;
 
+use GraphQL\Error\UserError;
+use Ibexa\AdminUi\UI\Config\Provider\ContentTypeMappings;
 use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
 use Ibexa\Core\FieldType;
-use Ibexa\AdminUi\UI\Config\Provider\ContentTypeMappings;
-use GraphQL\Error\UserError;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -20,6 +20,7 @@ class UploadFiles
      * @var \Ibexa\AdminUi\UI\Config\Provider\ContentTypeMappings
      */
     private $contentTypeMappings;
+
     /**
      * @var \Ibexa\Contracts\Core\Repository\Repository
      */
@@ -60,7 +61,7 @@ class UploadFiles
             if (in_array($mimeType, $mapping['mimeTypes'])) {
                 return array_filter(
                     $mapping,
-                    function ($key) {
+                    static function ($key) {
                         return in_array($key, ['contentTypeIdentifier', 'contentFieldIdentifier', 'nameFieldIdentifier']);
                     },
                     ARRAY_FILTER_USE_KEY

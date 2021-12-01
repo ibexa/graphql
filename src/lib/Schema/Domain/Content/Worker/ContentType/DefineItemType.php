@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
@@ -17,7 +17,8 @@ class DefineItemType extends BaseWorker implements Worker
     public function work(Builder $schema, array $args)
     {
         $schema->addType(new Input\Type(
-            $this->typeName($args), 'object',
+            $this->typeName($args),
+            'object',
             [
                 'inherits' => ['BaseItemType'],
                 'interfaces' => ['ItemType'],

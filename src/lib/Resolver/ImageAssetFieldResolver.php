@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
@@ -20,10 +20,12 @@ class ImageAssetFieldResolver
      * @var DomainContentResolver
      */
     private $domainContentResolver;
+
     /**
      * @var \Ibexa\GraphQL\DataLoader\ContentLoader
      */
     private $contentLoader;
+
     /**
      * @var \Ibexa\Core\FieldType\ImageAsset\AssetMapper
      */

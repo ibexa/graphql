@@ -1,11 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
+use GraphQL\Error\UserError;
 use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
@@ -15,7 +16,6 @@ use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
 use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\GraphQL\Value\Field;
-use GraphQL\Error\UserError;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
@@ -55,7 +55,8 @@ class DomainContentResolver
         TypeResolver $typeResolver,
         QueryMapper $queryMapper,
         ContentLoader $contentLoader,
-        ContentTypeLoader $contentTypeLoader)
+        ContentTypeLoader $contentTypeLoader
+    )
     {
         $this->repository = $repository;
         $this->typeResolver = $typeResolver;
@@ -153,7 +154,7 @@ class DomainContentResolver
 
         if ($multiple) {
             return array_map(
-                function ($contentId) use ($contentItems) {
+                static function ($contentId) use ($contentItems) {
                     return $contentItems[array_search($contentId, array_column($contentItems, 'id'))];
                 },
                 $destinationContentIds
