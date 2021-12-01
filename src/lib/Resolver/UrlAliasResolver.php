@@ -59,8 +59,7 @@ class UrlAliasResolver
         ConfigResolverInterface $configResolver,
         UrlAliasGenerator $urlGenerator,
         SiteAccessServiceInterface $siteAccessService
-    )
-    {
+    ) {
         $this->urlAliasService = $urlAliasService;
         $this->typeResolver = $typeResolver;
         $this->configResolver = $configResolver;

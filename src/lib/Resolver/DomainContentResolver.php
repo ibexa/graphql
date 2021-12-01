@@ -56,8 +56,7 @@ class DomainContentResolver
         QueryMapper $queryMapper,
         ContentLoader $contentLoader,
         ContentTypeLoader $contentTypeLoader
-    )
-    {
+    ) {
         $this->repository = $repository;
         $this->typeResolver = $typeResolver;
         $this->queryMapper = $queryMapper;
