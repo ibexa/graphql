@@ -7,6 +7,7 @@
 namespace Ibexa\Bundle\GraphQL;
 
 use Ibexa\Bundle\GraphQL\DependencyInjection\Compiler;
+use Ibexa\Bundle\GraphQL\DependencyInjection\IbexaGraphQLExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -20,6 +21,11 @@ class IbexaGraphQLBundle extends Bundle
         $container->addCompilerPass(new Compiler\RichTextInputConvertersPass());
         $container->addCompilerPass(new Compiler\SchemaWorkersPass());
         $container->addCompilerPass(new Compiler\SchemaDomainIteratorsPass());
+    }
+
+    public function getContainerExtension()
+    {
+        return new IbexaGraphQLExtension();
     }
 }
 
