@@ -69,6 +69,6 @@
         }
     },
     "scripts": {
-        "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php --show-progress=dots"
+        "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots"
     }
 }
