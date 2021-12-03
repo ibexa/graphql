@@ -1,13 +1,13 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup;
 
-use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\API\Repository\Values\ContentType\ContentTypeGroup;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Builder\Input;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\BaseWorker;
@@ -16,7 +16,7 @@ use Ibexa\GraphQL\Schema\Worker;
 final class AddDomainGroupToDomain extends BaseWorker implements Worker
 {
     /**
-     * @var ContentTypeService
+     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
      */
     private $contentTypeService;
 

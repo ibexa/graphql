@@ -2,8 +2,8 @@
 
 namespace Ibexa\Spec\GraphQL\Schema\Domain\Content;
 
-use eZ\Publish\Core\Repository\Values\ContentType\ContentTypeGroup;
-use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Core\Repository\Values\ContentType\ContentTypeGroup;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

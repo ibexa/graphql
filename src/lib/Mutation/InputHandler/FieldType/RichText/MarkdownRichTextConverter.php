@@ -1,14 +1,14 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType\RichText;
 
-use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter;
 use DOMDocument;
-use EzSystems\EzPlatformRichText\eZ\RichText as RichTextFieldType;
+use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter;
+use Ibexa\FieldTypeRichText\eZ\RichText as RichTextFieldType;
 use Parsedown;
 
 class MarkdownRichTextConverter implements RichTextInputConverter

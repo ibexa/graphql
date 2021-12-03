@@ -8,7 +8,7 @@ use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldValueToItem;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\Spec\GraphQL\Tools\FieldArgument;
-use eZ\Publish\Core\Repository\Values\ContentType;
+use Ibexa\Core\Repository\Values\ContentType;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

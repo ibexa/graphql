@@ -87,25 +87,25 @@ SortByOptions:
     config:
         values:
             _contentId:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\ContentId'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\ContentId'
                 description: "Sort by content id"
             _name:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\ContentName'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\ContentName'
                 description: "Sort by content name"
             _dateModified:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\DateModified'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\DateModified'
                 description: "Sort by last modification date"
             _datePublished:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\DatePublished'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\DatePublished'
                 description: "Sort by initial publication date"
             _sectionIdentifier:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\SectionIdentifier'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\SectionIdentifier'
                 description: "Sort by content section identifier"
             _sectionName:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\SectionName'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\SectionName'
                 description: "Sort by section name"
             _score:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\Score'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Score'
                 description: "Sort by score"
             _desc:
                 value: 'descending'

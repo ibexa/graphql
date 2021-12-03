@@ -1,14 +1,15 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\Query;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
+use GraphQL\Error\UserError;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
 use Ibexa\GraphQL\DataLoader\LocationLoader;
@@ -16,7 +17,6 @@ use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Value\Field;
 use Ibexa\GraphQL\Value\Item;
-use GraphQL\Error\UserError;
 use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
@@ -30,19 +30,19 @@ final class ItemResolver
     /** @var \Overblog\GraphQLBundle\Resolver\TypeResolver */
     private $typeResolver;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\QueryMapper */
+    /** @var \Ibexa\GraphQL\InputMapper\QueryMapper */
     private $queryMapper;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\ContentLoader */
+    /** @var \Ibexa\GraphQL\DataLoader\ContentLoader */
     private $contentLoader;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\ContentTypeLoader */
+    /** @var \Ibexa\GraphQL\DataLoader\ContentTypeLoader */
     private $contentTypeLoader;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\LocationLoader */
+    /** @var \Ibexa\GraphQL\DataLoader\LocationLoader */
     private $locationLoader;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory */
+    /** @var \Ibexa\GraphQL\ItemFactory */
     private $itemFactory;
 
     public function __construct(

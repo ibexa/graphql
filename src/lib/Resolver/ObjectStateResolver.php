@@ -1,17 +1,17 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\Exceptions\NotFoundException;
-use eZ\Publish\API\Repository\ObjectStateService;
-use eZ\Publish\API\Repository\Values\Content\ContentInfo;
-use eZ\Publish\API\Repository\Values\ObjectState\ObjectState;
-use eZ\Publish\API\Repository\Values\ObjectState\ObjectStateGroup;
 use GraphQL\Error\UserError;
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
+use Ibexa\Contracts\Core\Repository\ObjectStateService;
+use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
+use Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState;
+use Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectStateGroup;
 use Overblog\GraphQLBundle\Definition\Argument;
 
 /**
@@ -19,7 +19,7 @@ use Overblog\GraphQLBundle\Definition\Argument;
  */
 class ObjectStateResolver
 {
-    /** @var \eZ\Publish\API\Repository\ObjectStateService */
+    /** @var \Ibexa\Contracts\Core\Repository\ObjectStateService */
     private $objectStateService;
 
     public function __construct(ObjectStateService $objectStateService)
@@ -37,7 +37,7 @@ class ObjectStateResolver
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\ObjectState\ObjectState[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState[]
      */
     public function resolveObjectStatesByGroup(ObjectStateGroup $objectStateGroup): array
     {
@@ -45,7 +45,7 @@ class ObjectStateResolver
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\ObjectState\ObjectState[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState[]
      */
     public function resolveObjectStatesByGroupId(Argument $args): array
     {
@@ -59,7 +59,7 @@ class ObjectStateResolver
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\ObjectState\ObjectState[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState[]
      */
     public function resolveObjectStateByContentInfo(ContentInfo $contentInfo): array
     {

@@ -14,12 +14,12 @@
         "bdunogier/ezplatform-graphql-bundle": "self.version"
     },
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
         "ext-dom": "*",
-        "ezsystems/ezplatform-kernel": "^4.0@dev",
-        "ezsystems/ezplatform-admin-ui": "^4.0@dev",
-        "ezsystems/ezplatform-rest": "^4.0@dev",
-        "ezsystems/ezplatform-richtext": "^4.0@dev",
+        "ibexa/core": "^4.0@dev",
+        "ibexa/admin-ui": "^4.0@dev",
+        "ibexa/rest": "^4.0@dev",
+        "ibexa/fieldtype-richtext": "^4.0@dev",
         "lexik/jwt-authentication-bundle": "^2.8",
         "overblog/graphql-bundle": "^0.12",
         "erusev/parsedown": "^1.7",
@@ -33,16 +33,16 @@
         "symfony/serializer": "^5.0"
     },
     "require-dev": {
-        "ezsystems/doctrine-dbal-schema": "^4.0@dev",
-        "ezsystems/ezplatform-content-forms": "^4.0@dev",
-        "ezsystems/ezplatform-design-engine": "^4.0@dev",
-        "ezsystems/ezplatform-user": "^4.0@dev",
-        "ezsystems/ezplatform-search": "^4.0@dev",
-        "ezsystems/ezplatform-http-cache": "^4.0@dev",
+        "ibexa/doctrine-schema": "^4.0@dev",
+        "ibexa/content-forms": "^4.0@dev",
+        "ibexa/design-engine": "^4.0@dev",
+        "ibexa/user": "^4.0@dev",
+        "ibexa/search": "^4.0@dev",
+        "ibexa/http-cache": "^4.0@dev",
         "overblog/graphiql-bundle": "^0.2",
         "phpspec/phpspec": "^6.1",
-        "friendsofphp/php-cs-fixer": "^2.16.0",
-        "ezsystems/ezplatform-code-style": "^0.1.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "ibexa/code-style": "^1.0",
         "mikey179/vfsstream": "^1.6"
     },
     "autoload": {
@@ -69,6 +69,6 @@
         }
     },
     "scripts": {
-        "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
+        "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots"
     }
 }

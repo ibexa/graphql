@@ -1,13 +1,13 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
 use DOMDocument;
-use EzSystems\EzPlatformRichText\eZ\RichText\Converter as RichTextConverterInterface;
+use Ibexa\Contracts\FieldTypeRichText\RichText\Converter as RichTextConverterInterface;
 
 /**
  * @internal
@@ -15,11 +15,12 @@ use EzSystems\EzPlatformRichText\eZ\RichText\Converter as RichTextConverterInter
 class RichTextResolver
 {
     /**
-     * @var RichTextConverterInterface
+     * @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter
      */
     private $richTextConverter;
+
     /**
-     * @var RichTextConverterInterface
+     * @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter
      */
     private $richTextEditConverter;
 

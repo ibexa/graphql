@@ -1,22 +1,21 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\ContentService;
-use eZ\Publish\API\Repository\LocationService;
-use eZ\Publish\API\Repository\Values\Content\LocationQuery;
-use eZ\Publish\API\Repository\Values\Content\Query;
-use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
+use Ibexa\Contracts\Core\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\LocationService;
+use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 use Ibexa\GraphQL\DataLoader\LocationLoader;
 use Ibexa\GraphQL\InputMapper\SearchQuerySortByMapper;
 use Ibexa\GraphQL\Relay\PageAwareConnection;
 use Overblog\GraphQLBundle\Definition\Argument;
-use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 /**
@@ -24,25 +23,25 @@ use Overblog\GraphQLBundle\Relay\Connection\Paginator;
  */
 class LocationResolver
 {
-    const DEFAULT_LIMIT = 10;
+    public const DEFAULT_LIMIT = 10;
 
     /**
-     * @var \eZ\Publish\API\Repository\LocationService
+     * @var \Ibexa\Contracts\Core\Repository\LocationService
      */
     private $locationService;
 
     /**
-     * @var ContentService
+     * @var \Ibexa\Contracts\Core\Repository\ContentService
      */
     private $contentService;
 
     /**
-     * @var \EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\LocationLoader
+     * @var \Ibexa\GraphQL\DataLoader\LocationLoader
      */
     private $locationLoader;
 
     /**
-     * @var \EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\SearchQuerySortByMapper
+     * @var \Ibexa\GraphQL\InputMapper\SearchQuerySortByMapper
      */
     private $sortMapper;
 
@@ -86,7 +85,7 @@ class LocationResolver
     /**
      * @param int $locationId
      *
-     * @return Connection
+     * @return \Overblog\GraphQLBundle\Relay\Connection\Output\Connection
      */
     public function resolveLocationChildren($locationId, Argument $args): PageAwareConnection
     {

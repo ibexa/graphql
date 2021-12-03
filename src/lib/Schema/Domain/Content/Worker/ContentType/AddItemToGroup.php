@@ -1,13 +1,13 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
 
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
-use eZ\Publish\API\Repository\Values\ContentType\ContentTypeGroup;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Builder\Input;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\BaseWorker;
@@ -21,7 +21,8 @@ class AddItemToGroup extends BaseWorker implements Worker
         $descriptions = $contentType->getDescriptions();
 
         $schema->addFieldToType($this->groupName($args), new Input\Field(
-            $this->typeField($args), $this->typeName($args),
+            $this->typeField($args),
+            $this->typeName($args),
             [
                 'description' => isset($descriptions['eng-GB']) ? $descriptions['eng-GB'] : 'No description available',
                 'resolve' => sprintf('@=resolver("ItemOfType", [args, "%s"])', $contentType->identifier),
@@ -29,27 +30,32 @@ class AddItemToGroup extends BaseWorker implements Worker
         ));
 
         $schema->addArgToField($this->groupName($args), $this->typeField($args), new Input\Arg(
-            'contentId', 'Int',
+            'contentId',
+            'Int',
             ['description' => sprintf('Content ID of the %s', $contentType->identifier)]
         ));
 
         $schema->addArgToField($this->groupName($args), $this->typeField($args), new Input\Arg(
-            'remoteId', 'String',
+            'remoteId',
+            'String',
             ['description' => sprintf('Content remote ID of the %s', $contentType->identifier)]
         ));
 
         $schema->addArgToField($this->groupName($args), $this->typeField($args), new Input\Arg(
-            'locationId', 'Int',
+            'locationId',
+            'Int',
             ['description' => sprintf('Location ID of the %s', $contentType->identifier)]
         ));
 
         $schema->addArgToField($this->groupName($args), $this->typeField($args), new Input\Arg(
-            'locationRemoteId', 'String',
+            'locationRemoteId',
+            'String',
             ['description' => sprintf('Location remote ID of the %s', $contentType->identifier)]
         ));
 
         $schema->addArgToField($this->groupName($args), $this->typeField($args), new Input\Arg(
-            'urlAlias', 'String',
+            'urlAlias',
+            'String',
             ['description' => sprintf('URL alias of the %s', $contentType->identifier)]
         ));
     }

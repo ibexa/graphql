@@ -1,19 +1,18 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository as API;
-use eZ\Publish\API\Repository\Exceptions as RepositoryExceptions;
-use eZ\Publish\API\Repository\Values as RepositoryValues;
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
-use Ibexa\GraphQL\Exception\UnsupportedFieldTypeException;
-use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
-use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use GraphQL\Error\UserError;
+use Ibexa\Contracts\Core\Repository as API;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Core\Repository\Exceptions as RepositoryExceptions;
+use Ibexa\Core\Repository\Values as RepositoryValues;
+use Ibexa\GraphQL\Exception\UnsupportedFieldTypeException;
+use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Error\UserErrors;
 use Overblog\GraphQLBundle\Relay\Node\GlobalId;
@@ -30,11 +29,12 @@ class DomainContentMutationResolver
     private $repository;
 
     /**
-     * @var FieldTypeInputHandler[]
+     * @var \Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler[]
      */
     private $fieldInputHandlers = [];
+
     /**
-     * @var \EzSystems\EzPlatformGraphQL\Schema\Domain\Content\NameHelper
+     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
      */
     private $nameHelper;
 
@@ -281,7 +281,8 @@ class DomainContentMutationResolver
             $fieldError = reset($fieldErrorByLanguage);
 
             // depending on $fieldError instance, values injected in Plural::__toString or Message::__toString
-            $errors[] = sprintf("Field '%s' failed validation: %s",
+            $errors[] = sprintf(
+                "Field '%s' failed validation: %s",
                 $fieldDefinition->identifier,
                 (string)$fieldError->getTranslatableMessage()
             );
@@ -294,7 +295,7 @@ class DomainContentMutationResolver
      * Returns the GraphQL schema input field for a field definition.
      * Example: text_line -> textLine.
      *
-     * @param \eZ\Publish\API\Repository\Values\ContentType\FieldDefinition $fieldDefinition
+     * @param \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition $fieldDefinition
      *
      * @return string
      */

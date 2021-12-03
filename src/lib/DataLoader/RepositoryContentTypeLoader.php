@@ -1,14 +1,13 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\DataLoader;
 
-use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
-use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 
 /**
  * @internal
@@ -16,7 +15,7 @@ use eZ\Publish\API\Repository\Values\ContentType\ContentType;
 class RepositoryContentTypeLoader implements ContentTypeLoader
 {
     /**
-     * @var ContentTypeService
+     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
      */
     private $contentTypeService;
 

@@ -1,26 +1,26 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
 
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\Location;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 use Ibexa\GraphQL\Exception;
 
 class LocationGuess
 {
     /**
-     * @var \eZ\Publish\API\Repository\Values\Content\Content
+     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content
      */
     private $content;
 
     /**
-     * @var \eZ\Publish\API\Repository\Values\Content\Location[]
+     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
      */
     private $locations;
 
@@ -33,10 +33,10 @@ class LocationGuess
     /**
      * Returns the location guess result if the guess was successful.
      *
-     * @return \eZ\Publish\API\Repository\Values\Content\Location
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location
      *
-     * @throws \EzSystems\EzPlatformGraphQL\Exception\MultipleValidLocationsException
-     * @throws \EzSystems\EzPlatformGraphQL\Exception\NoValidLocationsException
+     * @throws \Ibexa\GraphQL\Exception\MultipleValidLocationsException
+     * @throws \Ibexa\GraphQL\Exception\NoValidLocationsException
      */
     public function getLocation(): Location
     {

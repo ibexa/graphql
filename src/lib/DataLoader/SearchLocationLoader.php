@@ -1,22 +1,21 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\DataLoader;
 
-use Ibexa\GraphQL\DataLoader\LocationLoader;
-use eZ\Publish\API\Repository\Exceptions as ApiException;
-use eZ\Publish\API\Repository\LocationService;
-use eZ\Publish\API\Repository\SearchService;
-use eZ\Publish\API\Repository\URLAliasService;
-use eZ\Publish\API\Repository\Values\Content\Location;
-use eZ\Publish\API\Repository\Values\Content\LocationQuery;
-use eZ\Publish\API\Repository\Values\Content\Search\SearchHit;
-use eZ\Publish\API\Repository\Values\Content\URLAlias;
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use eZ\Publish\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator;
+use Ibexa\Contracts\Core\Repository\LocationService;
+use Ibexa\Contracts\Core\Repository\SearchService;
+use Ibexa\Contracts\Core\Repository\URLAliasService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
+use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
+use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
+use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
+use Ibexa\Core\MVC\ConfigResolverInterface;
+use Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator;
+use Ibexa\Core\Repository\Exceptions as ApiException;
 use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 
 /**
@@ -25,25 +24,27 @@ use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 class SearchLocationLoader implements LocationLoader
 {
     /**
-     * @var SearchService
+     * @var \Ibexa\Contracts\Core\Repository\SearchService
      */
     private $searchService;
 
     /**
-     * @var LocationService
+     * @var \Ibexa\Contracts\Core\Repository\LocationService
      */
     private $locationService;
 
     /**
-     * @var \eZ\Publish\API\Repository\URLAliasService
+     * @var \Ibexa\Contracts\Core\Repository\URLAliasService
      */
     private $urlAliasService;
+
     /**
-     * @var \eZ\Publish\Core\MVC\ConfigResolverInterface
+     * @var \Ibexa\Core\MVC\ConfigResolverInterface
      */
     private $configResolver;
+
     /**
-     * @var \eZ\Publish\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator
+     * @var \Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator
      */
     private $urlAliasGenerator;
 
@@ -59,7 +60,7 @@ class SearchLocationLoader implements LocationLoader
     public function find(LocationQuery $query): array
     {
         return array_map(
-            function (SearchHit $searchHit) {
+            static function (SearchHit $searchHit) {
                 return $searchHit->valueObject;
             },
             $this->searchService->findLocations($query)->searchHits
@@ -98,11 +99,11 @@ class SearchLocationLoader implements LocationLoader
     /**
      * Counts the results of a query.
      *
-     * @param \eZ\Publish\API\Repository\Values\Content\Query $query
+     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query $query
      *
      * @return int
      *
-     * @throws ArgumentsException
+     * @throws \Ibexa\GraphQL\DataLoader\Exception\ArgumentsException
      */
     public function count(LocationQuery $query)
     {

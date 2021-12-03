@@ -2,16 +2,16 @@
 
 namespace Ibexa\Spec\GraphQL\Resolver;
 
-use eZ\Publish\Core\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\ContentInfo;
-use eZ\Publish\Core\Repository\Values\Content\VersionInfo;
-use eZ\Publish\API\Repository\Values\Content\Query;
+use Ibexa\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
+use Ibexa\Core\Repository\Values\Content\VersionInfo;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
 use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\GraphQL\Resolver\DomainContentResolver;
-use eZ\Publish\API\Repository\Repository;
-use eZ\Publish\Core\FieldType;
+use Ibexa\Contracts\Core\Repository\Repository;
+use Ibexa\Core\FieldType;
 use Ibexa\GraphQL\Value\Field;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
 use PhpSpec\ObjectBehavior;
@@ -73,8 +73,8 @@ class DomainContentResolverSpec extends ObjectBehavior
     }
 
     /**
-     * @param \eZ\Publish\API\Repository\Values\Content\Content[] $contentList
-     * @return Field
+     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Content[] $contentList
+     * @return \Ibexa\GraphQL\Value\Field
      */
     private function createRelationListField(array $contentList): Field
     {
@@ -102,7 +102,7 @@ class DomainContentResolverSpec extends ObjectBehavior
     }
 
     /**
-     * @param \eZ\Publish\API\Repository\Values\Content\Content[] $contentList
+     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Content[] $contentList
      * @return array
      */
     private function extractContentIdList(array $contentList): array
@@ -117,7 +117,7 @@ class DomainContentResolverSpec extends ObjectBehavior
 
     /**
      * @param int[] $contentIdList
-     * @return Content[]
+     * @return \Ibexa\Core\Repository\Values\Content\Content[]
      */
     private function createContentList(array $contentIdList): array
     {
@@ -131,7 +131,7 @@ class DomainContentResolverSpec extends ObjectBehavior
 
     /**
      * @param $contentId
-     * @return Content
+     * @return \Ibexa\Core\Repository\Values\Content\Content
      */
     private function createContent($contentId): Content
     {

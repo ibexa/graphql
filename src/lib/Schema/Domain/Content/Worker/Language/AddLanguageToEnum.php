@@ -1,19 +1,19 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\Language;
 
-use eZ\Publish\API\Repository\Values\Content\Language;
+use Ibexa\Contracts\Core\Repository\Values\Content\Language;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Initializer;
 use Ibexa\GraphQL\Schema\Worker;
 
 class AddLanguageToEnum implements Worker, Initializer
 {
-    const ENUM_NAME = 'RepositoryLanguage';
+    public const ENUM_NAME = 'RepositoryLanguage';
 
     public function init(Builder $schema)
     {
@@ -30,7 +30,7 @@ class AddLanguageToEnum implements Worker, Initializer
      */
     public function work(Builder $schema, array $args)
     {
-        /** @var Language $language */
+        /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Language $language */
         $language = $args['Language'];
 
         $schema->addValueToEnum(

@@ -5,9 +5,9 @@ namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\RelationFieldDefinitionMapper;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
-use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\Core\Repository\Values\ContentType\ContentType;
-use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use PhpSpec\ObjectBehavior;
 
 class RelationFieldDefinitionMapperSpec extends ObjectBehavior

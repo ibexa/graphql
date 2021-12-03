@@ -2,12 +2,12 @@
 
 namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup;
 
-use eZ\Publish\API\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\GraphQL\Schema\Builder\SchemaBuilder;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup\AddDomainGroupToDomain;
 use Ibexa\Spec\GraphQL\Tools\FieldArgument;
-use eZ\Publish\Core\Repository\Values\ContentType\ContentTypeGroup;
+use Ibexa\Core\Repository\Values\ContentType\ContentTypeGroup;
 use Prophecy\Argument;
 
 class AddDomainGroupToDomainSpec extends ContentTypeGroupWorkerBehavior

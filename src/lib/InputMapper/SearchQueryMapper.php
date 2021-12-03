@@ -1,20 +1,19 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\InputMapper;
 
-use Ibexa\GraphQL\InputMapper\QueryMapper;
-use eZ\Publish\API\Repository\Values\Content\LocationQuery;
-use eZ\Publish\API\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use InvalidArgumentException;
 
 final class SearchQueryMapper implements QueryMapper
 {
     /**
-     * @var \EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\ContentCollectionFilterBuilder
+     * @var \Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder
      */
     private $filterBuilder;
 
@@ -24,7 +23,7 @@ final class SearchQueryMapper implements QueryMapper
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\Content\LocationQuery
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery
      */
     public function mapInputToLocationQuery(array $inputArray): LocationQuery
     {
@@ -35,7 +34,7 @@ final class SearchQueryMapper implements QueryMapper
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\Content\Query
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query
      */
     public function mapInputToQuery(array $inputArray): Query
     {
@@ -88,7 +87,7 @@ final class SearchQueryMapper implements QueryMapper
 
         if (isset($inputArray['sortBy'])) {
             $query->sortClauses = array_map(
-                function ($sortClauseClass) {
+                static function ($sortClauseClass) {
                     /** @var Query\SortClause $lastSortClause */
                     static $lastSortClause;
 
@@ -128,7 +127,7 @@ final class SearchQueryMapper implements QueryMapper
     /**
      * @param $dateMetadata
      *
-     * @return \eZ\Publish\API\Repository\Values\Content\Query\Criterion\DateMetadata[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\DateMetadata[]
      */
     private function mapDateMetadata(array $queryArg = [], $dateMetadata)
     {

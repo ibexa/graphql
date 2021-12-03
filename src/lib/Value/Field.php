@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Value;
 
-use eZ\Publish\API\Repository\Values as ApiValues;
+use Ibexa\Core\Repository\Values as ApiValues;
 
 /**
  * Custom Field that proxies properties to the Field Value. Otherwise similar to the one from API.

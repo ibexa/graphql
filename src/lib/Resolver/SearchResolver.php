@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\SearchService;
+use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\InputMapper\SearchQueryMapper;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
@@ -17,17 +17,17 @@ use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 class SearchResolver
 {
     /**
-     * @var SearchService
+     * @var \Ibexa\Contracts\Core\Repository\SearchService
      */
     private $searchService;
 
     /**
-     * @var SearchQueryMapper
+     * @var \Ibexa\GraphQL\InputMapper\SearchQueryMapper
      */
     private $queryMapper;
 
     /**
-     * @var ContentLoader
+     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
      */
     private $contentLoader;
 

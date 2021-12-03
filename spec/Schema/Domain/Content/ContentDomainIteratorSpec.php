@@ -1,11 +1,11 @@
 <?php
 namespace Ibexa\Spec\GraphQL\Schema\Domain\Content;
 
-use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinitionCollection;
-use eZ\Publish\Core\Repository\Values\ContentType\ContentType;
-use eZ\Publish\Core\Repository\Values\ContentType\ContentTypeGroup;
-use eZ\Publish\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinitionCollection;
+use Ibexa\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Core\Repository\Values\ContentType\ContentTypeGroup;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Ibexa\GraphQL\Schema\Domain\NameValidator;

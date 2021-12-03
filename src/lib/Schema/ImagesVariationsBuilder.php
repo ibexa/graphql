@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema;
 
-use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\ConfigResolver;
+use Ibexa\Bundle\Core\DependencyInjection\Configuration\ConfigResolver;
 
 /**
  * Generates the ImageVariationIdentifier enum that indexes images variations identifiers.
@@ -16,7 +16,7 @@ use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\ConfigResolv
 class ImagesVariationsBuilder implements SchemaBuilder
 {
     /**
-     * @var ConfigResolver
+     * @var \Ibexa\Bundle\Core\DependencyInjection\Configuration\ConfigResolver
      */
     private $configResolver;
 

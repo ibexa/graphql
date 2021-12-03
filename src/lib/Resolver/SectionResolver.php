@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\SectionService;
+use Ibexa\Contracts\Core\Repository\SectionService;
 
 /**
  * @internal
@@ -14,7 +14,7 @@ use eZ\Publish\API\Repository\SectionService;
 class SectionResolver
 {
     /**
-     * @var \eZ\Publish\API\Repository\SectionService
+     * @var \Ibexa\Contracts\Core\Repository\SectionService
      */
     private $sectionService;
 

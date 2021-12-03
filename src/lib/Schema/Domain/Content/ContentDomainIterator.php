@@ -1,16 +1,16 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain\Content;
 
-use eZ\Publish\API\Repository\ContentTypeService;
+use Generator;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Builder\Input;
 use Ibexa\GraphQL\Schema\Domain\Iterator;
-use Generator;
 use Ibexa\GraphQL\Schema\Domain\NameValidator;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -20,7 +20,7 @@ class ContentDomainIterator implements Iterator, LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
-    /** @var \eZ\Publish\API\Repository\ContentTypeService */
+    /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
     private $contentTypeService;
 
     /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */

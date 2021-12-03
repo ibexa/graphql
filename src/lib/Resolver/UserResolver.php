@@ -1,15 +1,15 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\LocationService;
-use eZ\Publish\API\Repository\UserService;
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\User\UserGroup;
+use Ibexa\Contracts\Core\Repository\LocationService;
+use Ibexa\Contracts\Core\Repository\UserService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\User\UserGroup;
 
 /**
  * @internal
@@ -17,11 +17,12 @@ use eZ\Publish\API\Repository\Values\User\UserGroup;
 class UserResolver
 {
     /**
-     * @var UserService
+     * @var \Ibexa\Contracts\Core\Repository\UserService
      */
     private $userService;
+
     /**
-     * @var LocationService
+     * @var \Ibexa\Contracts\Core\Repository\LocationService
      */
     private $locationService;
 
@@ -52,7 +53,7 @@ class UserResolver
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\User\UserGroup[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\User\UserGroup[]
      */
     public function resolveUserGroupsByUserId($userId)
     {
@@ -69,7 +70,7 @@ class UserResolver
     }
 
     /**
-     * @return \eZ\Publish\API\Repository\Values\User\UserGroup
+     * @return \Ibexa\Contracts\Core\Repository\Values\User\UserGroup
      */
     public function resolveUserGroupById($userGroupId)
     {

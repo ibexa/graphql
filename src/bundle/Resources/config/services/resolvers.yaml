@@ -56,7 +56,7 @@ services:
         tags:
             - { name: overblog_graphql.resolver, alias: "ContentThumbnail", method: "resolveContentThumbnail" }
         arguments:
-            $thumbnailStrategy: '@eZ\Publish\Core\Repository\Strategy\ContentThumbnail\ThumbnailChainStrategy'
+            $thumbnailStrategy: '@Ibexa\Core\Repository\Strategy\ContentThumbnail\ThumbnailChainStrategy'
 
     Ibexa\GraphQL\Mutation\Authentication:
         arguments:

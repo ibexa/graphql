@@ -1,13 +1,13 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
-use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 
 /**
  * Maps a Field Definition to its GraphQL components.
@@ -23,7 +23,7 @@ interface FieldDefinitionMapper
     public function mapToFieldValueResolver(FieldDefinition $fieldDefinition): ?string;
 
     /**
-     * @param \eZ\Publish\API\Repository\Values\ContentType\FieldDefinition $fieldDefinition
+     * @param \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition $fieldDefinition
      *
      * @return string|null the argsBuilder string, or null if there are none.
      */

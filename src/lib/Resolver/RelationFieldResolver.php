@@ -1,24 +1,24 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\Values\Content\Query;
-use eZ\Publish\Core\FieldType;
+use GraphQL\Error\UserError;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Core\FieldType;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Value\Field;
-use GraphQL\Error\UserError;
 
 final class RelationFieldResolver
 {
-    /** @var ContentLoader */
+    /** @var \Ibexa\GraphQL\DataLoader\ContentLoader */
     private $contentLoader;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory */
+    /** @var \Ibexa\GraphQL\ItemFactory */
     private $itemFactory;
 
     public function __construct(ContentLoader $contentLoader, ItemFactory $relatedContentItemFactory)
@@ -56,7 +56,7 @@ final class RelationFieldResolver
     /**
      * @return array
      *
-     * @throws UserError if the field isn't a Relation or RelationList value
+     * @throws \GraphQL\Error\UserError if the field isn't a Relation or RelationList value
      */
     private function getContentIds(Field $field): array
     {

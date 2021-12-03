@@ -1,14 +1,14 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Relay;
 
-use eZ\Publish\API\Repository\ContentService;
-use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\API\Repository\Values\Content\ContentInfo;
+use Ibexa\Contracts\Core\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Overblog\GraphQLBundle\Relay\Node\GlobalId;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
@@ -16,22 +16,22 @@ use Overblog\GraphQLBundle\Resolver\TypeResolver;
 class NodeResolver
 {
     /**
-     * @var ContentService
+     * @var \Ibexa\Contracts\Core\Repository\ContentService
      */
     private $contentService;
 
     /**
-     * @var TypeResolver
+     * @var \Overblog\GraphQLBundle\Resolver\TypeResolver
      */
     private $typeResolver;
 
     /**
-     * @var ContentTypeService
+     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
      */
     private $contentTypeService;
 
     /**
-     * @var NameHelper
+     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
      */
     private $nameHelper;
 
@@ -46,10 +46,10 @@ class NodeResolver
     /**
      * @param $globalId
      *
-     * @return \eZ\Publish\API\Repository\Values\Content\ContentInfo|null
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo|null
      *
-     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
-     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      */
     public function resolveNode($globalId)
     {

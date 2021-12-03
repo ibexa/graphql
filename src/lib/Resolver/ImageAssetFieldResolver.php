@@ -1,13 +1,13 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
-use eZ\Publish\Core\FieldType\ImageAsset\AssetMapper;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
+use Ibexa\Core\FieldType\ImageAsset\AssetMapper;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\Value\Field;
 
@@ -20,12 +20,14 @@ class ImageAssetFieldResolver
      * @var DomainContentResolver
      */
     private $domainContentResolver;
+
     /**
-     * @var ContentLoader
+     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
      */
     private $contentLoader;
+
     /**
-     * @var AssetMapper
+     * @var \Ibexa\Core\FieldType\ImageAsset\AssetMapper
      */
     private $assetMapper;
 

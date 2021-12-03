@@ -1,16 +1,16 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Value;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\ContentInfo;
-use eZ\Publish\API\Repository\Values\Content\Location;
-use eZ\Publish\Core\Base\Exceptions\InvalidArgumentException;
-use eZ\Publish\Core\MVC\Symfony\SiteAccess;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
+use Ibexa\Core\Base\Exceptions\InvalidArgumentException;
+use Ibexa\Core\MVC\Symfony\SiteAccess;
 use Ibexa\GraphQL\Exception\NoValidLocationsException;
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser;
 use Ibexa\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser;
@@ -21,19 +21,19 @@ use Overblog\GraphQLBundle\Error\UserError;
  */
 class Item
 {
-    /** @var \eZ\Publish\API\Repository\Values\Content\Content */
+    /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Content */
     private $content;
 
-    /** @var \eZ\Publish\API\Repository\Values\Content\Location */
+    /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Location */
     private $location;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser */
+    /** @var \Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser */
     private $locationGuesser;
 
-    /** @var \eZ\Publish\Core\MVC\Symfony\SiteAccess */
+    /** @var \Ibexa\Core\MVC\Symfony\SiteAccess */
     private $siteaccess;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser */
+    /** @var \Ibexa\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser */
     private $siteaccessGuesser;
 
     private function __construct(LocationGuesser $locationGuesser, SiteaccessGuesser $siteaccessGuesser, ?Location $location = null, ?Content $content = null)

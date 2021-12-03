@@ -1,20 +1,19 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\Schema\Domain;
 
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
+use Generator;
+use Ibexa\Core\MVC\ConfigResolverInterface;
 use Ibexa\GraphQL\Schema;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Domain;
-use Generator;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use Ibexa\GraphQL\Schema\Domain\NameValidator;
 
 /**
  * Adds configured image variations to the ImageVariationIdentifier type.
@@ -23,10 +22,10 @@ class ImageVariationDomain implements Domain\Iterator, Schema\Worker, LoggerAwar
 {
     use LoggerAwareTrait;
 
-    const TYPE = 'ImageVariationIdentifier';
-    const ARG = 'ImageVariation';
+    public const TYPE = 'ImageVariationIdentifier';
+    public const ARG = 'ImageVariation';
 
-    /** @var \eZ\Publish\Core\MVC\ConfigResolverInterface */
+    /** @var \Ibexa\Core\MVC\ConfigResolverInterface */
     private $configResolver;
 
     /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */
@@ -64,7 +63,8 @@ class ImageVariationDomain implements Domain\Iterator, Schema\Worker, LoggerAwar
 
     public function work(Builder $schema, array $args)
     {
-        $schema->addValueToEnum(self::TYPE,
+        $schema->addValueToEnum(
+            self::TYPE,
             new Builder\Input\EnumValue($args[self::ARG]['identifier'])
         );
     }

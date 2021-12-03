@@ -62,17 +62,17 @@ LocationSortByOptions:
     config:
         values:
             _depth:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\Location\Depth'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\Depth'
             _locationId:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\Location\Id'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\Id'
             _isMainLocation:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\Location\IsMainLocation'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\IsMainLocation'
             _path:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\Location\Path'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\Path'
             _priority:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\Location\Priority'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\Priority'
             _visibility:
-                value: '\eZ\Publish\API\Repository\Values\Content\Query\SortClause\Location\Visibility'
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\Visibility'
 
 LocationConnection:
     type: relay-connection
