@@ -21,7 +21,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        return new TreeBuilder('ezplatform_graphql');
+        return new TreeBuilder(IbexaGraphQLExtension::EXTENSION_NAME);
     }
 }
 
