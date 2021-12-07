@@ -134,9 +134,9 @@ class DomainContentResolver
     /**
      * @deprecated since v3.0, use ItemResolver::resolveItemFieldValue() instead.
      */
-    public function resolveDomainFieldValue(Content $content, $fieldDefinitionIdentifier)
+    public function resolveDomainFieldValue(Content $content, $fieldDefinitionIdentifier, $args = null)
     {
-        return Field::fromField($content->getField($fieldDefinitionIdentifier));
+        return Field::fromField($content->getField($fieldDefinitionIdentifier, $args['language'] ?? null));
     }
 
     public function resolveDomainRelationFieldValue(Field $field, $multiple = false)
