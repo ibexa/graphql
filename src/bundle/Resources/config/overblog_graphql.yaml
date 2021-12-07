@@ -1,0 +1,5 @@
+definitions:
+    config_validation: '%kernel.debug%'
+    builders:
+        args:
+            Item: 'Ibexa\GraphQL\Overblog\ArgsBuilder\ItemArgsBuilder'
