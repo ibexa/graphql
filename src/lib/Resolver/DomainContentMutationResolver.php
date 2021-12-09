@@ -8,9 +8,9 @@ namespace Ibexa\GraphQL\Resolver;
 
 use GraphQL\Error\UserError;
 use Ibexa\Contracts\Core\Repository as API;
-use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\Core\Repository\Exceptions as RepositoryExceptions;
 use Ibexa\Contracts\Core\Repository\Values as RepositoryValues;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\Exception\UnsupportedFieldTypeException;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Overblog\GraphQLBundle\Definition\Argument;

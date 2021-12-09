@@ -7,8 +7,8 @@
 namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType\RichText;
 
 use DOMDocument;
-use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter;
 use Ibexa\Contracts\FieldTypeRichText\RichText\Converter;
+use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter;
 use Parsedown;
 
 class MarkdownRichTextConverter implements RichTextInputConverter
