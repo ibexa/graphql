@@ -1,7 +1,7 @@
 <?php
 namespace Ibexa\Spec\GraphQL\Tools\Stubs;
 
-use Ibexa\GraphQL\Schema;;
+use Ibexa\GraphQL\Schema;
 
 interface InitializableWorker extends Schema\Worker, Schema\Initializer
 {

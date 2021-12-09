@@ -15,7 +15,7 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
 use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
 use Ibexa\Core\MVC\ConfigResolverInterface;
 use Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator;
-use Ibexa\Core\Repository\Exceptions as ApiException;
+use Ibexa\Contracts\Core\Repository\Exceptions as ApiException;
 use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 
 /**
