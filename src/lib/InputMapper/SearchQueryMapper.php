@@ -131,6 +131,10 @@ final class SearchQueryMapper implements QueryMapper
      */
     private function mapDateMetadata(array $queryArg, $dateMetadata)
     {
+        if (!isset($queryArg[$dateMetadata]) || !is_array($queryArg[$dateMetadata])) {
+            return [];
+        }
+
         $targetMap = [
             'Created' => Query\Criterion\DateMetadata::CREATED,
             'Modified' => Query\Criterion\DateMetadata::MODIFIED,
