@@ -7,17 +7,15 @@
 namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType\RichText;
 
 use DOMDocument;
+use Ibexa\Contracts\FieldTypeRichText\RichText\Converter;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter;
-use Ibexa\FieldTypeRichText\eZ\RichText as RichTextFieldType;
 
 class HtmlRichTextConverter implements RichTextInputConverter
 {
-    /**
-     * @var RichTextFieldType\Converter
-     */
+    /** @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter */
     private $xhtml5Converter;
 
-    public function __construct(RichTextFieldType\Converter $xhtml5Converter)
+    public function __construct(Converter $xhtml5Converter)
     {
         $this->xhtml5Converter = $xhtml5Converter;
     }

@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Value;
 
-use Ibexa\Core\Repository\Values as ApiValues;
+use Ibexa\Contracts\Core\Repository\Values as ApiValues;
 
 /**
  * Custom Field that proxies properties to the Field Value. Otherwise similar to the one from API.

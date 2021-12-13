@@ -6,12 +6,12 @@
  */
 namespace Ibexa\GraphQL\DataLoader;
 
+use Ibexa\Contracts\Core\Repository\Exceptions as ApiException;
 use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
-use Ibexa\Core\Repository\Exceptions as ApiException;
 use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 
 /**

@@ -8,7 +8,7 @@ namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType;
 
 use Ibexa\Contracts\Core\FieldType\Value;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
-use Ibexa\FieldTypeRichText\eZ\FieldType\RichText as RichTextFieldType;
+use Ibexa\FieldTypeRichText\FieldType\RichText as RichTextFieldType;
 use Ibexa\GraphQL\Exception\UnsupportedFieldInputFormatException;
 
 class RichText implements FieldTypeInputHandler
