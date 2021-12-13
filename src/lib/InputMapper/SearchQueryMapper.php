@@ -129,7 +129,7 @@ final class SearchQueryMapper implements QueryMapper
      *
      * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\DateMetadata[]
      */
-    private function mapDateMetadata(array $queryArg = [], $dateMetadata)
+    private function mapDateMetadata(array $queryArg, $dateMetadata)
     {
         if (!isset($queryArg[$dateMetadata]) || !is_array($queryArg[$dateMetadata])) {
             return [];
