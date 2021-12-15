@@ -1,0 +1,49 @@
+services:
+
+    Ibexa\GraphQL\GraphQL\ItemFactory\CurrentSite:
+        alias: Ibexa\GraphQL\ItemFactory\CurrentSite
+
+    Ibexa\GraphQL\GraphQL\ItemFactory\RelatedContent:
+        alias: Ibexa\GraphQL\ItemFactory\RelatedContent
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Author:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\Author
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Boolean:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\Boolean
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Country:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\Country
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\DateAndTime:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\DateAndTime
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Float:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\Float
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Email:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\Email
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Integer:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\Integer
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\ISBN:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\ISBN
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Keyword:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\Keyword
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\MapLocation:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\MapLocation
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Selection:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\MapLocation
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\TextBlock:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\TextBlock
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\TextLine:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\TextLine
+
+    Ibexa\GraphQL\GraphQL\Mutation\InputHandler\FieldType\Url:
+        alias: Ibexa\GraphQL\Mutation\InputHandler\FieldType\Url
