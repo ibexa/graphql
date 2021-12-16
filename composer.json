@@ -14,7 +14,7 @@
         "bdunogier/ezplatform-graphql-bundle": "self.version"
     },
     "require": {
-        "php": "^7.4",
+        "php": "^7.4 || ^8.0",
         "ext-dom": "*",
         "ibexa/core": "^4.0@dev",
         "ibexa/admin-ui": "^4.0@dev",
