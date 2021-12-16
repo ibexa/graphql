@@ -1,0 +1,18 @@
+Platform:
+    type: object
+    config:
+        fields:
+            _repository:
+                type: Repository
+                resolve: { }
+                description: "eZ Platform repository API"
+            node:
+                builder: Relay::Node
+                builderConfig:
+                    nodeInterfaceType: Node
+                    idFetcher: '@=resolver("node", [value])'
+            item:
+                description: "An item, whatever its type"
+                type: Item
+                argsBuilder: "Item"
+                resolve: "@=resolver('Item', [args])"

@@ -1,0 +1,33 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    Ibexa\GraphQL\DataLoader\CachedContentLoader:
+        arguments:
+            - '@Ibexa\GraphQL\DataLoader\SearchContentLoader'
+
+    Ibexa\GraphQL\DataLoader\CachedContentTypeLoader:
+        arguments:
+            - '@Ibexa\GraphQL\DataLoader\RepositoryContentTypeLoader'
+
+    Ibexa\GraphQL\DataLoader\ContentLoader: '@Ibexa\GraphQL\DataLoader\CachedContentLoader'
+
+    Ibexa\GraphQL\DataLoader\ContentTypeLoader: '@Ibexa\GraphQL\DataLoader\CachedContentTypeLoader'
+
+    Ibexa\GraphQL\DataLoader\LocationLoader: '@Ibexa\GraphQL\DataLoader\SearchLocationLoader'
+
+    Ibexa\GraphQL\DataLoader\RepositoryContentTypeLoader:
+        arguments:
+            $contentTypeService: '@ezpublish.siteaccessaware.service.content_type'
+
+    Ibexa\GraphQL\DataLoader\SearchContentLoader:
+        arguments:
+            $searchService: '@ezpublish.siteaccessaware.service.search'
+
+    Ibexa\GraphQL\DataLoader\SearchLocationLoader:
+        arguments:
+            $searchService: '@ezpublish.siteaccessaware.service.search'
+            $locationService: '@ezpublish.siteaccessaware.service.location'
+            $urlAliasGenerator: '@ezpublish.urlalias_generator'
