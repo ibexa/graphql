@@ -1,33 +1,35 @@
 <?php
+
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 namespace Ibexa\Spec\GraphQL\Schema\Domain\Content;
 
 use Ibexa\Contracts\Core\Repository\ContentTypeService;
-use Ibexa\Core\Repository\Values\ContentType\FieldDefinitionCollection;
 use Ibexa\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Core\Repository\Values\ContentType\ContentTypeGroup;
 use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinitionCollection;
+use Ibexa\GraphQL\Schema\Builder;
+use Ibexa\GraphQL\Schema\Domain;
+use Ibexa\Spec\GraphQL\Tools\TypeArgument;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Ibexa\GraphQL\Schema\Domain\NameValidator;
-use Ibexa\GraphQL\Schema\Domain;
-use Ibexa\GraphQL\Schema\Builder;
-use Ibexa\Spec\GraphQL\Tools\TypeArgument;
 
 class ContentDomainIteratorSpec extends ObjectBehavior
 {
-    public function let(
-        ContentTypeService $contentTypeService,
-        NameValidator $nameValidator
-    ) {
-        $this->beConstructedWith($contentTypeService, $nameValidator);
+    public function let(ContentTypeService $contentTypeService)
+    {
+        $this->beConstructedWith($contentTypeService);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(Domain\Iterator::class);
     }
 
-    function it_initializes_the_schema_with_the_Platform_root_type(Builder $schema)
+    public function it_initializes_the_schema_with_the_Platform_root_type(Builder $schema)
     {
         $this->init($schema);
 
@@ -39,10 +41,8 @@ class ContentDomainIteratorSpec extends ObjectBehavior
         )->shouldHaveBeenCalled();
     }
 
-    function it_yields_content_type_groups(ContentTypeService $contentTypeService, NameValidator $nameValidator)
+    public function it_yields_content_type_groups(ContentTypeService $contentTypeService)
     {
-        $nameValidator->isValidName(Argument::any())->willReturn(true);
-
         $contentTypeService->loadContentTypeGroups()->willReturn([
             $group1 = new ContentTypeGroup(['identifier' => 'Group 1']),
             $group2 = new ContentTypeGroup(['identifier' => 'Group 2']),
@@ -59,12 +59,9 @@ class ContentDomainIteratorSpec extends ObjectBehavior
         );
     }
 
-    function it_yields_content_types_with_their_group_from_a_content_type_group(
-        ContentTypeService $contentTypeService,
-        NameValidator $nameValidator
+    public function it_yields_content_types_with_their_group_from_a_content_type_group(
+        ContentTypeService $contentTypeService
     ) {
-        $nameValidator->isValidName(Argument::any())->willReturn(true);
-
         $contentTypeService->loadContentTypeGroups()->willReturn([
             $group = new ContentTypeGroup(['identifier' => 'Group']),
         ]);
@@ -84,12 +81,9 @@ class ContentDomainIteratorSpec extends ObjectBehavior
         );
     }
 
-    function it_yields_fields_definitions_with_their_content_types_and_group_from_a_content_type(
-        ContentTypeService $contentTypeService,
-        NameValidator $nameValidator
+    public function it_yields_fields_definitions_with_their_content_types_and_group_from_a_content_type(
+        ContentTypeService $contentTypeService
     ) {
-        $nameValidator->isValidName(Argument::any())->willReturn(true);
-
         $contentTypeService->loadContentTypeGroups()->willReturn([
             $group = new ContentTypeGroup(['identifier' => 'Group']),
         ]);
@@ -100,7 +94,7 @@ class ContentDomainIteratorSpec extends ObjectBehavior
                     'field1' => $field1 = new FieldDefinition(['identifier' => 'foo']),
                     'field2' => $field2 = new FieldDefinition(['identifier' => 'bar']),
                     'field3' => $field3 = new FieldDefinition(['identifier' => 'faz']),
-                ])
+                ]),
             ]),
         ]);
 
@@ -115,15 +109,12 @@ class ContentDomainIteratorSpec extends ObjectBehavior
         );
     }
 
-    function it_only_yields_fields_definitions_from_the_current_content_type(
-        ContentTypeService $contentTypeService,
-        NameValidator $nameValidator
+    public function it_only_yields_fields_definitions_from_the_current_content_type(
+        ContentTypeService $contentTypeService
     ) {
-        $nameValidator->isValidName(Argument::any())->willReturn(true);
-
         $contentTypeService->loadContentTypeGroups()->willReturn([
             $group = new ContentTypeGroup([
-                'identifier' => 'group'
+                'identifier' => 'group',
             ]),
         ]);
 
@@ -132,13 +123,13 @@ class ContentDomainIteratorSpec extends ObjectBehavior
                 'identifier' => 'type1',
                 'fieldDefinitions' => new FieldDefinitionCollection([
                     'type1_field1' => ($type1field1 = new FieldDefinition(['identifier' => 'foo'])),
-                ])
+                ]),
             ]),
             $type2 = new ContentType([
                 'identifier' => 'type2',
                 'fieldDefinitions' => new FieldDefinitionCollection([
                     'type2_field1' => ($type2field1 = new FieldDefinition(['identifier' => 'bar'])),
-                ])
+                ]),
             ]),
         ]);
 

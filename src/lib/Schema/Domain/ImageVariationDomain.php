@@ -11,47 +11,26 @@ use Ibexa\Core\MVC\ConfigResolverInterface;
 use Ibexa\GraphQL\Schema;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Domain;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\NullLogger;
 
 /**
  * Adds configured image variations to the ImageVariationIdentifier type.
  */
-class ImageVariationDomain implements Domain\Iterator, Schema\Worker, LoggerAwareInterface
+class ImageVariationDomain implements Domain\Iterator, Schema\Worker
 {
-    use LoggerAwareTrait;
-
     public const TYPE = 'ImageVariationIdentifier';
     public const ARG = 'ImageVariation';
 
     /** @var \Ibexa\Core\MVC\ConfigResolverInterface */
     private $configResolver;
 
-    /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */
-    private $nameValidator;
-
-    public function __construct(
-        ConfigResolverInterface $configResolver,
-        NameValidator $nameValidator
-    ) {
+    public function __construct(ConfigResolverInterface $configResolver)
+    {
         $this->configResolver = $configResolver;
-        $this->nameValidator = $nameValidator;
-        $this->logger = new NullLogger();
     }
 
     public function iterate(): Generator
     {
         foreach ($this->configResolver->getParameter('image_variations') as $identifier => $variation) {
-            if (!$this->nameValidator->isValidName($identifier)) {
-                $message = "Skipped schema generation for Image Variation with identifier '%s'. "
-                    . 'Please rename given image variation according to GraphQL specification '
-                    . '(http://spec.graphql.org/June2018/#sec-Names)';
-
-                $this->logger->warning(sprintf($message, $identifier));
-                continue;
-            }
-
             yield [self::ARG => ['identifier' => $identifier, 'variation' => $variation]];
         }
     }
