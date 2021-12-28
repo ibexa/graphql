@@ -20,7 +20,13 @@ services:
     Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper:
         alias: Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DefaultFieldDefinitionMapper
 
-    Ibexa\GraphQL\Schema\Builder\SchemaBuilder: ~
+    Ibexa\GraphQL\Schema\Builder\SchemaBuilder:
+        arguments:
+            - '@Ibexa\GraphQL\Schema\Domain\NameValidator'
+        calls:
+            - method: setLogger
+              arguments:
+                  - '@logger'
 
     Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DefaultFieldDefinitionMapper: ~
 

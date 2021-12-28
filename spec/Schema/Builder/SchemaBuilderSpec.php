@@ -1,29 +1,42 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 namespace Ibexa\Spec\GraphQL\Schema\Builder;
 
 use Ibexa\GraphQL\Schema\Builder\Input;
 use Ibexa\GraphQL\Schema\Builder\SchemaBuilder;
+use Ibexa\GraphQL\Schema\Domain\NameValidator;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 
 class SchemaBuilderSpec extends ObjectBehavior
 {
-    const TYPE = 'Test';
-    const TYPE_TYPE = 'object';
+    public const TYPE = 'Test';
+    public const TYPE_TYPE = 'object';
 
-    const FIELD = 'field';
-    const FIELD_TYPE = 'string';
+    public const FIELD = 'field';
+    public const FIELD_TYPE = 'string';
 
-    const ARG = 'arg';
-    const ARG_TYPE = 'Boolean';
+    public const ARG = 'arg';
+    public const ARG_TYPE = 'Boolean';
 
-    function it_is_initializable()
+    public function let(NameValidator $nameValidator)
+    {
+        $this->beConstructedWith($nameValidator);
+    }
+
+    public function it_is_initializable()
     {
         $this->shouldHaveType(SchemaBuilder::class);
     }
 
-    function it_adds_a_type_to_the_schema()
+    public function it_adds_a_type_to_the_schema(NameValidator $nameValidator)
     {
+        $nameValidator->isValidName(Argument::any())->willReturn(true);
+
         $this->addType($this->inputType('Parent', 'Interface'));
 
         $schema = $this->getSchema();
@@ -33,10 +46,13 @@ class SchemaBuilderSpec extends ObjectBehavior
         $schema->shouldHaveGraphQLTypeThatImplements('Interface');
     }
 
-    function it_adds_a_field_to_an_existing_type()
+    public function it_adds_a_field_to_an_existing_type(NameValidator $nameValidator)
     {
+        $nameValidator->isValidName(Argument::any())->willReturn(true);
+
         $this->addType($this->inputType());
-        $this->addFieldToType(self::TYPE,
+        $this->addFieldToType(
+            self::TYPE,
             $this->inputField('Description', '@=resolver("myresolver")')
         );
 
@@ -47,8 +63,10 @@ class SchemaBuilderSpec extends ObjectBehavior
         $schema->shouldHaveGraphQLTypeFieldWithResolve('@=resolver("myresolver")');
     }
 
-    function it_adds_an_argument_to_an_existing_type_field()
+    public function it_adds_an_argument_to_an_existing_type_field(NameValidator $nameValidator)
     {
+        $nameValidator->isValidName(Argument::any())->willReturn(true);
+
         $this->addType($this->inputType());
         $this->addFieldToType(self::TYPE, $this->inputField());
         $this->addArgToField(self::TYPE, self::FIELD, $this->inputArg('Description'));
@@ -63,42 +81,42 @@ class SchemaBuilderSpec extends ObjectBehavior
     public function getMatchers(): array
     {
         return [
-            'haveGraphQLType' => function (array $schema) {
+            'haveGraphQLType' => static function (array $schema) {
                 return
                     isset($schema[self::TYPE]['type'])
                     && $schema[self::TYPE]['type'] === self::TYPE_TYPE;
             },
-            'haveGraphQLTypeThatInherits' => function (array $schema, $inherits) {
+            'haveGraphQLTypeThatInherits' => static function (array $schema, $inherits) {
                 return
                     isset($schema[self::TYPE]['inherits'])
                     && in_array($inherits, $schema[self::TYPE]['inherits']);
             },
-            'haveGraphQLTypeThatImplements' => function (array $schema, $interface) {
+            'haveGraphQLTypeThatImplements' => static function (array $schema, $interface) {
                 return
                     isset($schema[self::TYPE]['config']['interfaces'])
                     && in_array($interface, $schema[self::TYPE]['config']['interfaces']);
             },
-            'haveGraphQLTypeField' => function (array $schema) {
+            'haveGraphQLTypeField' => static function (array $schema) {
                 return
                     isset($schema[self::TYPE]['config']['fields'][self::FIELD]['type'])
                     && $schema[self::TYPE]['config']['fields'][self::FIELD]['type'] === self::FIELD_TYPE;
             },
-            'haveGraphQLTypeFieldWithDescription' => function (array $schema, $description) {
+            'haveGraphQLTypeFieldWithDescription' => static function (array $schema, $description) {
                 return
                     isset($schema[self::TYPE]['config']['fields'][self::FIELD]['description'])
                     && $schema[self::TYPE]['config']['fields'][self::FIELD]['description'] === $description;
             },
-            'haveGraphQLTypeFieldWithResolve' => function (array $schema, $resolve) {
+            'haveGraphQLTypeFieldWithResolve' => static function (array $schema, $resolve) {
                 return
                     isset($schema[self::TYPE]['config']['fields'][self::FIELD]['description'])
                     && $schema[self::TYPE]['config']['fields'][self::FIELD]['resolve'] === $resolve;
             },
-            'haveGraphQLTypeFieldArg' => function (array $schema) {
+            'haveGraphQLTypeFieldArg' => static function (array $schema) {
                 return
                     isset($schema[self::TYPE]['config']['fields'][self::FIELD]['args'][self::ARG]['type'])
                     && $schema[self::TYPE]['config']['fields'][self::FIELD]['args'][self::ARG]['type'] === self::ARG_TYPE;
             },
-            'haveGraphQLTypeFieldArgWithDescription' => function (array $schema, $description) {
+            'haveGraphQLTypeFieldArgWithDescription' => static function (array $schema, $description) {
                 return
                     isset($schema[self::TYPE]['config']['fields'][self::FIELD]['args'][self::ARG]['description'])
                     && $schema[self::TYPE]['config']['fields'][self::FIELD]['args'][self::ARG]['description'] === $description;
@@ -109,10 +127,11 @@ class SchemaBuilderSpec extends ObjectBehavior
     protected function inputType($inherits = [], $interfaces = []): Input\Type
     {
         return new Input\Type(
-            self::TYPE, self::TYPE_TYPE,
+            self::TYPE,
+            self::TYPE_TYPE,
             [
                 'inherits' => $inherits,
-                'interfaces' => $interfaces
+                'interfaces' => $interfaces,
             ]
         );
     }
