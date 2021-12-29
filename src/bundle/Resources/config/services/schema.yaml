@@ -91,11 +91,7 @@ services:
 
     Ibexa\GraphQL\Schema\Domain\NameValidator: ~
 
-    Ibexa\GraphQL\Schema\Domain\ImageVariationDomain:
-        calls:
-            - method: setLogger
-              arguments:
-                  - '@logger'
+    Ibexa\GraphQL\Schema\Domain\ImageVariationDomain: ~
 
     Ibexa\GraphQL\Schema\Domain\Content\ContentDomainIterator:
         calls:
