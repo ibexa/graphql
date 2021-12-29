@@ -93,11 +93,7 @@ services:
 
     Ibexa\GraphQL\Schema\Domain\ImageVariationDomain: ~
 
-    Ibexa\GraphQL\Schema\Domain\Content\ContentDomainIterator:
-        calls:
-            - method: setLogger
-              arguments:
-                  - '@logger'
+    Ibexa\GraphQL\Schema\Domain\Content\ContentDomainIterator: ~
 
     Ibexa\GraphQL\Schema\Builder:
         alias: 'Ibexa\GraphQL\Schema\Builder\SchemaBuilder'
