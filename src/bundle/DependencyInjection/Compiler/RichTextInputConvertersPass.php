@@ -13,6 +13,8 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class RichTextInputConvertersPass implements CompilerPassInterface
 {
+    private const RICHTEXT_INPUT_CONVERTER_TAG = 'ibexa.graphql.richtext.input.converter';
+
     public function process(ContainerBuilder $container)
     {
         if (!$container->has(RichTextInputHandler::class)) {
@@ -20,16 +22,21 @@ class RichTextInputConvertersPass implements CompilerPassInterface
         }
 
         $definition = $container->findDefinition(RichTextInputHandler::class);
-        $taggedServices = $container->findTaggedServiceIds('ezplatform_graphql.richtext_input_converter');
-
+        $taggedServices = $container->findTaggedServiceIds(self::RICHTEXT_INPUT_CONVERTER_TAG);
         $handlers = [];
-        foreach ($taggedServices as $id => $tags) {
+        foreach ($taggedServices as $serviceId => $tags) {
             foreach ($tags as $tag) {
                 if (!isset($tag['format'])) {
-                    throw new \InvalidArgumentException("The ezplatform_graphql.richtext_input_converter tag requires a 'format' property set to the converted format");
+                    throw new \LogicException(
+                        sprintf(
+                            'Service "%s" tagged with "%s" service tag needs a "format" attribute set to the converted format',
+                            $serviceId,
+                            self::RICHTEXT_INPUT_CONVERTER_TAG
+                        )
+                    );
                 }
 
-                $handlers[$tag['format']] = new Reference($id);
+                $handlers[$tag['format']] = new Reference($serviceId);
             }
         }
 

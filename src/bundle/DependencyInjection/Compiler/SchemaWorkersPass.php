@@ -22,7 +22,7 @@ class SchemaWorkersPass implements CompilerPassInterface
         $generatorDefinition = $container->getDefinition(Generator::class);
 
         $workers = [];
-        foreach ($container->findTaggedServiceIds('ezplatform_graphql.domain_schema_worker') as $id => $tags) {
+        foreach ($container->findTaggedServiceIds('ibexa.graphql.domain.schema.worker') as $id => $tags) {
             $workers[] = new Reference($id);
         }
 

@@ -11,11 +11,11 @@ services:
 
         Ibexa\GraphQL\Schema\Worker:
             tags:
-                - {name: 'ezplatform_graphql.domain_schema_worker'}
+                - {name: ibexa.graphql.domain.schema.worker}
 
         Ibexa\GraphQL\Schema\Domain\Iterator:
             tags:
-                - {name: 'ezplatform_graphql.schema_domain_iterator'}
+                - {name: ibexa.graphql.domain_schema.iterator}
 
     Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper:
         alias: Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DefaultFieldDefinitionMapper
