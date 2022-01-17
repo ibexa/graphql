@@ -14,6 +14,8 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class FieldInputHandlersPass implements CompilerPassInterface
 {
+    private const FIELD_TYPE_INPUT_HANDLER_TAG = 'ibexa.graphql.field_type.input.handler';
+
     public function process(ContainerBuilder $container)
     {
         if (!$container->has(DomainContentMutationResolver::class)) {
@@ -24,16 +26,21 @@ class FieldInputHandlersPass implements CompilerPassInterface
             return;
         }
 
-        $taggedServices = $container->findTaggedServiceIds('ezplatform_graphql.fieldtype_input_handler');
-
+        $taggedServices = $container->findTaggedServiceIds(self::FIELD_TYPE_INPUT_HANDLER_TAG);
         $handlers = [];
-        foreach ($taggedServices as $id => $tags) {
+        foreach ($taggedServices as $serviceId => $tags) {
             foreach ($tags as $tag) {
                 if (!isset($tag['fieldtype'])) {
-                    throw new \InvalidArgumentException("The ezplatform_graphql.fieldtype_input_handler tag requires a 'fieldtype' property set to the Field Type's identifier");
+                    throw new \LogicException(
+                        sprintf(
+                            'Service "%s" tagged with "%s" service tag needs a "fieldtype" attribute set to the Field Type\'s identifier',
+                            $serviceId,
+                            self::FIELD_TYPE_INPUT_HANDLER_TAG
+                        )
+                    );
                 }
 
-                $handlers[$tag['fieldtype']] = new Reference($id);
+                $handlers[$tag['fieldtype']] = new Reference($serviceId);
             }
         }
 

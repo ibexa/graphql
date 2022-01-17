@@ -22,7 +22,7 @@ class SchemaDomainIteratorsPass implements CompilerPassInterface
         $generatorDefinition = $container->getDefinition(Generator::class);
 
         $iterators = [];
-        foreach ($container->findTaggedServiceIds('ezplatform_graphql.schema_domain_iterator') as $id => $tags) {
+        foreach ($container->findTaggedServiceIds('ibexa.graphql.domain_schema.iterator') as $id => $tags) {
             $iterators[] = new Reference($id);
         }
 
