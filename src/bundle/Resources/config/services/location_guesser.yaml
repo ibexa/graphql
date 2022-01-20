@@ -1,0 +1,33 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    Ibexa\GraphQL\Resolver\LocationGuesser\TreeRootLocationFilter: ~
+
+    Ibexa\GraphQL\Resolver\LocationGuesser\MainLocationFilter: ~
+
+    Ibexa\GraphQL\Resolver\LocationGuesser\CurrentSiteLocationProvider: ~
+
+    Ibexa\GraphQL\Resolver\LocationGuesser\AllAllowedLocationProvider: ~
+
+    Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser\CurrentSiteContent:
+        class: Ibexa\GraphQL\Resolver\LocationGuesser\FilterLocationGuesser
+        arguments:
+            $provider: '@Ibexa\GraphQL\Resolver\LocationGuesser\CurrentSiteLocationProvider'
+            $filters:
+                - '@Ibexa\GraphQL\Resolver\LocationGuesser\MainLocationFilter'
+
+    Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser\RelatedContent:
+        class: Ibexa\GraphQL\Resolver\LocationGuesser\FilterLocationGuesser
+        arguments:
+            $provider: '@Ibexa\GraphQL\Resolver\LocationGuesser\AllAllowedLocationProvider'
+            $filters:
+                - '@Ibexa\GraphQL\Resolver\LocationGuesser\MainLocationFilter'
+
+    Ibexa\GraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser\CurrentSiteContent:
+        alias: Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser\CurrentSiteContent
+
+    Ibexa\GraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser\RelatedContent:
+        alias: Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser\RelatedContent

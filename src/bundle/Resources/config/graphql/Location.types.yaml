@@ -1,0 +1,98 @@
+Location:
+    type: object
+    config:
+        description: "An eZ Platform repository location."
+        fields:
+            id:
+                type: "Int!"
+                description: "The unique ID of the location."
+            contentId:
+                type: "Int!"
+                description: "The ID of the Content item referenced by the Location."
+            priority:
+                type: "Int"
+                description: "Position of the Location among its siblings when sorted using priority/"
+            hidden:
+                type: "Boolean"
+                description: "Indicates that the Location is explicitly marked as hidden."
+            invisible:
+                type: "Boolean"
+                description: "Indicates that the Location is implicitly marked as hidden by a parent location"
+            remoteId:
+                type: "String"
+                description: "A global unique id of the content object"
+            parentLocationId:
+                type: "Int"
+                description: "The id of the parent location"
+            parentLocation:
+                type: "Location"
+                description: "The parent location"
+                resolve: "@=resolver('LocationById', [value.parentLocationId])"
+            pathString:
+                type: "String"
+                description: "The path to the Location in the Tree."
+            path:
+                type: "[Int]"
+                description: "Same as $pathString but as array, e.g. [ 1, 2, 4, 23 ]"
+            depth:
+                type: "Int"
+                description: "Depth location has in the location tree"
+            children:
+                type: "LocationConnection"
+                resolve: "@=resolver('LocationChildren', [{locationId: value.id}, args])"
+                argsBuilder: 'Relay::Connection'
+                args:
+                    sortBy: { type: '[LocationSortByOptions]', description: 'A sort clause, or array of clauses. Add _desc after a clause to reverse it' }
+            urlAliases:
+                type: "[LocationUrlAlias]"
+                args:
+                    custom:
+                        type: "Boolean"
+                resolve: "@=resolver('LocationUrlAliases', [value, args])"
+            contentInfo:
+                type: Content
+                resolve: "@=value.getContentInfo()"
+            content:
+                type: DomainContent
+                resolve: "@=resolver('DomainContentItem', [{id: value.contentId}, null])"
+
+LocationSortByOptions:
+    type: enum
+    inherits: ["SortByOptions"]
+    config:
+        values:
+            _depth:
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\Depth'
+            _locationId:
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\Id'
+            _isMainLocation:
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\IsMainLocation'
+            _path:
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\Path'
+            _priority:
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\Priority'
+            _visibility:
+                value: '\Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause\Location\Visibility'
+
+LocationConnection:
+    type: relay-connection
+    config:
+        nodeType: Location
+        connectionFields:
+            sliceSize:
+                type: Int!
+            orderBy:
+                type: String
+            totalCount:
+                type: Int
+            pages:
+                type: "[ConnectionPage]"
+
+ConnectionPage:
+    type: object
+    config:
+        fields:
+            number:
+                type: Int
+            cursor:
+                type: String
