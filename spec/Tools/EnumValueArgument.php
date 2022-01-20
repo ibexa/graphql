@@ -1,5 +1,5 @@
 <?php
-namespace Ibexa\Spec\GraphQL\Tools;
+namespace spec\Ibexa\GraphQL\Tools;
 
 use Ibexa\GraphQL\Schema\Builder\Input;
 use Prophecy\Argument\Token\CallbackToken;

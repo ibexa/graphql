@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
+namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 
 use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;

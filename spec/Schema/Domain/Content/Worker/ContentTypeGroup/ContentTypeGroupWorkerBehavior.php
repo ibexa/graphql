@@ -1,5 +1,5 @@
 <?php
-namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup;
+namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup;
 
 use Ibexa\Core\Repository\Values\ContentType\ContentTypeGroup;
 use PhpSpec\ObjectBehavior;

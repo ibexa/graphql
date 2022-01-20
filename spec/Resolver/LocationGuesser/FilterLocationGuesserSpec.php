@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibexa\Spec\GraphQL\Resolver\LocationGuesser;
+namespace spec\Ibexa\GraphQL\Resolver\LocationGuesser;
 
 use Ibexa\Core\Repository\Values\Content\Content;
 use Ibexa\Core\Repository\Values\Content\Location;

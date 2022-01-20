@@ -4,7 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-namespace Ibexa\Spec\GraphQL\Schema\Domain\Content;
+namespace spec\Ibexa\GraphQL\Schema\Domain\Content;
 
 use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\Core\Repository\Values\ContentType\ContentType;
@@ -13,7 +13,7 @@ use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Core\Repository\Values\ContentType\FieldDefinitionCollection;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Domain;
-use Ibexa\Spec\GraphQL\Tools\TypeArgument;
+use spec\Ibexa\GraphQL\Tools\TypeArgument;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

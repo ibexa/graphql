@@ -1,8 +1,8 @@
 <?php
-namespace Ibexa\Spec\GraphQL\Schema;
+namespace spec\Ibexa\GraphQL\Schema;
 
 use Ibexa\GraphQL\Schema;
-use Ibexa\Spec\GraphQL\Tools\Stubs\InitializableWorker;
+use spec\Ibexa\GraphQL\Tools\Stubs\InitializableWorker;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

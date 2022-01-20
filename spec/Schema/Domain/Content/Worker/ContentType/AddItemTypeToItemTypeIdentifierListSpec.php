@@ -1,11 +1,11 @@
 <?php
 
-namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Worker\ContentType;
+namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
 
 use Ibexa\GraphQL\Schema\Builder\SchemaBuilder;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemTypeToItemTypeIdentifierList;
-use Ibexa\Spec\GraphQL\Tools\EnumValueArgument;
+use spec\Ibexa\GraphQL\Tools\EnumValueArgument;
 use Prophecy\Argument;
 
 class AddItemTypeToItemTypeIdentifierListSpec extends ContentTypeWorkerBehavior

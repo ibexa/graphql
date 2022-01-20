@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibexa\Spec\GraphQL\InputMapper;
+namespace spec\Ibexa\GraphQL\InputMapper;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\Subtree;
 use Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder;

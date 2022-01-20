@@ -1,5 +1,5 @@
 <?php
-namespace Ibexa\Spec\GraphQL\Tools\Stubs;
+namespace spec\Ibexa\GraphQL\Tools\Stubs;
 
 use Ibexa\GraphQL\Schema;
 

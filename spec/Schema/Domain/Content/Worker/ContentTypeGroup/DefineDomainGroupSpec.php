@@ -1,13 +1,13 @@
 <?php
 
-namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup;
+namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup;
 
 use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\GraphQL\Schema\Builder\SchemaBuilder;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup\DefineDomainGroup;
-use Ibexa\Spec\GraphQL\Tools\FieldArgument;
-use Ibexa\Spec\GraphQL\Tools\TypeArgument;
+use spec\Ibexa\GraphQL\Tools\FieldArgument;
+use spec\Ibexa\GraphQL\Tools\TypeArgument;
 use Ibexa\Core\Repository\Values\ContentType\ContentTypeGroup;
 use Prophecy\Argument;
 

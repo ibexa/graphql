@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibexa\Spec\GraphQL\DependencyInjection\GraphQL;
+namespace spec\Ibexa\GraphQL\DependencyInjection\GraphQL;
 
 use Ibexa\Bundle\GraphQL\DependencyInjection\GraphQL\YamlSchemaProvider;
 use org\bovigo\vfs\vfsStream;

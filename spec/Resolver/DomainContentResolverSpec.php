@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibexa\Spec\GraphQL\Resolver;
+namespace spec\Ibexa\GraphQL\Resolver;
 
 use Ibexa\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
