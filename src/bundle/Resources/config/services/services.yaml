@@ -39,9 +39,9 @@ services:
 
     Ibexa\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser:
         arguments:
-            $siteAccessService: '@ezpublish.siteaccess_service'
-            $configResolver: '@ezpublish.config.resolver'
-            $provider: '@ezpublish.siteaccess.provider'
+            $siteAccessService: '@Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessService'
+            $configResolver: '@ibexa.config.resolver'
+            $provider: '@ibexa.siteaccess.provider'
             $siteAccessGroups: '%ezpublish.siteaccess.groups%'
 
     Ibexa\GraphQL\Schema\Domain\Content\NameHelper:

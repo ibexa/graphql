@@ -20,14 +20,14 @@ services:
 
     Ibexa\GraphQL\DataLoader\RepositoryContentTypeLoader:
         arguments:
-            $contentTypeService: '@ezpublish.siteaccessaware.service.content_type'
+            $contentTypeService: '@ibexa.siteaccessaware.service.content_type'
 
     Ibexa\GraphQL\DataLoader\SearchContentLoader:
         arguments:
-            $searchService: '@ezpublish.siteaccessaware.service.search'
+            $searchService: '@ibexa.siteaccessaware.service.search'
 
     Ibexa\GraphQL\DataLoader\SearchLocationLoader:
         arguments:
-            $searchService: '@ezpublish.siteaccessaware.service.search'
-            $locationService: '@ezpublish.siteaccessaware.service.location'
-            $urlAliasGenerator: '@ezpublish.urlalias_generator'
+            $searchService: '@ibexa.siteaccessaware.service.search'
+            $locationService: '@ibexa.siteaccessaware.service.location'
+            $urlAliasGenerator: '@Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator'
