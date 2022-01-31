@@ -7,7 +7,7 @@
 namespace Ibexa\GraphQL\Schema\Domain;
 
 use Generator;
-use Ibexa\Core\MVC\ConfigResolverInterface;
+use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\GraphQL\Schema;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Domain;
@@ -20,7 +20,7 @@ class ImageVariationDomain implements Domain\Iterator, Schema\Worker
     public const TYPE = 'ImageVariationIdentifier';
     public const ARG = 'ImageVariation';
 
-    /** @var \Ibexa\Core\MVC\ConfigResolverInterface */
+    /** @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface */
     private $configResolver;
 
     public function __construct(ConfigResolverInterface $configResolver)

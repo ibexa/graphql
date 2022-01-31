@@ -10,7 +10,7 @@ namespace Ibexa\GraphQL\Resolver\SiteaccessGuesser;
 
 use Ibexa\AdminUi\Specification\SiteAccess\IsAdmin;
 use Ibexa\Contracts\Core\Repository\Values\Content\Location;
-use Ibexa\Core\MVC\ConfigResolverInterface;
+use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\Core\MVC\Symfony\SiteAccess;
 use Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessProviderInterface;
 use Ibexa\GraphQL\Exception\NoValidSiteaccessException;
@@ -23,7 +23,7 @@ class SiteaccessGuesser
     private $provider;
 
     /**
-     * @var \Ibexa\Core\MVC\ConfigResolverInterface
+     * @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
      */
     private $configResolver;
 
