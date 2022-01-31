@@ -12,7 +12,7 @@ use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\Subtree;
 use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
-use Ibexa\Core\MVC\ConfigResolverInterface;
+use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 
 /**
  * Builds the base query used to retrieve locations collections.
@@ -22,7 +22,7 @@ use Ibexa\Core\MVC\ConfigResolverInterface;
 class ContentCollectionFilterBuilder
 {
     /**
-     * @var \Ibexa\Core\MVC\ConfigResolverInterface
+     * @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
      */
     private $configResolver;
 
