@@ -6,7 +6,7 @@ services:
 
     Ibexa\Bundle\GraphQL\Command\GeneratePlatformSchemaCommand:
         arguments:
-            $schemaRootDir: '%ezplatform.graphql.schema.ezplatform_dir%'
+            $schemaRootDir: '%ibexa.graphql.schema.ibexa_dir%'
         tags:
             -  { name: console.command }
 
@@ -21,7 +21,7 @@ services:
 
     Ibexa\GraphQL\Security\NonAdminGraphQLRequestMatcher:
         arguments:
-            $siteAccessGroups: '%ezpublish.siteaccess.groups%'
+            $siteAccessGroups: '%ibexa.site_access.groups%'
 
     Ibexa\GraphQL\ItemFactory $currentSiteItemFactory: '@Ibexa\GraphQL\ItemFactory\CurrentSite'
 
@@ -42,8 +42,8 @@ services:
             $siteAccessService: '@Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessService'
             $configResolver: '@ibexa.config.resolver'
             $provider: '@ibexa.siteaccess.provider'
-            $siteAccessGroups: '%ezpublish.siteaccess.groups%'
+            $siteAccessGroups: '%ibexa.site_access.groups%'
 
     Ibexa\GraphQL\Schema\Domain\Content\NameHelper:
         arguments:
-            $fieldNameOverrides: '%ezplatform_graphql.schema.content.field_name.override%'
+            $fieldNameOverrides: '%ibexa.graphql.schema.content.field_name.override%'

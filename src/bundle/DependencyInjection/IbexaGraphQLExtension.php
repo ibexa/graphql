@@ -61,12 +61,12 @@ class IbexaGraphQLExtension extends Extension implements PrependExtensionInterfa
     {
         $this->setContainerParameters($container);
 
-        $configDir = $container->getParameter('ezplatform.graphql.schema.root_dir');
+        $configDir = $container->getParameter('ibexa.graphql.schema.root_dir');
 
         $graphQLConfig = $this->getGraphQLConfig($configDir);
         $graphQLConfig['definitions']['mappings']['types'][] = [
             'type' => 'yaml',
-            'dir' => $container->getParameter('ezplatform.graphql.package.root_dir') . self::PACKAGE_SCHEMA_DIR_PATH,
+            'dir' => $container->getParameter('ibexa.graphql.package.root_dir') . self::PACKAGE_SCHEMA_DIR_PATH,
         ];
         $graphQLConfig['definitions']['mappings']['types'][] = [
             'type' => 'yaml',
@@ -95,10 +95,10 @@ class IbexaGraphQLExtension extends Extension implements PrependExtensionInterfa
         $packageRootDir = $rootDir . self::PACKAGE_DIR_PATH;
         $fieldsDefinitionFile = $packageRootDir . self::PACKAGE_SCHEMA_DIR_PATH . \DIRECTORY_SEPARATOR . self::FIELDS_DEFINITION_FILE_NAME;
 
-        $container->setParameter('ezplatform.graphql.schema.root_dir', $appSchemaDir);
-        $container->setParameter('ezplatform.graphql.schema.ezplatform_dir', $eZPlatformSchemaDir);
-        $container->setParameter('ezplatform.graphql.schema.fields_definition_file', $fieldsDefinitionFile);
-        $container->setParameter('ezplatform.graphql.package.root_dir', $packageRootDir);
+        $container->setParameter('ibexa.graphql.schema.root_dir', $appSchemaDir);
+        $container->setParameter('ibexa.graphql.schema.ibexa_dir', $eZPlatformSchemaDir);
+        $container->setParameter('ibexa.graphql.schema.fields_definition_file', $fieldsDefinitionFile);
+        $container->setParameter('ibexa.graphql.package.root_dir', $packageRootDir);
     }
 }
 

@@ -40,7 +40,7 @@ services:
         decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
         arguments:
             $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ConfigurableFieldDefinitionMapper.inner'
-            $typesMap: '%ezplatform_graphql.schema.content.mapping.field_definition_type%'
+            $typesMap: '%ibexa.graphql.schema.content.mapping.field_definition_type%'
 
     Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\RelationFieldDefinitionMapper:
         decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
