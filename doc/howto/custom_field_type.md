@@ -18,7 +18,7 @@ There are two ways to map a custom Field Type: using configuration, and by writi
 Which one you choose depends if the field definition settings and constraints impact how it is mapped to GraphQL.
 
 ### Mapping with configuration
-You need to use a simple compiler pass to modify a container parameter, `ezplatform_graphql.schema.content.mapping.field_definition_type`.
+You need to use a simple compiler pass to modify a container parameter, `ibexa.graphql.schema.content.mapping.field_definition_type`.
 It is a hash that maps a field type identifier (`ezstring`) to the following entries:
 - `value_type`: the GraphQL type values of this field are represented as. It can either be a native type
   (`String`, `Int`...), or a custom type that you will define.
@@ -48,11 +48,11 @@ class LandingPageGraphQLConfigurationPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasParameter('ezplatform_graphql.schema.content.mapping.field_definition_type')) {
+        if (!$container->hasParameter('ibexa.graphql.schema.content.mapping.field_definition_type')) {
             return;
         }
 
-        $mapping = $container->getParameter('ezplatform_graphql.schema.content.mapping.field_definition_type');
+        $mapping = $container->getParameter('ibexa.graphql.schema.content.mapping.field_definition_type');
         $mapping['my_custom_fieldtype'] = [
             'value_type' => 'MyCustomFieldValue',
             'definition_type' => 'MyCustomFieldDefinition',

@@ -68,7 +68,7 @@ class SiteaccessGuesser
         $saList = iterator_to_array($this->provider->getSiteAccesses());
 
         foreach ($saList as $siteaccess) {
-            $repository = $this->configResolver->getParameter('repository', 'ezsettings', $siteaccess->name);
+            $repository = $this->configResolver->getParameter('repository', 'ibexa.site_access.config', $siteaccess->name);
 
             if ($repository !== $currentRepository) {
                 continue;
@@ -78,7 +78,7 @@ class SiteaccessGuesser
                 continue;
             }
 
-            $treeRootLocationId = $this->configResolver->getParameter('content.tree_root.location_id', 'ezsettings', $siteaccess->name);
+            $treeRootLocationId = $this->configResolver->getParameter('content.tree_root.location_id', 'ibexa.site_access.config', $siteaccess->name);
             if (($rootDepth = $this->isInSubtree($location, $treeRootLocationId)) !== false) {
                 if ($rootDepth > $matchingSiteaccessRootDepth) {
                     $matchingSiteaccess = $siteaccess;

@@ -1,7 +1,7 @@
 parameters:
-  ezplatform_graphql.schema.content.field_name.override:
+  ibexa.graphql.schema.content.field_name.override:
     id: id_
-  ezplatform_graphql.schema.content.mapping.field_definition_type:
+  ibexa.graphql.schema.content.mapping.field_definition_type:
     ezauthor:
       value_type: "[AuthorFieldValue]"
       value_resolver: 'field.authors'
