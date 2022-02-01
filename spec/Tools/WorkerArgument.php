@@ -1,5 +1,5 @@
 <?php
-namespace Ibexa\Spec\GraphQL\Tools;
+namespace spec\Ibexa\GraphQL\Tools;
 
 use PhpSpec\Wrapper\ObjectWrapper;
 use Prophecy\Argument;

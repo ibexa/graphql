@@ -1,5 +1,5 @@
 <?php
-namespace Ibexa\Spec\GraphQL\Tools;
+namespace spec\Ibexa\GraphQL\Tools;
 
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Prophecy\Argument\Token\CallbackToken;

@@ -1,15 +1,15 @@
 <?php
 
-namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Worker\ContentType;
+namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
 
 use Ibexa\GraphQL\Schema\Builder\SchemaBuilder;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemOfTypeConnectionToGroup;
-use Ibexa\Spec\GraphQL\Tools\ContentTypeArgument;
-use Ibexa\Spec\GraphQL\Tools\ContentTypeGroupArgument;
-use Ibexa\Spec\GraphQL\Tools\FieldArgArgument;
-use Ibexa\Spec\GraphQL\Tools\FieldArgument;
-use Ibexa\Spec\GraphQL\Tools\TypeArgument;
+use spec\Ibexa\GraphQL\Tools\ContentTypeArgument;
+use spec\Ibexa\GraphQL\Tools\ContentTypeGroupArgument;
+use spec\Ibexa\GraphQL\Tools\FieldArgArgument;
+use spec\Ibexa\GraphQL\Tools\FieldArgument;
+use spec\Ibexa\GraphQL\Tools\TypeArgument;
 use Prophecy\Argument;
 
 class AddItemOfTypeConnectionToGroupSpec extends ContentTypeWorkerBehavior

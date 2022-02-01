@@ -1,13 +1,13 @@
 <?php
 
-namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Worker\FieldDefinition;
+namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition;
 
 use Ibexa\GraphQL\Schema\Domain\Content\FieldValueBuilder\FieldValueBuilder;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldValueToItem;
 use Ibexa\GraphQL\Schema\Builder;
-use Ibexa\Spec\GraphQL\Tools\FieldArgument;
+use spec\Ibexa\GraphQL\Tools\FieldArgument;
 use Ibexa\Core\Repository\Values\ContentType;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

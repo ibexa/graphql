@@ -4,7 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-namespace Ibexa\Spec\GraphQL\Schema\Builder;
+namespace spec\Ibexa\GraphQL\Schema\Builder;
 
 use Ibexa\GraphQL\Schema\Builder\Input;
 use Ibexa\GraphQL\Schema\Builder\SchemaBuilder;

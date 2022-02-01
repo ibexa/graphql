@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ibexa\Spec\GraphQL\Schema\Domain;
+namespace spec\Ibexa\GraphQL\Schema\Domain;
 
 use Ibexa\GraphQL\Schema\Domain\NameValidator;
 use PhpSpec\ObjectBehavior;

@@ -1,13 +1,13 @@
 <?php
 
-namespace Ibexa\Spec\GraphQL\Schema\Domain\Content\Worker\ContentType;
+namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
 
 use Ibexa\GraphQL\Schema\Builder\SchemaBuilder;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemTypeToItemGroupTypes;
-use Ibexa\Spec\GraphQL\Tools\ContentTypeArgument;
-use Ibexa\Spec\GraphQL\Tools\ContentTypeGroupArgument;
-use Ibexa\Spec\GraphQL\Tools\FieldArgument;
+use spec\Ibexa\GraphQL\Tools\ContentTypeArgument;
+use spec\Ibexa\GraphQL\Tools\ContentTypeGroupArgument;
+use spec\Ibexa\GraphQL\Tools\FieldArgument;
 use Prophecy\Argument;
 
 class AddItemTypeToItemGroupTypesSpec extends ContentTypeWorkerBehavior
