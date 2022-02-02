@@ -23,7 +23,7 @@ class HtmlRichTextConverter implements RichTextInputConverter
     public function convertToXml($text): DOMDocument
     {
         $text = <<<HTML5EDIT
-<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">$text</section>
+<section xmlns="http://ibexa.co/namespaces/ezpublish5/xhtml5/edit">$text</section>
 HTML5EDIT;
 
         $dom = new DOMDocument();

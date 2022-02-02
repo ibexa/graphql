@@ -1,6 +1,6 @@
 # Custom application schema
 
-If your application requires custom GraphQL resources, for instance for Doctrine entities, the schema generated from the eZ Platform repository can be customized. To do so, create the `app/config/graphql/Query.types.yml` file. It will be used as the GraphQL query root.
+If your application requires custom GraphQL resources, for instance for Doctrine entities, the schema generated from the Ibexa repository can be customized. To do so, create the `app/config/graphql/Query.types.yml` file. It will be used as the GraphQL query root.
 
 In that file, you can add new fields that use any custom type or custom logic you require, based
 on [overblog/GraphQLBundle](https://github.com/overblog/GraphQLBundle).
