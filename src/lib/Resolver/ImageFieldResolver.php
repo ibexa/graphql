@@ -91,7 +91,7 @@ class ImageFieldResolver
         $content = $this->contentLoader->findSingle(new Criterion\ContentId($contentId));
 
         $fieldFound = false;
-        /** @var $field \eZ\Publish\API\Repository\Values\Content\Field */
+        /** @var $field \Ibexa\Contracts\Core\Repository\Values\Content\Field */
         foreach ($content->getFields() as $field) {
             if ($field->id == $fieldId) {
                 $fieldFound = true;
