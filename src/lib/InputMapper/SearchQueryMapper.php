@@ -172,7 +172,7 @@ final class SearchQueryMapper implements QueryMapper
         foreach ($operators as $opString) {
             if (isset($input[$opString])) {
                 $value = $input[$opString];
-                $operator = constant('eZ\Publish\API\Repository\Values\Content\Query\Criterion\Operator::' . strtoupper($opString));
+                $operator = constant('Ibexa\\Contracts\\Core\\Repository\\Values\\Content\\Query\\Criterion\\Operator::' . strtoupper($opString));
             }
         }
 
