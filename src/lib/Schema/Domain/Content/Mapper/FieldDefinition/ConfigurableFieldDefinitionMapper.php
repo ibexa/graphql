@@ -14,7 +14,7 @@ class ConfigurableFieldDefinitionMapper implements FieldDefinitionMapper, FieldD
 {
     /**
      * @var array
-     * Map of ez field type identifier to a GraphQL type
+     * Map of ibexa field type identifier to a GraphQL type
      */
     private $typesMap;
 

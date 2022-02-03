@@ -30,7 +30,7 @@ class MarkdownRichTextConverter implements RichTextInputConverter
         $parseDown = new Parsedown();
         $html = $parseDown->text($text);
         $input = <<<HTML5EDIT
-<section xmlns="http://ez.no/namespaces/ezpublish5/xhtml5/edit">$html</section>
+<section xmlns="http://ibexa.co/namespaces/ezpublish5/xhtml5/edit">$html</section>
 HTML5EDIT;
         $dom = new DOMDocument();
         $dom->loadXML($input);

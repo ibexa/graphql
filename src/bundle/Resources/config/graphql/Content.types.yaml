@@ -1,7 +1,7 @@
 Content:
     type: object
     config:
-        description: "An eZ Platform repository ContentInfo."
+        description: "An Ibexa repository ContentInfo."
         fields:
             id:
                 type: "Int"

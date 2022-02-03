@@ -1,7 +1,7 @@
 ObjectStateGroup:
     type: object
     config:
-        description: "An eZ Platform content object state group."
+        description: "An Ibexa content object state group."
         fields:
             id:
                 type: "Int!"
