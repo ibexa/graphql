@@ -22,11 +22,7 @@ services:
 
     Ibexa\GraphQL\Schema\Builder\SchemaBuilder:
         arguments:
-            - '@Ibexa\GraphQL\Schema\Domain\NameValidator'
-        calls:
-            - method: setLogger
-              arguments:
-                  - '@logger'
+            $nameValidator: '@Ibexa\GraphQL\Schema\Domain\NameValidator'
 
     Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DefaultFieldDefinitionMapper: ~
 
@@ -89,9 +85,15 @@ services:
 
     Ibexa\GraphQL\Schema\Domain\Content\NameHelper: ~
 
-    Ibexa\GraphQL\Schema\Domain\NameValidator: ~
+    Ibexa\GraphQL\Schema\Domain\NameValidator:
+        calls:
+            - method: setLogger
+              arguments:
+                  - '@logger'
 
-    Ibexa\GraphQL\Schema\Domain\ImageVariationDomain: ~
+    Ibexa\GraphQL\Schema\Domain\ImageVariationDomain:
+        arguments:
+            $nameValidator: '@Ibexa\GraphQL\Schema\Domain\NameValidator'
 
     Ibexa\GraphQL\Schema\Domain\Content\ContentDomainIterator: ~
 
