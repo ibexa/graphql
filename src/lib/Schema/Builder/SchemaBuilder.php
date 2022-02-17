@@ -59,6 +59,11 @@ class SchemaBuilder implements SchemaBuilderInterface, LoggerAwareInterface
         if (isset($typeInput->nodeType)) {
             $type['config']['nodeType'] = $typeInput->nodeType;
         }
+
+        if (!empty($typeInput->connectionFields)) {
+            $type['config']['connectionFields'] = $typeInput->connectionFields;
+        }
+
         $this->schema[$typeInput->name] = $type;
     }
 
