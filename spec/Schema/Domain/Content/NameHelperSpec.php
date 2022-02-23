@@ -6,7 +6,6 @@ use Ibexa\Core\Repository\Values\ContentType\ContentTypeGroup;
 use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class NameHelperSpec extends ObjectBehavior
 {

@@ -115,15 +115,6 @@ BaseDomainContentType:
                 type: ContentType
                 resolve: "@=value"
 
-DomainContentByIdentifierConnection:
-    type: relay-connection
-    config:
-        connectionFields:
-            sliceSize:
-                type: Int!
-            orderBy:
-                type: String
-
 Thumbnail:
     type: object
     config:

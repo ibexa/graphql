@@ -20,8 +20,11 @@ class DefineItemConnection extends BaseWorker implements Worker
             $this->connectionTypeName($args),
             'relay-connection',
             [
-                'inherits' => 'DomainContentByIdentifierConnection',
                 'nodeType' => $this->typeName($args),
+                'connectionFields' => [
+                    'sliceSize' => ['type' => 'Int!'],
+                    'orderBy' => ['type' => 'String'],
+                ],
             ]
         ));
     }

@@ -9,7 +9,6 @@ use spec\Ibexa\GraphQL\Tools\ContentTypeArgument;
 use spec\Ibexa\GraphQL\Tools\ContentTypeGroupArgument;
 use spec\Ibexa\GraphQL\Tools\FieldArgArgument;
 use spec\Ibexa\GraphQL\Tools\FieldArgument;
-use spec\Ibexa\GraphQL\Tools\TypeArgument;
 use Prophecy\Argument;
 
 class AddItemOfTypeConnectionToGroupSpec extends ContentTypeWorkerBehavior
