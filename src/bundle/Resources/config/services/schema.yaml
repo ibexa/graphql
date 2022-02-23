@@ -1,0 +1,105 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    _instanceof:
+        Ibexa\GraphQL\Schema\Domain\Content\Worker\BaseWorker:
+            calls:
+                - [setNameHelper, ['@Ibexa\GraphQL\Schema\Domain\Content\NameHelper']]
+
+        Ibexa\GraphQL\Schema\Worker:
+            tags:
+                - {name: ibexa.graphql.domain.schema.worker}
+
+        Ibexa\GraphQL\Schema\Domain\Iterator:
+            tags:
+                - {name: ibexa.graphql.domain_schema.iterator}
+
+    Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper:
+        alias: Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DefaultFieldDefinitionMapper
+
+    Ibexa\GraphQL\Schema\Builder\SchemaBuilder:
+        arguments:
+            - '@Ibexa\GraphQL\Schema\Domain\NameValidator'
+        calls:
+            - method: setLogger
+              arguments:
+                  - '@logger'
+
+    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DefaultFieldDefinitionMapper: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ResolverVariables:
+        decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+        decoration_priority: -5
+        arguments:
+            $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ResolverVariables.inner'
+
+    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ConfigurableFieldDefinitionMapper:
+        decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+        arguments:
+            $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ConfigurableFieldDefinitionMapper.inner'
+            $typesMap: '%ibexa.graphql.schema.content.mapping.field_definition_type%'
+
+    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\RelationFieldDefinitionMapper:
+        decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+        arguments:
+            $contentTypeService: '@ibexa.siteaccessaware.service.content_type'
+            $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\RelationFieldDefinitionMapper.inner'
+
+    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\SelectionFieldDefinitionMapper:
+        decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+        arguments:
+            $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\SelectionFieldDefinitionMapper.inner'
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldValueToDomainContent: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemOfTypeConnectionToGroup: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemToGroup: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemTypeToItemGroupTypes: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemTypeToItemTypeIdentifierList: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\DefineItem: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\DefineItemConnection: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\DefineItemMutation: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\DefineItemType: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup\AddDomainGroupToDomain: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup\DefineDomainGroup: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentTypeGroup\DefineDomainGroupTypes: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldDefinitionToItemMutation: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldDefinitionToItemType: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldValueToItem: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\Worker\Language\AddLanguageToEnum: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\LanguagesIterator: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\NameHelper: ~
+
+    Ibexa\GraphQL\Schema\Domain\NameValidator: ~
+
+    Ibexa\GraphQL\Schema\Domain\ImageVariationDomain: ~
+
+    Ibexa\GraphQL\Schema\Domain\Content\ContentDomainIterator: ~
+
+    Ibexa\GraphQL\Schema\Builder:
+        alias: 'Ibexa\GraphQL\Schema\Builder\SchemaBuilder'
+
+    Ibexa\GraphQL\Schema\Generator: ~
+
+    Ibexa\GraphQL\Schema\ImagesVariationsBuilder: ~
+
+    Ibexa\GraphQL\Schema\SchemaGenerator: ~

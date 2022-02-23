@@ -1,0 +1,4 @@
+suites:
+    http_cache:
+        namespace: Ibexa\GraphQL
+        psr4_prefix: Ibexa\GraphQL
