@@ -6,7 +6,7 @@
  */
 namespace Ibexa\GraphQL\Relay;
 
-use Overblog\GraphQLBundle\Relay\Connection\Output\ConnectionBuilder;
+use Overblog\GraphQLBundle\Relay\Connection\ConnectionBuilder;
 
 class DomainConnectionBuilder extends ConnectionBuilder
 {
