@@ -9,7 +9,7 @@ namespace Ibexa\GraphQL\Relay;
 use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
-use Overblog\GraphQLBundle\Relay\Connection\Output\ConnectionBuilder;
+use Overblog\GraphQLBundle\Relay\Connection\ConnectionBuilder;
 
 class SearchResolver
 {
@@ -60,7 +60,8 @@ class SearchResolver
             $searchResult->searchHits
         );
 
-        $connection = ConnectionBuilder::connectionFromArraySlice(
+        $connectionBuilder = new ConnectionBuilder();
+        $connection = $connectionBuilder->connectionFromArraySlice(
             $contentItems,
             $args,
             [

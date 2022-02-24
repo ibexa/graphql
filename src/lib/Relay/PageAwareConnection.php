@@ -7,16 +7,16 @@
 namespace Ibexa\GraphQL\Relay;
 
 use Overblog\GraphQLBundle\Definition\Argument;
+use Overblog\GraphQLBundle\Relay\Connection\ConnectionBuilder;
 use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
-use Overblog\GraphQLBundle\Relay\Connection\Output\ConnectionBuilder;
-use Overblog\GraphQLBundle\Relay\Connection\Output\PageInfo;
+use Overblog\GraphQLBundle\Relay\Connection\PageInfoInterface;
 
 final class PageAwareConnection
 {
     /** @var \Overblog\GraphQLBundle\Relay\Connection\Output\Edge[] */
     public $edges = [];
 
-    /** @var \Overblog\GraphQLBundle\Relay\Connection\Output\PageInfo */
+    /** @var \Overblog\GraphQLBundle\Relay\Connection\PageInfoInterface */
     public $pageInfo;
 
     /** @var int */
@@ -25,7 +25,7 @@ final class PageAwareConnection
     /** @var Page[] */
     public $pages;
 
-    public function __construct(array $edges, PageInfo $pageInfo)
+    public function __construct(array $edges, PageInfoInterface $pageInfo)
     {
         $this->edges = $edges;
         $this->pageInfo = $pageInfo;
@@ -40,9 +40,10 @@ final class PageAwareConnection
 
         $perPage = $args['first'] ?? $args['last'] ?? 10;
         $totalPages = ceil($return->totalCount / $perPage);
+        $connectionBuilder = new ConnectionBuilder();
         for ($pageNumber = 2; $pageNumber <= $totalPages; ++$pageNumber) {
             $offset = ($pageNumber - 1) * $perPage - 1;
-            $return->pages[] = new Page($pageNumber, ConnectionBuilder::offsetToCursor($offset));
+            $return->pages[] = new Page($pageNumber, $connectionBuilder->offsetToCursor($offset));
         }
 
         return $return;
