@@ -23,14 +23,26 @@ class ImageVariationDomain implements Domain\Iterator, Schema\Worker
     /** @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface */
     private $configResolver;
 
-    public function __construct(ConfigResolverInterface $configResolver)
-    {
+    /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */
+    private $nameValidator;
+
+    public function __construct(
+        ConfigResolverInterface $configResolver,
+        NameValidator $nameValidator
+    ) {
         $this->configResolver = $configResolver;
+        $this->nameValidator = $nameValidator;
     }
 
     public function iterate(): Generator
     {
         foreach ($this->configResolver->getParameter('image_variations') as $identifier => $variation) {
+            if (!$this->nameValidator->isValidName($identifier)) {
+                $this->nameValidator->generateInvalidNameWarning('Image Variation', $identifier);
+
+                continue;
+            }
+
             yield [self::ARG => ['identifier' => $identifier, 'variation' => $variation]];
         }
     }
