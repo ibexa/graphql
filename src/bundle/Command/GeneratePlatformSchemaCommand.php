@@ -19,8 +19,6 @@ use Symfony\Component\Yaml\Yaml;
 
 class GeneratePlatformSchemaCommand extends Command implements BackwardCompatibleCommand
 {
-    private const ADMIN_USER_ID = 14;
-
     /**
      * @var \Ibexa\GraphQL\Schema\Generator
      */
@@ -48,13 +46,20 @@ class GeneratePlatformSchemaCommand extends Command implements BackwardCompatibl
             ->setAliases(['ezplatform:graphql:generate-schema'])
             ->setDescription('Generates the GraphQL schema for the Ibexa DXP instance')
             ->addOption('dry-run', null, InputOption::VALUE_OPTIONAL, 'Do not write, output the schema only', false)
-            ->addOption('include', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Type to output or write', []);
+            ->addOption('include', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Type to output or write', [])
+            ->addOption(
+                'user',
+                'u',
+                InputOption::VALUE_REQUIRED,
+                'Ibexa DXP username',
+                'admin'
+            );
     }
 
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
         $this->repository->getPermissionResolver()->setCurrentUserReference(
-            $this->repository->getUserService()->loadUser(self::ADMIN_USER_ID)
+            $this->repository->getUserService()->loadUserByLogin($input->getOption('user'))
         );
     }
 
