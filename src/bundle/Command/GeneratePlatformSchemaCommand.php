@@ -7,7 +7,7 @@
 namespace Ibexa\Bundle\GraphQL\Command;
 
 use Ibexa\Bundle\Core\Command\BackwardCompatibleCommand;
-use Ibexa\Core\Repository\Repository;
+use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\GraphQL\Schema\Generator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -56,7 +56,7 @@ class GeneratePlatformSchemaCommand extends Command implements BackwardCompatibl
             );
     }
 
-    protected function initialize(InputInterface $input, OutputInterface $output)
+    protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $this->repository->getPermissionResolver()->setCurrentUserReference(
             $this->repository->getUserService()->loadUserByLogin($input->getOption('user'))
