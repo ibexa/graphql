@@ -7,6 +7,7 @@
 namespace Ibexa\Bundle\GraphQL\Command;
 
 use Ibexa\Bundle\Core\Command\BackwardCompatibleCommand;
+use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\GraphQL\Schema\Generator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,15 +24,18 @@ class GeneratePlatformSchemaCommand extends Command implements BackwardCompatibl
      */
     private $generator;
 
+    private Repository $repository;
+
     /**
      * @var string
      */
     private $schemaRootDir;
 
-    public function __construct(Generator $generator, string $schemaRootDir)
+    public function __construct(Generator $generator, Repository $repository, string $schemaRootDir)
     {
         parent::__construct();
         $this->generator = $generator;
+        $this->repository = $repository;
         $this->schemaRootDir = $schemaRootDir;
     }
 
@@ -42,7 +46,21 @@ class GeneratePlatformSchemaCommand extends Command implements BackwardCompatibl
             ->setAliases(['ezplatform:graphql:generate-schema'])
             ->setDescription('Generates the GraphQL schema for the Ibexa DXP instance')
             ->addOption('dry-run', null, InputOption::VALUE_OPTIONAL, 'Do not write, output the schema only', false)
-            ->addOption('include', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Type to output or write', []);
+            ->addOption('include', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Type to output or write', [])
+            ->addOption(
+                'user',
+                'u',
+                InputOption::VALUE_REQUIRED,
+                'Ibexa DXP username',
+                'admin'
+            );
+    }
+
+    protected function initialize(InputInterface $input, OutputInterface $output): void
+    {
+        $this->repository->getPermissionResolver()->setCurrentUserReference(
+            $this->repository->getUserService()->loadUserByLogin($input->getOption('user'))
+        );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
