@@ -85,6 +85,8 @@ services:
 
     Ibexa\GraphQL\Schema\Domain\Content\NameHelper: ~
 
+    Ibexa\GraphQL\Schema\Domain\Content\Pluralizer: ~
+
     Ibexa\GraphQL\Schema\Domain\NameValidator:
         calls:
             - method: setLogger

@@ -22,18 +22,24 @@ class NameHelper implements LoggerAwareInterface
     /**
      * @var \Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
      */
-    protected $caseConverter;
+    private $caseConverter;
 
     /**
      * @var string[]
      */
     private $fieldNameOverrides;
 
-    public function __construct(array $fieldNameOverrides, LoggerInterface $logger = null)
-    {
+    private Pluralizer $pluralizer;
+
+    public function __construct(
+        array $fieldNameOverrides,
+        Pluralizer $pluralizer,
+        LoggerInterface $logger = null
+    ) {
         $this->caseConverter = new CamelCaseToSnakeCaseNameConverter(null, false);
         $this->logger = $logger ?? new NullLogger();
         $this->fieldNameOverrides = $fieldNameOverrides;
+        $this->pluralizer = $pluralizer;
     }
 
     /**
@@ -48,7 +54,9 @@ class NameHelper implements LoggerAwareInterface
 
     public function itemConnectionField(ContentType $contentType)
     {
-        return $this->pluralize(lcfirst($this->toCamelCase($contentType->identifier)));
+        return $this->pluralizer->pluralize(
+            lcfirst($this->toCamelCase($contentType->identifier))
+        );
     }
 
     /**
@@ -237,53 +245,9 @@ class NameHelper implements LoggerAwareInterface
         return $fieldName;
     }
 
-    protected function toCamelCase($string)
+    private function toCamelCase($string)
     {
         return $this->caseConverter->denormalize($string);
-    }
-
-    protected function pluralize($name)
-    {
-        if (substr($name, -1) === 'f') {
-            return substr($name, 0, -1) . 'ves';
-        }
-
-        if (substr($name, -1) === 'fe') {
-            return substr($name, 0, -2) . 'ves';
-        }
-
-        if (substr($name, -1) === 'y') {
-            if (\in_array(substr($name, -2, 1), ['a', 'e', 'i', 'o', 'u'])) {
-                return $name . 's';
-            } else {
-                return substr($name, 0, -1) . 'ies';
-            }
-        }
-
-        if (substr($name, -2) === 'is') {
-            return substr($name, 0, -2) . 'es';
-        }
-
-        if (substr($name, -2) === 'us') {
-            return substr($name, 0, -2) . 'i';
-        }
-
-        if (\in_array(substr($name, -2), ['on', 'um'])) {
-            return substr($name, 0, -2) . 'a';
-        }
-
-        if (substr($name, -2) === 'is') {
-            return substr($name, 0, -2) . 'es';
-        }
-
-        if (
-            preg_match('/(s|sh|ch|x|z)$/', $name) ||
-            substr($name, -1) === 'o'
-        ) {
-            return $name . 'es';
-        }
-
-        return $name . 's';
     }
 
     /**
