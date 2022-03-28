@@ -22,7 +22,7 @@ class NameHelper implements LoggerAwareInterface
     /**
      * @var \Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
      */
-    private $caseConverter;
+    protected $caseConverter;
 
     /**
      * @var string[]
@@ -237,12 +237,12 @@ class NameHelper implements LoggerAwareInterface
         return $fieldName;
     }
 
-    private function toCamelCase($string)
+    protected function toCamelCase($string)
     {
         return $this->caseConverter->denormalize($string);
     }
 
-    private function pluralize($name)
+    protected function pluralize($name)
     {
         if (substr($name, -1) === 'f') {
             return substr($name, 0, -1) . 'ves';
