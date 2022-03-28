@@ -9,37 +9,31 @@ namespace Ibexa\GraphQL\Schema\Domain\Content;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\GraphQL\Schema\Domain\BaseNameHelper;
+use Ibexa\GraphQL\Schema\Domain\Pluralizer;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
-class NameHelper implements LoggerAwareInterface
+class NameHelper extends BaseNameHelper implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
     /**
-     * @var \Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
-     */
-    private $caseConverter;
-
-    /**
      * @var string[]
      */
-    private $fieldNameOverrides;
-
-    private Pluralizer $pluralizer;
+    private array $fieldNameOverrides;
 
     public function __construct(
         array $fieldNameOverrides,
         Pluralizer $pluralizer,
         LoggerInterface $logger = null
     ) {
-        $this->caseConverter = new CamelCaseToSnakeCaseNameConverter(null, false);
+        parent::__construct($pluralizer);
+
         $this->logger = $logger ?? new NullLogger();
         $this->fieldNameOverrides = $fieldNameOverrides;
-        $this->pluralizer = $pluralizer;
     }
 
     /**
@@ -54,9 +48,7 @@ class NameHelper implements LoggerAwareInterface
 
     public function itemConnectionField(ContentType $contentType)
     {
-        return $this->pluralizer->pluralize(
-            lcfirst($this->toCamelCase($contentType->identifier))
-        );
+        return $this->pluralize(lcfirst($this->toCamelCase($contentType->identifier)));
     }
 
     /**
@@ -243,11 +235,6 @@ class NameHelper implements LoggerAwareInterface
         }
 
         return $fieldName;
-    }
-
-    private function toCamelCase($string)
-    {
-        return $this->caseConverter->denormalize($string);
     }
 
     /**

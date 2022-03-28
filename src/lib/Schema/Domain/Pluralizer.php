@@ -4,12 +4,12 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-namespace Ibexa\GraphQL\Schema\Domain\Content;
+namespace Ibexa\GraphQL\Schema\Domain;
 
 /**
  * @internal
  */
-final class Pluralizer
+class Pluralizer
 {
     public function pluralize(string $name): string
     {
