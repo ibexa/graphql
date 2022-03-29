@@ -83,8 +83,6 @@ services:
 
     Ibexa\GraphQL\Schema\Domain\Content\LanguagesIterator: ~
 
-    Ibexa\GraphQL\Schema\Domain\Content\NameHelper: ~
-
     Ibexa\GraphQL\Schema\Domain\NameValidator:
         calls:
             - method: setLogger
@@ -105,3 +103,16 @@ services:
     Ibexa\GraphQL\Schema\ImagesVariationsBuilder: ~
 
     Ibexa\GraphQL\Schema\SchemaGenerator: ~
+
+    Ibexa\GraphQL\Schema\Domain\Pluralizer: ~
+
+    Ibexa\GraphQL\Schema\Domain\BaseNameHelper:
+        abstract: true
+        arguments:
+            $pluralizer: '@Ibexa\GraphQL\Schema\Domain\Pluralizer'
+
+    Ibexa\GraphQL\Schema\Domain\Content\NameHelper:
+        parent: Ibexa\GraphQL\Schema\Domain\BaseNameHelper
+        arguments:
+            $fieldNameOverrides: '%ibexa.graphql.schema.content.field_name.override%'
+            $pluralizer: '@Ibexa\GraphQL\Schema\Domain\Pluralizer'
