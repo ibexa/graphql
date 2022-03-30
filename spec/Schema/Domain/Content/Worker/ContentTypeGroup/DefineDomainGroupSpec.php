@@ -22,11 +22,11 @@ class DefineDomainGroupSpec extends ContentTypeGroupWorkerBehavior
         $this->setNameHelper($nameHelper);
 
         $nameHelper
-            ->domainGroupName(Argument::type(ContentTypeGroup::class))
+            ->itemGroupName(Argument::type(ContentTypeGroup::class))
             ->willReturn(self::GROUP_TYPE);
 
         $nameHelper
-            ->domainGroupTypesName(Argument::type(ContentTypeGroup::class))
+            ->itemGroupTypesName(Argument::type(ContentTypeGroup::class))
             ->willReturn(self::GROUP_TYPES_TYPE);
     }
 

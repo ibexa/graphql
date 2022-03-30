@@ -71,7 +71,7 @@ class NodeResolver
     {
         if ($object instanceof ContentInfo) {
             return $this->typeResolver->resolve(
-                $this->nameHelper->domainContentName(
+                $this->nameHelper->itemName(
                     $this->contentTypeService->loadContentType($object->contentTypeId)
                 )
             );

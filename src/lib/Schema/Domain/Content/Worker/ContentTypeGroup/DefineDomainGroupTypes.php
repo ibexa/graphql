@@ -44,7 +44,7 @@ class DefineDomainGroupTypes extends BaseWorker implements Worker
 
     private function typeName($args): string
     {
-        return $this->getNameHelper()->domainGroupTypesName($args['ContentTypeGroup']);
+        return $this->getNameHelper()->itemGroupTypesName($args['ContentTypeGroup']);
     }
 }
 
