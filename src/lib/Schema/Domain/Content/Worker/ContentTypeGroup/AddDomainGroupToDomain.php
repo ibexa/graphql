@@ -52,12 +52,12 @@ final class AddDomainGroupToDomain extends BaseWorker implements Worker
 
     private function fieldName($args): string
     {
-        return $this->getNameHelper()->domainGroupField($args['ContentTypeGroup']);
+        return $this->getNameHelper()->itemGroupField($args['ContentTypeGroup']);
     }
 
     private function typeGroupName($args): string
     {
-        return $this->getNameHelper()->domainGroupName($args['ContentTypeGroup']);
+        return $this->getNameHelper()->itemGroupName($args['ContentTypeGroup']);
     }
 }
 
