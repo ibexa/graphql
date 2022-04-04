@@ -60,7 +60,7 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
     {
         @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemName() instead.', E_USER_DEPRECATED);
 
-        return $this->domainItemName($contentType);
+        return $this->itemName($contentType);
     }
 
     public function itemName(ContentType $contentType)
@@ -153,7 +153,7 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
 
     public function itemMutationCreateItemField(ContentType $contentType)
     {
-        return 'create' . ucfirst($this->domainContentField($contentType));
+        return 'create' . ucfirst($this->itemField($contentType));
     }
 
     /**
