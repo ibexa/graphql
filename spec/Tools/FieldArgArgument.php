@@ -1,7 +1,7 @@
 <?php
-namespace spec\EzSystems\EzPlatformGraphQL\Tools;
+namespace spec\Ibexa\GraphQL\Tools;
 
-use EzSystems\EzPlatformGraphQL\Schema\Builder\Input;
+use Ibexa\GraphQL\Schema\Builder\Input;
 use Prophecy\Argument\Token\CallbackToken;
 
 class FieldArgArgument
@@ -29,3 +29,4 @@ class FieldArgArgument
         );
     }
 }
+class_alias(FieldArgArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\FieldArgArgument');

@@ -1,0 +1,49 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    Ibexa\Bundle\GraphQL\Command\GeneratePlatformSchemaCommand:
+        arguments:
+            $schemaRootDir: '%ibexa.graphql.schema.ibexa_dir%'
+        tags:
+            -  { name: console.command }
+
+    Ibexa\GraphQL\InputMapper\QueryMapper:
+        alias: Ibexa\GraphQL\InputMapper\SearchQueryMapper
+
+    Ibexa\GraphQL\InputMapper\SearchQueryMapper: ~
+
+    Ibexa\GraphQL\InputMapper\SearchQuerySortByMapper: ~
+
+    Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder: ~
+
+    Ibexa\GraphQL\Security\NonAdminGraphQLRequestMatcher:
+        arguments:
+            $siteAccessGroups: '%ibexa.site_access.groups%'
+
+    Ibexa\GraphQL\ItemFactory $currentSiteItemFactory: '@Ibexa\GraphQL\ItemFactory\CurrentSite'
+
+    Ibexa\GraphQL\ItemFactory $relatedContentItemFactory: '@Ibexa\GraphQL\ItemFactory\RelatedContent'
+
+    Ibexa\GraphQL\ItemFactory\CurrentSite:
+        class: 'Ibexa\GraphQL\ItemFactory'
+        arguments:
+            $locationGuesser: '@Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser\CurrentSiteContent'
+
+    Ibexa\GraphQL\ItemFactory\RelatedContent:
+        class: 'Ibexa\GraphQL\ItemFactory'
+        arguments:
+            $locationGuesser: '@Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser\RelatedContent'
+
+    Ibexa\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser:
+        arguments:
+            $siteAccessService: '@Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessService'
+            $configResolver: '@ibexa.config.resolver'
+            $provider: '@ibexa.siteaccess.provider'
+            $siteAccessGroups: '%ibexa.site_access.groups%'
+
+    Ibexa\GraphQL\Schema\Domain\Content\NameHelper:
+        arguments:
+            $fieldNameOverrides: '%ibexa.graphql.schema.content.field_name.override%'
