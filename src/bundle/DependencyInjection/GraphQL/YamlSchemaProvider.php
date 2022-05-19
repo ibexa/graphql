@@ -13,9 +13,9 @@ use Ibexa\GraphQL\Resolver\Map\UploadMap;
  */
 class YamlSchemaProvider implements SchemaProvider
 {
-    public const PLATFORM_SCHEMA_PATH = 'ezplatform/';
-    public const PLATFORM_SCHEMA_FILE = self::PLATFORM_SCHEMA_PATH . 'Domain.types.yaml';
-    public const PLATFORM_MUTATION_FILE = self::PLATFORM_SCHEMA_PATH . 'DomainContentMutation.types.yaml';
+    public const DXP_SCHEMA_PATH = 'ibexa/';
+    public const DXP_SCHEMA_FILE = self::DXP_SCHEMA_PATH . 'Domain.types.yaml';
+    public const DXP_MUTATION_FILE = self::DXP_SCHEMA_PATH . 'DomainContentMutation.types.yaml';
     public const APP_QUERY_SCHEMA_FILE = 'Query.types.yaml';
     public const APP_MUTATION_SCHEMA_FILE = 'Mutation.types.yaml';
 
@@ -75,12 +75,12 @@ class YamlSchemaProvider implements SchemaProvider
 
     private function getPlatformQuerySchema()
     {
-        return $this->root . self::PLATFORM_SCHEMA_FILE;
+        return $this->root . self::DXP_SCHEMA_FILE;
     }
 
     private function getPlatformMutationSchema()
     {
-        return $this->root . self::PLATFORM_MUTATION_FILE;
+        return $this->root . self::DXP_MUTATION_FILE;
     }
 }
 
