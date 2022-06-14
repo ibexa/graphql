@@ -47,20 +47,20 @@
     },
     "autoload": {
         "psr-4": {
-            "EzSystems\\EzPlatformGraphQL\\": "src/lib/",
             "Ibexa\\GraphQL\\": "src/lib/",
             "Ibexa\\Bundle\\GraphQL\\": "src/bundle/",
-            "Ibexa\\Contracts\\GraphQL\\": "src/contracts/"
+            "Ibexa\\Contracts\\GraphQL\\": "src/contracts/",
+            "EzSystems\\EzPlatformGraphQL\\": "src/lib/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "spec\\EzSystems\\EzPlatformGraphQL\\Tools\\": "spec/Tools",
-            "spec\\EzSystems\\EzPlatformGraphQL\\": "spec/EzSystems/EzPlatformGraphQL",
             "spec\\Ibexa\\GraphQL\\": "spec/",
             "Ibexa\\Spec\\GraphQL\\": "spec/",
             "Ibexa\\Tests\\Bundle\\GraphQL\\": "tests/bundle/",
-            "Ibexa\\Tests\\GraphQL\\": "tests/lib/"
+            "Ibexa\\Tests\\GraphQL\\": "tests/lib/",
+            "spec\\EzSystems\\EzPlatformGraphQL\\Tools\\": "spec/Tools",
+            "spec\\EzSystems\\EzPlatformGraphQL\\": "spec/EzSystems/EzPlatformGraphQL"
         }
     },
     "extra": {
