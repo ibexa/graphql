@@ -43,3 +43,10 @@ services:
             $configResolver: '@ibexa.config.resolver'
             $provider: '@ibexa.siteaccess.provider'
             $siteAccessGroups: '%ibexa.site_access.groups%'
+
+    Ibexa\GraphQL\GraphQL\Mapper\ContentImageAssetMapperStrategy:
+        arguments:
+            $assetMapper: '@Ibexa\Core\FieldType\ImageAsset\AssetMapper'
+            $contentLoader: '@Ibexa\GraphQL\DataLoader\ContentLoader'
+        tags:
+            - { name: ibexa.field_type.image_asset.mapper.strategy, priority: 0 }

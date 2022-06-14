@@ -6,9 +6,7 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
-use Ibexa\Core\FieldType\ImageAsset\AssetMapper;
-use Ibexa\GraphQL\DataLoader\ContentLoader;
+use Ibexa\GraphQL\GraphQL\Mapper\ImageAssetMapperStrategyInterface;
 use Ibexa\GraphQL\Value\Field;
 
 /**
@@ -16,29 +14,22 @@ use Ibexa\GraphQL\Value\Field;
  */
 class ImageAssetFieldResolver
 {
-    /**
-     * @var DomainContentResolver
-     */
-    private $domainContentResolver;
+    /* @var array<\Ibexa\Core\FieldType\ImageAsset\ImageAssetMapperStrategyInterface> */
+    private $strategies;
 
     /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
+     * @param iterable<\Ibexa\Core\FieldType\ImageAsset\ImageAssetMapperStrategyInterface> $strategies
      */
-    private $contentLoader;
-
-    /**
-     * @var \Ibexa\Core\FieldType\ImageAsset\AssetMapper
-     */
-    private $assetMapper;
-
-    public function __construct(ContentLoader $contentLoader, DomainContentResolver $domainContentResolver, AssetMapper $assetMapper)
+    public function __construct(iterable $strategies)
     {
-        $this->domainContentResolver = $domainContentResolver;
-        $this->contentLoader = $contentLoader;
-        $this->assetMapper = $assetMapper;
+        foreach ($strategies as $strategy) {
+            if ($strategy instanceof ImageAssetMapperStrategyInterface) {
+                $this->strategies[] = $strategy;
+            }
+        }
     }
 
-    public function resolveDomainImageAssetFieldValue(Field $field)
+    public function resolveDomainImageAssetFieldValue(Field $field): ?Field
     {
         $destinationContentId = $field->value->destinationContentId;
 
@@ -46,15 +37,15 @@ class ImageAssetFieldResolver
             return null;
         }
 
-        $assetField = $this->assetMapper->getAssetField(
-            $this->contentLoader->findSingle(new Criterion\ContentId($destinationContentId))
-        );
+        foreach ($this->strategies as $strategy) {
+            if ($strategy->canProcess($field->value)) {
+                $assetField = $strategy->process($field->value);
 
-        if (empty($assetField->value->alternativeText)) {
-            $assetField->value->alternativeText = $field->value->alternativeText;
+                return Field::fromField($assetField);
+            }
         }
 
-        return Field::fromField($assetField);
+        return null;
     }
 }
 
