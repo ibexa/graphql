@@ -44,7 +44,7 @@ services:
             $provider: '@ibexa.siteaccess.provider'
             $siteAccessGroups: '%ibexa.site_access.groups%'
 
-    Ibexa\GraphQL\GraphQL\Mapper\ContentImageAssetMapperStrategy:
+    Ibexa\GraphQL\Mapper\ContentImageAssetMapperStrategy:
         arguments:
             $assetMapper: '@Ibexa\Core\FieldType\ImageAsset\AssetMapper'
             $contentLoader: '@Ibexa\GraphQL\DataLoader\ContentLoader'
