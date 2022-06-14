@@ -46,7 +46,7 @@ services:
 
     Ibexa\GraphQL\GraphQL\Mapper\ContentImageAssetMapperStrategy:
         arguments:
-            $assetMapper: '@eZ\Publish\Core\FieldType\ImageAsset\AssetMapper'
-            $contentLoader: '@EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\ContentLoader'
+            $assetMapper: '@Ibexa\Core\FieldType\ImageAsset\AssetMapper'
+            $contentLoader: '@Ibexa\GraphQL\DataLoader\ContentLoader'
         tags:
             - { name: ibexa.field_type.image_asset.mapper.strategy, priority: 0 }

@@ -1,23 +1,21 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 namespace Ibexa\GraphQL\GraphQL\Mapper;
 
-use eZ\Publish\API\Repository\Values\Content\Field;
-use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
-use eZ\Publish\Core\FieldType\ImageAsset;
-use EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\ContentLoader;
+use Ibexa\Contracts\Core\Repository\Values\Content\Field;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
+use Ibexa\Core\FieldType\ImageAsset;
+use Ibexa\GraphQL\DataLoader\ContentLoader;
 
 final class ContentImageAssetMapperStrategy implements ImageAssetMapperStrategyInterface
 {
-    /* @var \eZ\Publish\Core\FieldType\ImageAsset\AssetMapper */
-    private $assetMapper;
+    private ImageAsset\AssetMapper $assetMapper;
 
-    /** @var \EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\ContentLoader */
-    private $contentLoader;
+    private ContentLoader $contentLoader;
 
     public function __construct(
         ImageAsset\AssetMapper $assetMapper,
@@ -33,9 +31,9 @@ final class ContentImageAssetMapperStrategy implements ImageAssetMapperStrategyI
     }
 
     /**
-     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException|
-     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException|
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      */
     public function process(ImageAsset\Value $value): Field
     {

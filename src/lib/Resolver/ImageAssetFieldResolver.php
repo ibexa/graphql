@@ -6,8 +6,8 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
-use Ibexa\GraphQL\Value\Field;
 use Ibexa\GraphQL\GraphQL\Mapper\ImageAssetMapperStrategyInterface;
+use Ibexa\GraphQL\Value\Field;
 
 /**
  * @internal
