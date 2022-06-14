@@ -77,7 +77,7 @@ Each file defind in the `map` is added to the request using the defined name:
 
 ## Uploading multiple files with `UploadFiles`
 
-The `UploadFiles` mutation uses the [multi-file upload configuration](https://doc.ezplatform.com/en/latest/guide/file_management/#multi-file-upload) to create content items from a list of given binary files. We will decompose the following `curl` request, that uploads five files to the eZ Platform repository, below the container with location id 51:
+The `UploadFiles` mutation uses the [multi-file upload configuration](https://doc.ezplatform.com/en/latest/guide/file_management/#multi-file-upload) to create content items from a list of given binary files. We will decompose the following `curl` request, that uploads five files to the Ibexa repository, below the container with location id 51:
 
 ```shell
 curl -v -X POST \

@@ -1,9 +1,10 @@
 <?php
-namespace spec\EzSystems\EzPlatformGraphQL\Tools\Stubs;
+namespace spec\Ibexa\GraphQL\Tools\Stubs;
 
-use EzSystems\EzPlatformGraphQL\Schema;;
+use Ibexa\GraphQL\Schema;
 
 interface InitializableWorker extends Schema\Worker, Schema\Initializer
 {
 
 }
+class_alias(InitializableWorker::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\Stubs\InitializableWorker');

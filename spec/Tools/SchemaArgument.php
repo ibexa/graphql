@@ -1,5 +1,5 @@
 <?php
-namespace spec\EzSystems\EzPlatformGraphQL\Tools;
+namespace spec\Ibexa\GraphQL\Tools;
 
 use PhpSpec\Wrapper\ObjectWrapper;
 use Prophecy\Argument;
@@ -15,3 +15,4 @@ class SchemaArgument extends Argument
         );
     }
 }
+class_alias(SchemaArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\SchemaArgument');
