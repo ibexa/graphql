@@ -1,0 +1,72 @@
+Repository:
+    type: object
+    config:
+        description: "Ibexa repository"
+        fields:
+            location:
+                type: "Location"
+                args:
+                    locationId:
+                        description: "A location id"
+                        type: "Int"
+                    remoteId:
+                        description: "A location remote id"
+                        type: "Int"
+                    urlAlias:
+                        description: "A location url alias: 'path/to/content-item'"
+                        type: "String"
+                resolve: "@=resolver('Location', [args])"
+            contentType:
+                type: "ContentType"
+                args:
+                    id:
+                        description: "Resolves using the unique ContentType id."
+                        type: "Int"
+                    identifier:
+                        description: "Resolves using the unique ContentType identifier."
+                        type: "String"
+                resolve: "@=resolver('ContentType', [args])"
+            contentTypes:
+                type: "[ContentType]"
+                args:
+                    groupId:
+                        type: "String"
+                    groupIdentifier:
+                        type: "String"
+                resolve: "@=resolver('ContentTypesFromGroup', [args])"
+
+            #
+            # Object States
+            #
+
+            objectStateGroup:
+                type: 'ObjectStateGroup'
+                description: "Fetches Object State Group by ID."
+                args:
+                    id:
+                        type: "Int"
+                        description: "ID of the Object State Group"
+                resolve: "@=resolver('ObjectStateGroupById', [args])"
+
+            objectStateGroups:
+                type: '[ObjectStateGroup]'
+                description: "Fetches all Object State Groups."
+                resolve: "@=resolver('ObjectStateGroups')"
+
+            objectState:
+                type: 'ObjectState'
+                description: "Fetches Object State by ID."
+                args:
+                    id:
+                        type: "Int"
+                        description: "ID of the Object State"
+                resolve: "@=resolver('ObjectStateById', [args])"
+
+            objectStates:
+                type: '[ObjectState]'
+                description: "Fetches Object States assigned to given Group ID."
+                args:
+                    groupId:
+                        type: "Int"
+                        description: "ID of the ObjectStateGroup"
+                resolve: "@=resolver('ObjectStatesByGroupId', [args])"
