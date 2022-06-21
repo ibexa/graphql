@@ -14,11 +14,11 @@ use Ibexa\GraphQL\Value\Field;
  */
 class ImageAssetFieldResolver
 {
-    /* @var array<\Ibexa\Core\FieldType\ImageAsset\ImageAssetMapperStrategyInterface> */
+    /* @var array<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> */
     private $strategies;
 
     /**
-     * @param iterable<\Ibexa\Core\FieldType\ImageAsset\ImageAssetMapperStrategyInterface> $strategies
+     * @param iterable<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> $strategies
      */
     public function __construct(iterable $strategies)
     {
