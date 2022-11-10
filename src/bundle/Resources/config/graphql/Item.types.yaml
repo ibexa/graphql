@@ -37,7 +37,7 @@ AbstractItem:
             _type:
                 description: "The item's Content type"
                 type: ContentType
-                resolve: '@=resolver("ContentTypeById", [value.getContentInfo().contentTypeId])'
+                resolve: '@=resolver("ContentTypeById", [value.contentInfo.contentTypeId])'
             _contentInfo:
                 description: 'Underlying content info item'
                 type: Content
