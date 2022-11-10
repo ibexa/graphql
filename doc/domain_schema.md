@@ -130,7 +130,7 @@ Examples:
 
 ### Creating a custom worker
 
-Custom workers can be added to customize the schema based on the content model. A worker implements the `Schema\Worker` interface, and are tagged with `ezplatform_graphql.domain_schema_worker`. They implement two methods:
+Custom workers can be added to customize the schema based on the content model. A worker implements the `Schema\Worker` interface, and are tagged with `ibexa.graphql.domain.schema.worker`. They implement two methods:
 
 - `work` will use the arguments to modify the schema.
 - `canWork` will test the schema and arguments, and say if the worker can run on this data.

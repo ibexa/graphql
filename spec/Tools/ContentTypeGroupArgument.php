@@ -1,13 +1,13 @@
 <?php
-namespace spec\EzSystems\EzPlatformGraphQL\Tools;
+namespace spec\Ibexa\GraphQL\Tools;
 
-use eZ\Publish\API\Repository\Values\ContentType\ContentTypeGroup;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup;
 use Prophecy\Argument\Token\CallbackToken;
 
 class ContentTypeGroupArgument
 {
     /**
-     * @return ContentTypeGroup|CallbackToken
+     * @return \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup|\Prophecy\Argument\Token\CallbackToken
      */
     public static function withIdentifier($identifier)
     {
@@ -20,3 +20,4 @@ class ContentTypeGroupArgument
         );
     }
 }
+class_alias(ContentTypeGroupArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\ContentTypeGroupArgument');
