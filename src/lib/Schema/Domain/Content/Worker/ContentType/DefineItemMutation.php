@@ -37,7 +37,7 @@ class DefineItemMutation extends BaseWorker implements Worker, Initializer
                 $this->getNameHelper()->itemName($contentType) . '!',
                 [
                     'resolve' => sprintf(
-                        '@=mutation("CreateDomainContent", [args["input"], "%s", args["parentLocationId"], args["language"]])',
+                        '@=mutation("CreateDomainContent", args["input"], "%s", args["parentLocationId"], args["language"])',
                         $contentType->identifier
                     ), ]
             )
@@ -69,7 +69,7 @@ class DefineItemMutation extends BaseWorker implements Worker, Initializer
             new Builder\Input\Field(
                 $this->getUpdateField($contentType),
                 $this->getNameHelper()->itemName($contentType) . '!',
-                ['resolve' => '@=mutation("UpdateDomainContent", [args["input"], args, args["versionNo"], args["language"]])']
+                ['resolve' => '@=mutation("UpdateDomainContent", args["input"], args, args["versionNo"], args["language"])']
             )
         );
 
