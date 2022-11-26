@@ -15,7 +15,7 @@ class YamlSchemaProvider implements SchemaProvider
 {
     public const DXP_SCHEMA_PATH = 'ibexa/';
     public const DXP_SCHEMA_FILE = self::DXP_SCHEMA_PATH . 'Domain.types.yaml';
-    public const DXP_MUTATION_FILE = self::DXP_SCHEMA_PATH . 'DomainContentMutation.types.yaml';
+    public const DXP_MUTATION_FILE = self::DXP_SCHEMA_PATH . 'ItemMutation.types.yaml';
     public const APP_QUERY_SCHEMA_FILE = 'Query.types.yaml';
     public const APP_MUTATION_SCHEMA_FILE = 'Mutation.types.yaml';
 
@@ -57,7 +57,7 @@ class YamlSchemaProvider implements SchemaProvider
         if (file_exists($this->getAppMutationSchemaFile())) {
             return 'Mutation';
         } elseif (file_exists($this->getPlatformMutationSchema())) {
-            return 'DomainContentMutation';
+            return 'ItemMutation';
         } else {
             return null;
         }
