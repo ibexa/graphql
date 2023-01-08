@@ -63,6 +63,9 @@
             "spec\\EzSystems\\EzPlatformGraphQL\\": "spec/EzSystems/EzPlatformGraphQL"
         }
     },
+    "conflict": {
+        "webonyx/graphql-php": ">= 15.0.0"
+    },
     "extra": {
         "branch-alias": {
             "dev-main": "4.4.x-dev"
