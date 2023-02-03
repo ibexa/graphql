@@ -6,10 +6,13 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
 use Ibexa\Contracts\Core\Repository\LocationService;
 use Ibexa\Contracts\Core\Repository\UserService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\User\User;
 use Ibexa\Contracts\Core\Repository\Values\User\UserGroup;
+use Overblog\GraphQLBundle\Error\UserWarning;
 
 /**
  * @internal
@@ -47,9 +50,13 @@ class UserResolver
         }
     }
 
-    public function resolveUserById($userId)
+    public function resolveUserById($userId): ?User
     {
-        return $this->userService->loadUser($userId);
+        try {
+            return $this->userService->loadUser($userId);
+        } catch (NotFoundException $e) {
+            throw new UserWarning($e->getMessage());
+        }
     }
 
     /**
