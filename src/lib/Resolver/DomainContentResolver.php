@@ -9,6 +9,7 @@ namespace Ibexa\GraphQL\Resolver;
 use GraphQL\Error\UserError;
 use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Core\FieldType;
@@ -121,10 +122,10 @@ class DomainContentResolver
         );
     }
 
-    public function resolveMainUrlAlias(Content $content)
+    public function resolveMainUrlAlias(ContentInfo $contentInfo)
     {
         $aliases = $this->repository->getURLAliasService()->listLocationAliases(
-            $this->getLocationService()->loadLocation($content->contentInfo->mainLocationId),
+            $this->getLocationService()->loadLocation($contentInfo->mainLocationId),
             false
         );
 
@@ -163,10 +164,10 @@ class DomainContentResolver
         return $contentItems[0] ?? null;
     }
 
-    public function resolveDomainContentType(Content $content)
+    public function resolveDomainContentType(ContentInfo $contentInfo)
     {
         $typeName = $this->makeDomainContentTypeName(
-            $this->contentTypeLoader->load($content->contentInfo->contentTypeId)
+            $this->contentTypeLoader->load($contentInfo->contentTypeId)
         );
 
         return  ($this->typeResolver->hasSolution($typeName))
