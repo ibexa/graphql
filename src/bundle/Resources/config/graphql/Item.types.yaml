@@ -41,7 +41,7 @@ AbstractItem:
             _contentInfo:
                 description: 'Underlying content info item'
                 type: Content
-                resolve: '@=value.getContentInfo()'
+                resolve: '@=value.getContent().contentInfo'
             _location:
                 description: 'Main location'
                 type: Location
