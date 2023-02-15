@@ -12,7 +12,9 @@ use Ibexa\Contracts\Core\Repository\Exceptions as RepositoryExceptions;
 use Ibexa\Contracts\Core\Repository\Values as RepositoryValues;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\Exception\UnsupportedFieldTypeException;
+use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
+use Ibexa\GraphQL\Value\Item;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Error\UserErrors;
 use Overblog\GraphQLBundle\Relay\Node\GlobalId;
@@ -38,11 +40,19 @@ class DomainContentMutationResolver
      */
     private $nameHelper;
 
-    public function __construct(API\Repository $repository, array $fieldInputHandlers, NameHelper $nameHelper)
-    {
+    /** @var \Ibexa\GraphQL\ItemFactory */
+    private $itemFactory;
+
+    public function __construct(
+        API\Repository $repository,
+        array $fieldInputHandlers,
+        NameHelper $nameHelper,
+        ItemFactory $relatedContentItemFactory
+    ) {
         $this->repository = $repository;
         $this->fieldInputHandlers = $fieldInputHandlers;
         $this->nameHelper = $nameHelper;
+        $this->itemFactory = $relatedContentItemFactory;
     }
 
     public function updateDomainContent($input, Argument $args, $versionNo, $language): RepositoryValues\Content\Content
@@ -129,7 +139,7 @@ class DomainContentMutationResolver
         return $this->getContentService()->loadContent($contentDraft->id);
     }
 
-    public function createDomainContent($input, $contentTypeIdentifier, $parentLocationId, $language): RepositoryValues\Content\Content
+    public function createDomainContent($input, $contentTypeIdentifier, $parentLocationId, $language): Item
     {
         try {
             $contentType = $this->getContentTypeService()->loadContentTypeByIdentifier($contentTypeIdentifier);
@@ -165,7 +175,7 @@ class DomainContentMutationResolver
             throw new UserError($e->getMessage(), 0, $e);
         }
 
-        return $content;
+        return $this->itemFactory->fromContent($content);
     }
 
     public function deleteDomainContent(Argument $args)
