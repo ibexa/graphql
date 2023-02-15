@@ -71,6 +71,9 @@
             "dev-main": "4.3.x-dev"
         }
     },
+    "config": {
+        "allow-plugins": false
+    },
     "scripts": {
         "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots",
         "check-cs": "@fix-cs --dry-run",
