@@ -9,7 +9,7 @@ namespace Ibexa\GraphQL\Mutation;
 use GraphQL\Error\UserError;
 use Ibexa\AdminUi\UI\Config\Provider\ContentTypeMappings;
 use Ibexa\Contracts\Core\Repository\Repository;
-use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Core\FieldType;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -77,7 +77,7 @@ class UploadFiles
      * @param $locationId The parent location ID
      * @param $languageCode
      */
-    private function createContent(array $mapping, UploadedFile $file, $locationId, $languageCode): ContentInfo
+    private function createContent(array $mapping, UploadedFile $file, $locationId, $languageCode): Content
     {
         $contentService = $this->repository->getContentService();
         $locationService = $this->repository->getLocationService();
@@ -112,7 +112,7 @@ class UploadFiles
         $draft = $contentService->createContent($struct, [$locationService->newLocationCreateStruct($locationId)]);
         $content = $contentService->publishVersion($draft->getVersionInfo());
 
-        return $content->contentInfo;
+        return $content;
     }
 }
 
