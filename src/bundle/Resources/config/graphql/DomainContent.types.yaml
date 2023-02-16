@@ -57,7 +57,7 @@ AbstractDomainContent:
             _location:
                 description: 'Main location'
                 type: Location
-                resolve: '@=resolver("LocationById", [value.mainLocationId])'
+                resolve: '@=resolver("LocationById", [value.contentInfo.mainLocationId])'
             _allLocations:
                 description: 'All the locations'
                 type: '[Location]'
