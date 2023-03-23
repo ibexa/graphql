@@ -27,8 +27,12 @@ class SelectionFieldResolver
         $this->contentTypeLoader = $contentTypeLoader;
     }
 
-    public function resolveSelectionFieldValue(Field $field, Content $content)
+    public function resolveSelectionFieldValue(?Field $field, Content $content)
     {
+        if ($field === null) {
+            return null;
+        }
+
         $fieldDefinition = $this
             ->contentTypeLoader->load($content->contentInfo->contentTypeId)
             ->getFieldDefinition($field->fieldDefIdentifier);
