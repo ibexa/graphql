@@ -32,7 +32,7 @@ final class ContentImageAssetMapperStrategy implements ImageAssetMapperStrategyI
 
     /**
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException|
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      */
     public function process(ImageAsset\Value $value): Field

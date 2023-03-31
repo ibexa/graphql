@@ -17,8 +17,6 @@ use Ibexa\Contracts\Core\Repository\Values\ValueObject;
  * @property int $contentTypeId
  * @property string $fieldDefIdentifier
  * @property object $value
- *
- * @
  */
 class ContentFieldValue extends ValueObject
 {
