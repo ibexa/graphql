@@ -123,7 +123,7 @@ final class ItemResolver
         return $item;
     }
 
-    public function resolveItemFieldValue(Item $item, $fieldDefinitionIdentifier, $args = null): Field
+    public function resolveItemFieldValue(Item $item, $fieldDefinitionIdentifier, $args = null): ?Field
     {
         return Field::fromField($item->getContent()->getField($fieldDefinitionIdentifier, $args['language'] ?? null));
     }
