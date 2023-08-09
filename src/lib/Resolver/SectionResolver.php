@@ -6,7 +6,10 @@
  */
 namespace Ibexa\GraphQL\Resolver;
 
+use GraphQL\Error\UserError;
+use Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException;
 use Ibexa\Contracts\Core\Repository\SectionService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Section;
 
 /**
  * @internal
@@ -23,9 +26,13 @@ class SectionResolver
         $this->sectionService = $sectionService;
     }
 
-    public function resolveSectionById($sectionId)
+    public function resolveSectionById($sectionId): ?Section
     {
-        return $this->sectionService->loadSection($sectionId);
+        try {
+            return $this->sectionService->loadSection($sectionId);
+        } catch (UnauthorizedException $e) {
+            throw new UserError($e->getMessage());
+        }
     }
 }
 
