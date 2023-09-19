@@ -38,9 +38,9 @@ UserGroup:
                 type: "String"
                 resolve: "@=value.contentInfo.name"
             content:
-                description: "The User content item"
+                description: "The User Group content item"
                 type: "UserGroupItem"
-                resolve: "@=value"
+                resolve: "@=resolver('Item', [{id: value.id}])"
             version:
                 type: "Version"
                 description: "Current version"
