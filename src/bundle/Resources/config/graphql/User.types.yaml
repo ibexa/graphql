@@ -11,7 +11,7 @@ User:
                 resolve: "@=value.contentInfo.name"
             content:
                 type: "UserItem"
-                resolve: "@=value"
+                resolve: "@=resolver('Item', [{id: value.id}])"
             version:
                 type: "Version"
                 description: "Current version metadata"
@@ -23,6 +23,9 @@ User:
             groups:
                 type: "[UserGroup]"
                 resolve: "@=resolver('UserGroupsByUserId', [value.id])"
+            thumbnail:
+                type: Thumbnail
+                resolve: "@=resolver('Thumbnail', [value.getThumbnail()])"
 
 UserGroup:
     type: object
