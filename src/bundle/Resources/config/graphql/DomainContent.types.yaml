@@ -72,7 +72,7 @@ AbstractDomainContent:
                 resolve: "@=resolver('MainUrlAlias', [value])"
             _thumbnail:
                 type: Thumbnail
-                resolve: "@=resolver('Thumbnail', [value.getThumbnail()])"
+                resolve: "@=query('Thumbnail', value.getThumbnail())"
 
 UntypedContent:
     type: object
