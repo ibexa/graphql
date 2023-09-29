@@ -60,7 +60,7 @@ AbstractItem:
                 resolve: "@=resolver('ItemUrlAlias', [value])"
             _thumbnail:
                 type: Thumbnail
-                resolve: "@=resolver('ContentThumbnail', [value.getContent()])"
+                resolve: "@=query('Thumbnail', value.getContent().getThumbnail())"
 
 UntypedItem:
     type: object
