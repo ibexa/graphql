@@ -107,7 +107,7 @@ ContentTypeGroup:
                 resolve: "@=resolver('UserById', [value.modifierId])"
             contentTypes:
                 type: "[ContentType]"
-                resolve: "@=resolver('ContentTypesFromGroup', {'groupId': value.id})"
+                resolve: "@=query('ContentTypesFromGroup', {'groupId': value.id})"
             groups:
                 type: "[ContentTypeGroup]"
 

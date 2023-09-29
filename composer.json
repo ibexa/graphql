@@ -41,8 +41,7 @@
         "ibexa/http-cache": "~4.5.0@dev",
         "overblog/graphiql-bundle": "^0.2",
         "phpspec/phpspec": "^7.1",
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "ibexa/code-style": "^1.0",
+        "ibexa/code-style": "~1.2.0",
         "mikey179/vfsstream": "^1.6"
     },
     "autoload": {
