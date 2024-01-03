@@ -5,7 +5,7 @@ ContentType:
         fields:
             id:
                 type: "Int!"
-                description: "The Content Type's unique ID."
+                description: "The Content type's unique ID."
             description:
                 type: "String"
                 description: "The content type's description"
@@ -20,13 +20,13 @@ ContentType:
                 resolve: "@=value.getFieldDefinitions()"
             status:
                 type: "Int"
-                description: "The status of the content type. One of ContentType::STATUS_DEFINED|ContentType::STATUS_DRAFT|ContentType::STATUS_MODIFIED."
+                description: "The status of the Content type. One of ContentType::STATUS_DEFINED|ContentType::STATUS_DRAFT|ContentType::STATUS_MODIFIED."
             identifier:
                 type: "String"
-                description: "The identifier of the Content Type."
+                description: "The identifier of the Content type."
             name:
                 type: "String"
-                description: "The Content Type's name in the main language"
+                description: "The Content type's name in the main language"
                 args:
                     language:
                         type: "RepositoryLanguage"
@@ -34,30 +34,30 @@ ContentType:
                 resolve: "@=value.getName(args['language']) ?: ''"
             names:
                 type: "[String]"
-                description: "The Content Type's names in all languages"
+                description: "The Content type's names in all languages"
             creationDate:
                 type: "DateTime"
-                description: "The date of the creation of this Content Type."
+                description: "The date of the creation of this Content type."
             modificationDate:
                 type: "DateTime"
-                description: "the date of the last modification of this Content Type."
+                description: "the date of the last modification of this Content type."
             creatorId:
                 type: "Int"
-                description: "The user id of the creator of this Content Type."
+                description: "The user id of the creator of this Content type."
             creator:
                 type: "User"
-                description: "The user who created this Content Type."
+                description: "The user who created this Content type."
                 resolve: "@=resolver('UserById', [value.creatorId])"
             modifierId:
                 type: "Int"
-                description: "The user id of the user which has last modified this content type"
+                description: "The user id of the user which has last modified this Content type"
             modifier:
                 type: "User"
-                description: "The user which has last modified this content type"
+                description: "The user which has last modified this Content type"
                 resolve: "@=resolver('UserById', [value.modifierId])"
             remoteId:
                 type: "String"
-                description: "A global unique id of the Content Type."
+                description: "A global unique id of the Content type."
             urlAliasSchema:
                 type: "String"
                 description: "URL alias schema. If nothing is provided, nameSchema will be used instead."
@@ -69,10 +69,10 @@ ContentType:
                 description: "This flag hints to UIs if type may have children or not."
             mainLanguageCode:
                 type: "String"
-                description: "The main language of the content type names and description used for fallback."
+                description: "The main language of the Content type names and description used for fallback."
             defaultAlwaysAvailable:
                 type: "Boolean"
-                description: "If an instance of a content type is created the always available flag is set by default this this value."
+                description: "If an instance of a Content type is created the always available flag is set by default this this value."
             defaultSortField:
                 type: "Int"
                 description: "Specifies which property the child locations should be sorted on by default when created. Valid values are found at {@link Location::SORT_FIELD_*}"

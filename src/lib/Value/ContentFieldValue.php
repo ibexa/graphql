@@ -26,7 +26,7 @@ class ContentFieldValue extends ValueObject
     protected $fieldDefIdentifier;
 
     /**
-     * Id of the Content Type this value is from.
+     * Id of the Content type this value is from.
      */
     protected $contentTypeId;
 

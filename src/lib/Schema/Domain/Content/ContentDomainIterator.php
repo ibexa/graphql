@@ -43,7 +43,7 @@ class ContentDomainIterator implements Iterator
 
             foreach ($this->contentTypeService->loadContentTypes($contentTypeGroup) as $contentType) {
                 if (!$this->nameValidator->isValidName($contentType->identifier)) {
-                    $this->nameValidator->generateInvalidNameWarning('Content Type', $contentType->identifier);
+                    $this->nameValidator->generateInvalidNameWarning('Content type', $contentType->identifier);
 
                     continue;
                 }
