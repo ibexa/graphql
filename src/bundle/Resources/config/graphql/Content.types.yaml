@@ -8,10 +8,10 @@ Content:
                 description: "The Content item's unique ID."
             contentTypeId:
                 type: "Int!"
-                description: "The Content type ID of the Content item."
+                description: "The content type ID of the Content item."
             contentType:
                 type: "ContentType"
-                description: "The Content type of the Content item."
+                description: "The content type of the Content item."
                 resolve: "@=resolver('ContentTypeById', [value.contentTypeId])"
             name:
                 type: "String"

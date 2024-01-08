@@ -35,7 +35,7 @@ AbstractItem:
                     typeName: DomainContent
                 description: "The Content item's unique ID."
             _type:
-                description: "The item's Content type"
+                description: "The item's content type"
                 type: ContentType
                 resolve: '@=resolver("ContentTypeById", [value.getContentInfo().contentTypeId])'
             _contentInfo:

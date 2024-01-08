@@ -42,7 +42,7 @@ AbstractDomainContent:
                     typeName: DomainContent
                 description: "The Content item's unique ID."
             _type:
-                description: "The item's Content type"
+                description: "The item's content type"
                 type: ContentType
                 resolve: '@=resolver("ContentTypeById", [value.contentInfo.contentTypeId])'
             _content:
@@ -97,7 +97,7 @@ DomainContentTypeGroup:
                 resolve: "@=value"
             _types:
                 type: DomainGroupContentTypes
-                description: "Content types from this group"
+                description: "content types from this group"
 
 DomainContentType:
     type: interface

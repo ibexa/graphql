@@ -76,7 +76,7 @@ class DomainContentMutationResolver
         try {
             $contentType = $this->getContentTypeService()->loadContentType($contentInfo->contentTypeId);
         } catch (RepositoryExceptions\NotFoundException $e) {
-            throw new UserError("Could not load Content type with ID $contentInfo->contentTypeId");
+            throw new UserError("Could not load content type with ID $contentInfo->contentTypeId");
         }
 
         $contentUpdateStruct = $this->getContentService()->newContentUpdateStruct();
