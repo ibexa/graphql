@@ -97,7 +97,7 @@ DomainContentTypeGroup:
                 resolve: "@=value"
             _types:
                 type: DomainGroupContentTypes
-                description: "content types from this group"
+                description: "Content types from this group"
 
 DomainContentType:
     type: interface
