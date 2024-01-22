@@ -5,7 +5,7 @@ ContentType:
         fields:
             id:
                 type: "Int!"
-                description: "The Content Type's unique ID."
+                description: "The content type's unique ID."
             description:
                 type: "String"
                 description: "The content type's description"
@@ -23,10 +23,10 @@ ContentType:
                 description: "The status of the content type. One of ContentType::STATUS_DEFINED|ContentType::STATUS_DRAFT|ContentType::STATUS_MODIFIED."
             identifier:
                 type: "String"
-                description: "The identifier of the Content Type."
+                description: "The identifier of the content type."
             name:
                 type: "String"
-                description: "The Content Type's name in the main language"
+                description: "The content type's name in the main language"
                 args:
                     language:
                         type: "RepositoryLanguage"
@@ -34,19 +34,19 @@ ContentType:
                 resolve: "@=value.getName(args['language']) ?: ''"
             names:
                 type: "[String]"
-                description: "The Content Type's names in all languages"
+                description: "The content type's names in all languages"
             creationDate:
                 type: "DateTime"
-                description: "The date of the creation of this Content Type."
+                description: "The date of the creation of this content type."
             modificationDate:
                 type: "DateTime"
-                description: "the date of the last modification of this Content Type."
+                description: "the date of the last modification of this content type."
             creatorId:
                 type: "Int"
-                description: "The user id of the creator of this Content Type."
+                description: "The user id of the creator of this content type."
             creator:
                 type: "User"
-                description: "The user who created this Content Type."
+                description: "The user who created this content type."
                 resolve: "@=resolver('UserById', [value.creatorId])"
             modifierId:
                 type: "Int"
@@ -57,7 +57,7 @@ ContentType:
                 resolve: "@=resolver('UserById', [value.modifierId])"
             remoteId:
                 type: "String"
-                description: "A global unique id of the Content Type."
+                description: "A global unique id of the content type."
             urlAliasSchema:
                 type: "String"
                 description: "URL alias schema. If nothing is provided, nameSchema will be used instead."
