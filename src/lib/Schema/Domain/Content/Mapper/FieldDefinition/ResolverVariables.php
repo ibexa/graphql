@@ -39,18 +39,25 @@ class ResolverVariables implements FieldDefinitionMapper
     {
         $resolver = $this->innerMapper->mapToFieldValueResolver($fieldDefinition);
 
+        //making sure we won't be replacing "field" occurrences in the actual field's name
+        if (preg_match('/"(.*field.*)"/', $resolver) !== 1) {
+            return str_replace(
+                'field',
+                'resolver("ItemFieldValue", [value, "' . $fieldDefinition->identifier . '", args])',
+                $resolver
+            );
+        }
+
         return str_replace(
             [
                 'content',
                 'location',
                 'item',
-                'field',
             ],
             [
                 'value.getContent()',
                 'value.getLocation()',
                 'value',
-                'resolver("ItemFieldValue", [value, "' . $fieldDefinition->identifier . '", args])',
             ],
             $resolver
         );
