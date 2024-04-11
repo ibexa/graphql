@@ -39,6 +39,7 @@
         "ibexa/user": "~5.0.0@dev",
         "ibexa/search": "~5.0.0@dev",
         "ibexa/http-cache": "~5.0.0@dev",
+        "ibexa/notifications": "~5.0.0@dev",
         "overblog/graphiql-bundle": "^0.2",
         "phpspec/phpspec": "^7.1",
         "ibexa/code-style": "~1.2.0",
