@@ -14,36 +14,36 @@
         "bdunogier/ezplatform-graphql-bundle": "self.version"
     },
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": " >=8.3",
         "ext-dom": "*",
-        "ibexa/core": "~5.0.0@dev",
-        "ibexa/admin-ui": "~5.0.0@dev",
-        "ibexa/rest": "~5.0.0@dev",
-        "ibexa/fieldtype-richtext": "~5.0.0@dev",
+        "erusev/parsedown": "^1.7",
+        "ibexa/admin-ui": "~5.0.x-dev",
+        "ibexa/core": "~5.0.x-dev",
+        "ibexa/fieldtype-richtext": "~5.0.x-dev",
+        "ibexa/rest": "~5.0.x-dev",
         "lexik/jwt-authentication-bundle": "^2.8",
         "overblog/graphql-bundle": "^0.14.2",
-        "erusev/parsedown": "^1.7",
-        "symfony/dependency-injection": "^5.0",
-        "symfony/http-kernel": "^5.0",
-        "symfony/console": "^5.0",
-        "symfony/filesystem": "^5.0",
-        "symfony/yaml": "^5.0",
         "symfony/config": "^5.0",
+        "symfony/console": "^5.0",
+        "symfony/dependency-injection": "^5.0",
+        "symfony/filesystem": "^5.0",
         "symfony/http-foundation": "^5.0",
-        "symfony/serializer": "^5.0"
+        "symfony/http-kernel": "^5.0",
+        "symfony/serializer": "^5.0",
+        "symfony/yaml": "^5.0"
     },
     "require-dev": {
-        "ibexa/doctrine-schema": "~5.0.0@dev",
-        "ibexa/content-forms": "~5.0.0@dev",
-        "ibexa/design-engine": "~5.0.0@dev",
-        "ibexa/user": "~5.0.0@dev",
-        "ibexa/search": "~5.0.0@dev",
-        "ibexa/http-cache": "~5.0.0@dev",
-        "ibexa/notifications": "~5.0.0@dev",
-        "overblog/graphiql-bundle": "^0.2",
-        "phpspec/phpspec": "^7.1",
         "ibexa/code-style": "~1.2.0",
-        "mikey179/vfsstream": "^1.6"
+        "ibexa/content-forms": "~5.0.x-dev",
+        "ibexa/design-engine": "~5.0.x-dev",
+        "ibexa/doctrine-schema": "~5.0.x-dev",
+        "ibexa/http-cache": "~5.0.x-dev",
+        "ibexa/notifications": "~5.0.x-dev",
+        "ibexa/search": "~5.0.x-dev",
+        "ibexa/user": "~5.0.x-dev",
+        "mikey179/vfsstream": "^1.6",
+        "overblog/graphiql-bundle": "^0.2",
+        "phpspec/phpspec": "^7.1"
     },
     "autoload": {
         "psr-4": {
@@ -72,7 +72,8 @@
         }
     },
     "config": {
-        "allow-plugins": false
+        "allow-plugins": false,
+        "sort-packages": true
     },
     "scripts": {
         "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots",
