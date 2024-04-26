@@ -13,6 +13,8 @@
         "ezsystems/ezplatform-graphql": "*",
         "bdunogier/ezplatform-graphql-bundle": "self.version"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": " >=8.3",
         "ext-dom": "*",
@@ -33,7 +35,7 @@
         "symfony/yaml": "^5.0"
     },
     "require-dev": {
-        "ibexa/code-style": "~1.2.0",
+        "ibexa/code-style": "~2.0.0",
         "ibexa/content-forms": "~5.0.x-dev",
         "ibexa/design-engine": "~5.0.x-dev",
         "ibexa/doctrine-schema": "~5.0.x-dev",
