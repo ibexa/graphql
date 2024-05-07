@@ -33,7 +33,7 @@
         "symfony/yaml": "^5.0"
     },
     "require-dev": {
-        "ibexa/code-style": "~1.2.0",
+        "ibexa/code-style": "~2.0.0",
         "ibexa/content-forms": "~5.0.x-dev",
         "ibexa/design-engine": "~5.0.x-dev",
         "ibexa/doctrine-schema": "~5.0.x-dev",
