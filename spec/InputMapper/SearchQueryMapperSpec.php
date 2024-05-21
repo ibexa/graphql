@@ -259,5 +259,3 @@ class SearchQueryMapperSpec extends ObjectBehavior
         return null;
     }
 }
-
-class_alias(SearchQueryMapperSpec::class, 'spec\EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\SearchQueryMapperSpec');

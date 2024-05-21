@@ -65,5 +65,3 @@ class AddFieldValueToItemSpec extends ObjectBehavior
         ];
     }
 }
-
-class_alias(AddFieldValueToItemSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldValueToItemSpec');

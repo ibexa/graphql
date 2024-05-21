@@ -88,4 +88,3 @@ class YamlSchemaProviderSpec extends ObjectBehavior
 //         $this->vfs->addChild(vfsStream::newFile($file));
 //     }
 }
-class_alias(YamlSchemaProviderSpec::class, 'spec\EzSystems\EzPlatformGraphQL\DependencyInjection\GraphQL\YamlSchemaProviderSpec');

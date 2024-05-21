@@ -142,5 +142,3 @@ class DomainContentResolverSpec extends ObjectBehavior
         ]);
     }
 }
-
-class_alias(DomainContentResolverSpec::class, 'spec\EzSystems\EzPlatformGraphQL\GraphQL\Resolver\DomainContentResolverSpec');

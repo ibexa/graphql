@@ -49,5 +49,3 @@ class AddItemTypeToItemTypeIdentifierListSpec extends ContentTypeWorkerBehavior
         $this->work($schema, $this->args());
     }
 }
-
-class_alias(AddItemTypeToItemTypeIdentifierListSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\AddItemTypeToItemTypeIdentifierListSpec');

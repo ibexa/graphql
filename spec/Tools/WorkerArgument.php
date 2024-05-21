@@ -33,4 +33,3 @@ class WorkerArgument extends Argument
         );
     }
 }
-class_alias(WorkerArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\WorkerArgument');

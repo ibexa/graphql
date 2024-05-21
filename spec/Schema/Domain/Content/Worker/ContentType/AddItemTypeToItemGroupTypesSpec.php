@@ -77,5 +77,3 @@ class AddItemTypeToItemGroupTypesSpec extends ContentTypeWorkerBehavior
         $this->work($schema, $this->args());
     }
 }
-
-class_alias(AddItemTypeToItemGroupTypesSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\AddItemTypeToItemGroupTypesSpec');

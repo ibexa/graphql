@@ -87,5 +87,3 @@ class DefineDomainGroupSpec extends ContentTypeGroupWorkerBehavior
         $this->work($schema, $this->args());
     }
 }
-
-class_alias(DefineDomainGroupSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentTypeGroup\DefineDomainGroupSpec');

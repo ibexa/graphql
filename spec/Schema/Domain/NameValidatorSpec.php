@@ -22,4 +22,3 @@ final class NameValidatorSpec extends ObjectBehavior
     }
 }
 
-class_alias(NameValidatorSpec::class, 'spec\spec\Ibexa\GraphQL\Schema\Domain\NameHelperSpec');

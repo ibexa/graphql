@@ -23,4 +23,3 @@ abstract class ContentTypeWorkerBehavior extends ObjectBehavior
         ];
     }
 }
-class_alias(ContentTypeWorkerBehavior::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\ContentTypeWorkerBehavior');

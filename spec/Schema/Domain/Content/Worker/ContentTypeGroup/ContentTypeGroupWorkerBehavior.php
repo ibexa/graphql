@@ -20,4 +20,3 @@ abstract class ContentTypeGroupWorkerBehavior extends ObjectBehavior
     }
 
 }
-class_alias(ContentTypeGroupWorkerBehavior::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentTypeGroup\ContentTypeGroupWorkerBehavior');

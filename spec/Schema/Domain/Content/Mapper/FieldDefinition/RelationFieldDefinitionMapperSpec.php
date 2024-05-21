@@ -103,5 +103,3 @@ class RelationFieldDefinitionMapperSpec extends ObjectBehavior
         ]);
     }
 }
-
-class_alias(RelationFieldDefinitionMapperSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\RelationFieldDefinitionMapperSpec');
