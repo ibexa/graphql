@@ -49,8 +49,7 @@
         "psr-4": {
             "Ibexa\\GraphQL\\": "src/lib/",
             "Ibexa\\Bundle\\GraphQL\\": "src/bundle/",
-            "Ibexa\\Contracts\\GraphQL\\": "src/contracts/",
-            "EzSystems\\EzPlatformGraphQL\\": "src/lib/"
+            "Ibexa\\Contracts\\GraphQL\\": "src/contracts/"
         }
     },
     "autoload-dev": {
