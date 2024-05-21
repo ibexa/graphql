@@ -13,5 +13,3 @@ interface LocationProvider
 {
     public function getLocations(Content $content): LocationList;
 }
-
-class_alias(LocationProvider::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationProvider');

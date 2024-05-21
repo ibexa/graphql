@@ -13,5 +13,3 @@ class DomainConnectionBuilder extends ConnectionBuilder
 {
     public const PREFIX = 'DomainContent:';
 }
-
-class_alias(DomainConnectionBuilder::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Relay\DomainConnectionBuilder');

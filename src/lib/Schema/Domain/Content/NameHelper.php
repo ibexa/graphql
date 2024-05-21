@@ -248,5 +248,3 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
         return preg_replace('/[^A-Za-z0-9_]/', '_', $contentTypeGroup->identifier);
     }
 }
-
-class_alias(NameHelper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\NameHelper');

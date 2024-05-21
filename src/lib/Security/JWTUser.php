@@ -54,5 +54,3 @@ final class JWTUser implements UserInterface
         return $this->wrappedUser;
     }
 }
-
-class_alias(JWTUser::class, 'EzSystems\EzPlatformGraphQL\Security\JWTUser');

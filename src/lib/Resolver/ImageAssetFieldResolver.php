@@ -53,5 +53,3 @@ class ImageAssetFieldResolver
         return null;
     }
 }
-
-class_alias(ImageAssetFieldResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\ImageAssetFieldResolver');

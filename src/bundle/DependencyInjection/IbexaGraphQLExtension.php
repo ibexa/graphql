@@ -102,5 +102,3 @@ class IbexaGraphQLExtension extends Extension implements PrependExtensionInterfa
         $container->setParameter('ibexa.graphql.package.root_dir', $packageRootDir);
     }
 }
-
-class_alias(IbexaGraphQLExtension::class, 'EzSystems\EzPlatformGraphQL\DependencyInjection\EzSystemsEzPlatformGraphQLExtension');

@@ -40,5 +40,3 @@ class DefineItemType extends BaseWorker implements Worker
         return $this->getNameHelper()->itemTypeName($args['ContentType']);
     }
 }
-
-class_alias(DefineItemType::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\DefineItemType');

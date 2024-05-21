@@ -10,5 +10,3 @@ namespace Ibexa\GraphQL\Exception;
 class LogicException extends \LogicException
 {
 }
-
-class_alias(LogicException::class, 'EzSystems\EzPlatformGraphQL\Exception\LogicException');

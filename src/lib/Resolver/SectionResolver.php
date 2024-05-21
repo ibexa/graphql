@@ -36,5 +36,3 @@ class SectionResolver
         }
     }
 }
-
-class_alias(SectionResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\SectionResolver');

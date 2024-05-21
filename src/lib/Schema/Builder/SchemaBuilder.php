@@ -178,5 +178,3 @@ class SchemaBuilder implements SchemaBuilderInterface
         return $this->hasType($enum);
     }
 }
-
-class_alias(SchemaBuilder::class, 'EzSystems\EzPlatformGraphQL\Schema\Builder\SchemaBuilder');

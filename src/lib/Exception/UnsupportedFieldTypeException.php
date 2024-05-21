@@ -18,5 +18,3 @@ class UnsupportedFieldTypeException extends InvalidArgumentException
         );
     }
 }
-
-class_alias(UnsupportedFieldTypeException::class, 'EzSystems\EzPlatformGraphQL\Exception\UnsupportedFieldTypeException');

@@ -39,5 +39,3 @@ HTML5EDIT;
         return $this->xhtml5Converter->convert($dom);
     }
 }
-
-class_alias(MarkdownRichTextConverter::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldType\RichText\MarkdownRichTextConverter');

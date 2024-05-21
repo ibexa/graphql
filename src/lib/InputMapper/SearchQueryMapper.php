@@ -184,5 +184,3 @@ final class SearchQueryMapper implements QueryMapper
         return new Query\Criterion\Field($input['target'], $operator, $value);
     }
 }
-
-class_alias(SearchQueryMapper::class, 'EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\SearchQueryMapper');

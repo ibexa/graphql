@@ -11,5 +11,3 @@ interface Initializer
 {
     public function init(Builder $schema);
 }
-
-class_alias(Initializer::class, 'EzSystems\EzPlatformGraphQL\Schema\Initializer');

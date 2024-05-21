@@ -84,5 +84,3 @@ class YamlSchemaProvider implements SchemaProvider
         return $this->root . self::DXP_MUTATION_FILE;
     }
 }
-
-class_alias(YamlSchemaProvider::class, 'EzSystems\EzPlatformGraphQL\DependencyInjection\GraphQL\YamlSchemaProvider');

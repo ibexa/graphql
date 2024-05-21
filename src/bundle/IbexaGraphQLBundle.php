@@ -29,5 +29,3 @@ class IbexaGraphQLBundle extends Bundle
         return new IbexaGraphQLExtension();
     }
 }
-
-class_alias(IbexaGraphQLBundle::class, 'EzSystems\EzPlatformGraphQL\EzSystemsEzPlatformGraphQLBundle');

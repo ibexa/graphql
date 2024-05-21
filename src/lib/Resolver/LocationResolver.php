@@ -121,5 +121,3 @@ class LocationResolver
         return new Query\Criterion\ParentLocationId($args['locationId']);
     }
 }
-
-class_alias(LocationResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationResolver');

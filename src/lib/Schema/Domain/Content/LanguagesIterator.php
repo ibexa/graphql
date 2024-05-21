@@ -35,5 +35,3 @@ class LanguagesIterator implements Iterator
         }
     }
 }
-
-class_alias(LanguagesIterator::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\LanguagesIterator');

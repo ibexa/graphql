@@ -26,5 +26,3 @@ class BaseWorker
         return $this->nameHelper;
     }
 }
-
-class_alias(BaseWorker::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\BaseWorker');

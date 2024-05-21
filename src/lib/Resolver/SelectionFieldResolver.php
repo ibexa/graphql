@@ -76,5 +76,3 @@ class SelectionFieldResolver
         return $fieldSettings['options'];
     }
 }
-
-class_alias(SelectionFieldResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\SelectionFieldResolver');

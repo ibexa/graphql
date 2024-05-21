@@ -210,5 +210,3 @@ class DomainContentResolver
         }
     }
 }
-
-class_alias(DomainContentResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\DomainContentResolver');

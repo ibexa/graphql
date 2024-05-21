@@ -38,5 +38,3 @@ class NonAdminGraphQLRequestMatcher implements RequestMatcherInterface
         return (new IsAdmin($this->siteAccessGroups))->isSatisfiedBy($request->attributes->get('siteaccess'));
     }
 }
-
-class_alias(NonAdminGraphQLRequestMatcher::class, 'EzSystems\EzPlatformGraphQL\Security\NonAdminGraphQLRequestMatcher');

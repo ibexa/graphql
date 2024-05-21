@@ -24,5 +24,3 @@ class MainLocationFilter implements LocationFilter
         }
     }
 }
-
-class_alias(MainLocationFilter::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\MainLocationFilter');

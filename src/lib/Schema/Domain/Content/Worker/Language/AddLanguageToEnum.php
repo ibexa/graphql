@@ -57,5 +57,3 @@ class AddLanguageToEnum implements Worker, Initializer
         return isset($args['Language']) && $args['Language'] instanceof Language;
     }
 }
-
-class_alias(AddLanguageToEnum::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\Language\AddLanguageToEnum');

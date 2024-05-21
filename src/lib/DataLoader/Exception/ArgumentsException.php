@@ -12,5 +12,3 @@ use Exception;
 class ArgumentsException extends Exception
 {
 }
-
-class_alias(ArgumentsException::class, 'EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\Exception\ArgumentsException');

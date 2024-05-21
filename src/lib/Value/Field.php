@@ -33,5 +33,3 @@ class Field extends ApiValues\Content\Field
         return $field === null ? $field : new self(get_object_vars($field));
     }
 }
-
-class_alias(Field::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Value\Field');

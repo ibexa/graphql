@@ -68,5 +68,3 @@ class SearchResolver
         );
     }
 }
-
-class_alias(SearchResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\SearchResolver');

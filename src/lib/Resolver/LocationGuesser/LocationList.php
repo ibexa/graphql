@@ -33,5 +33,3 @@ interface LocationList
 
     public function removeLocation(Location $location): void;
 }
-
-class_alias(LocationList::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationList');

@@ -71,5 +71,3 @@ class SectionMutation
         ];
     }
 }
-
-class_alias(SectionMutation::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\SectionMutation');

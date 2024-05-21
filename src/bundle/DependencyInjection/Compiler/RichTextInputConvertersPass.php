@@ -44,5 +44,3 @@ class RichTextInputConvertersPass implements CompilerPassInterface
         $definition->setArgument('$inputConverters', $handlers);
     }
 }
-
-class_alias(RichTextInputConvertersPass::class, 'EzSystems\EzPlatformGraphQL\DependencyInjection\Compiler\RichTextInputConvertersPass');

@@ -94,5 +94,3 @@ class Item
         return $this->siteaccess;
     }
 }
-
-class_alias(Item::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Value\Item');

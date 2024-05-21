@@ -11,5 +11,3 @@ interface RichTextInputConverter
 {
     public function convertToXml($text): \DOMDocument;
 }
-
-class_alias(RichTextInputConverter::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter');

@@ -112,5 +112,3 @@ class UrlAliasResolver
         );
     }
 }
-
-class_alias(UrlAliasResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\UrlAliasResolver');

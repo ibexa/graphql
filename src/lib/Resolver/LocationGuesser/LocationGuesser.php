@@ -20,5 +20,3 @@ interface LocationGuesser
      */
     public function guessLocation(Content $content): LocationGuess;
 }
-
-class_alias(LocationGuesser::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationGuesser');

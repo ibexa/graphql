@@ -116,5 +116,3 @@ class UploadFiles
         return $content;
     }
 }
-
-class_alias(UploadFiles::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\UploadFiles');

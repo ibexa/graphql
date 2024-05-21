@@ -49,5 +49,3 @@ class CachedContentTypeLoader implements ContentTypeLoader
         return $contentType;
     }
 }
-
-class_alias(CachedContentTypeLoader::class, 'EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\CachedContentTypeLoader');

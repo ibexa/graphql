@@ -39,5 +39,3 @@ class FieldDefinitionResolver
         return $return;
     }
 }
-
-class_alias(FieldDefinitionResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\FieldDefinitionResolver');

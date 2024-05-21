@@ -156,5 +156,3 @@ class DefineItemMutation extends BaseWorker implements Worker, Initializer
         );
     }
 }
-
-class_alias(DefineItemMutation::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\DefineItemMutation');

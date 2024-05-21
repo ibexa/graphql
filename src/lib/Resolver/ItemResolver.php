@@ -174,5 +174,3 @@ final class ItemResolver
         return $converter->denormalize($contentType->identifier) . 'Item';
     }
 }
-
-class_alias(ItemResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\ItemResolver');

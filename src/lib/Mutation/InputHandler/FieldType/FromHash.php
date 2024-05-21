@@ -31,5 +31,3 @@ class FromHash implements FieldTypeInputHandler
         return $this->fieldType->fromHash($input);
     }
 }
-
-class_alias(FromHash::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldType\FromHash');

@@ -55,5 +55,3 @@ abstract class DecoratingFieldDefinitionMapper implements FieldDefinitionMapper
         return $fieldDefinition->fieldTypeIdentifier === $this->getFieldTypeIdentifier();
     }
 }
-
-class_alias(DecoratingFieldDefinitionMapper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DecoratingFieldDefinitionMapper');

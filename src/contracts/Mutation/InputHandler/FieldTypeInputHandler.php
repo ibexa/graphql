@@ -13,5 +13,3 @@ interface FieldTypeInputHandler
 {
     public function toFieldValue($input, $inputFormat = null): Value;
 }
-
-class_alias(FieldTypeInputHandler::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldTypeInputHandler');

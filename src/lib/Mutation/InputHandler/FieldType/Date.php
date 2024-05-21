@@ -32,5 +32,3 @@ class Date extends FromHash implements FieldTypeInputHandler
         );
     }
 }
-
-class_alias(Date::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldType\Date');

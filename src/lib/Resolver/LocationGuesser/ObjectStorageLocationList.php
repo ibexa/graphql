@@ -63,5 +63,3 @@ final class ObjectStorageLocationList implements LocationList
         $this->locations->detach($location);
     }
 }
-
-class_alias(ObjectStorageLocationList::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\ObjectStorageLocationList');

@@ -54,5 +54,3 @@ class LocationGuess
         return count($this->locations) === 1;
     }
 }
-
-class_alias(LocationGuess::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationGuess');

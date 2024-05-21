@@ -48,5 +48,3 @@ class FieldInputHandlersPass implements CompilerPassInterface
         $container->findDefinition(DomainContentMutationResolver::class)->setArgument('$fieldInputHandlers', $handlers);
     }
 }
-
-class_alias(FieldInputHandlersPass::class, 'EzSystems\EzPlatformGraphQL\DependencyInjection\Compiler\FieldInputHandlersPass');

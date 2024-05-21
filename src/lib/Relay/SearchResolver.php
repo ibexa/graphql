@@ -75,5 +75,3 @@ class SearchResolver
         return $connection;
     }
 }
-
-class_alias(SearchResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Relay\SearchResolver');

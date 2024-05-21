@@ -19,5 +19,3 @@ class UploadMap extends ResolverMap
         ];
     }
 }
-
-class_alias(UploadMap::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\Map\UploadMap');

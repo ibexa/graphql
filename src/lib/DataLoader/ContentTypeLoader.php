@@ -18,5 +18,3 @@ interface ContentTypeLoader
 
     public function loadByIdentifier($identifier): ContentType;
 }
-
-class_alias(ContentTypeLoader::class, 'EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\ContentTypeLoader');

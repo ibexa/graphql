@@ -11,5 +11,3 @@ interface SchemaBuilder
 {
     public function build(array &$schema);
 }
-
-class_alias(SchemaBuilder::class, 'EzSystems\EzPlatformGraphQL\Schema\SchemaBuilder');

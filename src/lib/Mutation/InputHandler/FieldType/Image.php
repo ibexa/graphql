@@ -30,5 +30,3 @@ class Image implements FieldTypeInputHandler
         ]);
     }
 }
-
-class_alias(Image::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldType\Image');

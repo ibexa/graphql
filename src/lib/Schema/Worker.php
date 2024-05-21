@@ -22,5 +22,3 @@ interface Worker
      */
     public function canWork(Builder $schema, array $args);
 }
-
-class_alias(Worker::class, 'EzSystems\EzPlatformGraphQL\Schema\Worker');

@@ -52,5 +52,3 @@ class CurrentSiteLocationProvider implements LocationProvider
         return $list;
     }
 }
-
-class_alias(CurrentSiteLocationProvider::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\CurrentSiteLocationProvider');

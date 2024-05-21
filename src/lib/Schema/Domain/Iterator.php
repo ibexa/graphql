@@ -29,5 +29,3 @@ interface Iterator
      */
     public function iterate(): Generator;
 }
-
-class_alias(Iterator::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Iterator');

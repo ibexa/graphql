@@ -52,5 +52,3 @@ class AddItemTypeToItemTypeIdentifierList extends BaseWorker implements Worker, 
         return $canWork;
     }
 }
-
-class_alias(AddItemTypeToItemTypeIdentifierList::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\AddItemTypeToItemTypeIdentifierList');

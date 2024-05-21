@@ -29,5 +29,3 @@ class DateResolver
         }
     }
 }
-
-class_alias(DateResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\DateResolver');

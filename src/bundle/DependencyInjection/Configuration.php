@@ -25,5 +25,3 @@ class Configuration implements ConfigurationInterface
         return new TreeBuilder(IbexaGraphQLExtension::EXTENSION_NAME);
     }
 }
-
-class_alias(Configuration::class, 'EzSystems\EzPlatformGraphQL\DependencyInjection\Configuration');

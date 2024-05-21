@@ -34,5 +34,3 @@ class NoValidLocationsException extends Exception
         return $this->content;
     }
 }
-
-class_alias(NoValidLocationsException::class, 'EzSystems\EzPlatformGraphQL\Exception\NoValidLocationsException');

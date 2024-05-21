@@ -38,5 +38,3 @@ interface ContentLoader
      */
     public function count(Query $query);
 }
-
-class_alias(ContentLoader::class, 'EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\ContentLoader');

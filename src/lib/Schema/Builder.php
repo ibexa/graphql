@@ -54,5 +54,3 @@ interface Builder
      */
     public function hasEnum($enum): bool;
 }
-
-class_alias(Builder::class, 'EzSystems\EzPlatformGraphQL\Schema\Builder');

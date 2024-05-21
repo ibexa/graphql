@@ -76,5 +76,3 @@ class ResolverVariables implements FieldDefinitionMapper
         return $this->innerMapper->mapToFieldValueArgsBuilder($fieldDefinition);
     }
 }
-
-class_alias(ResolverVariables::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ResolverVariables');

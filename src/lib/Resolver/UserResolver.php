@@ -108,5 +108,3 @@ class UserResolver
         return $content->getFieldsByLanguage();
     }
 }
-
-class_alias(UserResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\UserResolver');

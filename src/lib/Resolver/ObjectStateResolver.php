@@ -72,5 +72,3 @@ class ObjectStateResolver
         return $objectStates;
     }
 }
-
-class_alias(ObjectStateResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\ObjectStateResolver');

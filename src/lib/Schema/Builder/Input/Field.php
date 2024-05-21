@@ -26,5 +26,3 @@ class Field extends Input
 
     public $argsBuilder;
 }
-
-class_alias(Field::class, 'EzSystems\EzPlatformGraphQL\Schema\Builder\Input\Field');
