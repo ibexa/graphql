@@ -39,19 +39,7 @@ class ResolverVariables implements FieldDefinitionMapper
     public function mapToFieldValueResolver(FieldDefinition $fieldDefinition): string
     {
         $resolver = $this->innerMapper->mapToFieldValueResolver($fieldDefinition);
-
-        //we make sure no "field" (case insensitive) keyword in the actual field's identifier gets replaced
-        //only syntax like: '@=resolver("MatrixFieldValue", [value, "field_matrix"])' needs to be taken into account
-        //where [value, "field_matrix"] stands for the actual field's identifier
-        if (preg_match('/value, "(.*field.*)"/i', $resolver) !== 1) {
-            $resolver = str_replace(
-                'field',
-                'resolver("ItemFieldValue", [value, "' . $fieldDefinition->identifier . '", args])',
-                $resolver
-            );
-        }
-
-        return str_replace(
+        $resolver = str_replace(
             [
                 'content',
                 'location',
@@ -64,6 +52,19 @@ class ResolverVariables implements FieldDefinitionMapper
             ],
             $resolver
         );
+
+        //we make sure no "field" (case insensitive) keyword in the actual field's identifier gets replaced
+        //only syntax like: '@=resolver("MatrixFieldValue", [value, "field_matrix"])' needs to be taken into account
+        //where [value, "field_matrix"] stands for the actual field's identifier
+        if (preg_match('/value, "(.*field.*)"/i', $resolver) !== 1) {
+            $resolver = str_replace(
+                'field',
+                'resolver("ItemFieldValue", [value, "' . $fieldDefinition->identifier . '", args])',
+                $resolver
+            );
+        }
+
+        return $resolver;
     }
 
     public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
