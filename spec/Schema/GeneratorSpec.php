@@ -99,5 +99,3 @@ class GeneratorSpec extends ObjectBehavior
         $this->generate();
     }
 }
-
-class_alias(GeneratorSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\GeneratorSpec');

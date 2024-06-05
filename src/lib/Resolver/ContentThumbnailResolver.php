@@ -45,5 +45,3 @@ final class ContentThumbnailResolver
         ];
     }
 }
-
-class_alias(ContentThumbnailResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\ContentThumbnailResolver');

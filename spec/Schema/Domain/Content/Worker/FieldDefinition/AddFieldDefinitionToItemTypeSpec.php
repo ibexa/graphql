@@ -106,5 +106,3 @@ class AddFieldDefinitionToItemTypeSpec extends ObjectBehavior
         ]);
     }
 }
-
-class_alias(AddFieldDefinitionToItemTypeSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldDefinitionToItemTypeSpec');

@@ -16,5 +16,3 @@ namespace Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 interface FieldDefinitionInputMapper
 {
 }
-
-class_alias(FieldDefinitionInputMapper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionInputMapper');

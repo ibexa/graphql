@@ -78,5 +78,3 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
         return $this->fieldDefinitionMapper->mapToFieldDefinitionType($args['FieldDefinition']);
     }
 }
-
-class_alias(AddFieldDefinitionToItemType::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldDefinitionToItemType');

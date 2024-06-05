@@ -37,5 +37,3 @@ class AllAllowedLocationProvider implements LocationProvider
         return $list;
     }
 }
-
-class_alias(AllAllowedLocationProvider::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\AllAllowedLocationProvider');

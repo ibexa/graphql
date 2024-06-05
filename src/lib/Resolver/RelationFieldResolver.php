@@ -70,5 +70,3 @@ final class RelationFieldResolver
         }
     }
 }
-
-class_alias(RelationFieldResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\RelationFieldResolver');

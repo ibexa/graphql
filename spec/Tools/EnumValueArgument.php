@@ -30,4 +30,3 @@ class EnumValueArgument
         );
     }
 }
-class_alias(EnumValueArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\EnumValueArgument');

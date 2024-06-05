@@ -49,5 +49,3 @@ class SearchQuerySortByMapper
         return array_filter($sortClauses);
     }
 }
-
-class_alias(SearchQuerySortByMapper::class, 'EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\SearchQuerySortByMapper');

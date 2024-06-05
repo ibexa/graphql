@@ -162,5 +162,3 @@ class SchemaBuilderSpec extends ObjectBehavior
         return $input;
     }
 }
-
-class_alias(SchemaBuilderSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Builder\SchemaBuilderSpec');

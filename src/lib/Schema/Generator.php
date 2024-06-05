@@ -64,5 +64,3 @@ class Generator
         return $this->schema->getSchema();
     }
 }
-
-class_alias(Generator::class, 'EzSystems\EzPlatformGraphQL\Schema\Generator');

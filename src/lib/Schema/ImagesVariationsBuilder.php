@@ -42,5 +42,3 @@ class ImagesVariationsBuilder implements SchemaBuilder
         }
     }
 }
-
-class_alias(ImagesVariationsBuilder::class, 'EzSystems\EzPlatformGraphQL\Schema\ImagesVariationsBuilder');

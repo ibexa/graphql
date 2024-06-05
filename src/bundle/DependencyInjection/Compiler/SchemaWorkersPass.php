@@ -31,5 +31,3 @@ class SchemaWorkersPass implements CompilerPassInterface
         $container->setDefinition(Generator::class, $generatorDefinition);
     }
 }
-
-class_alias(SchemaWorkersPass::class, 'EzSystems\EzPlatformGraphQL\DependencyInjection\Compiler\SchemaWorkersPass');

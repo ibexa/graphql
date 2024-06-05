@@ -61,5 +61,3 @@ class ContentDomainIterator implements Iterator
         }
     }
 }
-
-class_alias(ContentDomainIterator::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\ContentDomainIterator');

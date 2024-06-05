@@ -79,5 +79,3 @@ class NodeResolver
         }
     }
 }
-
-class_alias(NodeResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Relay\NodeResolver');

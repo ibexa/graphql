@@ -66,5 +66,3 @@ class ImageVariationDomain implements Domain\Iterator, Schema\Worker
         return isset($args[self::ARG]['identifier']);
     }
 }
-
-class_alias(ImageVariationDomain::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\ImageVariationDomain');

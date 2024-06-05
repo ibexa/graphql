@@ -15,4 +15,3 @@ class SchemaArgument extends Argument
         );
     }
 }
-class_alias(SchemaArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\SchemaArgument');

@@ -62,5 +62,3 @@ class CachedContentLoader implements ContentLoader
         return $this->innerLoader->count($query);
     }
 }
-
-class_alias(CachedContentLoader::class, 'EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\CachedContentLoader');

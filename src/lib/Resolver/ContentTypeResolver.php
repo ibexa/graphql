@@ -80,5 +80,3 @@ class ContentTypeResolver
         }
     }
 }
-
-class_alias(ContentTypeResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\ContentTypeResolver');

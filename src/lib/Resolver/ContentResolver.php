@@ -121,5 +121,3 @@ class ContentResolver
         return $this->contentService->loadVersionInfo($contentInfo);
     }
 }
-
-class_alias(ContentResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\ContentResolver');

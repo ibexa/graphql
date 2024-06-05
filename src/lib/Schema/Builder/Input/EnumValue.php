@@ -21,5 +21,3 @@ class EnumValue extends Input
 
     public $description;
 }
-
-class_alias(EnumValue::class, 'EzSystems\EzPlatformGraphQL\Schema\Builder\Input\EnumValue');

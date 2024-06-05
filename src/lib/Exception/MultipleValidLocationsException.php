@@ -52,5 +52,3 @@ class MultipleValidLocationsException extends \Exception
         return $this->content;
     }
 }
-
-class_alias(MultipleValidLocationsException::class, 'EzSystems\EzPlatformGraphQL\Exception\MultipleValidLocationsException');

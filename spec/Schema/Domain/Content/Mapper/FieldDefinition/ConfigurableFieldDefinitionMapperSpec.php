@@ -103,5 +103,3 @@ class ConfigurableFieldDefinitionMapperSpec extends ObjectBehavior
         ]);
     }
 }
-
-class_alias(ConfigurableFieldDefinitionMapperSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ConfigurableFieldDefinitionMapperSpec');

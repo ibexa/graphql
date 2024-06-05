@@ -35,5 +35,3 @@ class SelectionFieldDefinitionMapper extends DecoratingFieldDefinitionMapper imp
         return 'ezselection';
     }
 }
-
-class_alias(SelectionFieldDefinitionMapper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\SelectionFieldDefinitionMapper');

@@ -19,5 +19,3 @@ abstract class Input
         }
     }
 }
-
-class_alias(Input::class, 'EzSystems\EzPlatformGraphQL\Schema\Builder\Input\Input');

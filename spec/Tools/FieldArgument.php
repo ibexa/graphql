@@ -38,5 +38,3 @@ class FieldArgument
         );
     }
 }
-
-class_alias(FieldArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\FieldArgument');

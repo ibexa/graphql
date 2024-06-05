@@ -116,5 +116,3 @@ class TreeRootLocationFilter implements LocationFilter
         return array_slice($path, 0, count($rootPath)) === $rootPath;
     }
 }
-
-class_alias(TreeRootLocationFilter::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\TreeRootLocationFilter');

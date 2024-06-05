@@ -19,5 +19,3 @@ interface SchemaProvider
      */
     public function getSchemaConfiguration();
 }
-
-class_alias(SchemaProvider::class, 'EzSystems\EzPlatformGraphQL\DependencyInjection\GraphQL\SchemaProvider');

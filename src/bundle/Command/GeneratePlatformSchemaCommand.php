@@ -107,5 +107,3 @@ class GeneratePlatformSchemaCommand extends Command implements BackwardCompatibl
         return ['ezplatform:graphql:generate-schema'];
     }
 }
-
-class_alias(GeneratePlatformSchemaCommand::class, 'EzSystems\EzPlatformGraphQL\Command\GeneratePlatformSchemaCommand');

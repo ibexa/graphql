@@ -32,5 +32,3 @@ class SchemaGenerator
         return $schema;
     }
 }
-
-class_alias(SchemaGenerator::class, 'EzSystems\EzPlatformGraphQL\Schema\SchemaGenerator');

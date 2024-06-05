@@ -48,5 +48,3 @@ class RichTextResolver
         return strip_tags($html);
     }
 }
-
-class_alias(RichTextResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\RichTextResolver');

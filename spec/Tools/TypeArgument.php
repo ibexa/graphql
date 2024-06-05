@@ -46,4 +46,3 @@ class TypeArgument
         );
     }
 }
-class_alias(TypeArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\TypeArgument');

@@ -57,5 +57,3 @@ class ContentCollectionFilterBuilder
         return new Subtree($includedSubtrees);
     }
 }
-
-class_alias(ContentCollectionFilterBuilder::class, 'EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\ContentCollectionFilterBuilder');

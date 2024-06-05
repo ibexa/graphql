@@ -137,5 +137,3 @@ class SearchLocationLoader implements LocationLoader
         return $this->urlAliasService->lookup($urlAlias);
     }
 }
-
-class_alias(SearchLocationLoader::class, 'EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\SearchLocationLoader');

@@ -53,5 +53,3 @@ class DefineItemSpec extends ContentTypeWorkerBehavior
         $this->work($schema, $this->args());
     }
 }
-
-class_alias(DefineItemSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\DefineItemSpec');

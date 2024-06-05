@@ -16,5 +16,3 @@ class UnsupportedFieldInputFormatException extends InvalidArgumentException
         parent::__construct("Unsupported $fieldType input format $format");
     }
 }
-
-class_alias(UnsupportedFieldInputFormatException::class, 'EzSystems\EzPlatformGraphQL\Exception\UnsupportedFieldInputFormatException');

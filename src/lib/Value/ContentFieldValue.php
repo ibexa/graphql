@@ -55,5 +55,3 @@ class ContentFieldValue extends ValueObject
         return (string)$this->value;
     }
 }
-
-class_alias(ContentFieldValue::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Value\ContentFieldValue');

@@ -24,5 +24,3 @@ class Arg extends Input
 
     public $defaultValue;
 }
-
-class_alias(Arg::class, 'EzSystems\EzPlatformGraphQL\Schema\Builder\Input\Arg');

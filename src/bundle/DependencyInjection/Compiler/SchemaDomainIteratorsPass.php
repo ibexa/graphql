@@ -31,5 +31,3 @@ class SchemaDomainIteratorsPass implements CompilerPassInterface
         $container->setDefinition(Generator::class, $generatorDefinition);
     }
 }
-
-class_alias(SchemaDomainIteratorsPass::class, 'EzSystems\EzPlatformGraphQL\DependencyInjection\Compiler\SchemaDomainIteratorsPass');

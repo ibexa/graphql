@@ -29,5 +29,3 @@ class BinaryFile implements FieldTypeInputHandler
         ]);
     }
 }
-
-class_alias(BinaryFile::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldType\BinaryFile');

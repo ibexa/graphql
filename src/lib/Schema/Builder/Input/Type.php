@@ -28,5 +28,3 @@ class Type extends Input
 
     public $connectionFields = [];
 }
-
-class_alias(Type::class, 'EzSystems\EzPlatformGraphQL\Schema\Builder\Input\Type');

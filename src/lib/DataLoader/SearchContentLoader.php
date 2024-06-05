@@ -86,5 +86,3 @@ class SearchContentLoader implements ContentLoader
         }
     }
 }
-
-class_alias(SearchContentLoader::class, 'EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\SearchContentLoader');

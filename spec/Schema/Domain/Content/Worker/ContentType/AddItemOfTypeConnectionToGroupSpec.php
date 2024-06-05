@@ -96,5 +96,3 @@ class AddItemOfTypeConnectionToGroupSpec extends ContentTypeWorkerBehavior
         $this->work($schema, $this->args());
     }
 }
-
-class_alias(AddItemOfTypeConnectionToGroupSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\AddItemOfTypeConnectionToGroupSpec');

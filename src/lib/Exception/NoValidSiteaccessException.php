@@ -23,5 +23,3 @@ class NoValidSiteaccessException extends Exception
         $this->location = $location;
     }
 }
-
-class_alias(NoValidSiteaccessException::class, 'EzSystems\EzPlatformGraphQL\Exception\NoValidSiteaccessException');

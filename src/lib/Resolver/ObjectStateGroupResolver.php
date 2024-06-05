@@ -43,5 +43,3 @@ class ObjectStateGroupResolver
         return $this->objectStateService->loadObjectStateGroups();
     }
 }
-
-class_alias(ObjectStateGroupResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\ObjectStateGroupResolver');

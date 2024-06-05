@@ -46,5 +46,3 @@ class DefineItemConnection extends BaseWorker implements Worker
         return $this->getNameHelper()->itemName($args['ContentType']);
     }
 }
-
-class_alias(DefineItemConnection::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\DefineItemConnection');

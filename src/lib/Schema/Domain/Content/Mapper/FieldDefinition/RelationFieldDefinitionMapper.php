@@ -93,5 +93,3 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
             && $constraints['RelationListValueValidator']['selectionLimit'] !== 1;
     }
 }
-
-class_alias(RelationFieldDefinitionMapper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\RelationFieldDefinitionMapper');

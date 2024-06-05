@@ -63,5 +63,3 @@ class ConfigurableFieldDefinitionMapper implements FieldDefinitionMapper, FieldD
         return $this->typesMap[$fieldDefinition->fieldTypeIdentifier]['argsBuilder'] ?? null;
     }
 }
-
-class_alias(ConfigurableFieldDefinitionMapper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ConfigurableFieldDefinitionMapper');

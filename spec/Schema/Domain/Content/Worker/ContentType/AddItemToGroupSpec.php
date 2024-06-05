@@ -11,5 +11,3 @@ class AddItemToGroupSpec extends ContentTypeWorkerBehavior
         $this->shouldHaveType(AddItemToGroup::class);
     }
 }
-
-class_alias(AddItemToGroupSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\AddItemToGroupSpec');

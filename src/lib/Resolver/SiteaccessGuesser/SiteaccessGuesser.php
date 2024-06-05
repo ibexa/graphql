@@ -109,5 +109,3 @@ class SiteaccessGuesser
         return (new IsAdmin($this->siteAccessGroups))->isSatisfiedBy($siteaccess);
     }
 }
-
-class_alias(SiteaccessGuesser::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser');

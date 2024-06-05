@@ -43,5 +43,3 @@ class RichText implements FieldTypeInputHandler
         return $fieldValue;
     }
 }
-
-class_alias(RichText::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldType\RichText');

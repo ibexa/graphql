@@ -49,5 +49,3 @@ interface LocationLoader
      */
     public function count(LocationQuery $query);
 }
-
-class_alias(LocationLoader::class, 'EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\LocationLoader');

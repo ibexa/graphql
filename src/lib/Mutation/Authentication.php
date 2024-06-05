@@ -74,5 +74,3 @@ final class Authentication
         return $this->authenticator;
     }
 }
-
-class_alias(Authentication::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\Authentication');

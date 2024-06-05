@@ -55,5 +55,3 @@ class SelectionFieldDefinitionMapperSpec extends ObjectBehavior
         ]);
     }
 }
-
-class_alias(SelectionFieldDefinitionMapperSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\SelectionFieldDefinitionMapperSpec');

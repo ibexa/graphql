@@ -86,5 +86,3 @@ class AddItemToGroup extends BaseWorker implements Worker
         return $this->getNameHelper()->itemName($args['ContentType']);
     }
 }
-
-class_alias(AddItemToGroup::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentType\AddItemToGroup');

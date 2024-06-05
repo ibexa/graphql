@@ -30,5 +30,3 @@ interface FieldDefinitionMapper
      */
     public function mapToFieldValueArgsBuilder(FieldDefinition $fieldDefinition): ?string;
 }
-
-class_alias(FieldDefinitionMapper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper');

@@ -63,5 +63,3 @@ class DefineDomainGroup extends BaseWorker implements Worker
         return $this->getNameHelper()->itemGroupTypesName($args['ContentTypeGroup']);
     }
 }
-
-class_alias(DefineDomainGroup::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentTypeGroup\DefineDomainGroup');

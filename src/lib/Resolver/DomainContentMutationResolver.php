@@ -315,5 +315,3 @@ class DomainContentMutationResolver
         return $this->nameHelper->fieldDefinitionField($fieldDefinition);
     }
 }
-
-class_alias(DomainContentMutationResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\DomainContentMutationResolver');

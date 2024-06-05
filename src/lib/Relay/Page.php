@@ -24,5 +24,3 @@ class Page
         $this->cursor = $cursor;
     }
 }
-
-class_alias(Page::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Relay\Page');

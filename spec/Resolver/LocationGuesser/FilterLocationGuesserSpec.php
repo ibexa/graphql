@@ -78,5 +78,3 @@ class FilterLocationGuesserSpec extends ObjectBehavior
         ];
     }
 }
-
-class_alias(FilterLocationGuesserSpec::class, 'spec\EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\FilterLocationGuesserSpec');

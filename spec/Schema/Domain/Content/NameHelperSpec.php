@@ -35,5 +35,3 @@ class NameHelperSpec extends ObjectBehavior
         $this->fieldDefinitionField($fieldDefinition)->shouldBe('id_');
     }
 }
-
-class_alias(NameHelperSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\NameHelperSpec');

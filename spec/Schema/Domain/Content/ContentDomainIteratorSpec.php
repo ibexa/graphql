@@ -160,5 +160,3 @@ class ContentDomainIteratorSpec extends ObjectBehavior
         );
     }
 }
-
-class_alias(ContentDomainIteratorSpec::class, 'spec\EzSystems\EzPlatformGraphQL\Schema\Domain\Content\ContentDomainIteratorSpec');

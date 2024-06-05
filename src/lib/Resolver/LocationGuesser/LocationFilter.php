@@ -19,5 +19,3 @@ interface LocationFilter
      */
     public function filter(Content $content, LocationList $locationList): void;
 }
-
-class_alias(LocationFilter::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationFilter');

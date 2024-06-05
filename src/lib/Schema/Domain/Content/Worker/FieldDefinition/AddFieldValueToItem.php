@@ -78,5 +78,3 @@ class AddFieldValueToItem extends BaseWorker implements Worker
         return $this->getNameHelper()->fieldDefinitionField($args['FieldDefinition']);
     }
 }
-
-class_alias(AddFieldValueToItem::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldValueToItem');

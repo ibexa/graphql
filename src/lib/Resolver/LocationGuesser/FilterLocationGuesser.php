@@ -50,5 +50,3 @@ class FilterLocationGuesser implements LocationGuesser
         return new LocationGuess($content, $locationList->getLocations());
     }
 }
-
-class_alias(FilterLocationGuesser::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\FilterLocationGuesser');

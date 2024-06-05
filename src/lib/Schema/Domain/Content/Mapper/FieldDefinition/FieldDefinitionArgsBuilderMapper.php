@@ -15,5 +15,3 @@ namespace Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 interface FieldDefinitionArgsBuilderMapper
 {
 }
-
-class_alias(FieldDefinitionArgsBuilderMapper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionArgsBuilderMapper');

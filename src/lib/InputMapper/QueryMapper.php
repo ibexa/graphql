@@ -16,5 +16,3 @@ interface QueryMapper
 
     public function mapInputToQuery(array $inputArray): Query;
 }
-
-class_alias(QueryMapper::class, 'EzSystems\EzPlatformGraphQL\GraphQL\InputMapper\QueryMapper');

@@ -35,5 +35,3 @@ class RepositoryContentTypeLoader implements ContentTypeLoader
         return $this->contentTypeService->loadContentTypeByIdentifier($identifier);
     }
 }
-
-class_alias(RepositoryContentTypeLoader::class, 'EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\RepositoryContentTypeLoader');

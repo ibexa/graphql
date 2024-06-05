@@ -20,4 +20,3 @@ class ContentTypeGroupArgument
         );
     }
 }
-class_alias(ContentTypeGroupArgument::class, 'spec\EzSystems\EzPlatformGraphQL\Tools\ContentTypeGroupArgument');

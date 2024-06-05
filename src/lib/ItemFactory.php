@@ -49,5 +49,3 @@ class ItemFactory
         );
     }
 }
-
-class_alias(ItemFactory::class, 'EzSystems\EzPlatformGraphQL\GraphQL\ItemFactory');

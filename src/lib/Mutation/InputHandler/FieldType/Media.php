@@ -37,5 +37,3 @@ class Media implements FieldTypeInputHandler
         return $value;
     }
 }
-
-class_alias(Media::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldType\Media');

@@ -50,5 +50,3 @@ final class PageAwareConnection
         return $return;
     }
 }
-
-class_alias(PageAwareConnection::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Relay\PageAwareConnection');

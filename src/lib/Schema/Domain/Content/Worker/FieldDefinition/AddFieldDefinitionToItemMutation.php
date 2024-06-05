@@ -101,5 +101,3 @@ class AddFieldDefinitionToItemMutation extends BaseWorker implements Worker
         return $args['FieldDefinition']->getDescription($args['ContentType']->mainLanguageCode);
     }
 }
-
-class_alias(AddFieldDefinitionToItemMutation::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldDefinitionToItemMutation');

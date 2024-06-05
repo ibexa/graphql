@@ -61,5 +61,3 @@ final class AddDomainGroupToDomain extends BaseWorker implements Worker
         return $this->getNameHelper()->itemGroupName($args['ContentTypeGroup']);
     }
 }
-
-class_alias(AddDomainGroupToDomain::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Worker\ContentTypeGroup\AddDomainGroupToDomain');

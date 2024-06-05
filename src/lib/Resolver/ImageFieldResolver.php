@@ -122,5 +122,3 @@ class ImageFieldResolver
         return $idArray;
     }
 }
-
-class_alias(ImageFieldResolver::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\ImageFieldResolver');

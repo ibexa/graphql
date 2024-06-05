@@ -25,5 +25,3 @@ class ItemArgsBuilder implements MappingInterface
         ];
     }
 }
-
-class_alias(ItemArgsBuilder::class, 'EzSystems\EzPlatformGraphQL\Overblog\ArgsBuilder\ItemArgsBuilder');

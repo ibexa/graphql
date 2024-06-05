@@ -38,5 +38,3 @@ class DefaultFieldDefinitionMapper implements FieldDefinitionMapper
         return null;
     }
 }
-
-class_alias(DefaultFieldDefinitionMapper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\DefaultFieldDefinitionMapper');

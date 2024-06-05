@@ -23,5 +23,3 @@ class RelationList extends FromHash implements FieldTypeInputHandler
         );
     }
 }
-
-class_alias(RelationList::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldType\RelationList');
