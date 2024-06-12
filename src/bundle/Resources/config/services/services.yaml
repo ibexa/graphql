@@ -50,3 +50,12 @@ services:
             $contentLoader: '@Ibexa\GraphQL\DataLoader\ContentLoader'
         tags:
             - { name: ibexa.field_type.image_asset.mapper.strategy, priority: 0 }
+
+    Ibexa\GraphQL\Security\JWTAuthenticator:
+        arguments:
+            $userProvider: '@ibexa.security.user_provider'
+
+    Ibexa\GraphQL\Security\JWTTokenMutationFormatEventSubscriber:
+        tags:
+            - name: kernel.event_subscriber
+              dispatcher: security.event_dispatcher.ibexa_jwt_graphql

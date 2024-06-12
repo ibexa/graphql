@@ -16,16 +16,19 @@ use Symfony\Component\HttpFoundation\RequestMatcherInterface;
  * Security request matcher that excludes admin+graphql requests.
  * Needed because the admin uses GraphQL without a JWT.
  */
-class NonAdminGraphQLRequestMatcher implements RequestMatcherInterface
+final readonly class NonAdminGraphQLRequestMatcher implements RequestMatcherInterface
 {
-    /** @var string[][] */
-    private $siteAccessGroups;
-
-    public function __construct(array $siteAccessGroups)
-    {
-        $this->siteAccessGroups = $siteAccessGroups;
+    /**
+     * @param string[][] $siteAccessGroups
+     */
+    public function __construct(
+        private array $siteAccessGroups
+    ) {
     }
 
+    /**
+     * @throws \Ibexa\AdminUi\Exception\InvalidArgumentException
+     */
     public function matches(Request $request): bool
     {
         return

@@ -62,12 +62,6 @@ services:
         tags:
             - { name: overblog_graphql.resolver, alias: "Thumbnail", method: "resolveThumbnail" }
 
-    Ibexa\GraphQL\Mutation\Authentication:
-        arguments:
-            $authenticator: '@?ibexa.rest.session_authenticator'
-        tags:
-            - { name: overblog_graphql.mutation, alias: "CreateToken", method: "createToken" }
-
     Ibexa\GraphQL\Mutation\UploadFiles:
         arguments:
             $repository: '@ibexa.siteaccessaware.repository'
