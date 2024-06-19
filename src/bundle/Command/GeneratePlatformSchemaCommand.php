@@ -7,7 +7,6 @@
 
 namespace Ibexa\Bundle\GraphQL\Command;
 
-use Ibexa\Bundle\Core\Command\BackwardCompatibleCommand;
 use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\GraphQL\Schema\Generator;
 use Symfony\Component\Console\Command\Command;
@@ -18,7 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Yaml;
 
-class GeneratePlatformSchemaCommand extends Command implements BackwardCompatibleCommand
+class GeneratePlatformSchemaCommand extends Command
 {
     /**
      * @var \Ibexa\GraphQL\Schema\Generator
@@ -97,13 +96,5 @@ class GeneratePlatformSchemaCommand extends Command implements BackwardCompatibl
     {
         $command = $this->getApplication()->find('graphql:compile');
         $command->run(new StringInput('graphql:compile'), $output);
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getDeprecatedAliases(): array
-    {
-        return ['ezplatform:graphql:generate-schema'];
     }
 }
