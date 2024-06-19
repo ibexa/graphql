@@ -35,8 +35,6 @@ class SearchContentLoader implements ContentLoader
      *
      * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query $query A Query Criterion. To use multiple criteria, group them with a LogicalAnd.
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
-     *
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      */
     public function find(Query $query): array
