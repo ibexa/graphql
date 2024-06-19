@@ -35,6 +35,8 @@ class SearchContentLoader implements ContentLoader
      *
      * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query $query A Query Criterion. To use multiple criteria, group them with a LogicalAnd.
      *
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
+     *
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      */
     public function find(Query $query): array
@@ -51,15 +53,14 @@ class SearchContentLoader implements ContentLoader
      * Loads a single content item given a Query Criterion.
      *
      * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion $filter A Query Criterion. Use Criterion\ContentId, Criterion\RemoteId or Criterion\LocationId for basic loading.
-     *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content
-     *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
      */
     public function findSingle(Criterion $filter): Content
     {
-        return $this->searchService->findSingle($filter);
+        try {
+            return $this->searchService->findSingle($filter);
+        } catch (ApiException\NotFoundException|ApiException\InvalidArgumentException $e) {
+            throw new ArgumentsException($e->getMessage(), $e->getCode(), $e);
+        }
     }
 
     /**
