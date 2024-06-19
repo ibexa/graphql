@@ -1,0 +1,2366 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot call method find\\(\\) on Symfony\\\\Component\\\\Console\\\\Application\\|null\\.$#"
+			count: 1
+			path: src/bundle/Command/GeneratePlatformSchemaCommand.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\Command\\\\GeneratePlatformSchemaCommand\\:\\:compileTypes\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/Command/GeneratePlatformSchemaCommand.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\Command\\\\GeneratePlatformSchemaCommand\\:\\:configure\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/Command/GeneratePlatformSchemaCommand.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\Compiler\\\\FieldInputHandlersPass\\:\\:process\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/FieldInputHandlersPass.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\Compiler\\\\RichTextInputConvertersPass\\:\\:process\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/RichTextInputConvertersPass.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\Compiler\\\\SchemaDomainIteratorsPass\\:\\:process\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/SchemaDomainIteratorsPass.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\Compiler\\\\SchemaWorkersPass\\:\\:process\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/SchemaWorkersPass.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\GraphQL\\\\SchemaProvider\\:\\:getSchemaConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/GraphQL/SchemaProvider.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\GraphQL\\\\YamlSchemaProvider\\:\\:__construct\\(\\) has parameter \\$graphQLConfigRoot with no type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/GraphQL/YamlSchemaProvider.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\GraphQL\\\\YamlSchemaProvider\\:\\:getAppMutationSchemaFile\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/GraphQL/YamlSchemaProvider.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\GraphQL\\\\YamlSchemaProvider\\:\\:getAppQuerySchema\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/GraphQL/YamlSchemaProvider.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\GraphQL\\\\YamlSchemaProvider\\:\\:getMutationSchema\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/GraphQL/YamlSchemaProvider.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\GraphQL\\\\YamlSchemaProvider\\:\\:getPlatformMutationSchema\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/GraphQL/YamlSchemaProvider.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\GraphQL\\\\YamlSchemaProvider\\:\\:getPlatformQuerySchema\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/GraphQL/YamlSchemaProvider.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\GraphQL\\\\YamlSchemaProvider\\:\\:getQuerySchema\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/GraphQL/YamlSchemaProvider.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\GraphQL\\\\YamlSchemaProvider\\:\\:getSchemaConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/GraphQL/YamlSchemaProvider.php
+
+		-
+			message: "#^Binary operation \"\\.\" between array\\|bool\\|float\\|int\\|string\\|null and '/config/graphql…' results in an error\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
+
+		-
+			message: "#^Binary operation \"\\.\" between array\\|bool\\|float\\|int\\|string\\|null and '/src/bundle…' results in an error\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\IbexaGraphQLExtension\\:\\:getGraphQLConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\IbexaGraphQLExtension\\:\\:load\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\IbexaGraphQLExtension\\:\\:prepend\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
+
+		-
+			message: "#^Parameter \\#1 \\$configDir of method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\IbexaGraphQLExtension\\:\\:getGraphQLConfig\\(\\) expects string, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function rtrim expects string, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			count: 1
+			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
+
+		-
+			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\IbexaGraphQLBundle\\:\\:build\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/bundle/IbexaGraphQLBundle.php
+
+		-
+			message: "#^Method Ibexa\\\\Contracts\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\RichText\\\\RichTextInputConverter\\:\\:convertToXml\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/contracts/Mutation/InputHandler/FieldType/RichText/RichTextInputConverter.php
+
+		-
+			message: "#^Method Ibexa\\\\Contracts\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldTypeInputHandler\\:\\:toFieldValue\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/contracts/Mutation/InputHandler/FieldTypeInputHandler.php
+
+		-
+			message: "#^Method Ibexa\\\\Contracts\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldTypeInputHandler\\:\\:toFieldValue\\(\\) has parameter \\$inputFormat with no type specified\\.$#"
+			count: 1
+			path: src/contracts/Mutation/InputHandler/FieldTypeInputHandler.php
+
+		-
+			message: "#^Cannot access offset 0 on array\\<bool\\|float\\|int\\|string\\>\\|bool\\|float\\|int\\|string\\.$#"
+			count: 1
+			path: src/lib/DataLoader/CachedContentLoader.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\DataLoader\\\\CachedContentLoader\\:\\:\\$loadedItems has no type specified\\.$#"
+			count: 1
+			path: src/lib/DataLoader/CachedContentLoader.php
+
+		-
+			message: "#^Cannot access offset mixed on Ibexa\\\\GraphQL\\\\DataLoader\\\\ContentTypeLoader\\.$#"
+			count: 2
+			path: src/lib/DataLoader/CachedContentTypeLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\CachedContentTypeLoader\\:\\:load\\(\\) has parameter \\$contentTypeId with no type specified\\.$#"
+			count: 1
+			path: src/lib/DataLoader/CachedContentTypeLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\CachedContentTypeLoader\\:\\:loadByIdentifier\\(\\) has parameter \\$identifier with no type specified\\.$#"
+			count: 1
+			path: src/lib/DataLoader/CachedContentTypeLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\ContentTypeLoader\\:\\:load\\(\\) has parameter \\$contentTypeId with no type specified\\.$#"
+			count: 1
+			path: src/lib/DataLoader/ContentTypeLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\ContentTypeLoader\\:\\:loadByIdentifier\\(\\) has parameter \\$identifier with no type specified\\.$#"
+			count: 1
+			path: src/lib/DataLoader/ContentTypeLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\RepositoryContentTypeLoader\\:\\:load\\(\\) has parameter \\$contentTypeId with no type specified\\.$#"
+			count: 1
+			path: src/lib/DataLoader/RepositoryContentTypeLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\RepositoryContentTypeLoader\\:\\:loadByIdentifier\\(\\) has parameter \\$identifier with no type specified\\.$#"
+			count: 1
+			path: src/lib/DataLoader/RepositoryContentTypeLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchContentLoader\\:\\:count\\(\\) should return int but returns int\\|null\\.$#"
+			count: 1
+			path: src/lib/DataLoader/SearchContentLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchContentLoader\\:\\:find\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Content\\> but returns array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ValueObject\\>\\.$#"
+			count: 1
+			path: src/lib/DataLoader/SearchContentLoader.php
+
+		-
+			message: "#^Dead catch \\- Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Exceptions\\\\InvalidArgumentException is never thrown in the try block\\.$#"
+			count: 2
+			path: src/lib/DataLoader/SearchLocationLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchLocationLoader\\:\\:count\\(\\) should return int but returns int\\|null\\.$#"
+			count: 1
+			path: src/lib/DataLoader/SearchLocationLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchLocationLoader\\:\\:find\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location\\> but returns array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ValueObject\\>\\.$#"
+			count: 1
+			path: src/lib/DataLoader/SearchLocationLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchLocationLoader\\:\\:findByUrlAlias\\(\\) should return Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location but returns Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location\\|null\\.$#"
+			count: 1
+			path: src/lib/DataLoader/SearchLocationLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchLocationLoader\\:\\:getUrlAlias\\(\\) has parameter \\$pathinfo with no type specified\\.$#"
+			count: 1
+			path: src/lib/DataLoader/SearchLocationLoader.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$query with type Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Query is not subtype of native type Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\LocationQuery\\.$#"
+			count: 1
+			path: src/lib/DataLoader/SearchLocationLoader.php
+
+		-
+			message: "#^Parameter \\#1 \\$locationId of method Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\LocationService\\:\\:loadLocation\\(\\) expects int, string given\\.$#"
+			count: 1
+			path: src/lib/DataLoader/SearchLocationLoader.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Exception\\\\NoValidLocationsException\\:\\:getContent\\(\\) should return Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Content but returns array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Content\\>\\|Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Content\\.$#"
+			count: 1
+			path: src/lib/Exception/NoValidLocationsException.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Exception\\\\NoValidSiteaccessException\\:\\:\\$location is never read, only written\\.$#"
+			count: 1
+			path: src/lib/Exception/NoValidSiteaccessException.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Exception\\\\UnsupportedFieldInputFormatException\\:\\:__construct\\(\\) has parameter \\$fieldType with no type specified\\.$#"
+			count: 1
+			path: src/lib/Exception/UnsupportedFieldInputFormatException.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Exception\\\\UnsupportedFieldInputFormatException\\:\\:__construct\\(\\) has parameter \\$format with no type specified\\.$#"
+			count: 1
+			path: src/lib/Exception/UnsupportedFieldInputFormatException.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Exception\\\\UnsupportedFieldTypeException\\:\\:__construct\\(\\) has parameter \\$fieldType with no type specified\\.$#"
+			count: 1
+			path: src/lib/Exception/UnsupportedFieldTypeException.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Exception\\\\UnsupportedFieldTypeException\\:\\:__construct\\(\\) has parameter \\$operation with no type specified\\.$#"
+			count: 1
+			path: src/lib/Exception/UnsupportedFieldTypeException.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\QueryMapper\\:\\:mapInputToLocationQuery\\(\\) has parameter \\$inputArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/InputMapper/QueryMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\QueryMapper\\:\\:mapInputToQuery\\(\\) has parameter \\$inputArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/InputMapper/QueryMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\SearchQueryMapper\\:\\:mapDateMetadata\\(\\) has parameter \\$dateMetadata with no type specified\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQueryMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\SearchQueryMapper\\:\\:mapDateMetadata\\(\\) has parameter \\$queryArg with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQueryMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\SearchQueryMapper\\:\\:mapInput\\(\\) has parameter \\$inputArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQueryMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\SearchQueryMapper\\:\\:mapInput\\(\\) has parameter \\$query with no type specified\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQueryMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\SearchQueryMapper\\:\\:mapInputToFieldCriterion\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQueryMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\SearchQueryMapper\\:\\:mapInputToFieldCriterion\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQueryMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\SearchQueryMapper\\:\\:mapInputToLocationQuery\\(\\) has parameter \\$inputArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQueryMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\SearchQueryMapper\\:\\:mapInputToQuery\\(\\) has parameter \\$inputArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQueryMapper.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between int\\<1, max\\> and 0 will always evaluate to false\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQueryMapper.php
+
+		-
+			message: "#^Variable \\$value might not be defined\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQueryMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\InputMapper\\\\SearchQuerySortByMapper\\:\\:mapInputToSortClauses\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\URL\\\\Query\\\\SortClause\\> but returns array\\<object\\>\\.$#"
+			count: 1
+			path: src/lib/InputMapper/SearchQuerySortByMapper.php
+
+		-
+			message: "#^Access to an undefined property Ibexa\\\\Core\\\\FieldType\\\\ImageAsset\\\\Value\\:\\:\\$source\\.$#"
+			count: 1
+			path: src/lib/Mapper/ContentImageAssetMapperStrategy.php
+
+		-
+			message: "#^Cannot access property \\$attributes on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
+			count: 2
+			path: src/lib/Mutation/Authentication.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\Authentication\\:\\:createToken\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/Authentication.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\Authentication\\:\\:createToken\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Mutation/Authentication.php
+
+		-
+			message: "#^Parameter \\#1 \\$request of method Ibexa\\\\Core\\\\MVC\\\\Symfony\\\\Security\\\\Authentication\\\\AuthenticatorInterface\\:\\:authenticate\\(\\) expects Symfony\\\\Component\\\\HttpFoundation\\\\Request, Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null given\\.$#"
+			count: 1
+			path: src/lib/Mutation/Authentication.php
+
+		-
+			message: "#^Parameter \\#1 \\$wrappedUser of class Ibexa\\\\GraphQL\\\\Security\\\\JWTUser constructor expects Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface, Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\|null given\\.$#"
+			count: 1
+			path: src/lib/Mutation/Authentication.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\BinaryFile\\:\\:toFieldValue\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/BinaryFile.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\BinaryFile\\:\\:toFieldValue\\(\\) has parameter \\$inputFormat with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/BinaryFile.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\BinaryFile\\:\\:toFieldValue\\(\\) should return Ibexa\\\\Contracts\\\\Core\\\\FieldType\\\\Value but returns null\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/BinaryFile.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\Date\\:\\:toFieldValue\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/Date.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\Date\\:\\:toFieldValue\\(\\) has parameter \\$inputFormat with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/Date.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\FromHash\\:\\:toFieldValue\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/FromHash.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\FromHash\\:\\:toFieldValue\\(\\) has parameter \\$inputFormat with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/FromHash.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\Image\\:\\:toFieldValue\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/Image.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\Image\\:\\:toFieldValue\\(\\) has parameter \\$inputFormat with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/Image.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\Image\\:\\:toFieldValue\\(\\) should return Ibexa\\\\Contracts\\\\Core\\\\FieldType\\\\Value but returns null\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/Image.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\Media\\:\\:toFieldValue\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/Media.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\Media\\:\\:toFieldValue\\(\\) has parameter \\$inputFormat with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/Media.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\Media\\:\\:toFieldValue\\(\\) should return Ibexa\\\\Contracts\\\\Core\\\\FieldType\\\\Value but returns null\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/Media.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\Relation\\:\\:toFieldValue\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/Relation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\Relation\\:\\:toFieldValue\\(\\) has parameter \\$inputFormat with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/Relation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\RelationList\\:\\:toFieldValue\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/RelationList.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\RelationList\\:\\:toFieldValue\\(\\) has parameter \\$inputFormat with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/RelationList.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\RichText\\:\\:__construct\\(\\) has parameter \\$inputConverters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/RichText.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\RichText\\:\\:toFieldValue\\(\\) has parameter \\$input with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/RichText.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\RichText\\\\HtmlRichTextConverter\\:\\:convertToXml\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/RichText/HtmlRichTextConverter.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\RichText\\\\MarkdownRichTextConverter\\:\\:convertToXml\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/RichText/MarkdownRichTextConverter.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\RichText\\\\MarkdownRichTextConverter\\:\\:\\$markdownConverter \\(Ibexa\\\\Contracts\\\\FieldTypeRichText\\\\RichText\\\\Converter\\) does not accept Parsedown\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/RichText/MarkdownRichTextConverter.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\RichText\\\\MarkdownRichTextConverter\\:\\:\\$markdownConverter is never read, only written\\.$#"
+			count: 1
+			path: src/lib/Mutation/InputHandler/FieldType/RichText/MarkdownRichTextConverter.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\SectionMutation\\:\\:createSection\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/SectionMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\SectionMutation\\:\\:createSection\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/SectionMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\SectionMutation\\:\\:deleteSection\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/SectionMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\SectionMutation\\:\\:deleteSection\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/SectionMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\SectionMutation\\:\\:mapSectionToPayLoad\\(\\) has parameter \\$section with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/SectionMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\SectionMutation\\:\\:mapSectionToPayLoad\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/SectionMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\SectionMutation\\:\\:mapSectionToPayLoad\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Mutation/SectionMutation.php
+
+		-
+			message: "#^Cannot access property \\$fieldTypeIdentifier on Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ContentType\\\\FieldDefinition\\|null\\.$#"
+			count: 1
+			path: src/lib/Mutation/UploadFiles.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\UploadFiles\\:\\:createContent\\(\\) has parameter \\$languageCode with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/UploadFiles.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\UploadFiles\\:\\:createContent\\(\\) has parameter \\$locationId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/UploadFiles.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\UploadFiles\\:\\:createContent\\(\\) has parameter \\$mapping with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Mutation/UploadFiles.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\UploadFiles\\:\\:mapAgainstConfig\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/UploadFiles.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\UploadFiles\\:\\:mapAgainstConfig\\(\\) has parameter \\$mimeType with no type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/UploadFiles.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\UploadFiles\\:\\:uploadFiles\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Mutation/UploadFiles.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Overblog\\\\ArgsBuilder\\\\ItemArgsBuilder\\:\\:toMappingDefinition\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Overblog/ArgsBuilder/ItemArgsBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Overblog\\\\ArgsBuilder\\\\ItemArgsBuilder\\:\\:toMappingDefinition\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Overblog/ArgsBuilder/ItemArgsBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\NodeResolver\\:\\:resolveNode\\(\\) has parameter \\$globalId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Relay/NodeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\NodeResolver\\:\\:resolveType\\(\\) has parameter \\$object with no type specified\\.$#"
+			count: 1
+			path: src/lib/Relay/NodeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\NodeResolver\\:\\:resolveType\\(\\) should return GraphQL\\\\Type\\\\Definition\\\\Type but return statement is missing\\.$#"
+			count: 1
+			path: src/lib/Relay/NodeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\NodeResolver\\:\\:resolveType\\(\\) should return GraphQL\\\\Type\\\\Definition\\\\Type but returns GraphQL\\\\Type\\\\Definition\\\\Type\\|null\\.$#"
+			count: 1
+			path: src/lib/Relay/NodeResolver.php
+
+		-
+			message: "#^Access to protected property Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection\\:\\:\\$edges\\.$#"
+			count: 1
+			path: src/lib/Relay/PageAwareConnection.php
+
+		-
+			message: "#^Access to protected property Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection\\:\\:\\$pageInfo\\.$#"
+			count: 1
+			path: src/lib/Relay/PageAwareConnection.php
+
+		-
+			message: "#^Access to protected property Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection\\:\\:\\$totalCount\\.$#"
+			count: 1
+			path: src/lib/Relay/PageAwareConnection.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\PageAwareConnection\\:\\:__construct\\(\\) has parameter \\$edges with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Relay/PageAwareConnection.php
+
+		-
+			message: "#^Parameter \\#2 \\$pageInfo of class Ibexa\\\\GraphQL\\\\Relay\\\\PageAwareConnection constructor expects Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\PageInfoInterface, Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\PageInfoInterface\\|null given\\.$#"
+			count: 1
+			path: src/lib/Relay/PageAwareConnection.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Relay\\\\PageAwareConnection\\:\\:\\$totalCount \\(int\\) does not accept GraphQL\\\\Executor\\\\Promise\\\\Promise\\|int\\|null\\.$#"
+			count: 1
+			path: src/lib/Relay/PageAwareConnection.php
+
+		-
+			message: "#^Access to an undefined property Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\ConnectionInterface\\:\\:\\$sliceSize\\.$#"
+			count: 1
+			path: src/lib/Relay/SearchResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\SearchResolver\\:\\:searchContent\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Relay/SearchResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\SearchResolver\\:\\:searchContent\\(\\) should return Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection but returns Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\ConnectionInterface\\.$#"
+			count: 1
+			path: src/lib/Relay/SearchResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\SearchResolver\\:\\:searchContent\\(\\) should return Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection but returns null\\.$#"
+			count: 1
+			path: src/lib/Relay/SearchResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:findContentByType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:findContentByType\\(\\) has parameter \\$contentTypeId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:findContentRelations\\(\\) has parameter \\$version with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:findContentRelations\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Relation\\> but returns iterable\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Relation\\>\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:findContentReverseRelations\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:resolveContent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:resolveContent\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:resolveContentById\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:resolveContentById\\(\\) has parameter \\$contentId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:resolveContentByIdList\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:resolveContentByIdList\\(\\) has parameter \\$contentIdList with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:resolveContentVersions\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:resolveContentVersions\\(\\) has parameter \\$contentId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:\\$contentTypeService is never read, only written\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentThumbnailResolver\\:\\:resolveContentThumbnail\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentThumbnailResolver.php
+
+		-
+			message: "#^Parameter \\#2 \\$fields of method Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Strategy\\\\ContentThumbnail\\\\ThumbnailStrategy\\:\\:getThumbnail\\(\\) expects array, iterable\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Field\\> given\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentThumbnailResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentTypeResolver\\:\\:resolveContentType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentTypeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentTypeResolver\\:\\:resolveContentType\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentTypeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentTypeResolver\\:\\:resolveContentTypeById\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentTypeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentTypeResolver\\:\\:resolveContentTypeById\\(\\) has parameter \\$contentTypeId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentTypeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentTypeResolver\\:\\:resolveContentTypeGroupByIdentifier\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentTypeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentTypeResolver\\:\\:resolveContentTypeGroupByIdentifier\\(\\) has parameter \\$identifier with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentTypeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentTypeResolver\\:\\:resolveContentTypesFromGroup\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentTypeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentTypeResolver\\:\\:resolveContentTypesFromGroup\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ContentType\\\\ContentType\\> but returns iterable\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ContentType\\\\ContentType\\>\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentTypeResolver.php
+
+		-
+			message: "#^Parameter \\#2 \\.\\.\\.\\$arrays of function array_merge expects array, iterable\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ContentType\\\\ContentType\\> given\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentTypeResolver.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\ContentTypeResolver\\:\\:\\$typeResolver is never read, only written\\.$#"
+			count: 1
+			path: src/lib/Resolver/ContentTypeResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DateResolver\\:\\:resolveDateToFormat\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DateResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DateResolver\\:\\:resolveDateToFormat\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DateResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DateResolver\\:\\:resolveDateToFormat\\(\\) has parameter \\$date with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DateResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:__construct\\(\\) has parameter \\$fieldInputHandlers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:createDomainContent\\(\\) has parameter \\$contentTypeIdentifier with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:createDomainContent\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:createDomainContent\\(\\) has parameter \\$language with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:createDomainContent\\(\\) has parameter \\$parentLocationId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:deleteDomainContent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:getInputFieldValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:getInputFieldValue\\(\\) has parameter \\$fieldInput with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:getLocationService\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:makeDomainContentTypeName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:renderFieldValidationErrors\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:resolveDomainContentType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:updateDomainContent\\(\\) has parameter \\$input with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:updateDomainContent\\(\\) has parameter \\$language with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentMutationResolver\\:\\:updateDomainContent\\(\\) has parameter \\$versionNo with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentMutationResolver.php
+
+		-
+			message: "#^Call to method mapInputToQuery\\(\\) on an unknown class Ibexa\\\\GraphQL\\\\Resolver\\\\SearchQueryMapper\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Cannot access offset 0 on iterable\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\URLAlias\\>\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:getContentIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:makeDomainContentTypeName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainContentItem\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainContentItems\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainContentItems\\(\\) has parameter \\$contentTypeIdentifier with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainContentItems\\(\\) has parameter \\$query with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainContentType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainFieldValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainFieldValue\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainFieldValue\\(\\) has parameter \\$fieldDefinitionIdentifier with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainRelationFieldValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainRelationFieldValue\\(\\) has parameter \\$multiple with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveMainUrlAlias\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Parameter \\#1 \\$locationId of method Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\LocationService\\:\\:loadLocation\\(\\) expects int, int\\|null given\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:\\$queryMapper \\(Ibexa\\\\GraphQL\\\\Resolver\\\\SearchQueryMapper\\) does not accept Ibexa\\\\GraphQL\\\\InputMapper\\\\QueryMapper\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:\\$queryMapper has unknown class Ibexa\\\\GraphQL\\\\Resolver\\\\SearchQueryMapper as its type\\.$#"
+			count: 1
+			path: src/lib/Resolver/DomainContentResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\FieldDefinitionResolver\\:\\:resolveFieldDefinitionDescription\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/FieldDefinitionResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\FieldDefinitionResolver\\:\\:resolveFieldDefinitionDescription\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/FieldDefinitionResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\FieldDefinitionResolver\\:\\:resolveFieldDefinitionName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/FieldDefinitionResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\FieldDefinitionResolver\\:\\:resolveFieldDefinitionName\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/FieldDefinitionResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\FieldDefinitionResolver\\:\\:resolveSelectionFieldDefinitionOptions\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/FieldDefinitionResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\FieldDefinitionResolver\\:\\:resolveSelectionFieldDefinitionOptions\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/FieldDefinitionResolver.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\ImageAssetFieldResolver\\:\\:\\$strategies has no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ImageAssetFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ImageFieldResolver\\:\\:decomposeImageId\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/ImageFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ImageFieldResolver\\:\\:getImageField\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/ImageFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ImageFieldResolver\\:\\:resolveImageVariation\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ImageFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ImageFieldResolver\\:\\:resolveImageVariation\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ImageFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ImageFieldResolver\\:\\:resolveImageVariations\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ImageFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ImageFieldResolver\\:\\:resolveImageVariations\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ImageFieldResolver.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\[Content, Field\\]\\)\\: Unexpected token \"\\[\", expected type at offset 19$#"
+			count: 1
+			path: src/lib/Resolver/ImageFieldResolver.php
+
+		-
+			message: "#^PHPDoc tag @var has invalid value \\(\\$field \\\\Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Field\\)\\: Unexpected token \"\\$field\", expected type at offset 9$#"
+			count: 1
+			path: src/lib/Resolver/ImageFieldResolver.php
+
+		-
+			message: "#^Variable \\$field might not be defined\\.$#"
+			count: 3
+			path: src/lib/Resolver/ImageFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ItemResolver\\:\\:resolveItem\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/ItemResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ItemResolver\\:\\:resolveItemFieldValue\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ItemResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ItemResolver\\:\\:resolveItemFieldValue\\(\\) has parameter \\$fieldDefinitionIdentifier with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ItemResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ItemResolver\\:\\:resolveItemOfType\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/ItemResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ItemResolver\\:\\:resolveItemsOfTypeAsConnection\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/ItemResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ItemResolver\\:\\:resolveItemsOfTypeAsConnection\\(\\) should return Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection but returns GraphQL\\\\Executor\\\\Promise\\\\Promise\\|Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection\\.$#"
+			count: 1
+			path: src/lib/Resolver/ItemResolver.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\ItemResolver\\:\\:\\$contentTypeLoader is never read, only written\\.$#"
+			count: 1
+			path: src/lib/Resolver/ItemResolver.php
+
+		-
+			message: "#^Parameter \\#1 \\$location of method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\ObjectStorageLocationList\\:\\:addLocation\\(\\) expects Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location, Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ValueObject given\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationGuesser/CurrentSiteLocationProvider.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\FilterLocationGuesser\\:\\:__construct\\(\\) has parameter \\$filters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationGuesser/FilterLocationGuesser.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\LocationGuess\\:\\:__construct\\(\\) has parameter \\$locations with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationGuesser/LocationGuess.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\ObjectStorageLocationList\\:\\:getLocation\\(\\) should return Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location but returns object\\|false\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationGuesser/ObjectStorageLocationList.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\ObjectStorageLocationList\\:\\:getLocations\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location\\> but returns array\\<int, object\\>\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationGuesser/ObjectStorageLocationList.php
+
+		-
+			message: "#^Parameter \\#2 \\$locations of class Ibexa\\\\GraphQL\\\\Exception\\\\MultipleValidLocationsException constructor expects array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location\\>, array\\<int, object\\> given\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationGuesser/ObjectStorageLocationList.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\ObjectStorageLocationList\\:\\:\\$locations with generic class SplObjectStorage does not specify its types\\: TObject, TData$#"
+			count: 1
+			path: src/lib/Resolver/LocationGuesser/ObjectStorageLocationList.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\TreeRootLocationFilter\\:\\:containsRootPath\\(\\) has parameter \\$path with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationGuesser/TreeRootLocationFilter.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\TreeRootLocationFilter\\:\\:containsRootPath\\(\\) has parameter \\$rootPath with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationGuesser/TreeRootLocationFilter.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationResolver\\:\\:resolveLocation\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationResolver\\:\\:resolveLocation\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationResolver\\:\\:resolveLocationById\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationResolver\\:\\:resolveLocationById\\(\\) has parameter \\$locationId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationResolver\\:\\:resolveLocationsByContentId\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationResolver\\:\\:resolveLocationsByContentId\\(\\) has parameter \\$contentId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationResolver.php
+
+		-
+			message: "#^PHPDoc tag @return with type Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection is incompatible with native type Ibexa\\\\GraphQL\\\\Relay\\\\PageAwareConnection\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationResolver.php
+
+		-
+			message: "#^Parameter \\#1 \\$connection of static method Ibexa\\\\GraphQL\\\\Relay\\\\PageAwareConnection\\:\\:fromConnection\\(\\) expects Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection, GraphQL\\\\Executor\\\\Promise\\\\Promise\\|Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection given\\.$#"
+			count: 1
+			path: src/lib/Resolver/LocationResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ObjectStateGroupResolver\\:\\:resolveObjectStateGroups\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ObjectState\\\\ObjectStateGroup\\> but returns iterable\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ObjectState\\\\ObjectStateGroup\\>\\.$#"
+			count: 1
+			path: src/lib/Resolver/ObjectStateGroupResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ObjectStateResolver\\:\\:resolveObjectStatesByGroup\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ObjectState\\\\ObjectState\\> but returns iterable\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ObjectState\\\\ObjectState\\>\\.$#"
+			count: 1
+			path: src/lib/Resolver/ObjectStateResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ObjectStateResolver\\:\\:resolveObjectStatesByGroupId\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ObjectState\\\\ObjectState\\> but returns iterable\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ObjectState\\\\ObjectState\\>\\.$#"
+			count: 1
+			path: src/lib/Resolver/ObjectStateResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\RelationFieldResolver\\:\\:getContentIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/RelationFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\RelationFieldResolver\\:\\:resolveRelationFieldValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/RelationFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\RelationFieldResolver\\:\\:resolveRelationFieldValue\\(\\) has parameter \\$multiple with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/RelationFieldResolver.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: src/lib/Resolver/RelationFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\RichTextResolver\\:\\:xmlToHtml5\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/RichTextResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\RichTextResolver\\:\\:xmlToHtml5Edit\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/RichTextResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\RichTextResolver\\:\\:xmlToPlainText\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/RichTextResolver.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strip_tags expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/lib/Resolver/RichTextResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SearchResolver\\:\\:searchContent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/SearchResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SearchResolver\\:\\:searchContent\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/SearchResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SearchResolver\\:\\:searchContentOfTypeAsConnection\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/SearchResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SearchResolver\\:\\:searchContentOfTypeAsConnection\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/SearchResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SearchResolver\\:\\:searchContentOfTypeAsConnection\\(\\) has parameter \\$contentTypeIdentifier with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/SearchResolver.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\SearchResolver\\:\\:\\$searchService is never read, only written\\.$#"
+			count: 1
+			path: src/lib/Resolver/SearchResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SectionResolver\\:\\:resolveSectionById\\(\\) has parameter \\$sectionId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/SectionResolver.php
+
+		-
+			message: "#^Cannot call method getFieldSettings\\(\\) on Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ContentType\\\\FieldDefinition\\|null\\.$#"
+			count: 1
+			path: src/lib/Resolver/SelectionFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SelectionFieldResolver\\:\\:getOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/SelectionFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SelectionFieldResolver\\:\\:resolveSelectionFieldValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/SelectionFieldResolver.php
+
+		-
+			message: "#^Parameter \\#3 \\$fieldDefinition of method Ibexa\\\\GraphQL\\\\Resolver\\\\SelectionFieldResolver\\:\\:getOptions\\(\\) expects Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ContentType\\\\FieldDefinition, Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ContentType\\\\FieldDefinition\\|null given\\.$#"
+			count: 1
+			path: src/lib/Resolver/SelectionFieldResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SiteaccessGuesser\\\\SiteaccessGuesser\\:\\:__construct\\(\\) has parameter \\$siteAccessGroups with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/SiteaccessGuesser/SiteaccessGuesser.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SiteaccessGuesser\\\\SiteaccessGuesser\\:\\:guessForLocation\\(\\) should return Ibexa\\\\Core\\\\MVC\\\\Symfony\\\\SiteAccess but returns Ibexa\\\\Core\\\\MVC\\\\Symfony\\\\SiteAccess\\|null\\.$#"
+			count: 1
+			path: src/lib/Resolver/SiteaccessGuesser/SiteaccessGuesser.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SiteaccessGuesser\\\\SiteaccessGuesser\\:\\:isAdminSiteaccess\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/SiteaccessGuesser/SiteaccessGuesser.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SiteaccessGuesser\\\\SiteaccessGuesser\\:\\:isInSubtree\\(\\) should return int\\|false but returns int\\|string\\|false\\.$#"
+			count: 1
+			path: src/lib/Resolver/SiteaccessGuesser/SiteaccessGuesser.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\SiteaccessGuesser\\\\SiteaccessGuesser\\:\\:\\$siteAccessGroups type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/SiteaccessGuesser/SiteaccessGuesser.php
+
+		-
+			message: "#^Variable \\$saList in PHPDoc tag @var does not match assigned variable \\$matchingSiteaccessRootDepth\\.$#"
+			count: 1
+			path: src/lib/Resolver/SiteaccessGuesser/SiteaccessGuesser.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ThumbnailResolver\\:\\:resolveThumbnail\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Resolver/ThumbnailResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UrlAliasResolver\\:\\:resolveLocationUrlAliases\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UrlAliasResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UrlAliasResolver\\:\\:resolveLocationUrlAliases\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UrlAliasResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UrlAliasResolver\\:\\:resolveUrlAliasType\\(\\) should return string but returns GraphQL\\\\Type\\\\Definition\\\\Type\\|null\\.$#"
+			count: 3
+			path: src/lib/Resolver/UrlAliasResolver.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\UrlAliasResolver\\:\\:\\$configResolver is never read, only written\\.$#"
+			count: 1
+			path: src/lib/Resolver/UrlAliasResolver.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\UrlAliasResolver\\:\\:\\$locationService is never read, only written\\.$#"
+			count: 1
+			path: src/lib/Resolver/UrlAliasResolver.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\UrlAliasResolver\\:\\:\\$siteaccessService \\(Ibexa\\\\Core\\\\MVC\\\\Symfony\\\\SiteAccess\\\\SiteAccessService\\) does not accept Ibexa\\\\Core\\\\MVC\\\\Symfony\\\\SiteAccess\\\\SiteAccessServiceInterface\\.$#"
+			count: 1
+			path: src/lib/Resolver/UrlAliasResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveContentFields\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveContentFields\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveUser\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveUser\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveUserById\\(\\) has parameter \\$userId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveUserGroupById\\(\\) has parameter \\$userGroupId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveUserGroupSubGroups\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveUserGroups\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveUserGroups\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveUserGroupsByUserId\\(\\) has parameter \\$userId with no type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveUserGroupsByUserId\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\User\\\\UserGroup\\> but returns iterable\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\User\\\\UserGroup\\>\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\UserResolver\\:\\:resolveUsersOfGroup\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Resolver/UserResolver.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\:\\:addArgToField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\:\\:addFieldToType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\:\\:addType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\:\\:addValueToEnum\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\:\\:getSchema\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\:\\:hasTypeFieldWithArg\\(\\) has parameter \\$arg with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Arg\\:\\:__construct\\(\\) has parameter \\$name with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Arg.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Arg\\:\\:__construct\\(\\) has parameter \\$properties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Arg.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Arg\\:\\:__construct\\(\\) has parameter \\$type with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Arg.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Arg\\:\\:\\$defaultValue has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Arg.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Arg\\:\\:\\$description has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Arg.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Arg\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Arg.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Arg\\:\\:\\$type has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Arg.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\EnumValue\\:\\:__construct\\(\\) has parameter \\$name with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/EnumValue.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\EnumValue\\:\\:__construct\\(\\) has parameter \\$properties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/EnumValue.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\EnumValue\\:\\:\\$description has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/EnumValue.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\EnumValue\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/EnumValue.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\EnumValue\\:\\:\\$value has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/EnumValue.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Field\\:\\:__construct\\(\\) has parameter \\$name with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Field.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Field\\:\\:__construct\\(\\) has parameter \\$properties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Field.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Field\\:\\:__construct\\(\\) has parameter \\$type with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Field.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Field\\:\\:\\$argsBuilder has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Field.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Field\\:\\:\\$description has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Field.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Field\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Field.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Field\\:\\:\\$resolve has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Field.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Field\\:\\:\\$type has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Field.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Input\\:\\:__construct\\(\\) has parameter \\$properties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Input.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Type\\:\\:__construct\\(\\) has parameter \\$name with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Type.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Type\\:\\:__construct\\(\\) has parameter \\$properties with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Type.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Type\\:\\:__construct\\(\\) has parameter \\$type with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Type.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Type\\:\\:\\$connectionFields has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Type.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Type\\:\\:\\$inherits has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Type.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Type\\:\\:\\$interfaces has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Type.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Type\\:\\:\\$name has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Type.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Type\\:\\:\\$nodeType has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Type.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\Input\\\\Type\\:\\:\\$type has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/Input/Type.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\SchemaBuilder\\:\\:addArgToField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/SchemaBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\SchemaBuilder\\:\\:addFieldToType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/SchemaBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\SchemaBuilder\\:\\:addType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/SchemaBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\SchemaBuilder\\:\\:addValueToEnum\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/SchemaBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\SchemaBuilder\\:\\:getSchema\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/SchemaBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\SchemaBuilder\\:\\:hasTypeFieldWithArg\\(\\) has parameter \\$arg with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/SchemaBuilder.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Builder\\\\SchemaBuilder\\:\\:\\$schema has no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Builder/SchemaBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\ContentDomainIterator\\:\\:init\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/ContentDomainIterator.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\LanguagesIterator\\:\\:init\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/LanguagesIterator.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Mapper\\\\FieldDefinition\\\\ConfigurableFieldDefinitionMapper\\:\\:__construct\\(\\) has parameter \\$typesMap with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Mapper/FieldDefinition/ConfigurableFieldDefinitionMapper.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Mapper\\\\FieldDefinition\\\\ConfigurableFieldDefinitionMapper\\:\\:\\$typesMap type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Mapper/FieldDefinition/ConfigurableFieldDefinitionMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Mapper\\\\FieldDefinition\\\\DecoratingFieldDefinitionMapper\\:\\:canMap\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Mapper/FieldDefinition/DecoratingFieldDefinitionMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Mapper\\\\FieldDefinition\\\\RelationFieldDefinitionMapper\\:\\:canMap\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Mapper/FieldDefinition/RelationFieldDefinitionMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Mapper\\\\FieldDefinition\\\\RelationFieldDefinitionMapper\\:\\:isMultiple\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Mapper/FieldDefinition/RelationFieldDefinitionMapper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Mapper\\\\FieldDefinition\\\\ResolverVariables\\:\\:mapToFieldDefinitionType\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Mapper/FieldDefinition/ResolverVariables.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Mapper\\\\FieldDefinition\\\\ResolverVariables\\:\\:mapToFieldValueType\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Mapper/FieldDefinition/ResolverVariables.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Mapper/FieldDefinition/ResolverVariables.php
+
+		-
+			message: "#^Cannot call method warning\\(\\) on Psr\\\\Log\\\\LoggerInterface\\|null\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:__construct\\(\\) has parameter \\$fieldNameOverrides with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentCollectionField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentConnection\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentConnection\\(\\) has parameter \\$contentType with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentCreateInputName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentTypeName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentUpdateInputName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainGroupField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainGroupName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainGroupTypesName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainMutationCreateContentField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainMutationUpdateContentField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:fieldDefinitionField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemConnectionField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemConnectionName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemConnectionName\\(\\) has parameter \\$contentType with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemCreateInputName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemGroupField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemGroupName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemGroupTypesName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemMutationCreateItemField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemMutationUpdateItemField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemMutationUpdateItemField\\(\\) has parameter \\$contentType with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemTypeName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:itemUpdateInputName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:sanitizeContentTypeGroupIdentifier\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/NameHelper.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\BaseWorker\\:\\:getNameHelper\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/BaseWorker.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\BaseWorker\\:\\:setNameHelper\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/BaseWorker.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemOfTypeConnectionToGroup\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemOfTypeConnectionToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemOfTypeConnectionToGroup\\:\\:connectionField\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemOfTypeConnectionToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemOfTypeConnectionToGroup\\:\\:connectionType\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemOfTypeConnectionToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemOfTypeConnectionToGroup\\:\\:groupName\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemOfTypeConnectionToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemOfTypeConnectionToGroup\\:\\:typeName\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemOfTypeConnectionToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemOfTypeConnectionToGroup\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemOfTypeConnectionToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemOfTypeConnectionToGroup\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemOfTypeConnectionToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemToGroup\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemToGroup\\:\\:groupName\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemToGroup\\:\\:typeField\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemToGroup\\:\\:typeName\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemToGroup\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemToGroup\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemToGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemTypeToItemGroupTypes\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemTypeToItemGroupTypes.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemTypeToItemGroupTypes\\:\\:groupTypesName\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemTypeToItemGroupTypes.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemTypeToItemGroupTypes\\:\\:typeField\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemTypeToItemGroupTypes.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemTypeToItemGroupTypes\\:\\:typeName\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemTypeToItemGroupTypes.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemTypeToItemGroupTypes\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemTypeToItemGroupTypes.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemTypeToItemGroupTypes\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemTypeToItemGroupTypes.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemTypeToItemTypeIdentifierList\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemTypeToItemTypeIdentifierList.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemTypeToItemTypeIdentifierList\\:\\:init\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemTypeToItemTypeIdentifierList.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemTypeToItemTypeIdentifierList\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemTypeToItemTypeIdentifierList.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\AddItemTypeToItemTypeIdentifierList\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/AddItemTypeToItemTypeIdentifierList.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItem\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItem.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItem\\:\\:typeName\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItem.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItem\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItem.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItem\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItem.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemConnection\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemConnection.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemConnection\\:\\:connectionTypeName\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemConnection.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemConnection\\:\\:typeName\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemConnection.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemConnection\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemConnection.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemConnection\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemConnection.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemMutation\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemMutation\\:\\:getCreateField\\(\\) has parameter \\$contentType with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemMutation\\:\\:getCreateInputName\\(\\) has parameter \\$contentType with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemMutation\\:\\:getUpdateField\\(\\) has parameter \\$contentType with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemMutation\\:\\:getUpdateInputName\\(\\) has parameter \\$contentType with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemMutation\\:\\:init\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemMutation\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemMutation\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemType\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemType\\:\\:typeName\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemType\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentType\\\\DefineItemType\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentType/DefineItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\AddDomainGroupToDomain\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/AddDomainGroupToDomain.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\AddDomainGroupToDomain\\:\\:fieldName\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/AddDomainGroupToDomain.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\AddDomainGroupToDomain\\:\\:typeGroupName\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/AddDomainGroupToDomain.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\AddDomainGroupToDomain\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/AddDomainGroupToDomain.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\AddDomainGroupToDomain\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/AddDomainGroupToDomain.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\DefineDomainGroup\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/DefineDomainGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\DefineDomainGroup\\:\\:groupTypesName\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/DefineDomainGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\DefineDomainGroup\\:\\:typeName\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/DefineDomainGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\DefineDomainGroup\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/DefineDomainGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\DefineDomainGroup\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/DefineDomainGroup.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\DefineDomainGroupTypes\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/DefineDomainGroupTypes.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\DefineDomainGroupTypes\\:\\:typeName\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/DefineDomainGroupTypes.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\DefineDomainGroupTypes\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/DefineDomainGroupTypes.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\ContentTypeGroup\\\\DefineDomainGroupTypes\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/ContentTypeGroup/DefineDomainGroupTypes.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemMutation\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemMutation\\:\\:mapDescription\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemMutation\\:\\:nameCreateInputType\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemMutation\\:\\:nameFieldDefinitionField\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemMutation\\:\\:nameFieldType\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemMutation\\:\\:nameFieldType\\(\\) has parameter \\$operation with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemMutation\\:\\:nameUpdateInputType\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemMutation\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemMutation\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemMutation.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemType\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemType\\:\\:fieldDescription\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemType\\:\\:fieldDescription\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemType\\:\\:fieldName\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemType\\:\\:fieldType\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemType\\:\\:fieldType\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemType\\:\\:typeName\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemType\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldDefinitionToItemType\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldDefinitionToItemType.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldValueToItem\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldValueToItem.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldValueToItem\\:\\:fieldName\\(\\) has parameter \\$args with no type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldValueToItem.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldValueToItem\\:\\:getDefinition\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldValueToItem.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldValueToItem\\:\\:typeName\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldValueToItem.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldValueToItem\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldValueToItem.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\FieldDefinition\\\\AddFieldValueToItem\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/FieldDefinition/AddFieldValueToItem.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\Language\\\\AddLanguageToEnum\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/Language/AddLanguageToEnum.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\Language\\\\AddLanguageToEnum\\:\\:init\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/Language/AddLanguageToEnum.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\Language\\\\AddLanguageToEnum\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/Language/AddLanguageToEnum.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\Worker\\\\Language\\\\AddLanguageToEnum\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Content/Worker/Language/AddLanguageToEnum.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\ImageVariationDomain\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/ImageVariationDomain.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\ImageVariationDomain\\:\\:init\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/ImageVariationDomain.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\ImageVariationDomain\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/ImageVariationDomain.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\ImageVariationDomain\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/ImageVariationDomain.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Iterator\\:\\:init\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/Iterator.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(\\)\\: Unexpected token \"\\\\n     \", expected type at offset 81$#"
+			count: 1
+			path: src/lib/Schema/Domain/Iterator.php
+
+		-
+			message: "#^Cannot call method warning\\(\\) on Psr\\\\Log\\\\LoggerInterface\\|null\\.$#"
+			count: 1
+			path: src/lib/Schema/Domain/NameValidator.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Generator\\:\\:__construct\\(\\) has parameter \\$iterators with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Generator.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Generator\\:\\:__construct\\(\\) has parameter \\$workers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Generator.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Generator\\:\\:generate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Generator.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Generator\\:\\:\\$groups is unused\\.$#"
+			count: 1
+			path: src/lib/Schema/Generator.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Generator\\:\\:\\$groups type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Generator.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\ImagesVariationsBuilder\\:\\:build\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/ImagesVariationsBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\ImagesVariationsBuilder\\:\\:build\\(\\) has parameter \\$schema with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/ImagesVariationsBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Initializer\\:\\:init\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Initializer.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\SchemaBuilder\\:\\:build\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/SchemaBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\SchemaBuilder\\:\\:build\\(\\) has parameter \\$schema with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/SchemaBuilder.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\SchemaGenerator\\:\\:__construct\\(\\) has parameter \\$schemaBuilders with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/SchemaGenerator.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\SchemaGenerator\\:\\:generate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/SchemaGenerator.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Worker\\:\\:canWork\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Worker.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Worker\\:\\:work\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Schema/Worker.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Worker\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Schema/Worker.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Security\\\\NonAdminGraphQLRequestMatcher\\:\\:__construct\\(\\) has parameter \\$siteAccessGroups with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/lib/Security/NonAdminGraphQLRequestMatcher.php
+
+		-
+			message: "#^Cannot cast object to string\\.$#"
+			count: 1
+			path: src/lib/Value/ContentFieldValue.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Value\\\\ContentFieldValue\\:\\:\\$contentTypeId has no type specified\\.$#"
+			count: 1
+			path: src/lib/Value/ContentFieldValue.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Value\\\\ContentFieldValue\\:\\:\\$fieldDefIdentifier has no type specified\\.$#"
+			count: 1
+			path: src/lib/Value/ContentFieldValue.php
+
+		-
+			message: "#^Method Ibexa\\\\GraphQL\\\\Value\\\\Field\\:\\:fromField\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/lib/Value/Field.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Value\\\\Item\\:\\:\\$content \\(Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Content\\) does not accept Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Content\\|null\\.$#"
+			count: 1
+			path: src/lib/Value/Item.php
+
+		-
+			message: "#^Property Ibexa\\\\GraphQL\\\\Value\\\\Item\\:\\:\\$location \\(Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location\\) does not accept Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location\\|null\\.$#"
+			count: 1
+			path: src/lib/Value/Item.php

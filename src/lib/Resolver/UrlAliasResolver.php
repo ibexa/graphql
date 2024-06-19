@@ -86,6 +86,8 @@ class UrlAliasResolver
                 return $this->typeResolver->resolve('ResourceUrlAlias');
             case URLAlias::VIRTUAL:
                 return $this->typeResolver->resolve('VirtualUrlAlias');
+            default:
+                return '';
         }
     }
 

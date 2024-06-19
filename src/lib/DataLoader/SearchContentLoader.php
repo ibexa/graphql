@@ -53,15 +53,12 @@ class SearchContentLoader implements ContentLoader
      * Loads a single content item given a Query Criterion.
      *
      * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion $filter A Query Criterion. Use Criterion\ContentId, Criterion\RemoteId or Criterion\LocationId for basic loading.
-     *
-     * @throws \Ibexa\GraphQL\DataLoader\Exception\ArgumentsException
      */
     public function findSingle(Criterion $filter): Content
     {
         try {
             return $this->searchService->findSingle($filter);
-        } catch (ApiException\InvalidArgumentException $e) {
-        } catch (ApiException\NotFoundException $e) {
+        } catch (ApiException\NotFoundException|ApiException\InvalidArgumentException $e) {
             throw new ArgumentsException($e->getMessage(), $e->getCode(), $e);
         }
     }
