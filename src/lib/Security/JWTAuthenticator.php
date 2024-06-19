@@ -85,10 +85,15 @@ final class JWTAuthenticator extends AbstractAuthenticator implements Interactiv
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        $user = $token->getUser();
+        if ($user === null) {
+            throw new AuthenticationException('No authenticated user found.', 401);
+        }
+
         return new Response(
             json_encode(
                 [
-                    'token' => $this->tokenManager->create($token->getUser()),
+                    'token' => $this->tokenManager->create($user),
                     'message' => null,
                 ],
                 JSON_THROW_ON_ERROR
@@ -131,7 +136,10 @@ final class JWTAuthenticator extends AbstractAuthenticator implements Interactiv
             $parsed,
             [
                 NodeKind::ARGUMENT => static function (ArgumentNode $node) use (&$credentials): void {
-                    $credentials[$node->name->value] = (string)$node->value->value;
+                    /** @var \GraphQL\Language\AST\StringValueNode $nodeValue */
+                    $nodeValue = $node->value;
+
+                    $credentials[$node->name->value] = $nodeValue->value;
                 },
             ]
         );

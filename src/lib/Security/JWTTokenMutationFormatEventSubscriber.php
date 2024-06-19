@@ -31,6 +31,10 @@ final readonly class JWTTokenMutationFormatEventSubscriber implements EventSubsc
     public function onAuthorizationFinishes(LoginSuccessEvent|LoginFailureEvent $event): void
     {
         $response = $event->getResponse();
+        if ($response === null) {
+            return;
+        }
+
         $response->setContent(
             $this->formatMutationResponseData($response->getContent())
         );
@@ -41,10 +45,12 @@ final readonly class JWTTokenMutationFormatEventSubscriber implements EventSubsc
      */
     private function formatMutationResponseData(mixed $data): string
     {
-        return json_encode([
+        $formatted = json_encode([
             'data' => [
                 'CreateToken' => json_decode($data, true, 512, JSON_THROW_ON_ERROR),
             ],
         ]);
+
+        return $formatted === false ? '' : $formatted;
     }
 }

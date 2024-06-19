@@ -2306,31 +2306,6 @@ parameters:
 			path: src/lib/Schema/Worker.php
 
 		-
-			message: "#^Access to an undefined property GraphQL\\\\Language\\\\AST\\\\BooleanValueNode\\|GraphQL\\\\Language\\\\AST\\\\EnumValueNode\\|GraphQL\\\\Language\\\\AST\\\\FloatValueNode\\|GraphQL\\\\Language\\\\AST\\\\IntValueNode\\|GraphQL\\\\Language\\\\AST\\\\ListValueNode\\|GraphQL\\\\Language\\\\AST\\\\NullValueNode\\|GraphQL\\\\Language\\\\AST\\\\ObjectValueNode\\|GraphQL\\\\Language\\\\AST\\\\StringValueNode\\|GraphQL\\\\Language\\\\AST\\\\VariableNode\\:\\:\\$value\\.$#"
-			count: 1
-			path: src/lib/Security/JWTAuthenticator.php
-
-		-
-			message: "#^Parameter \\#1 \\$user of method Lexik\\\\Bundle\\\\JWTAuthenticationBundle\\\\Services\\\\JWTTokenManagerInterface\\:\\:create\\(\\) expects Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface, Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\|null given\\.$#"
-			count: 1
-			path: src/lib/Security/JWTAuthenticator.php
-
-		-
-			message: "#^Cannot call method getContent\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Response\\|null\\.$#"
-			count: 1
-			path: src/lib/Security/JWTTokenMutationFormatEventSubscriber.php
-
-		-
-			message: "#^Cannot call method setContent\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Response\\|null\\.$#"
-			count: 1
-			path: src/lib/Security/JWTTokenMutationFormatEventSubscriber.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Security\\\\JWTTokenMutationFormatEventSubscriber\\:\\:formatMutationResponseData\\(\\) should return string but returns string\\|false\\.$#"
-			count: 1
-			path: src/lib/Security/JWTTokenMutationFormatEventSubscriber.php
-
-		-
 			message: "#^Cannot cast object to string\\.$#"
 			count: 1
 			path: src/lib/Value/ContentFieldValue.php
