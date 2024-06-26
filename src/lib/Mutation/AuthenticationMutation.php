@@ -38,10 +38,16 @@ final readonly class AuthenticationMutation
 
         try {
             $user = $this->userService->loadUserByLogin($args['username']);
-            $this->userService->checkUserCredentials($user, $args['password']);
         } catch (NotFoundException) {
             return [
-                'message' => 'Wrong username or password',
+                'message' => 'Wrong username',
+                'token' => null,
+            ];
+        }
+
+        if (!$this->userService->checkUserCredentials($user, $args['password'])) {
+            return [
+                'message' => 'Wrong password',
                 'token' => null,
             ];
         }
