@@ -326,31 +326,6 @@ parameters:
 			path: src/lib/Mapper/ContentImageAssetMapperStrategy.php
 
 		-
-			message: "#^Cannot access property \\$attributes on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
-			count: 2
-			path: src/lib/Mutation/Authentication.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\Authentication\\:\\:createToken\\(\\) has parameter \\$args with no type specified\\.$#"
-			count: 1
-			path: src/lib/Mutation/Authentication.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\Authentication\\:\\:createToken\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/lib/Mutation/Authentication.php
-
-		-
-			message: "#^Parameter \\#1 \\$request of method Ibexa\\\\Core\\\\MVC\\\\Symfony\\\\Security\\\\Authentication\\\\AuthenticatorInterface\\:\\:authenticate\\(\\) expects Symfony\\\\Component\\\\HttpFoundation\\\\Request, Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null given\\.$#"
-			count: 1
-			path: src/lib/Mutation/Authentication.php
-
-		-
-			message: "#^Parameter \\#1 \\$wrappedUser of class Ibexa\\\\GraphQL\\\\Security\\\\JWTUser constructor expects Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface, Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\|null given\\.$#"
-			count: 1
-			path: src/lib/Mutation/Authentication.php
-
-		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\BinaryFile\\:\\:toFieldValue\\(\\) has parameter \\$input with no type specified\\.$#"
 			count: 1
 			path: src/lib/Mutation/InputHandler/FieldType/BinaryFile.php
@@ -2329,11 +2304,6 @@ parameters:
 			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Worker\\:\\:work\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/lib/Schema/Worker.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Security\\\\NonAdminGraphQLRequestMatcher\\:\\:__construct\\(\\) has parameter \\$siteAccessGroups with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/lib/Security/NonAdminGraphQLRequestMatcher.php
 
 		-
 			message: "#^Cannot cast object to string\\.$#"
