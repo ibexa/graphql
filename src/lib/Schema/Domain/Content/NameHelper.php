@@ -38,29 +38,9 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
         $this->fieldNameOverrides = $fieldNameOverrides;
     }
 
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemConnectionField() instead.
-     */
-    public function domainContentCollectionField(ContentType $contentType)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemConnectionFieldName() instead.', E_USER_DEPRECATED);
-
-        return $this->itemConnectionField($contentType);
-    }
-
     public function itemConnectionField(ContentType $contentType)
     {
         return $this->pluralize(lcfirst($this->toCamelCase($contentType->identifier)));
-    }
-
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemName() instead.
-     */
-    public function domainContentName(ContentType $contentType)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemName() instead.', E_USER_DEPRECATED);
-
-        return $this->itemName($contentType);
     }
 
     public function itemName(ContentType $contentType)
@@ -68,29 +48,9 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
         return ucfirst($this->toCamelCase($contentType->identifier)) . 'Item';
     }
 
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemConnectionName() instead.
-     */
-    public function domainContentConnection($contentType)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemConnectionName() instead.', E_USER_DEPRECATED);
-
-        return $this->itemConnectionName($contentType);
-    }
-
     public function itemConnectionName($contentType)
     {
         return ucfirst($this->toCamelCase($contentType->identifier)) . 'ItemConnection';
-    }
-
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemCreateInputName() instead.
-     */
-    public function domainContentCreateInputName(ContentType $contentType)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemCreateInputName() instead.', E_USER_DEPRECATED);
-
-        return $this->itemCreateInputName($contentType);
     }
 
     public function itemCreateInputName(ContentType $contentType)
@@ -98,29 +58,9 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
         return ucfirst($this->toCamelCase($contentType->identifier)) . 'ItemCreateInput';
     }
 
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemUpdateInputName() instead.
-     */
-    public function domainContentUpdateInputName(ContentType $contentType)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemUpdateInputName() instead.', E_USER_DEPRECATED);
-
-        return $this->itemUpdateInputName($contentType);
-    }
-
     public function itemUpdateInputName(ContentType $contentType)
     {
         return ucfirst($this->toCamelCase($contentType->identifier)) . 'ItemUpdateInput';
-    }
-
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemUpdateInputName() instead.
-     */
-    public function domainContentTypeName(ContentType $contentType)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemTypeName() instead.', E_USER_DEPRECATED);
-
-        return $this->itemTypeName($contentType);
     }
 
     public function itemTypeName(ContentType $contentType)
@@ -128,27 +68,9 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
         return ucfirst($this->toCamelCase($contentType->identifier)) . 'ItemType';
     }
 
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemField() instead.
-     */
-    public function domainContentField(ContentType $contentType)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemField() instead.', E_USER_DEPRECATED);
-
-        return $this->itemField($contentType);
-    }
-
     public function itemField(ContentType $contentType)
     {
         return lcfirst($this->toCamelCase($contentType->identifier));
-    }
-
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemMutationCreateItemField() instead.
-     */
-    public function domainMutationCreateContentField(ContentType $contentType)
-    {
-        return $this->itemMutationCreateItemField($contentType);
     }
 
     public function itemMutationCreateItemField(ContentType $contentType)
@@ -156,44 +78,14 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
         return 'create' . ucfirst($this->itemField($contentType));
     }
 
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemMutationUpdateItemField() instead.
-     */
-    public function domainMutationUpdateContentField(ContentType $contentType)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemMutationUpdateItemField() instead.', E_USER_DEPRECATED);
-
-        return $this->itemMutationUpdateItemField($contentType);
-    }
-
     public function itemMutationUpdateItemField($contentType)
     {
         return 'update' . ucfirst($this->itemField($contentType));
     }
 
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemGroupName() instead.
-     */
-    public function domainGroupName(ContentTypeGroup $contentTypeGroup)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemGroupName() instead.', E_USER_DEPRECATED);
-
-        return $this->itemGroupName($contentTypeGroup);
-    }
-
     public function itemGroupName(ContentTypeGroup $contentTypeGroup)
     {
         return 'ItemGroup' . ucfirst($this->toCamelCase($this->sanitizeContentTypeGroupIdentifier($contentTypeGroup)));
-    }
-
-    /**
-     * @deprecated since v3.0, will be removed in v4.0. Use itemGroupTypesName() instead.
-     */
-    public function domainGroupTypesName(ContentTypeGroup $contentTypeGroup)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemGroupTypesName() instead.', E_USER_DEPRECATED);
-
-        return $this->itemGroupTypesName($contentTypeGroup);
     }
 
     public function itemGroupTypesName(ContentTypeGroup $contentTypeGroup)
@@ -204,13 +96,6 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
                 $this->sanitizeContentTypeGroupIdentifier($contentTypeGroup)
             ))
         );
-    }
-
-    public function domainGroupField(ContentTypeGroup $contentTypeGroup)
-    {
-        @trigger_error('Deprecated since v3.0, will be removed in v4.0. Use itemGroupField() instead.', E_USER_DEPRECATED);
-
-        return $this->itemGroupField($contentTypeGroup);
     }
 
     public function itemGroupField(ContentTypeGroup $contentTypeGroup)

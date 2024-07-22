@@ -132,14 +132,6 @@ class DomainContentResolver
         return isset($aliases[0]->path) ? $aliases[0]->path : null;
     }
 
-    /**
-     * @deprecated since v3.0, use ItemResolver::resolveItemFieldValue() instead.
-     */
-    public function resolveDomainFieldValue(Content $content, $fieldDefinitionIdentifier, $args = null)
-    {
-        return Field::fromField($content->getField($fieldDefinitionIdentifier, $args['language'] ?? null));
-    }
-
     public function resolveDomainRelationFieldValue(?Field $field, $multiple = false)
     {
         if ($field === null) {

@@ -11,7 +11,7 @@ use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 
-class ConfigurableFieldDefinitionMapper implements FieldDefinitionMapper, FieldDefinitionInputMapper, FieldDefinitionArgsBuilderMapper
+class ConfigurableFieldDefinitionMapper implements FieldDefinitionMapper
 {
     /**
      * @var array
