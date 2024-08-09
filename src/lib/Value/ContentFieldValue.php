@@ -50,7 +50,7 @@ class ContentFieldValue extends ValueObject
         return parent::__get($property);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return (string)$this->value;
     }

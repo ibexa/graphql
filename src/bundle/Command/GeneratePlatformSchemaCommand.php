@@ -89,7 +89,7 @@ class GeneratePlatformSchemaCommand extends Command
         $output->writeln('');
         $this->compileTypes($output);
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     private function compileTypes(OutputInterface $output)
