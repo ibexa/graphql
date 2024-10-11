@@ -631,11 +631,6 @@ parameters:
 			path: src/lib/Resolver/ContentResolver.php
 
 		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:findContentRelations\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Relation\\> but returns iterable\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Relation\\>\\.$#"
-			count: 1
-			path: src/lib/Resolver/ContentResolver.php
-
-		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:findContentReverseRelations\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/lib/Resolver/ContentResolver.php
@@ -677,11 +672,6 @@ parameters:
 
 		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:resolveContentVersions\\(\\) has parameter \\$contentId with no type specified\\.$#"
-			count: 1
-			path: src/lib/Resolver/ContentResolver.php
-
-		-
-			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\ContentResolver\\:\\:\\$contentTypeService is never read, only written\\.$#"
 			count: 1
 			path: src/lib/Resolver/ContentResolver.php
 
