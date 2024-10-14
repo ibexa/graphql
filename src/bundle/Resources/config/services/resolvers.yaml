@@ -27,7 +27,6 @@ services:
         arguments:
             $contentService: '@ibexa.siteaccessaware.service.content'
             $searchService: '@ibexa.siteaccessaware.service.search'
-            $contentTypeService: '@ibexa.siteaccessaware.service.content_type'
 
     Ibexa\GraphQL\Resolver\DomainContentResolver:
         tags:
