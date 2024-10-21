@@ -32,7 +32,6 @@ services:
     Ibexa\GraphQL\Resolver\DomainContentResolver:
         tags:
             - { name: overblog_graphql.resolver, alias: "DomainContentItemsByTypeIdentifier", method: "resolveDomainContentItems" }
-            - { name: overblog_graphql.resolver, alias: "DomainFieldValue", method: "resolveDomainFieldValue" }
             - { name: overblog_graphql.resolver, alias: "DomainContentType", method: "resolveDomainContentType" }
             - { name: overblog_graphql.resolver, alias: "DomainContentItem", method: "resolveDomainContentItem" }
             - { name: overblog_graphql.resolver, alias: "DomainRelationFieldValue", method: "resolveDomainRelationFieldValue" }
@@ -118,9 +117,6 @@ services:
         tags:
             - { name: overblog_graphql.resolver, alias: "SearchContent", method: "searchContent" }
             - { name: overblog_graphql.resolver, alias: "SearchContentOfTypeAsConnection", method: "searchContentOfTypeAsConnection" }
-            - { name: overblog_graphql.resolver, alias: "SearchLocationsOfTypeAsConnection", method: "searchLocationsOfTypeAsConnection" }
-        arguments:
-            $searchService: '@ibexa.siteaccessaware.service.search'
 
     Ibexa\GraphQL\Resolver\RichTextResolver:
         arguments:

@@ -124,7 +124,7 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
 
         if (count($settings['selectionContentTypes']) === 1) {
             $contentType = $this->contentTypeService->loadContentTypeByIdentifier($settings['selectionContentTypes'][0]);
-            $type = $this->nameHelper->domainContentName($contentType);
+            $type = $this->nameHelper->itemName($contentType);
         } else {
             $type = 'DomainContent';
         }

@@ -104,7 +104,7 @@ Another, `AddDomainContentToDomainGroup`, will add the same Domain Content to it
 
 ### Custom Field Types
 
-Fields values are handled by the `AddFieldValueToDomainContent` content domain schema worker. It uses Field Value Builders (instances of `Schema\Domain\Content\FieldValueBuilder\FieldValueBuilder`) to generate the type and resolution for each field.
+Fields values are handled by the `AddFieldValueToItem` content domain schema worker. It uses Field Value Builders (instances of `Schema\Domain\Content\FieldValueBuilder\FieldValueBuilder`) to generate the type and resolution for each field.
 
 Basic field types are handled by the `BaseFieldValueBuilder`. It maps each fieldtype, using its identifier, to either a type, or a type and a resolver. For the time being, it can not be customized.
 
