@@ -1166,11 +1166,6 @@ parameters:
 			path: src/lib/Resolver/SearchResolver.php
 
 		-
-			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\SearchResolver\\:\\:\\$searchService is never read, only written\\.$#"
-			count: 1
-			path: src/lib/Resolver/SearchResolver.php
-
-		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SectionResolver\\:\\:resolveSectionById\\(\\) has parameter \\$sectionId with no type specified\\.$#"
 			count: 1
 			path: src/lib/Resolver/SectionResolver.php

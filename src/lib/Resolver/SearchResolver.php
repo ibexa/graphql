@@ -7,7 +7,6 @@
 
 namespace Ibexa\GraphQL\Resolver;
 
-use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\InputMapper\SearchQueryMapper;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
