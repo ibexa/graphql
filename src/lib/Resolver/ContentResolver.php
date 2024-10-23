@@ -8,10 +8,11 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\Contracts\Core\Repository\ContentService;
-use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\Relation;
+use Ibexa\Contracts\Core\Repository\Values\Content\RelationList\RelationListItemInterface;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
 use Ibexa\Contracts\Core\Repository\Values\Content\VersionInfo;
 
@@ -30,16 +31,10 @@ class ContentResolver
      */
     private $searchService;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
-     */
-    private $contentTypeService;
-
-    public function __construct(ContentService $contentService, SearchService $searchService, ContentTypeService $contentTypeService)
+    public function __construct(ContentService $contentService, SearchService $searchService)
     {
         $this->contentService = $contentService;
         $this->searchService = $searchService;
-        $this->contentTypeService = $contentTypeService;
     }
 
     public function findContentByType($contentTypeId)
@@ -63,9 +58,12 @@ class ContentResolver
      */
     public function findContentRelations(ContentInfo $contentInfo, $version = null)
     {
-        return $this->contentService->loadRelations(
-            $this->contentService->loadVersionInfo($contentInfo, $version)
-        );
+        return array_filter(array_map(
+            static fn (RelationListItemInterface $relationListItem): ?Relation => $relationListItem->getRelation(),
+            $this->contentService->loadRelationList(
+                $this->contentService->loadVersionInfo($contentInfo, $version)
+            )->items
+        ));
     }
 
     public function findContentReverseRelations(ContentInfo $contentInfo)
