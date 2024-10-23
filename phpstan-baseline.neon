@@ -846,21 +846,6 @@ parameters:
 			path: src/lib/Resolver/DomainContentResolver.php
 
 		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainFieldValue\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Resolver/DomainContentResolver.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainFieldValue\\(\\) has parameter \\$args with no type specified\\.$#"
-			count: 1
-			path: src/lib/Resolver/DomainContentResolver.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainFieldValue\\(\\) has parameter \\$fieldDefinitionIdentifier with no type specified\\.$#"
-			count: 1
-			path: src/lib/Resolver/DomainContentResolver.php
-
-		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\DomainContentResolver\\:\\:resolveDomainRelationFieldValue\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/lib/Resolver/DomainContentResolver.php
@@ -1167,11 +1152,6 @@ parameters:
 
 		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\SearchResolver\\:\\:searchContentOfTypeAsConnection\\(\\) has parameter \\$contentTypeIdentifier with no type specified\\.$#"
-			count: 1
-			path: src/lib/Resolver/SearchResolver.php
-
-		-
-			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\SearchResolver\\:\\:\\$searchService is never read, only written\\.$#"
 			count: 1
 			path: src/lib/Resolver/SearchResolver.php
 
@@ -1597,71 +1577,6 @@ parameters:
 
 		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:__construct\\(\\) has parameter \\$fieldNameOverrides with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentCollectionField\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentConnection\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentConnection\\(\\) has parameter \\$contentType with no type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentCreateInputName\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentField\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentName\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentTypeName\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainContentUpdateInputName\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainGroupField\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainGroupName\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainGroupTypesName\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainMutationCreateContentField\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/Domain/Content/NameHelper.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Domain\\\\Content\\\\NameHelper\\:\\:domainMutationUpdateContentField\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/lib/Schema/Domain/Content/NameHelper.php
 
@@ -2244,16 +2159,6 @@ parameters:
 			message: "#^Property Ibexa\\\\GraphQL\\\\Schema\\\\Generator\\:\\:\\$groups type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/lib/Schema/Generator.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\ImagesVariationsBuilder\\:\\:build\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/lib/Schema/ImagesVariationsBuilder.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\ImagesVariationsBuilder\\:\\:build\\(\\) has parameter \\$schema with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/lib/Schema/ImagesVariationsBuilder.php
 
 		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Schema\\\\Initializer\\:\\:init\\(\\) has no return type specified\\.$#"

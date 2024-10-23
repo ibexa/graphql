@@ -7,7 +7,6 @@
 
 namespace Ibexa\GraphQL\Resolver;
 
-use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\InputMapper\SearchQueryMapper;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
@@ -18,11 +17,6 @@ use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 class SearchResolver
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\SearchService
-     */
-    private $searchService;
-
-    /**
      * @var \Ibexa\GraphQL\InputMapper\SearchQueryMapper
      */
     private $queryMapper;
@@ -32,10 +26,9 @@ class SearchResolver
      */
     private $contentLoader;
 
-    public function __construct(ContentLoader $contentLoader, SearchService $searchService, SearchQueryMapper $queryMapper)
+    public function __construct(ContentLoader $contentLoader, SearchQueryMapper $queryMapper)
     {
         $this->contentLoader = $contentLoader;
-        $this->searchService = $searchService;
         $this->queryMapper = $queryMapper;
     }
 

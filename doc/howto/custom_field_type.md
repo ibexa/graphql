@@ -124,7 +124,7 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
 
         if (count($settings['selectionContentTypes']) === 1) {
             $contentType = $this->contentTypeService->loadContentTypeByIdentifier($settings['selectionContentTypes'][0]);
-            $type = $this->nameHelper->domainContentName($contentType);
+            $type = $this->nameHelper->itemName($contentType);
         } else {
             $type = 'DomainContent';
         }
@@ -160,15 +160,14 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
 }
 ```
 
-#### Field Definition Input Mappers
-As of v1.0.4, an extra interface is available for mutation input type handling, `FieldDefinitionInputMapper`.
-It is used if the input for this field depends on the field definition. For instance, `ezmatrix`
-generates its own input types depending on the configured columns.  It defines an extra method, `mapToFieldValueInputType`, 
-that returns a GraphQL type for a Field Definition.
+#### Mutation input type handling
+If the input for a field depends on the field definition, like `ezmatrix`
+which generates its own input types depending on the configured columns, use `mapToFieldValueInputType`
+which returns a GraphQL type for a Field Definition.
 
 Example:
 ```
-class MyFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper, FieldDefinitionInputMapper
+class MyFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper
 {
     public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
     {
@@ -180,8 +179,6 @@ class MyFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements
     }
 }
 ```
-
-In 2.0, `FieldDefinitionInputMapper` and `FieldDefinitionMapper` will be merged, and the service tag will be deprecated.
 
 ## Resolver expressions
 Two variables are available in the resolver's expression:

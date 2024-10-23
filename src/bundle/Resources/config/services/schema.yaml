@@ -49,8 +49,6 @@ services:
         arguments:
             $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\SelectionFieldDefinitionMapper.inner'
 
-    Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldValueToDomainContent: ~
-
     Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemOfTypeConnectionToGroup: ~
 
     Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemToGroup: ~
@@ -99,8 +97,6 @@ services:
         alias: 'Ibexa\GraphQL\Schema\Builder\SchemaBuilder'
 
     Ibexa\GraphQL\Schema\Generator: ~
-
-    Ibexa\GraphQL\Schema\ImagesVariationsBuilder: ~
 
     Ibexa\GraphQL\Schema\SchemaGenerator: ~
 
