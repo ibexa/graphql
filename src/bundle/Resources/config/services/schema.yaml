@@ -49,12 +49,6 @@ services:
         arguments:
             $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\SelectionFieldDefinitionMapper.inner'
 
-    Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\UrlFieldDefinitionMapper:
-        decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
-        arguments:
-            $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\UrlFieldDefinitionMapper.inner'
-            $shouldExtendUrlInputType: '%ibexa.graphql.schema.should.extend.ezurl%'
-
     Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemOfTypeConnectionToGroup: ~
 
     Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemToGroup: ~
