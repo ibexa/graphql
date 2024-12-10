@@ -56,7 +56,7 @@ class DomainContentMutationResolver
         $this->itemFactory = $relatedContentItemFactory;
     }
 
-    public function updateDomainContent($input, Argument $args, $versionNo, $language): RepositoryValues\Content\Content
+    public function updateDomainContent($input, Argument $args, $versionNo, $language): Item
     {
         if (isset($args['id'])) {
             $idArray = GlobalId::fromGlobalId($args['id']);
@@ -137,7 +137,7 @@ class DomainContentMutationResolver
             throw new UserError('You are not authorized to publish this version');
         }
 
-        return $this->getContentService()->loadContent($contentDraft->id);
+        return $this->itemFactory->fromContent($this->getContentService()->loadContent($contentDraft->id));
     }
 
     public function createDomainContent($input, $contentTypeIdentifier, $parentLocationId, $language): Item
