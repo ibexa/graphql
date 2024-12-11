@@ -11,31 +11,6 @@ parameters:
 			path: src/bundle/Command/GeneratePlatformSchemaCommand.php
 
 		-
-			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\Command\\\\GeneratePlatformSchemaCommand\\:\\:configure\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/bundle/Command/GeneratePlatformSchemaCommand.php
-
-		-
-			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\Compiler\\\\FieldInputHandlersPass\\:\\:process\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/bundle/DependencyInjection/Compiler/FieldInputHandlersPass.php
-
-		-
-			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\Compiler\\\\RichTextInputConvertersPass\\:\\:process\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/bundle/DependencyInjection/Compiler/RichTextInputConvertersPass.php
-
-		-
-			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\Compiler\\\\SchemaDomainIteratorsPass\\:\\:process\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/bundle/DependencyInjection/Compiler/SchemaDomainIteratorsPass.php
-
-		-
-			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\Compiler\\\\SchemaWorkersPass\\:\\:process\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/bundle/DependencyInjection/Compiler/SchemaWorkersPass.php
-
-		-
 			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\GraphQL\\\\SchemaProvider\\:\\:getSchemaConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/bundle/DependencyInjection/GraphQL/SchemaProvider.php
@@ -101,11 +76,6 @@ parameters:
 			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
 
 		-
-			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\IbexaGraphQLExtension\\:\\:prepend\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
-
-		-
 			message: "#^Parameter \\#1 \\$configDir of method Ibexa\\\\Bundle\\\\GraphQL\\\\DependencyInjection\\\\IbexaGraphQLExtension\\:\\:getGraphQLConfig\\(\\) expects string, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
 			count: 1
 			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
@@ -114,11 +84,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$string of function rtrim expects string, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
 			count: 1
 			path: src/bundle/DependencyInjection/IbexaGraphQLExtension.php
-
-		-
-			message: "#^Method Ibexa\\\\Bundle\\\\GraphQL\\\\IbexaGraphQLBundle\\:\\:build\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/bundle/IbexaGraphQLBundle.php
 
 		-
 			message: "#^Method Ibexa\\\\Contracts\\\\GraphQL\\\\Mutation\\\\InputHandler\\\\FieldType\\\\RichText\\\\RichTextInputConverter\\:\\:convertToXml\\(\\) has parameter \\$text with no type specified\\.$#"
@@ -541,52 +506,7 @@ parameters:
 			path: src/lib/Relay/NodeResolver.php
 
 		-
-			message: "#^Access to protected property Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection\\:\\:\\$edges\\.$#"
-			count: 1
-			path: src/lib/Relay/PageAwareConnection.php
-
-		-
-			message: "#^Access to protected property Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection\\:\\:\\$pageInfo\\.$#"
-			count: 1
-			path: src/lib/Relay/PageAwareConnection.php
-
-		-
-			message: "#^Access to protected property Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection\\:\\:\\$totalCount\\.$#"
-			count: 1
-			path: src/lib/Relay/PageAwareConnection.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\PageAwareConnection\\:\\:__construct\\(\\) has parameter \\$edges with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/lib/Relay/PageAwareConnection.php
-
-		-
-			message: "#^Parameter \\#2 \\$pageInfo of class Ibexa\\\\GraphQL\\\\Relay\\\\PageAwareConnection constructor expects Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\PageInfoInterface, Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\PageInfoInterface\\|null given\\.$#"
-			count: 1
-			path: src/lib/Relay/PageAwareConnection.php
-
-		-
-			message: "#^Property Ibexa\\\\GraphQL\\\\Relay\\\\PageAwareConnection\\:\\:\\$totalCount \\(int\\) does not accept GraphQL\\\\Executor\\\\Promise\\\\Promise\\|int\\|null\\.$#"
-			count: 1
-			path: src/lib/Relay/PageAwareConnection.php
-
-		-
-			message: "#^Access to an undefined property Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\ConnectionInterface\\:\\:\\$sliceSize\\.$#"
-			count: 1
-			path: src/lib/Relay/SearchResolver.php
-
-		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\SearchResolver\\:\\:searchContent\\(\\) has parameter \\$args with no type specified\\.$#"
-			count: 1
-			path: src/lib/Relay/SearchResolver.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\SearchResolver\\:\\:searchContent\\(\\) should return Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection but returns Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\ConnectionInterface\\.$#"
-			count: 1
-			path: src/lib/Relay/SearchResolver.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Relay\\\\SearchResolver\\:\\:searchContent\\(\\) should return Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection but returns null\\.$#"
 			count: 1
 			path: src/lib/Relay/SearchResolver.php
 
@@ -981,16 +901,6 @@ parameters:
 			path: src/lib/Resolver/ItemResolver.php
 
 		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ItemResolver\\:\\:resolveItemsOfTypeAsConnection\\(\\) should return Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection but returns GraphQL\\\\Executor\\\\Promise\\\\Promise\\|Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection\\.$#"
-			count: 1
-			path: src/lib/Resolver/ItemResolver.php
-
-		-
-			message: "#^Property Ibexa\\\\GraphQL\\\\Resolver\\\\ItemResolver\\:\\:\\$contentTypeLoader is never read, only written\\.$#"
-			count: 1
-			path: src/lib/Resolver/ItemResolver.php
-
-		-
 			message: "#^Parameter \\#1 \\$location of method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\ObjectStorageLocationList\\:\\:addLocation\\(\\) expects Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location, Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ValueObject given\\.$#"
 			count: 1
 			path: src/lib/Resolver/LocationGuesser/CurrentSiteLocationProvider.php
@@ -1062,16 +972,6 @@ parameters:
 
 		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationResolver\\:\\:resolveLocationsByContentId\\(\\) has parameter \\$contentId with no type specified\\.$#"
-			count: 1
-			path: src/lib/Resolver/LocationResolver.php
-
-		-
-			message: "#^PHPDoc tag @return with type Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection is incompatible with native type Ibexa\\\\GraphQL\\\\Relay\\\\PageAwareConnection\\.$#"
-			count: 1
-			path: src/lib/Resolver/LocationResolver.php
-
-		-
-			message: "#^Parameter \\#1 \\$connection of static method Ibexa\\\\GraphQL\\\\Relay\\\\PageAwareConnection\\:\\:fromConnection\\(\\) expects Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection, GraphQL\\\\Executor\\\\Promise\\\\Promise\\|Overblog\\\\GraphQLBundle\\\\Relay\\\\Connection\\\\Output\\\\Connection given\\.$#"
 			count: 1
 			path: src/lib/Resolver/LocationResolver.php
 

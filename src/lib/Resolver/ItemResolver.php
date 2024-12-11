@@ -8,6 +8,7 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use GraphQL\Error\UserError;
+use GraphQL\Executor\Promise\Promise;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
@@ -37,9 +38,6 @@ final class ItemResolver
     /** @var \Ibexa\GraphQL\DataLoader\ContentLoader */
     private $contentLoader;
 
-    /** @var \Ibexa\GraphQL\DataLoader\ContentTypeLoader */
-    private $contentTypeLoader;
-
     /** @var \Ibexa\GraphQL\DataLoader\LocationLoader */
     private $locationLoader;
 
@@ -50,14 +48,12 @@ final class ItemResolver
         TypeResolver $typeResolver,
         QueryMapper $queryMapper,
         ContentLoader $contentLoader,
-        ContentTypeLoader $contentTypeLoader,
         LocationLoader $locationLoader,
         ItemFactory $currentSiteItemFactory
     ) {
         $this->typeResolver = $typeResolver;
         $this->queryMapper = $queryMapper;
         $this->contentLoader = $contentLoader;
-        $this->contentTypeLoader = $contentTypeLoader;
         $this->locationLoader = $locationLoader;
         $this->itemFactory = $currentSiteItemFactory;
     }
@@ -99,7 +95,7 @@ final class ItemResolver
             );
         } elseif (isset($args['contentId'])) {
             $item = $this->itemFactory->fromContent(
-                $content = $this->contentLoader->findSingle(new Query\Criterion\ContentId($args['contentId']))
+                $this->contentLoader->findSingle(new Query\Criterion\ContentId($args['contentId']))
             );
         } elseif (isset($args['remoteId'])) {
             $item = $this->itemFactory->fromContent(
@@ -129,7 +125,10 @@ final class ItemResolver
         return Field::fromField($item->getContent()->getField($fieldDefinitionIdentifier, $args['language'] ?? null));
     }
 
-    public function resolveItemsOfTypeAsConnection(string $contentTypeIdentifier, $args): Connection
+    /**
+     * @return \GraphQL\Executor\Promise\Promise|\Overblog\GraphQLBundle\Relay\Connection\Output\Connection<\Ibexa\GraphQL\Value\Item>
+     */
+    public function resolveItemsOfTypeAsConnection(string $contentTypeIdentifier, $args): Connection|Promise
     {
         $query = $args['query'] ?: [];
         $query['ContentTypeIdentifier'] = $contentTypeIdentifier;
