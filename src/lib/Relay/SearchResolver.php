@@ -11,6 +11,7 @@ use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionBuilder;
+use Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface;
 
 class SearchResolver
 {
@@ -27,11 +28,11 @@ class SearchResolver
     /**
      * @param $args
      *
-     * @return \Overblog\GraphQLBundle\Relay\Connection\Output\Connection
+     * @return \Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface<\Ibexa\Contracts\Core\Repository\Values\ValueObject>
      *
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      */
-    public function searchContent($args)
+    public function searchContent($args): ConnectionInterface
     {
         $queryArg = $args['query'];
 
@@ -48,10 +49,9 @@ class SearchResolver
             }
         }
 
-        if (count($criteria) === 0) {
-            return null;
+        if (count($criteria) !== 0) {
+            $query->filter = count($criteria) > 1 ? new Query\Criterion\LogicalAnd($criteria) : $criteria[0];
         }
-        $query->filter = count($criteria) > 1 ? new Query\Criterion\LogicalAnd($criteria) : $criteria[0];
         $searchResult = $this->searchService->findContentInfo($query);
 
         $contentItems = array_map(
@@ -62,7 +62,8 @@ class SearchResolver
         );
 
         $connectionBuilder = new ConnectionBuilder();
-        $connection = $connectionBuilder->connectionFromArraySlice(
+
+        return $connectionBuilder->connectionFromArraySlice(
             $contentItems,
             $args,
             [
@@ -70,8 +71,5 @@ class SearchResolver
                 'arrayLength' => $searchResult->totalCount,
             ]
         );
-        $connection->sliceSize = count($contentItems);
-
-        return $connection;
     }
 }

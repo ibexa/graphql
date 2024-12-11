@@ -86,7 +86,7 @@ class LocationResolver
     /**
      * @param int $locationId
      *
-     * @return \Overblog\GraphQLBundle\Relay\Connection\Output\Connection
+     * @return \Ibexa\GraphQL\Relay\PageAwareConnection<\Ibexa\Contracts\Core\Repository\Values\Content\Location>
      */
     public function resolveLocationChildren($locationId, Argument $args): PageAwareConnection
     {
