@@ -187,4 +187,7 @@ services:
             - { name: overblog_graphql.mutation, alias: "DeleteDomainContent", method: "deleteDomainContent" }
             - { name: overblog_graphql.mutation, alias: "UpdateDomainContent", method: "updateDomainContent" }
 
-    Ibexa\GraphQL\Resolver\Map\UploadMap: ~
+    Ibexa\GraphQL\Resolver\Map\UploadMap:
+        tags:
+            -   name: overblog_graphql.resolver_map
+                schema: default

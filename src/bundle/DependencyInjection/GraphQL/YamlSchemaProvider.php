@@ -37,7 +37,6 @@ class YamlSchemaProvider implements SchemaProvider
         return [
             'query' => $this->getQuerySchema(),
             'mutation' => $this->getMutationSchema(),
-            'resolver_maps' => [UploadMap::class],
             'types' => ['UntypedContent'],
         ];
     }
