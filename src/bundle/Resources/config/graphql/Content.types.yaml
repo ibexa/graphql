@@ -12,25 +12,25 @@ Content:
             contentType:
                 type: "ContentType"
                 description: "The content type of the Content item."
-                resolve: "@=resolver('ContentTypeById', [value.contentTypeId])"
+                resolve: "@=query('ContentTypeById', [value.contentTypeId])"
             name:
                 type: "String"
                 description: "The computed name (via name schema) in the main language of the Content item."
             section:
                 type: "Section"
                 description: "The section to which the Content object is assigned."
-                resolve: "@=resolver('SectionById', [value.sectionId])"
+                resolve: "@=query('SectionById', [value.sectionId])"
             currentVersionNo:
                 type: "Int"
                 description: "Version number of the published version, or 1 for a newly created draft."
             currentVersion:
                 type: "Version"
                 description: "The currently published version"
-                resolve: "@=resolver('CurrentVersion', [value])"
+                resolve: "@=query('CurrentVersion', [value])"
             versions:
                 type: "[Version]"
                 description: "All content versions."
-                resolve: "@=resolver('ContentVersions', [value.id])"
+                resolve: "@=query('ContentVersions', [value.id])"
             published:
                 type: "Boolean"
                 description: "If the Content item has a published version."
@@ -40,7 +40,7 @@ Content:
             owner:
                 type: "User"
                 description: "The owner user of the Content object"
-                resolve: "@=resolver('UserById', [value.ownerId])"
+                resolve: "@=query('UserById', [value.ownerId])"
             modificationDate:
                 type: DateTime
                 description: "Date the Content item was last modified on."
@@ -62,23 +62,23 @@ Content:
             mainLocation:
                 type: "Location"
                 description: "Content item's main location."
-                resolve: "@=resolver('LocationById', [value.mainLocationId])"
+                resolve: "@=query('LocationById', [value.mainLocationId])"
             locations:
                 type: "[Location]"
                 description: "All the locations of the Content item"
-                resolve: "@=resolver('LocationsByContentId', [value.id])"
+                resolve: "@=query('LocationsByContentId', [value.id])"
             relations:
                 type: "[ContentRelation]"
                 description: "Relations from this Content"
-                resolve: "@=resolver('ContentRelations', [value])"
+                resolve: "@=query('ContentRelations', [value])"
             reverseRelations:
                 type: "[ContentRelation]"
                 description: "Relations to this Content"
-                resolve: "@=resolver('ContentReverseRelations', [value])"
+                resolve: "@=query('ContentReverseRelations', [value])"
             states:
                 type: "[ObjectState]"
                 description: "Content States."
-                resolve: "@=resolver('ObjectStateByContentInfo', [value])"
+                resolve: "@=query('ObjectStateByContentInfo', [value])"
 
 ContentRelation:
     type: "object"

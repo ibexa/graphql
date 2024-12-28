@@ -26,7 +26,7 @@ class AddItemToGroup extends BaseWorker implements Worker
             $this->typeName($args),
             [
                 'description' => isset($descriptions['eng-GB']) ? $descriptions['eng-GB'] : 'No description available',
-                'resolve' => sprintf('@=resolver("ItemOfType", [args, "%s"])', $contentType->identifier),
+                'resolve' => sprintf('@=query("ItemOfType", [args, "%s"])', $contentType->identifier),
             ]
         ));
 

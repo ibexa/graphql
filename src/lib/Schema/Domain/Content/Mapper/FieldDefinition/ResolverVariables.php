@@ -59,7 +59,7 @@ class ResolverVariables implements FieldDefinitionMapper
         if (preg_match('/value, "(.*field.*)"/i', $resolver) !== 1) {
             $resolver = str_replace(
                 'field',
-                'resolver("ItemFieldValue", [value, "' . $fieldDefinition->identifier . '", args])',
+                'query("ItemFieldValue", [value, "' . $fieldDefinition->identifier . '", args])',
                 $resolver
             );
         }

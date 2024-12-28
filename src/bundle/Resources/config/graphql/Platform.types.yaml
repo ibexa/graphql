@@ -10,9 +10,9 @@ Platform:
                 builder: Relay::Node
                 builderConfig:
                     nodeInterfaceType: Node
-                    idFetcher: '@=resolver("node", [value])'
+                    idFetcher: '@=query("node", [value])'
             item:
                 description: "An item, whatever its type"
                 type: Item
                 argsBuilder: "Item"
-                resolve: "@=resolver('Item', [args])"
+                resolve: "@=query('Item', [args])"

@@ -21,7 +21,7 @@ UrlAlias:
                 type: "Boolean"
             forward:
                 type: "Boolean"
-        resolveType: "@=resolver('UrlAliasType', [value])"
+        resolveType: "@=query('UrlAliasType', [value])"
 
 LocationUrlAlias:
     type: object
@@ -43,7 +43,7 @@ LocationUrlAlias:
                 type: "Boolean"
             location:
                 type: "Location"
-                resolve: "@=resolver('LocationById', [value.destination])"
+                resolve: "@=query('LocationById', [value.destination])"
         interfaces: [UrlAlias]
 
 ResourceUrlAlias:

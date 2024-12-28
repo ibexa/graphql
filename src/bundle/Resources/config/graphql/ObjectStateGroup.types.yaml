@@ -18,4 +18,4 @@ ObjectStateGroup:
             states:
                 type: "[ObjectState]"
                 description: "List of ObjectStates under ObjectStateGroup."
-                resolve: "@=resolver('ObjectStatesByGroup', [value])"
+                resolve: "@=query('ObjectStatesByGroup', [value])"

@@ -19,7 +19,7 @@ class AddItemTypeToItemGroupTypes extends BaseWorker implements Worker
     public function work(Builder $schema, array $args)
     {
         $resolve = sprintf(
-            '@=resolver("ContentType", [{"identifier": "%s"}])',
+            '@=query("ContentType", [{"identifier": "%s"}])',
             $args['ContentType']->identifier
         );
 

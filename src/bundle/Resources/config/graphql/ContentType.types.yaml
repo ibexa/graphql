@@ -47,14 +47,14 @@ ContentType:
             creator:
                 type: "User"
                 description: "The user who created this content type."
-                resolve: "@=resolver('UserById', [value.creatorId])"
+                resolve: "@=query('UserById', [value.creatorId])"
             modifierId:
                 type: "Int"
                 description: "The user id of the user which has last modified this content type"
             modifier:
                 type: "User"
                 description: "The user which has last modified this content type"
-                resolve: "@=resolver('UserById', [value.modifierId])"
+                resolve: "@=query('UserById', [value.modifierId])"
             remoteId:
                 type: "String"
                 description: "A global unique id of the content type."
@@ -99,12 +99,12 @@ ContentTypeGroup:
                 type: "Int"
             creator:
                 type: "User"
-                resolve: "@=resolver('UserById', [value.creatorId])"
+                resolve: "@=query('UserById', [value.creatorId])"
             modifierId:
                 type: "Int"
             modifier:
                 type: "User"
-                resolve: "@=resolver('UserById', [value.modifierId])"
+                resolve: "@=query('UserById', [value.modifierId])"
             contentTypes:
                 type: "[ContentType]"
                 resolve: "@=query('ContentTypesFromGroup', {'groupId': value.id})"

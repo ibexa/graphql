@@ -27,7 +27,7 @@ class SelectionFieldDefinitionMapper extends DecoratingFieldDefinitionMapper imp
             return parent::mapToFieldValueResolver($fieldDefinition);
         }
 
-        return '@=resolver("SelectionFieldValue", [field, content])';
+        return '@=query("SelectionFieldValue", [field, content])';
     }
 
     protected function getFieldTypeIdentifier(): string

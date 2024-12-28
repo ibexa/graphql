@@ -15,7 +15,7 @@ Repository:
                     urlAlias:
                         description: "A location url alias: 'path/to/content-item'"
                         type: "String"
-                resolve: "@=resolver('Location', [args])"
+                resolve: "@=query('Location', [args])"
             contentType:
                 type: "ContentType"
                 args:
@@ -25,7 +25,7 @@ Repository:
                     identifier:
                         description: "Resolves using the unique ContentType identifier."
                         type: "String"
-                resolve: "@=resolver('ContentType', [args])"
+                resolve: "@=query('ContentType', [args])"
             contentTypes:
                 type: "[ContentType]"
                 args:
@@ -33,7 +33,7 @@ Repository:
                         type: "String"
                     groupIdentifier:
                         type: "String"
-                resolve: "@=resolver('ContentTypesFromGroup', [args])"
+                resolve: "@=query('ContentTypesFromGroup', [args])"
 
             #
             # Object States
@@ -46,12 +46,12 @@ Repository:
                     id:
                         type: "Int"
                         description: "ID of the Object State Group"
-                resolve: "@=resolver('ObjectStateGroupById', [args])"
+                resolve: "@=query('ObjectStateGroupById', [args])"
 
             objectStateGroups:
                 type: '[ObjectStateGroup]'
                 description: "Fetches all Object State Groups."
-                resolve: "@=resolver('ObjectStateGroups')"
+                resolve: "@=query('ObjectStateGroups')"
 
             objectState:
                 type: 'ObjectState'
@@ -60,7 +60,7 @@ Repository:
                     id:
                         type: "Int"
                         description: "ID of the Object State"
-                resolve: "@=resolver('ObjectStateById', [args])"
+                resolve: "@=query('ObjectStateById', [args])"
 
             objectStates:
                 type: '[ObjectState]'
@@ -69,4 +69,4 @@ Repository:
                     groupId:
                         type: "Int"
                         description: "ID of the ObjectStateGroup"
-                resolve: "@=resolver('ObjectStatesByGroupId', [args])"
+                resolve: "@=query('ObjectStatesByGroupId', [args])"

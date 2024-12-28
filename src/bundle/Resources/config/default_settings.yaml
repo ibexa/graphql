@@ -46,7 +46,7 @@ parameters:
       input_type: ImageFieldInput
     ezimageasset:
       value_type: ImageFieldValue
-      value_resolver: 'resolver("DomainImageAssetFieldValue", [field])'
+      value_resolver: 'query("DomainImageAssetFieldValue", [field])'
     ezinteger:
       definition_type: IntegerFieldDefinition
       value_type: Int
