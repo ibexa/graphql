@@ -35,7 +35,7 @@ final class AddDomainGroupToDomain extends BaseWorker implements Worker
             [
                 'description' => $contentTypeGroup->getDescription('eng-GB'),
                 'resolve' => sprintf(
-                    '@=query("ContentTypeGroupByIdentifier", ["%s"])',
+                    '@=query("ContentTypeGroupByIdentifier", "%s")',
                     $contentTypeGroup->identifier
                 ),
             ]

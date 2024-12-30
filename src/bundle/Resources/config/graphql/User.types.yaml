@@ -22,7 +22,7 @@ User:
                 type: "Int"
             groups:
                 type: "[UserGroup]"
-                resolve: "@=query('UserGroupsByUserId', [value.id])"
+                resolve: "@=query('UserGroupsByUserId', value.id)"
             thumbnail:
                 type: Thumbnail
                 resolve: "@=query('Thumbnail', value.getThumbnail())"
@@ -47,10 +47,10 @@ UserGroup:
                 resolve: "@=value.versionInfo"
             parentGroup:
                 type: "UserGroup"
-                resolve: "@=query('UserGroupById', [value.parentId])"
+                resolve: "@=query('UserGroupById', value.parentId)"
             subGroups:
                 type: "[UserGroup]"
-                resolve: "@=query('UserGroupSubGroups', [value])"
+                resolve: "@=query('UserGroupSubGroups', value)"
             users:
                 type: "[User]"
-                resolve: "@=query('UsersOfGroup', [value])"
+                resolve: "@=query('UsersOfGroup', value)"

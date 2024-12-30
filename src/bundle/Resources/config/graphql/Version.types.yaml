@@ -24,7 +24,7 @@ Version:
                 type: "Int"
             creator:
                 type: "User"
-                resolve: "@=query('UserById', [value.creatorId])"
+                resolve: "@=query('UserById', value.creatorId)"
             status:
                 type: "Int"
             initialLanguageCode:

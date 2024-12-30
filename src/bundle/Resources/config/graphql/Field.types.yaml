@@ -45,14 +45,14 @@ ImageFieldValue:
                     identifier:
                         type: "[ImageVariationIdentifier]!"
                         description: "One or more variation identifiers."
-                resolve: "@=query('ImageVariations', [value.value, args])"
+                resolve: "@=query('ImageVariations', value.value, args)"
             variation:
                 type: ImageVariation
                 args:
                     identifier:
                         type: ImageVariationIdentifier!
                         description: "A variation identifier."
-                resolve: "@=query('ImageVariation', [value.value, args])"
+                resolve: "@=query('ImageVariation', value.value, args)"
 
 ImageAdditionalData:
     type: object
@@ -139,7 +139,7 @@ DateFieldValue:
             formatted:
                 type: "String"
                 description: "Formatted date"
-                resolve: "@=query('DateTimeFormat', [args['format'], value.value])"
+                resolve: "@=query('DateTimeFormat', args['format'], value.value)"
                 args:
                     format:
                         type: String
@@ -248,15 +248,15 @@ RichTextFieldValue:
             plaintext:
                 type: "String"
                 description: "Plain text representation of the value, without tags. Warning: the text representation may not be perfect."
-                resolve: "@=query('RichTextXmlToPlainText', [value.xml])"
+                resolve: "@=query('RichTextXmlToPlainText', value.xml)"
             html5:
                 type: "String"
                 description: "HTML5 representation."
-                resolve: "@=query('RichTextXmlToHtml5', [value.xml])"
+                resolve: "@=query('RichTextXmlToHtml5', value.xml)"
             html5_edit:
                 type: "String"
                 description: "Editable HTML5 representation."
-                resolve: "@=query('RichTextXmlToHtml5Edit', [value.xml])"
+                resolve: "@=query('RichTextXmlToHtml5Edit', value.xml)"
 
 SelectionFieldValue:
     type: object

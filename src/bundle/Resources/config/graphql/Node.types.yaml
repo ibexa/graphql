@@ -4,4 +4,4 @@
 Node:
     type: relay-node
     config:
-        resolveType: '@=query("node_type", [value])'
+        resolveType: '@=query("node_type", value)'

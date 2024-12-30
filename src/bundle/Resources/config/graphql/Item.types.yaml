@@ -22,7 +22,7 @@ Item:
                 type: String
             _thumbnail:
                 type: Thumbnail
-        resolveType: "@=query('ItemType', [value])"
+        resolveType: "@=query('ItemType', value)"
 
 AbstractItem:
     type: "object"
@@ -37,7 +37,7 @@ AbstractItem:
             _type:
                 description: "The item's content type"
                 type: ContentType
-                resolve: '@=query("ContentTypeById", [value.getContentInfo().contentTypeId])'
+                resolve: '@=query("ContentTypeById", value.getContentInfo().contentTypeId)'
             _contentInfo:
                 description: 'Underlying content info item'
                 type: Content
@@ -49,7 +49,7 @@ AbstractItem:
             _allLocations:
                 description: 'All the locations'
                 type: '[Location]'
-                resolve: '@=query("LocationsByContentId", [value.getContentInfo().id])'
+                resolve: '@=query("LocationsByContentId", value.getContentInfo().id)'
             _name:
                 description: "The content item's name, in the prioritized language(s), based on the object name pattern"
                 type: String
@@ -57,7 +57,7 @@ AbstractItem:
             _url:
                 description: "The content item's url alias, based on the main location."
                 type: String
-                resolve: "@=query('ItemUrlAlias', [value])"
+                resolve: "@=query('ItemUrlAlias', value)"
             _thumbnail:
                 type: Thumbnail
                 resolve: "@=query('Thumbnail', value.getContent().getThumbnail())"

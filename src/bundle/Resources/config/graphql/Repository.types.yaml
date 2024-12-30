@@ -15,7 +15,7 @@ Repository:
                     urlAlias:
                         description: "A location url alias: 'path/to/content-item'"
                         type: "String"
-                resolve: "@=query('Location', [args])"
+                resolve: "@=query('Location', args)"
             contentType:
                 type: "ContentType"
                 args:
@@ -25,7 +25,7 @@ Repository:
                     identifier:
                         description: "Resolves using the unique ContentType identifier."
                         type: "String"
-                resolve: "@=query('ContentType', [args])"
+                resolve: "@=query('ContentType', args)"
             contentTypes:
                 type: "[ContentType]"
                 args:
@@ -33,7 +33,7 @@ Repository:
                         type: "String"
                     groupIdentifier:
                         type: "String"
-                resolve: "@=query('ContentTypesFromGroup', [args])"
+                resolve: "@=query('ContentTypesFromGroup', args)"
 
             #
             # Object States
@@ -46,7 +46,7 @@ Repository:
                     id:
                         type: "Int"
                         description: "ID of the Object State Group"
-                resolve: "@=query('ObjectStateGroupById', [args])"
+                resolve: "@=query('ObjectStateGroupById', args)"
 
             objectStateGroups:
                 type: '[ObjectStateGroup]'
@@ -60,7 +60,7 @@ Repository:
                     id:
                         type: "Int"
                         description: "ID of the Object State"
-                resolve: "@=query('ObjectStateById', [args])"
+                resolve: "@=query('ObjectStateById', args)"
 
             objectStates:
                 type: '[ObjectState]'
@@ -69,4 +69,4 @@ Repository:
                     groupId:
                         type: "Int"
                         description: "ID of the ObjectStateGroup"
-                resolve: "@=query('ObjectStatesByGroupId', [args])"
+                resolve: "@=query('ObjectStatesByGroupId', args)"
