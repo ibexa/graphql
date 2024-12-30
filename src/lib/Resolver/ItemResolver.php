@@ -18,6 +18,7 @@ use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Value\Field;
 use Ibexa\GraphQL\Value\Item;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
@@ -26,7 +27,7 @@ use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
 /**
  * @internal
  */
-final class ItemResolver
+final class ItemResolver implements QueryInterface
 {
     /** @var \Overblog\GraphQLBundle\Resolver\TypeResolver */
     private $typeResolver;

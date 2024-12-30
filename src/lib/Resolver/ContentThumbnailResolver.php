@@ -9,8 +9,9 @@ namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\Contracts\Core\Repository\Strategy\ContentThumbnail\ThumbnailStrategy;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
-final class ContentThumbnailResolver
+final class ContentThumbnailResolver implements QueryInterface
 {
     /** @var \Ibexa\Contracts\Core\Repository\Strategy\ContentThumbnail\ThumbnailStrategy */
     private $thumbnailStrategy;

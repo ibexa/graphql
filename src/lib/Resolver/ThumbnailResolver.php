@@ -9,8 +9,9 @@ declare(strict_types=1);
 namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\Thumbnail;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
-final class ThumbnailResolver
+final class ThumbnailResolver implements QueryInterface
 {
     /**
      * @return array|null array with the thumbnail info, or null if no thumbnail could be obtained for that image

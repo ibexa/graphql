@@ -17,12 +17,13 @@ use Ibexa\GraphQL\DataLoader\LocationLoader;
 use Ibexa\GraphQL\InputMapper\SearchQuerySortByMapper;
 use Ibexa\GraphQL\Relay\PageAwareConnection;
 use Overblog\GraphQLBundle\Definition\Argument;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 /**
  * @internal
  */
-class LocationResolver
+class LocationResolver implements QueryInterface
 {
     public const DEFAULT_LIMIT = 10;
 
