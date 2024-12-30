@@ -7,8 +7,6 @@
 
 namespace Ibexa\Bundle\GraphQL\DependencyInjection\GraphQL;
 
-use Ibexa\GraphQL\Resolver\Map\UploadMap;
-
 /**
  * Provides schema definitions.
  */

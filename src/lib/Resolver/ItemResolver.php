@@ -13,7 +13,6 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
-use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
 use Ibexa\GraphQL\DataLoader\LocationLoader;
 use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\GraphQL\ItemFactory;

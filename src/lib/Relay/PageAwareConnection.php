@@ -12,8 +12,6 @@ use GraphQL\Executor\Promise\Promise;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionBuilder;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface;
-use Overblog\GraphQLBundle\Relay\Connection\EdgeInterface;
-use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\PageInfoInterface;
 
 /**
@@ -50,7 +48,7 @@ final class PageAwareConnection
     {
         $connection = self::resolvePromise(
             $connection,
-            fn($resolved) => $resolved instanceof ConnectionInterface,
+            static fn ($resolved) => $resolved instanceof ConnectionInterface,
             'Resolved result is not a ConnectionInterface'
         );
 
@@ -58,7 +56,7 @@ final class PageAwareConnection
 
         $totalCount = self::resolvePromise(
             $connection->getTotalCount(),
-            fn($resolved) => is_int($resolved) || is_null($resolved),
+            static fn ($resolved) => is_int($resolved) || null === $resolved,
             'Resolved result is not an int or null'
         );
 
@@ -86,8 +84,10 @@ final class PageAwareConnection
             if (!$validator($resolvedValue)) {
                 throw new \UnexpectedValueException($errorMessage);
             }
+
             return $resolvedValue;
         }
+
         return $value;
     }
 }
