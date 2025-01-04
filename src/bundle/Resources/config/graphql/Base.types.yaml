@@ -23,7 +23,7 @@ DateTime:
             format:
                 type: String
                 description: "Date formatted with a date() format"
-                resolve: "@=query('DateTimeFormat', [value, args])"
+                resolve: "@=query('DateTimeFormat', value, args)"
                 args:
                     pattern:
                         type: "String"
