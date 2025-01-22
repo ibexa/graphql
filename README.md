@@ -8,7 +8,7 @@ This package contains a GraphQL server implementation for [Ibexa DXP](https://ww
 Ibexa Open Source.
 
 ## COPYRIGHT
-Copyright (C) 1999-2024 Ibexa AS (formerly eZ Systems AS). All rights reserved.
+Copyright (C) 1999-2025 Ibexa AS (formerly eZ Systems AS). All rights reserved.
 
 ## LICENSE
 This source code is available separately under the following licenses:
