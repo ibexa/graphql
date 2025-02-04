@@ -146,12 +146,7 @@ parameters:
 			path: src/lib/DataLoader/RepositoryContentTypeLoader.php
 
 		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchContentLoader\\:\\:count\\(\\) should return int but returns int\\|null\\.$#"
-			count: 1
-			path: src/lib/DataLoader/SearchContentLoader.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchContentLoader\\:\\:find\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Content\\> but returns array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ValueObject\\>\\.$#"
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchContentLoader\\:\\:count\\(\\) should return int but returns int\\<0, max\\>\\|null\\.$#"
 			count: 1
 			path: src/lib/DataLoader/SearchContentLoader.php
 
@@ -161,12 +156,7 @@ parameters:
 			path: src/lib/DataLoader/SearchLocationLoader.php
 
 		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchLocationLoader\\:\\:count\\(\\) should return int but returns int\\|null\\.$#"
-			count: 1
-			path: src/lib/DataLoader/SearchLocationLoader.php
-
-		-
-			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchLocationLoader\\:\\:find\\(\\) should return array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location\\> but returns array\\<Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ValueObject\\>\\.$#"
+			message: "#^Method Ibexa\\\\GraphQL\\\\DataLoader\\\\SearchLocationLoader\\:\\:count\\(\\) should return int but returns int\\<0, max\\>\\|null\\.$#"
 			count: 1
 			path: src/lib/DataLoader/SearchLocationLoader.php
 
@@ -899,11 +889,6 @@ parameters:
 			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\ItemResolver\\:\\:resolveItemsOfTypeAsConnection\\(\\) has parameter \\$args with no type specified\\.$#"
 			count: 1
 			path: src/lib/Resolver/ItemResolver.php
-
-		-
-			message: "#^Parameter \\#1 \\$location of method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\ObjectStorageLocationList\\:\\:addLocation\\(\\) expects Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\Content\\\\Location, Ibexa\\\\Contracts\\\\Core\\\\Repository\\\\Values\\\\ValueObject given\\.$#"
-			count: 1
-			path: src/lib/Resolver/LocationGuesser/CurrentSiteLocationProvider.php
 
 		-
 			message: "#^Method Ibexa\\\\GraphQL\\\\Resolver\\\\LocationGuesser\\\\FilterLocationGuesser\\:\\:__construct\\(\\) has parameter \\$filters with no value type specified in iterable type array\\.$#"
