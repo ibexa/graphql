@@ -53,14 +53,14 @@ class SchemaBuilderSpec extends ObjectBehavior
         $this->addType($this->inputType());
         $this->addFieldToType(
             self::TYPE,
-            $this->inputField('Description', '@=resolver("myresolver")')
+            $this->inputField('Description', '@=query("myresolver")')
         );
 
         $schema = $this->getSchema();
         $schema->shouldHaveGraphQLType();
         $schema->shouldHaveGraphQLTypeField();
         $schema->shouldHaveGraphQLTypeFieldWithDescription('Description');
-        $schema->shouldHaveGraphQLTypeFieldWithResolve('@=resolver("myresolver")');
+        $schema->shouldHaveGraphQLTypeFieldWithResolve('@=query("myresolver")');
     }
 
     public function it_adds_an_argument_to_an_existing_type_field(NameValidator $nameValidator)
