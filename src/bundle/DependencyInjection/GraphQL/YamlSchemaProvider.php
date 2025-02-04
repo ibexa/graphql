@@ -7,8 +7,6 @@
 
 namespace Ibexa\Bundle\GraphQL\DependencyInjection\GraphQL;
 
-use Ibexa\GraphQL\Resolver\Map\UploadMap;
-
 /**
  * Provides schema definitions.
  */
@@ -37,7 +35,6 @@ class YamlSchemaProvider implements SchemaProvider
         return [
             'query' => $this->getQuerySchema(),
             'mutation' => $this->getMutationSchema(),
-            'resolver_maps' => [UploadMap::class],
             'types' => ['UntypedContent'],
         ];
     }

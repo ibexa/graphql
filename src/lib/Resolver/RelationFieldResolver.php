@@ -13,8 +13,9 @@ use Ibexa\Core\FieldType;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Value\Field;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
-final class RelationFieldResolver
+final class RelationFieldResolver implements QueryInterface
 {
     /** @var \Ibexa\GraphQL\DataLoader\ContentLoader */
     private $contentLoader;

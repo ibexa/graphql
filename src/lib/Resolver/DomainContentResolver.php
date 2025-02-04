@@ -18,13 +18,14 @@ use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
 use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\GraphQL\Value\Field;
 use Overblog\GraphQLBundle\Definition\Argument;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
 /**
  * @internal
  */
-class DomainContentResolver
+class DomainContentResolver implements QueryInterface
 {
     /**
      * @var \Overblog\GraphQLBundle\Resolver\TypeResolver

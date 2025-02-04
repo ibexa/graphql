@@ -15,11 +15,12 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Relation;
 use Ibexa\Contracts\Core\Repository\Values\Content\RelationList\RelationListItemInterface;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
 use Ibexa\Contracts\Core\Repository\Values\Content\VersionInfo;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 /**
  * @internal
  */
-class ContentResolver
+class ContentResolver implements QueryInterface
 {
     /**
      * @var \Ibexa\Contracts\Core\Repository\ContentService

@@ -194,7 +194,7 @@ SelectionFieldDefinitionSettings:
                 type: Boolean
             options:
                 type: "[SelectionFieldDefinitionOption]"
-                resolve: "@=resolver('SelectionFieldDefinitionOptions', [value['options']])"
+                resolve: "@=query('SelectionFieldDefinitionOptions', value['options'])"
 
 SelectionFieldDefinitionOption:
     type: object
