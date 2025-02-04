@@ -13,6 +13,7 @@ use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionBuilder;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface;
 use Overblog\GraphQLBundle\Relay\Connection\PageInfoInterface;
+use UnexpectedValueException;
 
 /**
  * @phpstan-template T
@@ -48,7 +49,7 @@ final class PageAwareConnection
     {
         $connection = self::resolvePromise(
             $connection,
-            static fn ($resolved) => $resolved instanceof ConnectionInterface,
+            static fn ($resolved): bool => $resolved instanceof ConnectionInterface,
             'Resolved result is not a ConnectionInterface'
         );
 
@@ -56,7 +57,7 @@ final class PageAwareConnection
 
         $totalCount = self::resolvePromise(
             $connection->getTotalCount(),
-            static fn ($resolved) => is_int($resolved) || null === $resolved,
+            static fn ($resolved): bool => is_int($resolved) || null === $resolved,
             'Resolved result is not an int or null'
         );
 
@@ -82,7 +83,7 @@ final class PageAwareConnection
             $resolvedValue = $promiseAdapter->wait($value);
 
             if (!$validator($resolvedValue)) {
-                throw new \UnexpectedValueException($errorMessage);
+                throw new UnexpectedValueException($errorMessage);
             }
 
             return $resolvedValue;
