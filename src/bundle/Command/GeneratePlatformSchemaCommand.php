@@ -21,7 +21,6 @@ use Symfony\Component\Yaml\Yaml;
 #[AsCommand(
     name: 'ibexa:graphql:generate-schema',
     description: 'Generates the GraphQL schema for the Ibexa DXP instance',
-    aliases: ['ezplatform:graphql:generate-schema']
 )]
 class GeneratePlatformSchemaCommand extends Command
 {
