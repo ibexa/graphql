@@ -29,7 +29,7 @@ class SelectionFieldResolver
 
     public function resolveSelectionFieldValue(?Field $field, Content $content)
     {
-        if ($field === null) {
+        if ($field === null || empty($field->value->selection)) {
             return null;
         }
 
