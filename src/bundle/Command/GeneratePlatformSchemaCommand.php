@@ -9,6 +9,7 @@ namespace Ibexa\Bundle\GraphQL\Command;
 
 use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\GraphQL\Schema\Generator;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -17,6 +18,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Yaml;
 
+#[AsCommand(
+    name: 'ibexa:graphql:generate-schema',
+    description: 'Generates the GraphQL schema for the Ibexa DXP instance',
+    aliases: ['ezplatform:graphql:generate-schema']
+)]
 class GeneratePlatformSchemaCommand extends Command
 {
     /**
@@ -42,9 +48,6 @@ class GeneratePlatformSchemaCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('ibexa:graphql:generate-schema')
-            ->setAliases(['ezplatform:graphql:generate-schema'])
-            ->setDescription('Generates the GraphQL schema for the Ibexa DXP instance')
             ->addOption('dry-run', null, InputOption::VALUE_OPTIONAL, 'Do not write, output the schema only', false)
             ->addOption('include', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Type to output or write', [])
             ->addOption(
