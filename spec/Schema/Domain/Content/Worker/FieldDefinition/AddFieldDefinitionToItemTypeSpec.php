@@ -1,28 +1,34 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition;
 
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
+use Ibexa\Core\Repository\Values\ContentType;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition\AddFieldDefinitionToItemType;
-use Ibexa\GraphQL\Schema\Builder;
-use spec\Ibexa\GraphQL\Tools\FieldArgument;
-use Ibexa\Core\Repository\Values\ContentType;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\Ibexa\GraphQL\Tools\FieldArgument;
 
 class AddFieldDefinitionToItemTypeSpec extends ObjectBehavior
 {
-    const TYPE_IDENTIFIER = 'test';
-    const TYPE_NAME = 'TestItemType';
-    const FIELD_IDENTIFIER = 'test_field';
-    const FIELD_NAME = 'testField';
-    const FIELD_DESCRIPTION = ['eng-GB' => 'Description'];
-    const FIELD_TYPE = 'ezstring';
-    const FIELD_DEFINITION_TYPE = 'TestFieldDefinition';
+    public const TYPE_IDENTIFIER = 'test';
+    public const TYPE_NAME = 'TestItemType';
+    public const FIELD_IDENTIFIER = 'test_field';
+    public const FIELD_NAME = 'testField';
+    public const FIELD_DESCRIPTION = ['eng-GB' => 'Description'];
+    public const FIELD_TYPE = 'ezstring';
+    public const FIELD_DEFINITION_TYPE = 'TestFieldDefinition';
 
     /**
-     * @var ContentType\FieldDefinition
+     * @var \Ibexa\Core\Repository\Values\ContentType\FieldDefinition
      */
     private $defaultFieldDefinition;
 
@@ -31,7 +37,7 @@ class AddFieldDefinitionToItemTypeSpec extends ObjectBehavior
         $this->defaultFieldDefinition = $this->buildFieldDefinition(self::FIELD_TYPE);
     }
 
-    function let(FieldDefinitionMapper $mapper, NameHelper $nameHelper)
+    public function let(FieldDefinitionMapper $mapper, NameHelper $nameHelper): void
     {
         $this->beConstructedWith($mapper);
 
@@ -43,19 +49,19 @@ class AddFieldDefinitionToItemTypeSpec extends ObjectBehavior
 
         $nameHelper
             ->fieldDefinitionField(
-                Argument::type(ContentType\FieldDefinition::class)
+                Argument::type(FieldDefinition::class)
             )
             ->willReturn(self::FIELD_NAME);
 
         $this->setNameHelper($nameHelper);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(AddFieldDefinitionToItemType::class);
     }
 
-    function it_adds_the_field_definition_to_the_domain_content_type(Builder $schema)
+    public function it_adds_the_field_definition_to_the_domain_content_type(Builder $schema): void
     {
         $this->work($schema, $this->buildArguments());
 
@@ -65,7 +71,7 @@ class AddFieldDefinitionToItemTypeSpec extends ObjectBehavior
         )->shouldHaveBeenCalled();
     }
 
-    function it_uses_the_FieldDefinition_description_as_the_Field_description(Builder $schema)
+    public function it_uses_the_FieldDefinition_description_as_the_Field_description(Builder $schema): void
     {
         $this->work($schema, $this->buildArguments());
 
@@ -75,7 +81,7 @@ class AddFieldDefinitionToItemTypeSpec extends ObjectBehavior
         )->shouldHaveBeenCalled();
     }
 
-    function it_gets_the_FieldDefinition_type_from_the_FieldDefinitionMapper(Builder $schema, FieldDefinitionMapper $mapper)
+    public function it_gets_the_FieldDefinition_type_from_the_FieldDefinitionMapper(Builder $schema, FieldDefinitionMapper $mapper): void
     {
         $mapper->mapToFieldDefinitionType(Argument::any())->willReturn(self::FIELD_DEFINITION_TYPE);
         $schema->addFieldToType(
@@ -91,15 +97,15 @@ class AddFieldDefinitionToItemTypeSpec extends ObjectBehavior
         $return = [
             'ContentTypeGroup' => new ContentType\ContentTypeGroup(),
             'ContentType' => new ContentType\ContentType(['identifier' => self::TYPE_IDENTIFIER]),
-            'FieldDefinition' => $fieldTypeIdentifier ? $this->buildFieldDefinition($fieldTypeIdentifier) : $this->defaultFieldDefinition
+            'FieldDefinition' => $fieldTypeIdentifier ? $this->buildFieldDefinition($fieldTypeIdentifier) : $this->defaultFieldDefinition,
         ];
 
         return $return;
     }
 
-    private function buildFieldDefinition($fieldTypeIdentifier)
+    private function buildFieldDefinition($fieldTypeIdentifier): FieldDefinition
     {
-        return new ContentType\FieldDefinition([
+        return new FieldDefinition([
             'identifier' => self::FIELD_IDENTIFIER,
             'descriptions' => self::FIELD_DESCRIPTION,
             'fieldTypeIdentifier' => $fieldTypeIdentifier,

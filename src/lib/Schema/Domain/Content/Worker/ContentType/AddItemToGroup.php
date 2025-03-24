@@ -16,7 +16,7 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class AddItemToGroup extends BaseWorker implements Worker
 {
-    public function work(Builder $schema, array $args)
+    public function work(Builder $schema, array $args): void
     {
         $contentType = $args['ContentType'];
         $descriptions = $contentType->getDescriptions();
@@ -61,7 +61,7 @@ class AddItemToGroup extends BaseWorker implements Worker
         ));
     }
 
-    public function canWork(Builder $schema, array $args)
+    public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['ContentType'])
@@ -76,12 +76,12 @@ class AddItemToGroup extends BaseWorker implements Worker
         return $this->getNameHelper()->itemGroupName($args['ContentTypeGroup']);
     }
 
-    protected function typeField($args): string
+    protected function typeField(array $args): string
     {
         return $this->getNameHelper()->itemField($args['ContentType']);
     }
 
-    protected function typeName($args): string
+    protected function typeName(array $args): string
     {
         return $this->getNameHelper()->itemName($args['ContentType']);
     }

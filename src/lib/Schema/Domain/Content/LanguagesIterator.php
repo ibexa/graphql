@@ -14,10 +14,7 @@ use Ibexa\GraphQL\Schema\Domain\Iterator;
 
 class LanguagesIterator implements Iterator
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\LanguageService
-     */
-    private $languageService;
+    private LanguageService $languageService;
 
     public function __construct(LanguageService $languageService)
     {

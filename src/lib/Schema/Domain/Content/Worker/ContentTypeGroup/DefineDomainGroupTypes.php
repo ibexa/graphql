@@ -19,22 +19,19 @@ use Ibexa\GraphQL\Schema\Worker;
  */
 class DefineDomainGroupTypes extends BaseWorker implements Worker
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
-     */
-    private $contentTypeService;
+    private ContentTypeService $contentTypeService;
 
     public function __construct(ContentTypeService $contentTypeService)
     {
         $this->contentTypeService = $contentTypeService;
     }
 
-    public function work(Builder $schema, array $args)
+    public function work(Builder $schema, array $args): void
     {
         $schema->addType(new Builder\Input\Type($this->typeName($args), 'object'));
     }
 
-    public function canWork(Builder $schema, array $args)
+    public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['ContentTypeGroup'])
@@ -43,7 +40,7 @@ class DefineDomainGroupTypes extends BaseWorker implements Worker
             && !empty($this->contentTypeService->loadContentTypes($args['ContentTypeGroup']));
     }
 
-    private function typeName($args): string
+    private function typeName(array $args): string
     {
         return $this->getNameHelper()->itemGroupTypesName($args['ContentTypeGroup']);
     }

@@ -15,12 +15,9 @@ class MultipleValidLocationsException extends \Exception
     /**
      * @var \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
      */
-    private $locations = [];
+    private array $locations;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content
-     */
-    private $content;
+    private Content $content;
 
     /**
      * @param \Ibexa\Contracts\Core\Repository\Values\Content\Content $content

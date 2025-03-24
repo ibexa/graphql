@@ -17,15 +17,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UploadFiles
 {
-    /**
-     * @var \Ibexa\AdminUi\UI\Config\Provider\ContentTypeMappings
-     */
-    private $contentTypeMappings;
+    private ContentTypeMappings $contentTypeMappings;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\Repository
-     */
-    private $repository;
+    private Repository $repository;
 
     public function __construct(Repository $repository, ContentTypeMappings $contentTypeMappings)
     {
@@ -33,7 +27,7 @@ class UploadFiles
         $this->contentTypeMappings = $contentTypeMappings;
     }
 
-    public function uploadFiles(Argument $args)
+    public function uploadFiles(Argument $args): array
     {
         $createdContent = [];
         $warnings = [];
@@ -56,13 +50,13 @@ class UploadFiles
         return ['files' => $createdContent, 'warnings' => $warnings];
     }
 
-    private function mapAgainstConfig($mimeType)
+    private function mapAgainstConfig(?string $mimeType)
     {
         foreach ($this->contentTypeMappings->getConfig()['defaultMappings'] as $mapping) {
             if (in_array($mimeType, $mapping['mimeTypes'])) {
                 return array_filter(
                     $mapping,
-                    static function ($key) {
+                    static function ($key): bool {
                         return in_array($key, ['contentTypeIdentifier', 'contentFieldIdentifier', 'nameFieldIdentifier']);
                     },
                     ARRAY_FILTER_USE_KEY
@@ -78,7 +72,7 @@ class UploadFiles
      * @param $locationId The parent location ID
      * @param $languageCode
      */
-    private function createContent(array $mapping, UploadedFile $file, $locationId, $languageCode): Content
+    private function createContent(array $mapping, UploadedFile $file, int $locationId, string $languageCode): Content
     {
         $contentService = $this->repository->getContentService();
         $locationService = $this->repository->getLocationService();

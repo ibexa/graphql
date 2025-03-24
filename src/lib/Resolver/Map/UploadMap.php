@@ -15,7 +15,7 @@ class UploadMap extends ResolverMap
     protected function map()
     {
         return [
-            'FileUpload' => [self::SCALAR_TYPE => static function () { return new GraphQLUploadType(); }],
+            'FileUpload' => [self::SCALAR_TYPE => static function (): GraphQLUploadType { return new GraphQLUploadType(); }],
         ];
     }
 }

@@ -8,6 +8,7 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use GraphQL\Error\UserError;
+use Ibexa\Contracts\Core\Repository\LocationService;
 use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
@@ -27,30 +28,18 @@ use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
  */
 class DomainContentResolver implements QueryInterface
 {
-    /**
-     * @var \Overblog\GraphQLBundle\Resolver\TypeResolver
-     */
-    private $typeResolver;
+    private TypeResolver $typeResolver;
 
     /**
      * @var SearchQueryMapper
      */
     private $queryMapper;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\Repository
-     */
-    private $repository;
+    private Repository $repository;
 
-    /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
-     */
-    private $contentLoader;
+    private ContentLoader $contentLoader;
 
-    /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentTypeLoader
-     */
-    private $contentTypeLoader;
+    private ContentTypeLoader $contentTypeLoader;
 
     public function __construct(
         Repository $repository,
@@ -66,7 +55,7 @@ class DomainContentResolver implements QueryInterface
         $this->contentTypeLoader = $contentTypeLoader;
     }
 
-    public function resolveDomainContentItems($contentTypeIdentifier, $query = null)
+    public function resolveDomainContentItems($contentTypeIdentifier, ?Argument $query = null): array
     {
         return $this->findContentItemsByTypeIdentifier($contentTypeIdentifier, $query);
     }
@@ -172,7 +161,7 @@ class DomainContentResolver implements QueryInterface
             : 'UntypedContent';
     }
 
-    private function makeDomainContentTypeName(ContentType $contentType)
+    private function makeDomainContentTypeName(ContentType $contentType): string
     {
         $converter = new CamelCaseToSnakeCaseNameConverter(null, false);
 
@@ -182,7 +171,7 @@ class DomainContentResolver implements QueryInterface
     /**
      * @return \Ibexa\Contracts\Core\Repository\LocationService
      */
-    private function getLocationService()
+    private function getLocationService(): LocationService
     {
         return $this->repository->getLocationService();
     }

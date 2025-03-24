@@ -28,14 +28,12 @@ class Item
     /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Location */
     private $location;
 
-    /** @var \Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser */
-    private $locationGuesser;
+    private LocationGuesser $locationGuesser;
 
     /** @var \Ibexa\Core\MVC\Symfony\SiteAccess */
     private $siteaccess;
 
-    /** @var \Ibexa\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser */
-    private $siteaccessGuesser;
+    private SiteaccessGuesser $siteaccessGuesser;
 
     private function __construct(LocationGuesser $locationGuesser, SiteaccessGuesser $siteaccessGuesser, ?Location $location = null, ?Content $content = null)
     {

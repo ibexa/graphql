@@ -1,19 +1,24 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
 
 use Ibexa\GraphQL\Schema\Builder\SchemaBuilder;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\DefineItemType;
+use Prophecy\Argument;
 use spec\Ibexa\GraphQL\Tools\ContentTypeArgument;
 use spec\Ibexa\GraphQL\Tools\TypeArgument;
-use Prophecy\Argument;
 
 class DefineItemTypeSpec extends ContentTypeWorkerBehavior
 {
-    const TYPE_TYPE = 'TestTypeType';
+    public const TYPE_TYPE = 'TestTypeType';
 
-    function let(NameHelper $nameHelper)
+    public function let(NameHelper $nameHelper): void
     {
         $nameHelper
             ->itemTypeName(ContentTypeArgument::withIdentifier(self::TYPE_IDENTIFIER))
@@ -22,24 +27,24 @@ class DefineItemTypeSpec extends ContentTypeWorkerBehavior
         $this->setNameHelper($nameHelper);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(DefineItemType::class);
     }
 
-    function it_can_not_work_if_args_do_not_include_a_ContentTypeGroup(SchemaBuilder $schema)
+    public function it_can_not_work_if_args_do_not_include_a_ContentTypeGroup(SchemaBuilder $schema): void
     {
         $this->canWork($schema, [])->shouldBe(false);
     }
 
-    function it_can_not_work_if_args_do_not_include_a_ContentType(SchemaBuilder $schema)
+    public function it_can_not_work_if_args_do_not_include_a_ContentType(SchemaBuilder $schema): void
     {
         $args = $this->args();
         unset($args['ContentType']);
         $this->canWork($schema, $args)->shouldBe(false);
     }
 
-    function it_defines_a_DomainContent_type_based_on_the_ContentType(SchemaBuilder $schema)
+    public function it_defines_a_DomainContent_type_based_on_the_ContentType(SchemaBuilder $schema): void
     {
         $schema
             ->addType(Argument::allOf(

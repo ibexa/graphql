@@ -19,15 +19,9 @@ use Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder;
  */
 class CurrentSiteLocationProvider implements LocationProvider
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\SearchService
-     */
-    private $searchService;
+    private SearchService $searchService;
 
-    /**
-     * @var \Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder
-     */
-    private $filterBuilder;
+    private ContentCollectionFilterBuilder $filterBuilder;
 
     public function __construct(SearchService $searchService, ContentCollectionFilterBuilder $filterBuilder)
     {

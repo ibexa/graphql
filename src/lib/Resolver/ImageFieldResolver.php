@@ -10,7 +10,7 @@ namespace Ibexa\GraphQL\Resolver;
 use Ibexa\Contracts\Core\Repository\ContentService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\Contracts\Core\Variation\VariationHandler;
-use Ibexa\Core\FieldType;
+use Ibexa\Core\FieldType\Image\Type;
 use Ibexa\Core\FieldType\Image\Value as ImageFieldValue;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Overblog\GraphQLBundle\Error\UserError;
@@ -20,28 +20,16 @@ use Overblog\GraphQLBundle\Error\UserError;
  */
 class ImageFieldResolver
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Variation\VariationHandler
-     */
-    private $variationHandler;
+    private VariationHandler $variationHandler;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentService
-     */
-    private $contentService;
+    private ContentService $contentService;
 
-    /**
-     * @var FieldType\Image\Type
-     */
-    private $fieldType;
+    private Type $fieldType;
 
-    /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
-     */
-    private $contentLoader;
+    private ContentLoader $contentLoader;
 
     public function __construct(
-        FieldType\Image\Type $imageFieldType,
+        Type $imageFieldType,
         VariationHandler $variationHandler,
         ContentLoader $contentLoader,
         ContentService $contentService
@@ -52,7 +40,7 @@ class ImageFieldResolver
         $this->contentLoader = $contentLoader;
     }
 
-    public function resolveImageVariations(ImageFieldValue $fieldValue, $args)
+    public function resolveImageVariations(ImageFieldValue $fieldValue, array $args)
     {
         if ($this->fieldType->isEmptyValue($fieldValue)) {
             return null;
@@ -67,7 +55,7 @@ class ImageFieldResolver
         return $variations;
     }
 
-    public function resolveImageVariation(ImageFieldValue $fieldValue, $args)
+    public function resolveImageVariation(ImageFieldValue $fieldValue, array $args)
     {
         if ($this->fieldType->isEmptyValue($fieldValue)) {
             return null;

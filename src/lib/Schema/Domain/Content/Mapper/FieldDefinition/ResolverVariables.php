@@ -16,10 +16,7 @@ use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDe
  */
 class ResolverVariables implements FieldDefinitionMapper
 {
-    /**
-     * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
-     */
-    private $innerMapper;
+    private FieldDefinitionMapper $innerMapper;
 
     public function __construct(FieldDefinitionMapper $innerMapper)
     {

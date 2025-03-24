@@ -15,10 +15,7 @@ use Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface;
 
 class SearchResolver
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\SearchService
-     */
-    private $searchService;
+    private SearchService $searchService;
 
     public function __construct(SearchService $searchService)
     {
@@ -32,7 +29,7 @@ class SearchResolver
      *
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      */
-    public function searchContent($args): ConnectionInterface
+    public function searchContent(array $args): ConnectionInterface
     {
         $queryArg = $args['query'];
 

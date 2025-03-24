@@ -17,10 +17,7 @@ use Ibexa\GraphQL\Value\Field;
  */
 class SelectionFieldResolver
 {
-    /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentTypeLoader
-     */
-    private $contentTypeLoader;
+    private ContentTypeLoader $contentTypeLoader;
 
     public function __construct(
         ContentTypeLoader $contentTypeLoader

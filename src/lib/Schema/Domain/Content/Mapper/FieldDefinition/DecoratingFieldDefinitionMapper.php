@@ -13,10 +13,7 @@ use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDe
 
 abstract class DecoratingFieldDefinitionMapper implements FieldDefinitionMapper
 {
-    /**
-     * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
-     */
-    protected $innerMapper;
+    protected FieldDefinitionMapper $innerMapper;
 
     public function __construct(FieldDefinitionMapper $innerMapper)
     {

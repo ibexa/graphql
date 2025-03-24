@@ -17,7 +17,7 @@ class DefineItemMutation extends BaseWorker implements Worker, Initializer
 {
     public const MUTATION_TYPE = 'ItemMutation';
 
-    public function init(Builder $schema)
+    public function init(Builder $schema): void
     {
         $schema->addType(new Builder\Input\Type(
             self::MUTATION_TYPE,
@@ -26,7 +26,7 @@ class DefineItemMutation extends BaseWorker implements Worker, Initializer
         ));
     }
 
-    public function work(Builder $schema, array $args)
+    public function work(Builder $schema, array $args): void
     {
         $contentType = $args['ContentType'];
 
@@ -107,7 +107,7 @@ class DefineItemMutation extends BaseWorker implements Worker, Initializer
         $schema->addType(new Builder\Input\Type($this->getUpdateInputName($contentType), 'input-object'));
     }
 
-    public function canWork(Builder $schema, array $args)
+    public function canWork(Builder $schema, array $args): bool
     {
         return isset($args['ContentType'])
                && $args['ContentType'] instanceof ContentType

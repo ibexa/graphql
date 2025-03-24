@@ -16,15 +16,10 @@ final class ObjectStorageLocationList implements LocationList
 {
     /**
      * The content item locations were guessed for.
-     *
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content
      */
-    private $content;
+    private Content $content;
 
-    /**
-     * @var \SplObjectStorage
-     */
-    private $locations;
+    private SplObjectStorage $locations;
 
     public function __construct(Content $content)
     {

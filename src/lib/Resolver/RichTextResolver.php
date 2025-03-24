@@ -8,6 +8,7 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use DOMDocument;
+use Ibexa\Contracts\FieldTypeRichText\RichText\Converter;
 use Ibexa\Contracts\FieldTypeRichText\RichText\Converter as RichTextConverterInterface;
 
 /**
@@ -15,15 +16,9 @@ use Ibexa\Contracts\FieldTypeRichText\RichText\Converter as RichTextConverterInt
  */
 class RichTextResolver
 {
-    /**
-     * @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter
-     */
-    private $richTextConverter;
+    private Converter $richTextConverter;
 
-    /**
-     * @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter
-     */
-    private $richTextEditConverter;
+    private Converter $richTextEditConverter;
 
     public function __construct(RichTextConverterInterface $richTextConverter, RichTextConverterInterface $richTextEditConverter)
     {
@@ -31,17 +26,17 @@ class RichTextResolver
         $this->richTextEditConverter = $richTextEditConverter;
     }
 
-    public function xmlToHtml5(DOMDocument $document)
+    public function xmlToHtml5(DOMDocument $document): string|false
     {
         return $this->richTextConverter->convert($document)->saveHTML();
     }
 
-    public function xmlToHtml5Edit(DOMDocument $document)
+    public function xmlToHtml5Edit(DOMDocument $document): string|false
     {
         return $this->richTextEditConverter->convert($document)->saveHTML();
     }
 
-    public function xmlToPlainText(DOMDocument $document)
+    public function xmlToPlainText(DOMDocument $document): string
     {
         $html = $this->richTextConverter->convert($document)->saveHTML();
 

@@ -1,39 +1,44 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 
-use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ConfigurableFieldDefinitionMapper;
-use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ConfigurableFieldDefinitionMapper;
 use PhpSpec\ObjectBehavior;
 
 class ConfigurableFieldDefinitionMapperSpec extends ObjectBehavior
 {
-    const FIELD_IDENTIFIER = 'test';
-    const CONFIG = [
+    public const FIELD_IDENTIFIER = 'test';
+    public const CONFIG = [
         'configured_type' => [
             'value_type' => self::VALUE_TYPE,
             'definition_type' => self::DEFINITION_TYPE,
             'value_resolver' => self::VALUE_RESOLVER,
-        ]
+        ],
     ];
 
-    const VALUE_TYPE = 'ConfiguredFieldValue';
-    const VALUE_RESOLVER = 'valueResolver';
-    const DEFINITION_TYPE = 'ConfiguredFieldDefinition';
+    public const VALUE_TYPE = 'ConfiguredFieldValue';
+    public const VALUE_RESOLVER = 'valueResolver';
+    public const DEFINITION_TYPE = 'ConfiguredFieldDefinition';
 
-    function let(FieldDefinitionMapper $innerMapper)
+    public function let(FieldDefinitionMapper $innerMapper): void
     {
         $this->beConstructedWith($innerMapper, self::CONFIG);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(ConfigurableFieldDefinitionMapper::class);
         $this->shouldHaveType(FieldDefinitionMapper::class);
     }
 
-    function it_calls_the_inner_mapper_if_it_does_not_have_a_value_type_for_a_field_type_identifier(FieldDefinitionMapper $innerMapper)
+    public function it_calls_the_inner_mapper_if_it_does_not_have_a_value_type_for_a_field_type_identifier(FieldDefinitionMapper $innerMapper): void
     {
         $fieldDefinition = $this->createUnconfiguredFieldDefinition();
 
@@ -41,7 +46,7 @@ class ConfigurableFieldDefinitionMapperSpec extends ObjectBehavior
         $innerMapper->mapToFieldValueType($fieldDefinition)->shouldHaveBeenCalled();
     }
 
-    function it_returns_the_value_type_for_a_configured_field_type_identifier(FieldDefinitionMapper $innerMapper)
+    public function it_returns_the_value_type_for_a_configured_field_type_identifier(FieldDefinitionMapper $innerMapper): void
     {
         $fieldDefinition = $this->createConfiguredFieldDefinition();
 
@@ -49,7 +54,7 @@ class ConfigurableFieldDefinitionMapperSpec extends ObjectBehavior
         $innerMapper->mapToFieldValueType($fieldDefinition)->shouldNotHaveBeenCalled();
     }
 
-    function it_calls_the_inner_mapper_if_it_does_not_have_a_definition_type_for_a_field_type_identifier(FieldDefinitionMapper $innerMapper)
+    public function it_calls_the_inner_mapper_if_it_does_not_have_a_definition_type_for_a_field_type_identifier(FieldDefinitionMapper $innerMapper): void
     {
         $fieldDefinition = $this->createUnconfiguredFieldDefinition();
 
@@ -57,7 +62,7 @@ class ConfigurableFieldDefinitionMapperSpec extends ObjectBehavior
         $innerMapper->mapToFieldDefinitionType($fieldDefinition)->shouldHaveBeenCalled();
     }
 
-    function it_returns_the_definition_type_for_a_configured_field_type_identifier(FieldDefinitionMapper $innerMapper)
+    public function it_returns_the_definition_type_for_a_configured_field_type_identifier(FieldDefinitionMapper $innerMapper): void
     {
         $fieldDefinition = $this->createConfiguredFieldDefinition();
 
@@ -65,7 +70,7 @@ class ConfigurableFieldDefinitionMapperSpec extends ObjectBehavior
         $innerMapper->mapToFieldDefinitionType($fieldDefinition)->shouldNotHaveBeenCalled();
     }
 
-    function it_calls_the_inner_mapper_if_it_does_not_have_a_value_resolver_for_a_field_type_identifier(FieldDefinitionMapper $innerMapper)
+    public function it_calls_the_inner_mapper_if_it_does_not_have_a_value_resolver_for_a_field_type_identifier(FieldDefinitionMapper $innerMapper): void
     {
         $fieldDefinition = $this->createUnconfiguredFieldDefinition();
 
@@ -73,7 +78,7 @@ class ConfigurableFieldDefinitionMapperSpec extends ObjectBehavior
         $innerMapper->mapToFieldDefinitionType($fieldDefinition)->shouldHaveBeenCalled();
     }
 
-    function it_returns_the_completed_value_resolver_for_a_configured_field_type_identifier(FieldDefinitionMapper $innerMapper)
+    public function it_returns_the_completed_value_resolver_for_a_configured_field_type_identifier(FieldDefinitionMapper $innerMapper): void
     {
         $fieldDefinition = $this->createConfiguredFieldDefinition();
 

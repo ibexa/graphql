@@ -16,15 +16,9 @@ use Overblog\GraphQLBundle\Relay\Connection\Paginator;
  */
 class SearchResolver
 {
-    /**
-     * @var \Ibexa\GraphQL\InputMapper\SearchQueryMapper
-     */
-    private $queryMapper;
+    private SearchQueryMapper $queryMapper;
 
-    /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
-     */
-    private $contentLoader;
+    private ContentLoader $contentLoader;
 
     public function __construct(ContentLoader $contentLoader, SearchQueryMapper $queryMapper)
     {
@@ -32,14 +26,14 @@ class SearchResolver
         $this->queryMapper = $queryMapper;
     }
 
-    public function searchContent($args)
+    public function searchContent(array $args): array
     {
         return $this->contentLoader->find(
             $this->queryMapper->mapInputToQuery($args['query'])
         );
     }
 
-    public function searchContentOfTypeAsConnection($contentTypeIdentifier, $args)
+    public function searchContentOfTypeAsConnection($contentTypeIdentifier, array $args)
     {
         $query = $args['query'] ?: [];
         $query['ContentTypeIdentifier'] = $contentTypeIdentifier;

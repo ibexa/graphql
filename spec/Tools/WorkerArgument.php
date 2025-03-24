@@ -1,8 +1,15 @@
 <?php
+
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Tools;
 
 use PhpSpec\Wrapper\ObjectWrapper;
 use Prophecy\Argument;
+use Prophecy\Argument\Token\CallbackToken;
 
 class WorkerArgument extends Argument
 {
@@ -21,13 +28,14 @@ class WorkerArgument extends Argument
         return self::hasArgument('FieldDefinition', $fieldDefinition);
     }
 
-    public static function hasArgument($argumentName, $value = null)
+    public static function hasArgument($argumentName, $value = null): CallbackToken
     {
-        return new Argument\Token\CallbackToken(
-            function ($args) use ($argumentName, $value) {
+        return new CallbackToken(
+            static function ($args) use ($argumentName, $value): bool {
                 if ($value instanceof ObjectWrapper) {
                     $value = $value->getWrappedObject();
                 }
+
                 return isset($args[$argumentName]) && ($value === null || $args[$argumentName] == $value);
             }
         );

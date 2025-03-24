@@ -12,17 +12,14 @@ use Ibexa\Contracts\Core\Repository\Values\Content\SectionCreateStruct;
 
 class SectionMutation
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\SectionService
-     */
-    private $sectionService;
+    private SectionService $sectionService;
 
     public function __construct(SectionService $sectionService)
     {
         $this->sectionService = $sectionService;
     }
 
-    public function createSection($value)
+    public function createSection(array $value)
     {
         $sectionCreateStruct = new SectionCreateStruct(
             [
@@ -61,7 +58,7 @@ class SectionMutation
      *
      * @return array
      */
-    private function mapSectionToPayLoad($value, $section)
+    private function mapSectionToPayLoad(array $value, $section): array
     {
         return [
             'clientMutationId' => $value['clientMutationId'],

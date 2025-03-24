@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Tools;
 
 use Ibexa\GraphQL\Schema\Builder\Input;
@@ -6,17 +12,19 @@ use Prophecy\Argument\Token\CallbackToken;
 
 class TypeArgument
 {
-    public static function isNamed($name) {
+    public static function isNamed($name): CallbackToken
+    {
         return new CallbackToken(
-            function (Input\Type $type) use($name) {
+            static function (Input\Type $type) use ($name): bool {
                 return $type->name === $name;
             }
         );
     }
 
-    public static function inherits($typeName) {
+    public static function inherits($typeName): CallbackToken
+    {
         return new CallbackToken(
-            function (Input\type $typeInput) use($typeName) {
+            static function (Input\type $typeInput) use ($typeName): bool {
                 return
                     is_array($typeInput->inherits)
                     ? in_array($typeName, $typeInput->inherits)
@@ -25,10 +33,10 @@ class TypeArgument
         );
     }
 
-    public static function implements($interfaceName)
+    public static function implements($interfaceName): CallbackToken
     {
         return new CallbackToken(
-            function (Input\type $typeInput) use($interfaceName) {
+            static function (Input\type $typeInput) use ($interfaceName): bool {
                 return
                     is_array($typeInput->interfaces)
                         ? in_array($interfaceName, $typeInput->interfaces)
@@ -37,10 +45,10 @@ class TypeArgument
         );
     }
 
-    public static function hasType($expectedType)
+    public static function hasType($expectedType): CallbackToken
     {
         return new CallbackToken(
-            function (Input\Type $type) use($expectedType) {
+            static function (Input\Type $type) use ($expectedType): bool {
                 return $type->type === $expectedType;
             }
         );

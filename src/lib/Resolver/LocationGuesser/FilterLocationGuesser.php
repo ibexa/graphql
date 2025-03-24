@@ -18,12 +18,9 @@ class FilterLocationGuesser implements LocationGuesser
     /**
      * @var \Ibexa\GraphQL\Resolver\LocationGuesser\LocationFilter[]
      */
-    private $filters;
+    private array $filters;
 
-    /**
-     * @var \Ibexa\GraphQL\Resolver\LocationGuesser\LocationProvider
-     */
-    private $provider;
+    private LocationProvider $provider;
 
     public function __construct(LocationProvider $provider, array $filters)
     {

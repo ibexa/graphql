@@ -23,35 +23,20 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 class UrlAliasResolver
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\URLAliasService
-     */
-    private $urlAliasService;
+    private URLAliasService $urlAliasService;
 
-    /**
-     * @var \Overblog\GraphQLBundle\Resolver\TypeResolver
-     */
-    private $typeResolver;
+    private TypeResolver $typeResolver;
 
-    /**
-     * @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private $configResolver;
+    private ConfigResolverInterface $configResolver;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\LocationService
-     */
-    private $locationService;
+    private LocationService $locationService;
 
-    /**
-     * @var \Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator
-     */
-    private $urlGenerator;
+    private UrlAliasGenerator $urlGenerator;
 
     /**
      * @var \Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessService
      */
-    private $siteaccessService;
+    private SiteAccessServiceInterface $siteaccessService;
 
     public function __construct(
         TypeResolver $typeResolver,
@@ -69,7 +54,7 @@ class UrlAliasResolver
         $this->siteaccessService = $siteAccessService;
     }
 
-    public function resolveLocationUrlAliases(Location $location, $args)
+    public function resolveLocationUrlAliases(Location $location, $args): iterable
     {
         return $this->urlAliasService->listLocationAliases(
             $location,

@@ -16,7 +16,7 @@ class AddLanguageToEnum implements Worker, Initializer
 {
     public const ENUM_NAME = 'RepositoryLanguage';
 
-    public function init(Builder $schema)
+    public function init(Builder $schema): void
     {
         $schema->addType(
             new Builder\Input\Type(
@@ -29,7 +29,7 @@ class AddLanguageToEnum implements Worker, Initializer
     /**
      * Does the work on $schema.
      */
-    public function work(Builder $schema, array $args)
+    public function work(Builder $schema, array $args): void
     {
         /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Language $language */
         $language = $args['Language'];
@@ -52,7 +52,7 @@ class AddLanguageToEnum implements Worker, Initializer
      *
      * @return bool
      */
-    public function canWork(Builder $schema, array $args)
+    public function canWork(Builder $schema, array $args): bool
     {
         return isset($args['Language']) && $args['Language'] instanceof Language;
     }

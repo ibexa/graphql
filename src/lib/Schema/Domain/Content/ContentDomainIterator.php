@@ -16,11 +16,9 @@ use Ibexa\GraphQL\Schema\Domain\NameValidator;
 
 class ContentDomainIterator implements Iterator
 {
-    /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
-    private $contentTypeService;
+    private ContentTypeService $contentTypeService;
 
-    /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */
-    private $nameValidator;
+    private NameValidator $nameValidator;
 
     public function __construct(
         ContentTypeService $contentTypeService,
@@ -30,7 +28,7 @@ class ContentDomainIterator implements Iterator
         $this->nameValidator = $nameValidator;
     }
 
-    public function init(Builder $schema)
+    public function init(Builder $schema): void
     {
         $schema->addType(
             new Input\Type('Domain', 'object', ['inherits' => ['Platform']])

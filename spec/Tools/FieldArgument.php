@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Tools;
 
 use Ibexa\GraphQL\Schema\Builder\Input;
@@ -21,18 +27,19 @@ class FieldArgument
         return self::has('description', $description);
     }
 
-    public static function withResolver($resolverFunction)
+    public static function withResolver($resolverFunction): CallbackToken
     {
         return new CallbackToken(
-            function(Input\Field $input) use ($resolverFunction) {
+            static function (Input\Field $input) use ($resolverFunction): bool {
                 return strpos($input->resolve, $resolverFunction) !== false;
             }
         );
     }
 
-    private static function has($property, $value) {
+    private static function has(string $property, $value): CallbackToken
+    {
         return new CallbackToken(
-            function(Input\Field $field) use ($property, $value) {
+            static function (Input\Field $field) use ($property, $value): bool {
                 return $field->$property === $value;
             }
         );

@@ -28,7 +28,7 @@ class Field extends ApiValues\Content\Field
         return (string)$this->value;
     }
 
-    public static function fromField(?ApiValues\Content\Field $field)
+    public static function fromField(?ApiValues\Content\Field $field): ?Field
     {
         return $field === null ? $field : new self(get_object_vars($field));
     }

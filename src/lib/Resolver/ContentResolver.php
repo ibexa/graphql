@@ -22,15 +22,9 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
  */
 class ContentResolver implements QueryInterface
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentService
-     */
-    private $contentService;
+    private ContentService $contentService;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\SearchService
-     */
-    private $searchService;
+    private SearchService $searchService;
 
     public function __construct(ContentService $contentService, SearchService $searchService)
     {
@@ -38,7 +32,7 @@ class ContentResolver implements QueryInterface
         $this->searchService = $searchService;
     }
 
-    public function findContentByType($contentTypeId)
+    public function findContentByType($contentTypeId): array
     {
         $searchResults = $this->searchService->findContentInfo(
             new Query([
@@ -57,7 +51,7 @@ class ContentResolver implements QueryInterface
     /**
      * @return \Ibexa\Contracts\Core\Repository\Values\Content\Relation[]
      */
-    public function findContentRelations(ContentInfo $contentInfo, $version = null)
+    public function findContentRelations(ContentInfo $contentInfo, ?int $version = null): array
     {
         return array_filter(array_map(
             static fn (RelationListItemInterface $relationListItem): ?Relation => $relationListItem->getRelation(),
@@ -67,7 +61,7 @@ class ContentResolver implements QueryInterface
         ));
     }
 
-    public function findContentReverseRelations(ContentInfo $contentInfo)
+    public function findContentReverseRelations(ContentInfo $contentInfo): iterable
     {
         return $this->contentService->loadReverseRelations($contentInfo);
     }
@@ -83,12 +77,12 @@ class ContentResolver implements QueryInterface
         }
     }
 
-    public function resolveContentById($contentId)
+    public function resolveContentById(int $contentId): ContentInfo
     {
         return $this->contentService->loadContentInfo($contentId);
     }
 
-    public function resolveContentByIdList(array $contentIdList)
+    public function resolveContentByIdList(array $contentIdList): array
     {
         try {
             $searchResults = $this->searchService->findContentInfo(
@@ -108,7 +102,7 @@ class ContentResolver implements QueryInterface
         );
     }
 
-    public function resolveContentVersions($contentId)
+    public function resolveContentVersions(int $contentId): iterable
     {
         return $this->contentService->loadVersions(
             $this->contentService->loadContentInfo($contentId)

@@ -16,7 +16,7 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class AddItemOfTypeConnectionToGroup extends BaseWorker implements Worker
 {
-    public function work(Builder $schema, array $args)
+    public function work(Builder $schema, array $args): void
     {
         $contentType = $args['ContentType'];
         $descriptions = $contentType->getDescriptions();
@@ -47,7 +47,7 @@ class AddItemOfTypeConnectionToGroup extends BaseWorker implements Worker
         ));
     }
 
-    public function canWork(Builder $schema, array $args)
+    public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['ContentType'])
@@ -72,7 +72,7 @@ class AddItemOfTypeConnectionToGroup extends BaseWorker implements Worker
         return $this->getNameHelper()->itemConnectionName($args['ContentType']);
     }
 
-    protected function typeName($args): string
+    protected function typeName(array $args): string
     {
         return $this->getNameHelper()->itemName($args['ContentType']);
     }

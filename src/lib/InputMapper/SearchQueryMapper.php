@@ -9,14 +9,12 @@ namespace Ibexa\GraphQL\InputMapper;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\Field;
 use InvalidArgumentException;
 
 final class SearchQueryMapper implements QueryMapper
 {
-    /**
-     * @var \Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder
-     */
-    private $filterBuilder;
+    private ContentCollectionFilterBuilder $filterBuilder;
 
     public function __construct(ContentCollectionFilterBuilder $filterBuilder)
     {
@@ -45,7 +43,7 @@ final class SearchQueryMapper implements QueryMapper
         return $query;
     }
 
-    private function mapInput($query, array $inputArray): void
+    private function mapInput(LocationQuery|Query $query, array $inputArray): void
     {
         if (isset($inputArray['offset'])) {
             $query->offset = $inputArray['offset'];
@@ -88,7 +86,7 @@ final class SearchQueryMapper implements QueryMapper
 
         if (isset($inputArray['sortBy'])) {
             $query->sortClauses = array_map(
-                static function ($sortClauseClass) {
+                static function ($sortClauseClass): ?object {
                     /** @var Query\SortClause $lastSortClause */
                     static $lastSortClause;
 
@@ -130,7 +128,7 @@ final class SearchQueryMapper implements QueryMapper
      *
      * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\DateMetadata[]
      */
-    private function mapDateMetadata(array $queryArg, $dateMetadata)
+    private function mapDateMetadata(array $queryArg, string $dateMetadata): array
     {
         if (!isset($queryArg[$dateMetadata]) || !is_array($queryArg[$dateMetadata])) {
             return [];
@@ -167,7 +165,7 @@ final class SearchQueryMapper implements QueryMapper
         return $criteria;
     }
 
-    private function mapInputToFieldCriterion($input)
+    private function mapInputToFieldCriterion($input): Field
     {
         $operators = ['in', 'eq', 'like', 'contains', 'between', 'lt', 'lte', 'gt', 'gte'];
         foreach ($operators as $opString) {
@@ -181,6 +179,6 @@ final class SearchQueryMapper implements QueryMapper
             throw new InvalidArgumentException('Unspecified operator');
         }
 
-        return new Query\Criterion\Field($input['target'], $operator, $value);
+        return new Field($input['target'], $operator, $value);
     }
 }

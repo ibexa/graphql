@@ -15,15 +15,9 @@ use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 
 class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper
 {
-    /**
-     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
-     */
-    private $nameHelper;
+    private NameHelper $nameHelper;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
-     */
-    private $contentTypeService;
+    private ContentTypeService $contentTypeService;
 
     public function __construct(
         FieldDefinitionMapper $innerMapper,
@@ -72,7 +66,7 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
         return sprintf('@=query("RelationFieldValue", field, %s)', $isMultiple);
     }
 
-    protected function canMap(FieldDefinition $fieldDefinition)
+    protected function canMap(FieldDefinition $fieldDefinition): bool
     {
         return in_array($fieldDefinition->fieldTypeIdentifier, ['ezobjectrelation', 'ezobjectrelationlist']);
     }
@@ -85,7 +79,7 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
         return '';
     }
 
-    private function isMultiple(FieldDefinition $fieldDefinition)
+    private function isMultiple(FieldDefinition $fieldDefinition): bool
     {
         $constraints = $fieldDefinition->getValidatorConfiguration();
 

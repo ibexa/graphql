@@ -20,17 +20,15 @@ class YamlSchemaProvider implements SchemaProvider
 
     /**
      * The path to the graphql configuration root.
-     *
-     * @var string
      */
-    private $root;
+    private string $root;
 
     public function __construct($graphQLConfigRoot)
     {
         $this->root = rtrim($graphQLConfigRoot, '/') . '/';
     }
 
-    public function getSchemaConfiguration()
+    public function getSchemaConfiguration(): array
     {
         return [
             'query' => $this->getQuerySchema(),
@@ -39,7 +37,7 @@ class YamlSchemaProvider implements SchemaProvider
         ];
     }
 
-    private function getQuerySchema()
+    private function getQuerySchema(): string
     {
         if (file_exists($this->getAppQuerySchema())) {
             return 'Query';
@@ -50,7 +48,7 @@ class YamlSchemaProvider implements SchemaProvider
         }
     }
 
-    private function getMutationSchema()
+    private function getMutationSchema(): ?string
     {
         if (file_exists($this->getAppMutationSchemaFile())) {
             return 'Mutation';
@@ -61,22 +59,22 @@ class YamlSchemaProvider implements SchemaProvider
         }
     }
 
-    private function getAppQuerySchema()
+    private function getAppQuerySchema(): string
     {
         return $this->root . self::APP_QUERY_SCHEMA_FILE;
     }
 
-    private function getAppMutationSchemaFile()
+    private function getAppMutationSchemaFile(): string
     {
         return $this->root . self::APP_MUTATION_SCHEMA_FILE;
     }
 
-    private function getPlatformQuerySchema()
+    private function getPlatformQuerySchema(): string
     {
         return $this->root . self::DXP_SCHEMA_FILE;
     }
 
-    private function getPlatformMutationSchema()
+    private function getPlatformMutationSchema(): string
     {
         return $this->root . self::DXP_MUTATION_FILE;
     }

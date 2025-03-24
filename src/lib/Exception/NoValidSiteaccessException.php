@@ -12,10 +12,7 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 
 class NoValidSiteaccessException extends Exception
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Location
-     */
-    private $location;
+    private Location $location;
 
     public function __construct(Location $location)
     {

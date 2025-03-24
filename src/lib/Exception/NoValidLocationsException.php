@@ -16,7 +16,7 @@ class NoValidLocationsException extends Exception
     /**
      * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content|\Ibexa\Contracts\Core\Repository\Values\Content\Content[]
      */
-    private $content;
+    private Content $content;
 
     /**
      * NoValidLocationsException constructor.

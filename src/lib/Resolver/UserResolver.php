@@ -20,15 +20,9 @@ use Overblog\GraphQLBundle\Error\UserWarning;
  */
 class UserResolver
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\UserService
-     */
-    private $userService;
+    private UserService $userService;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\LocationService
-     */
-    private $locationService;
+    private LocationService $locationService;
 
     public function __construct(UserService $userService, LocationService $locationService)
     {
@@ -51,7 +45,7 @@ class UserResolver
         }
     }
 
-    public function resolveUserById($userId): ?User
+    public function resolveUserById(int $userId): ?User
     {
         try {
             return $this->userService->loadUser($userId);
@@ -63,14 +57,14 @@ class UserResolver
     /**
      * @return \Ibexa\Contracts\Core\Repository\Values\User\UserGroup[]
      */
-    public function resolveUserGroupsByUserId($userId)
+    public function resolveUserGroupsByUserId(int $userId): iterable
     {
         return $this->userService->loadUserGroupsOfUser(
             $this->userService->loadUser($userId)
         );
     }
 
-    public function resolveUsersOfGroup(UserGroup $userGroup)
+    public function resolveUsersOfGroup(UserGroup $userGroup): iterable
     {
         return $this->userService->loadUsersOfUserGroup(
             $userGroup
@@ -80,17 +74,17 @@ class UserResolver
     /**
      * @return \Ibexa\Contracts\Core\Repository\Values\User\UserGroup
      */
-    public function resolveUserGroupById($userGroupId)
+    public function resolveUserGroupById(int $userGroupId): UserGroup
     {
         return $this->userService->loadUserGroup($userGroupId);
     }
 
-    public function resolveUserGroupSubGroups(UserGroup $userGroup)
+    public function resolveUserGroupSubGroups(UserGroup $userGroup): iterable
     {
         return $this->userService->loadSubUserGroups($userGroup);
     }
 
-    public function resolveUserGroups($args)
+    public function resolveUserGroups(array $args): iterable
     {
         return $this->userService->loadSubUserGroups(
             $this->userService->loadUserGroup(
@@ -99,7 +93,7 @@ class UserResolver
         );
     }
 
-    public function resolveContentFields(Content $content, $args)
+    public function resolveContentFields(Content $content, $args): array|iterable
     {
         if (isset($args['identifier'])) {
             return [$content->getField($args['identifier'])];

@@ -18,17 +18,14 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class AddFieldDefinitionToItemType extends BaseWorker implements Worker
 {
-    /**
-     * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
-     */
-    private $fieldDefinitionMapper;
+    private FieldDefinitionMapper $fieldDefinitionMapper;
 
     public function __construct(FieldDefinitionMapper $fieldDefinitionMapper)
     {
         $this->fieldDefinitionMapper = $fieldDefinitionMapper;
     }
 
-    public function work(Builder $schema, array $args)
+    public function work(Builder $schema, array $args): void
     {
         $schema->addFieldToType($this->typeName($args), new Input\Field(
             $this->fieldName($args),
@@ -43,7 +40,7 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
         ));
     }
 
-    public function canWork(Builder $schema, array $args)
+    public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['FieldDefinition'])
@@ -58,12 +55,12 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
         return $this->getNameHelper()->itemTypeName($args['ContentType']);
     }
 
-    protected function fieldName($args): string
+    protected function fieldName(array $args): string
     {
         return $this->getNameHelper()->fieldDefinitionField($args['FieldDefinition']);
     }
 
-    public function fieldDescription($args)
+    public function fieldDescription(array $args)
     {
         $description = '';
         if ($args['FieldDefinition'] instanceof MultiLanguageDescription) {
@@ -73,7 +70,7 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
         return $description;
     }
 
-    private function fieldType($args)
+    private function fieldType(array $args): ?string
     {
         return $this->fieldDefinitionMapper->mapToFieldDefinitionType($args['FieldDefinition']);
     }

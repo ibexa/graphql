@@ -21,15 +21,9 @@ use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
  */
 class ContentCollectionFilterBuilder
 {
-    /**
-     * @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private $configResolver;
+    private ConfigResolverInterface $configResolver;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\Repository
-     */
-    private $repository;
+    private Repository $repository;
 
     public function __construct(ConfigResolverInterface $configResolver, Repository $repository)
     {

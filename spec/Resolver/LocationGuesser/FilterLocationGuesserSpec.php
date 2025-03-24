@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Resolver\LocationGuesser;
 
 use Ibexa\Core\Repository\Values\Content\Content;
@@ -8,32 +13,32 @@ use Ibexa\GraphQL\Resolver\LocationGuesser\FilterLocationGuesser;
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationFilter;
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuess;
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser;
-use Ibexa\GraphQL\Resolver\LocationGuesser\ObjectStorageLocationList;
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationList;
 use Ibexa\GraphQL\Resolver\LocationGuesser\LocationProvider;
+use Ibexa\GraphQL\Resolver\LocationGuesser\ObjectStorageLocationList;
 use PhpSpec\ObjectBehavior;
 
 class FilterLocationGuesserSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(FilterLocationGuesser::class);
         $this->shouldHaveType(LocationGuesser::class);
     }
 
-    function let(LocationProvider $locationProvider, LocationFilter $locationFilter, LocationFilter $otherLocationFilter)
+    public function let(LocationProvider $locationProvider, LocationFilter $locationFilter, LocationFilter $otherLocationFilter): void
     {
         $this->beConstructedWith($locationProvider, [$locationFilter, $otherLocationFilter]);
     }
 
-    function it_gets_the_initial_location_list_from_the_provider(LocationProvider $locationProvider)
+    public function it_gets_the_initial_location_list_from_the_provider(LocationProvider $locationProvider): void
     {
         $content = new Content();
         $locationProvider->getLocations($content)->willReturn(new ObjectStorageLocationList($content));
         $this->guessLocation($content);
     }
 
-    function it_does_not_filter_if_there_is_only_one_location(LocationProvider $locationProvider, LocationFilter $locationFilter)
+    public function it_does_not_filter_if_there_is_only_one_location(LocationProvider $locationProvider, LocationFilter $locationFilter): void
     {
         $content = new Content();
         $location = new Location();
@@ -46,13 +51,12 @@ class FilterLocationGuesserSpec extends ObjectBehavior
         $this->guessLocation($content)->shouldBeLike(new LocationGuess($content, [$location]));
     }
 
-    function it_returns_as_soon_as_there_is_one_location_left(
+    public function it_returns_as_soon_as_there_is_one_location_left(
         LocationProvider $locationProvider,
         LocationFilter $locationFilter,
         LocationFilter $secondLocationFilter,
         LocationList $locationList
-    )
-    {
+    ): void {
         $content = new Content();
         $firstLocation = new Location();
         $secondLocation = new Location();
@@ -60,7 +64,7 @@ class FilterLocationGuesserSpec extends ObjectBehavior
         $locationProvider->getLocations($content)->willReturn($locationList);
         $locationList->hasOneLocation()->willReturn(false);
         $locationList->getLocations()->willReturn([$firstLocation]);
-        $locationFilter->filter($content, $locationList)->will(function ($args) use ($locationList) {
+        $locationFilter->filter($content, $locationList)->will(static function ($args) use ($locationList): void {
             $locationList->hasOneLocation()->willReturn(true);
         });
 
@@ -72,9 +76,9 @@ class FilterLocationGuesserSpec extends ObjectBehavior
     public function getMatchers(): array
     {
         return [
-            'guess' => function (LocationGuess $subject, Location $location) {
+            'guess' => static function (LocationGuess $subject, Location $location): bool {
                 return $subject->isSuccessful() && $subject->getLocation() === $location;
-            }
+            },
         ];
     }
 }

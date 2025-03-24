@@ -16,7 +16,7 @@ use Ibexa\GraphQL\Value\Field;
 class ImageAssetFieldResolver
 {
     /* @var array<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> */
-    private $strategies;
+    private ?array $strategies = null;
 
     /**
      * @param iterable<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> $strategies

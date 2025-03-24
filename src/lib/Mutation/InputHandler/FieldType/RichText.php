@@ -17,7 +17,7 @@ class RichText implements FieldTypeInputHandler
     /**
      * @var \Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter[]
      */
-    private $inputConverters;
+    private array $inputConverters;
 
     public function __construct(array $inputConverters)
     {
