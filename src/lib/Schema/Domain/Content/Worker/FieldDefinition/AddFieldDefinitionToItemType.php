@@ -25,6 +25,9 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
         $this->fieldDefinitionMapper = $fieldDefinitionMapper;
     }
 
+    /**
+     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition, ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
     public function work(Builder $schema, array $args): void
     {
         $schema->addFieldToType($this->typeName($args), new Input\Field(
@@ -40,36 +43,46 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
         ));
     }
 
+    /**
+     * @param array{FieldDefinition?: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition|mixed, ContentType?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType|mixed} $args
+     */
     public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['FieldDefinition'])
             && $args['FieldDefinition'] instanceof FieldDefinition
-            & isset($args['ContentType'])
+            && isset($args['ContentType'])
             && $args['ContentType'] instanceof ContentType
             && !$schema->hasTypeWithField($this->typeName($args), $this->fieldName($args));
     }
 
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
     protected function typeName(array $args): string
     {
         return $this->getNameHelper()->itemTypeName($args['ContentType']);
     }
 
+    /**
+     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition} $args
+     */
     protected function fieldName(array $args): string
     {
         return $this->getNameHelper()->fieldDefinitionField($args['FieldDefinition']);
     }
 
+    /**
+     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition} $args
+     */
     public function fieldDescription(array $args)
     {
-        $description = '';
-        if ($args['FieldDefinition'] instanceof MultiLanguageDescription) {
-            $description = $args['FieldDefinition']->getDescription('eng-GB') ?? '';
-        }
-
-        return $description;
+        return $args['FieldDefinition']->getDescription('eng-GB') ?? '';
     }
 
+    /**
+     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition} $args
+     */
     private function fieldType(array $args): ?string
     {
         return $this->fieldDefinitionMapper->mapToFieldDefinitionType($args['FieldDefinition']);

@@ -60,6 +60,9 @@ class LocationResolver implements QueryInterface
         throw new ArgumentsException('Requires one and only one of remoteId or locationId');
     }
 
+    /**
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\Location>
+     */
     public function resolveLocationsByContentId(int $contentId): iterable
     {
         return $this->locationService->loadLocations(

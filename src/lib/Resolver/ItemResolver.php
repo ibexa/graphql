@@ -18,6 +18,7 @@ use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Value\Field;
 use Ibexa\GraphQL\Value\Item;
+use Overblog\GraphQLBundle\Definition\ArgumentInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
@@ -123,7 +124,7 @@ final class ItemResolver implements QueryInterface
     /**
      * @return \GraphQL\Executor\Promise\Promise|\Overblog\GraphQLBundle\Relay\Connection\Output\Connection<\Ibexa\GraphQL\Value\Item>
      */
-    public function resolveItemsOfTypeAsConnection(string $contentTypeIdentifier, array $args): Connection|Promise
+    public function resolveItemsOfTypeAsConnection(string $contentTypeIdentifier, ArgumentInterface $args): Connection|Promise
     {
         $query = $args['query'] ?: [];
         $query['ContentTypeIdentifier'] = $contentTypeIdentifier;

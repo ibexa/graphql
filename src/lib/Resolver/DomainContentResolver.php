@@ -30,10 +30,7 @@ class DomainContentResolver implements QueryInterface
 {
     private TypeResolver $typeResolver;
 
-    /**
-     * @var SearchQueryMapper
-     */
-    private $queryMapper;
+    private QueryMapper $queryMapper;
 
     private Repository $repository;
 
@@ -55,7 +52,11 @@ class DomainContentResolver implements QueryInterface
         $this->contentTypeLoader = $contentTypeLoader;
     }
 
-    public function resolveDomainContentItems($contentTypeIdentifier, ?Argument $query = null): array
+    /**
+     * @param string $contentTypeIdentifier
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
+     */
+    public function resolveDomainContentItems($contentTypeIdentifier, Argument $query): array
     {
         return $this->findContentItemsByTypeIdentifier($contentTypeIdentifier, $query);
     }

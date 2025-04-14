@@ -27,6 +27,9 @@ class UploadFiles
         $this->contentTypeMappings = $contentTypeMappings;
     }
 
+    /**
+     * @return array{files: array<\Ibexa\Contracts\Core\Repository\Values\Content\Content>, warnings: array<string>}
+     */
     public function uploadFiles(Argument $args): array
     {
         $createdContent = [];

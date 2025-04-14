@@ -23,7 +23,17 @@ class SearchResolver
     }
 
     /**
-     * @param $args
+     * @param array{
+     *     query: array{
+     *         ContentTypeIdentifier?: string|array<string>,
+     *         Text?: array<string>,
+     *     },
+     *     first?: int,
+     *     last?: int,
+     *     after?: string,
+     *     before?: string,
+     *     offset?: int
+     * } $args
      *
      * @return \Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface<\Ibexa\Contracts\Core\Repository\Values\ValueObject>
      *

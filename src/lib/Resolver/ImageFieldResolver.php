@@ -8,6 +8,8 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\Contracts\Core\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Field;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\Contracts\Core\Variation\VariationHandler;
 use Ibexa\Core\FieldType\Image\Type;
@@ -40,6 +42,9 @@ class ImageFieldResolver
         $this->contentLoader = $contentLoader;
     }
 
+    /**
+     * @param array{identifier: array<string>} $args
+     */
     public function resolveImageVariations(ImageFieldValue $fieldValue, array $args)
     {
         if ($this->fieldType->isEmptyValue($fieldValue)) {
@@ -55,6 +60,9 @@ class ImageFieldResolver
         return $variations;
     }
 
+    /**
+     * @param array{identifier: string} $args
+     */
     public function resolveImageVariation(ImageFieldValue $fieldValue, array $args)
     {
         if ($this->fieldType->isEmptyValue($fieldValue)) {
@@ -68,7 +76,7 @@ class ImageFieldResolver
     }
 
     /**
-     * @return [Content, Field]
+     * @return array{\Ibexa\Contracts\Core\Repository\Values\Content\Content, \Ibexa\Contracts\Core\Repository\Values\Content\Field}
      *
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
@@ -80,7 +88,7 @@ class ImageFieldResolver
         $content = $this->contentLoader->findSingle(new Criterion\ContentId($contentId));
 
         $fieldFound = false;
-        /** @var $field \Ibexa\Contracts\Core\Repository\Values\Content\Field */
+        /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Field $field */
         foreach ($content->getFields() as $field) {
             if ($field->id == $fieldId) {
                 $fieldFound = true;

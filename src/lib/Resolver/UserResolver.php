@@ -30,7 +30,12 @@ class UserResolver
         $this->locationService = $locationService;
     }
 
-    public function resolveUser($args)
+    /**
+     * @param array{id?: int, email?: string, login?: string} $args
+     *
+     * @return \Ibexa\Contracts\Core\Repository\Values\User\User|iterable<\Ibexa\Contracts\Core\Repository\Values\User\User>
+     */
+    public function resolveUser($args): User|iterable
     {
         if (isset($args['id'])) {
             return $this->userService->loadUser($args['id']);
@@ -43,6 +48,8 @@ class UserResolver
         if (isset($args['login'])) {
             return $this->userService->loadUserByLogin($args['login']);
         }
+
+        throw new UserWarning('Missing: id, email or login argument');
     }
 
     public function resolveUserById(int $userId): ?User
@@ -64,6 +71,9 @@ class UserResolver
         );
     }
 
+    /**
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\User\User>
+     */
     public function resolveUsersOfGroup(UserGroup $userGroup): iterable
     {
         return $this->userService->loadUsersOfUserGroup(
@@ -79,11 +89,20 @@ class UserResolver
         return $this->userService->loadUserGroup($userGroupId);
     }
 
+    /**
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\User\UserGroup>
+     */
     public function resolveUserGroupSubGroups(UserGroup $userGroup): iterable
     {
         return $this->userService->loadSubUserGroups($userGroup);
     }
 
+
+    /**
+     * @param array{id: int} $args
+     *
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\User\UserGroup>
+     */
     public function resolveUserGroups(array $args): iterable
     {
         return $this->userService->loadSubUserGroups(
@@ -93,7 +112,12 @@ class UserResolver
         );
     }
 
-    public function resolveContentFields(Content $content, $args): array|iterable
+    /**
+     * @param array{identifier?: string} $args
+     *
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\Field|null>
+     */
+    public function resolveContentFields(Content $content, array $args): iterable
     {
         if (isset($args['identifier'])) {
             return [$content->getField($args['identifier'])];

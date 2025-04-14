@@ -35,7 +35,8 @@ class ResolverVariables implements FieldDefinitionMapper
 
     public function mapToFieldValueResolver(FieldDefinition $fieldDefinition): string
     {
-        $resolver = $this->innerMapper->mapToFieldValueResolver($fieldDefinition);
+        $resolver = $this->innerMapper->mapToFieldValueResolver($fieldDefinition) ?? '';
+
         $resolver = str_replace(
             [
                 'content',

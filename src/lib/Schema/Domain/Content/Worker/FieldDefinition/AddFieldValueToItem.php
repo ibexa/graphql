@@ -24,6 +24,9 @@ class AddFieldValueToItem extends BaseWorker implements Worker
         $this->fieldDefinitionMapper = $fieldDefinitionMapper;
     }
 
+    /**
+     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition, ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
     public function work(Builder $schema, array $args): void
     {
         $definition = $this->getDefinition($args['FieldDefinition']);
@@ -41,6 +44,9 @@ class AddFieldValueToItem extends BaseWorker implements Worker
         }
     }
 
+    /**
+     * @return array{type: string|null, resolve: string|null, argsBuilder?: string|null}
+     */
     private function getDefinition(FieldDefinition $fieldDefinition): array
     {
         $definition = [
@@ -55,21 +61,30 @@ class AddFieldValueToItem extends BaseWorker implements Worker
         return $definition;
     }
 
+    /**
+     * @param array{FieldDefinition?: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition|mixed, ContentType?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType|mixed} $args
+     */
     public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['FieldDefinition'])
             && $args['FieldDefinition'] instanceof FieldDefinition
-            & isset($args['ContentType'])
+            && isset($args['ContentType'])
             && $args['ContentType'] instanceof ContentType
             && !$schema->hasTypeWithField($this->typeName($args), $this->fieldName($args));
     }
 
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
     protected function typeName(array $args): string
     {
         return $this->getNameHelper()->itemName($args['ContentType']);
     }
 
+    /**
+     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition} $args
+     */
     protected function fieldName(array $args): string
     {
         return $this->getNameHelper()->fieldDefinitionField($args['FieldDefinition']);

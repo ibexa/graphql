@@ -8,6 +8,7 @@
 namespace Ibexa\GraphQL\Mutation;
 
 use Ibexa\Contracts\Core\Repository\SectionService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Section;
 use Ibexa\Contracts\Core\Repository\Values\Content\SectionCreateStruct;
 
 class SectionMutation
@@ -19,6 +20,9 @@ class SectionMutation
         $this->sectionService = $sectionService;
     }
 
+    /**
+     * @param array{identifier: string, name: string, clientMutationId: string} $value
+     */
     public function createSection(array $value)
     {
         $sectionCreateStruct = new SectionCreateStruct(
@@ -53,12 +57,16 @@ class SectionMutation
     }
 
     /**
-     * @param $value
-     * @param $section
+     * @param array{clientMutationId: string} $value
      *
-     * @return array
+     * @return array{
+     *     clientMutationId: string,
+     *     id: int,
+     *     identifier: string,
+     *     name: string
+     * }
      */
-    private function mapSectionToPayLoad(array $value, $section): array
+    private function mapSectionToPayLoad(array $value, Section $section): array
     {
         return [
             'clientMutationId' => $value['clientMutationId'],

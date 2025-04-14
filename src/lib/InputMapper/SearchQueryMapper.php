@@ -43,6 +43,19 @@ final class SearchQueryMapper implements QueryMapper
         return $query;
     }
 
+    /**
+     * @param array{
+     *     offset?: int,
+     *     limit?: int,
+     *     ContentTypeIdentifier?: string|string[],
+     *     Text?: string,
+     *     Field?: array<array{target: mixed}>,
+     *     ParentLocationId?: int|int[],
+     *     sortBy?: array<string|\Ibexa\Contracts\Core\Repository\Values\Content\Query::SORT_*>,
+     *     Modified?: array<string, mixed>,
+     *     Created?: array<string, mixed>
+     * } $inputArray
+     */
     private function mapInput(LocationQuery|Query $query, array $inputArray): void
     {
         if (isset($inputArray['offset'])) {
@@ -85,9 +98,9 @@ final class SearchQueryMapper implements QueryMapper
         $criteria = array_merge($criteria, $this->mapDateMetadata($inputArray, 'Created'));
 
         if (isset($inputArray['sortBy'])) {
-            $query->sortClauses = array_map(
+            /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause[]|null[] $sortClauses */
+            $sortClauses = array_map(
                 static function ($sortClauseClass): ?object {
-                    /** @var Query\SortClause $lastSortClause */
                     static $lastSortClause;
 
                     if ($sortClauseClass === Query::SORT_DESC) {
@@ -113,7 +126,7 @@ final class SearchQueryMapper implements QueryMapper
                 $inputArray['sortBy']
             );
             // remove null entries left out because of sort direction
-            $query->sortClauses = array_filter($query->sortClauses);
+            $query->sortClauses = array_filter($sortClauses);
         }
 
         if (count($criteria) === 0) {

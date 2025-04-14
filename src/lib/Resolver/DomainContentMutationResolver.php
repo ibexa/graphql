@@ -29,9 +29,6 @@ use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
  */
 class DomainContentMutationResolver
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\Repository
-     */
     private Repository $repository;
 
     /**
@@ -139,7 +136,7 @@ class DomainContentMutationResolver
         return $this->itemFactory->fromContent($this->getContentService()->loadContent($contentDraft->id));
     }
 
-    public function createDomainContent($input, string $contentTypeIdentifier, $parentLocationId, ?string $language): Item
+    public function createDomainContent($input, string $contentTypeIdentifier, $parentLocationId, string $language): Item
     {
         try {
             $contentType = $this->getContentTypeService()->loadContentTypeByIdentifier($contentTypeIdentifier);
@@ -178,6 +175,9 @@ class DomainContentMutationResolver
         return $this->itemFactory->fromContent($content);
     }
 
+    /**
+     * @return array{id: string, contentId: int}
+     */
     public function deleteDomainContent(Argument $args): array
     {
         $globalId = null;

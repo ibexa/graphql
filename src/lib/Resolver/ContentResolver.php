@@ -7,6 +7,7 @@
 
 namespace Ibexa\GraphQL\Resolver;
 
+use GraphQL\Error\UserError;
 use Ibexa\Contracts\Core\Repository\ContentService;
 use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
@@ -32,6 +33,11 @@ class ContentResolver implements QueryInterface
         $this->searchService = $searchService;
     }
 
+    /**
+     * @param int $contentTypeId
+     *
+     * @return array<\Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo>
+     */
     public function findContentByType($contentTypeId): array
     {
         $searchResults = $this->searchService->findContentInfo(
@@ -61,12 +67,15 @@ class ContentResolver implements QueryInterface
         ));
     }
 
+    /**
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\Relation>
+     */
     public function findContentReverseRelations(ContentInfo $contentInfo): iterable
     {
         return $this->contentService->loadReverseRelations($contentInfo);
     }
 
-    public function resolveContent($args)
+    public function resolveContent($args): ContentInfo
     {
         if (isset($args['id'])) {
             return $this->contentService->loadContentInfo($args['id']);
@@ -75,6 +84,8 @@ class ContentResolver implements QueryInterface
         if (isset($args['remoteId'])) {
             return $this->contentService->loadContentInfoByRemoteId($args['remoteId']);
         }
+
+        throw new UserError('Either id or remoteId is required as an argument');
     }
 
     public function resolveContentById(int $contentId): ContentInfo
@@ -82,6 +93,10 @@ class ContentResolver implements QueryInterface
         return $this->contentService->loadContentInfo($contentId);
     }
 
+    /**
+     * @param array<int> $contentIdList
+     * @return array<\Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo>
+     */
     public function resolveContentByIdList(array $contentIdList): array
     {
         try {
@@ -102,6 +117,10 @@ class ContentResolver implements QueryInterface
         );
     }
 
+    /**
+     * @param int $contentId
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\VersionInfo>
+     */
     public function resolveContentVersions(int $contentId): iterable
     {
         return $this->contentService->loadVersions(

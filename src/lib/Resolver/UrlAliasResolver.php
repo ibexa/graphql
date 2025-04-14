@@ -54,6 +54,11 @@ class UrlAliasResolver
         $this->siteaccessService = $siteAccessService;
     }
 
+    /**
+     * @param array{custom ?: bool} $args
+     *
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\URLAlias>
+     */
     public function resolveLocationUrlAliases(Location $location, $args): iterable
     {
         return $this->urlAliasService->listLocationAliases(

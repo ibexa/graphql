@@ -20,7 +20,6 @@ class SearchQuerySortByMapper
     {
         $sortClauses = array_map(
             static function (string $sortClauseClass): ?object {
-                /** @var Query\SortClause $lastSortClause */
                 static $lastSortClause;
 
                 if ($sortClauseClass === Query::SORT_DESC) {

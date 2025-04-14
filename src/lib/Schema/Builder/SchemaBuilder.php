@@ -12,6 +12,32 @@ use Ibexa\GraphQL\Schema\Domain\NameValidator;
 
 class SchemaBuilder implements SchemaBuilderInterface
 {
+    /**
+     * @var array<string, array{
+     *     type: string,
+     *     inherits?: array<string>,
+     *     config?: array{
+     *         interfaces?: array<string>,
+     *         nodeType?: mixed,
+     *         connectionFields?: array<string, mixed>,
+     *         fields?: array<string, array{
+     *             type: string,
+     *             description?: string,
+     *             resolve?: callable,
+     *             argsBuilder?: mixed,
+     *             args?: array<string, array{
+     *                 type: string,
+     *                 description?: string,
+     *                 defaultValue?: mixed
+     *             }>
+     *         }>,
+     *         values?: array<string, array{
+     *             value?: mixed,
+     *             description?: string
+     *         }>
+     *     }
+     * }>
+     */
     private array $schema = [];
 
     private NameValidator $nameValidator;

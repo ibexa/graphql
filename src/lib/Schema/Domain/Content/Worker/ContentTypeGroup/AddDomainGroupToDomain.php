@@ -23,6 +23,9 @@ final class AddDomainGroupToDomain extends BaseWorker implements Worker
         $this->contentTypeService = $contentTypeService;
     }
 
+    /**
+     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
     public function work(Builder $schema, array $args): void
     {
         $contentTypeGroup = $args['ContentTypeGroup'];
@@ -39,6 +42,9 @@ final class AddDomainGroupToDomain extends BaseWorker implements Worker
         ));
     }
 
+    /**
+     * @param array{ContentTypeGroup?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup|mixed} $args
+     */
     public function canWork(Builder $schema, array $args): bool
     {
         return
@@ -48,11 +54,17 @@ final class AddDomainGroupToDomain extends BaseWorker implements Worker
             && !empty($this->contentTypeService->loadContentTypes($args['ContentTypeGroup']));
     }
 
+    /**
+     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
     private function fieldName(array $args): string
     {
         return $this->getNameHelper()->itemGroupField($args['ContentTypeGroup']);
     }
 
+    /**
+     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
     private function typeGroupName(array $args): string
     {
         return $this->getNameHelper()->itemGroupName($args['ContentTypeGroup']);

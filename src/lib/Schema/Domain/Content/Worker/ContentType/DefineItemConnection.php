@@ -15,6 +15,9 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class DefineItemConnection extends BaseWorker implements Worker
 {
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
     public function work(Builder $schema, array $args): void
     {
         $schema->addType(new Input\Type(
@@ -30,17 +33,26 @@ class DefineItemConnection extends BaseWorker implements Worker
         ));
     }
 
+    /**
+     * @param array{ContentType?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType|mixed} $args
+     */
     public function canWork(Builder $schema, array $args): bool
     {
         return isset($args['ContentType']) && $args['ContentType'] instanceof ContentType
                && !$schema->hasType($this->connectionTypeName($args));
     }
 
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
     protected function connectionTypeName(array $args): string
     {
         return $this->getNameHelper()->itemConnectionName($args['ContentType']);
     }
 
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
     protected function typeName(array $args): string
     {
         return $this->getNameHelper()->itemName($args['ContentType']);

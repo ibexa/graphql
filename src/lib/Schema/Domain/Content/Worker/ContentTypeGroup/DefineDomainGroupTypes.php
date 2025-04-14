@@ -26,11 +26,17 @@ class DefineDomainGroupTypes extends BaseWorker implements Worker
         $this->contentTypeService = $contentTypeService;
     }
 
+    /**
+     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
     public function work(Builder $schema, array $args): void
     {
         $schema->addType(new Builder\Input\Type($this->typeName($args), 'object'));
     }
 
+    /**
+     * @param array{ContentTypeGroup?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup|mixed} $args
+     */
     public function canWork(Builder $schema, array $args): bool
     {
         return
@@ -40,6 +46,9 @@ class DefineDomainGroupTypes extends BaseWorker implements Worker
             && !empty($this->contentTypeService->loadContentTypes($args['ContentTypeGroup']));
     }
 
+    /**
+     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
     private function typeName(array $args): string
     {
         return $this->getNameHelper()->itemGroupTypesName($args['ContentTypeGroup']);
