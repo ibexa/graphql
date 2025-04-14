@@ -97,7 +97,6 @@ class UserResolver
         return $this->userService->loadSubUserGroups($userGroup);
     }
 
-
     /**
      * @param array{id: int} $args
      *

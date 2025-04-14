@@ -49,6 +49,7 @@ class AddItemOfTypeConnectionToGroup extends BaseWorker implements Worker
             ['description' => 'A Sort Clause, or array of Clauses. Add _desc after a Clause to reverse it']
         ));
     }
+
     /**
      * @param array{ContentType?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType|mixed, ContentTypeGroup?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup|mixed} $args
      */

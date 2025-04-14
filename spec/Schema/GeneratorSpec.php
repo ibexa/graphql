@@ -22,10 +22,10 @@ class GeneratorSpec extends ObjectBehavior
         Schema\Worker $worker2
     ): void {
         $iterator->iterate()->will(static function () { yield []; });
-        $iterator->init($schema)->willReturn(null);
+        $iterator->init($schema)->hasReturnVoid();
 
         $iterator2->iterate()->will(static function () { yield []; });
-        $iterator2->init($schema)->willReturn(null);
+        $iterator2->init($schema)->hasReturnVoid();
 
         $schema->getSchema()->willReturn([]);
 

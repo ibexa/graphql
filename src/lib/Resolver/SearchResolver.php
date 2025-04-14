@@ -7,7 +7,6 @@
 
 namespace Ibexa\GraphQL\Resolver;
 
-use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\InputMapper\SearchQueryMapper;
 use Overblog\GraphQLBundle\Definition\ArgumentInterface;
@@ -54,6 +53,7 @@ class SearchResolver
 
     /**
      * @param string $contentTypeIdentifier
+     *
      * @return \GraphQL\Executor\Promise\Promise|\Overblog\GraphQLBundle\Relay\Connection\Output\Connection<\Ibexa\Contracts\Core\Repository\Values\Content\Content>
      */
     public function searchContentOfTypeAsConnection($contentTypeIdentifier, ArgumentInterface $args)

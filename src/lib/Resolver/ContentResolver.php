@@ -95,6 +95,7 @@ class ContentResolver implements QueryInterface
 
     /**
      * @param array<int> $contentIdList
+     *
      * @return array<\Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo>
      */
     public function resolveContentByIdList(array $contentIdList): array
@@ -119,6 +120,7 @@ class ContentResolver implements QueryInterface
 
     /**
      * @param int $contentId
+     *
      * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\VersionInfo>
      */
     public function resolveContentVersions(int $contentId): iterable

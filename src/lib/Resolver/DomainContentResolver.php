@@ -54,6 +54,7 @@ class DomainContentResolver implements QueryInterface
 
     /**
      * @param string $contentTypeIdentifier
+     *
      * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
      */
     public function resolveDomainContentItems($contentTypeIdentifier, Argument $query): array

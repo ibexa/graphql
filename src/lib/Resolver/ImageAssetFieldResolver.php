@@ -7,7 +7,6 @@
 
 namespace Ibexa\GraphQL\Resolver;
 
-use Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface;
 use Ibexa\GraphQL\Value\Field;
 
 /**
@@ -15,7 +14,7 @@ use Ibexa\GraphQL\Value\Field;
  */
 class ImageAssetFieldResolver
 {
-    /** @var iterable<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> $strategies */
+    /** @var iterable<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> */
     private iterable $strategies;
 
     /**
