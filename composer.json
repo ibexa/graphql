@@ -41,6 +41,8 @@
         "ibexa/notifications": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
         "ibexa/rector": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
         "ibexa/search": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
+        "ibexa/templated-uri-bundle": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
+        "ibexa/templated-uri-router": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
         "ibexa/user": "dev-ibx-8471-symfony-7 as 5.0.x-dev",
         "mikey179/vfsstream": "^1.6",
         "overblog/graphiql-bundle": "^1.0",
