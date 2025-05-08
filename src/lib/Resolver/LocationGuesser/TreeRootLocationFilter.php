@@ -21,20 +21,11 @@ use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
  */
 class TreeRootLocationFilter implements LocationFilter
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\LocationService
-     */
-    private $locationService;
+    private LocationService $locationService;
 
-    /**
-     * @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private $configResolver;
+    private ConfigResolverInterface $configResolver;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\URLAliasService
-     */
-    private $urlAliasService;
+    private URLAliasService $urlAliasService;
 
     public function __construct(LocationService $locationService, URLAliasService $urlAliasService, ConfigResolverInterface $configResolver)
     {

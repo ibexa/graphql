@@ -15,10 +15,7 @@ use Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface;
 
 class SearchResolver
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\SearchService
-     */
-    private $searchService;
+    private SearchService $searchService;
 
     public function __construct(SearchService $searchService)
     {
@@ -26,13 +23,23 @@ class SearchResolver
     }
 
     /**
-     * @param $args
+     * @param array{
+     *     query: array{
+     *         ContentTypeIdentifier?: string|array<string>,
+     *         Text?: array<string>,
+     *     },
+     *     first?: int,
+     *     last?: int,
+     *     after?: string,
+     *     before?: string,
+     *     offset?: int
+     * } $args
      *
      * @return \Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface<\Ibexa\Contracts\Core\Repository\Values\ValueObject>
      *
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      */
-    public function searchContent($args): ConnectionInterface
+    public function searchContent(array $args): ConnectionInterface
     {
         $queryArg = $args['query'];
 

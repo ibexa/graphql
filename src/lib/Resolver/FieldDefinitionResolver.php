@@ -28,7 +28,10 @@ class FieldDefinitionResolver
         return $fieldDefinition->getDescription($languageCode);
     }
 
-    public function resolveSelectionFieldDefinitionOptions(array $options)
+    /**
+     * @return array{index: (int|string), label: mixed}[]
+     */
+    public function resolveSelectionFieldDefinitionOptions(array $options): array
     {
         $return = [];
 

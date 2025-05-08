@@ -9,14 +9,12 @@ namespace Ibexa\GraphQL\InputMapper;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\Field;
 use InvalidArgumentException;
 
 final class SearchQueryMapper implements QueryMapper
 {
-    /**
-     * @var \Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder
-     */
-    private $filterBuilder;
+    private ContentCollectionFilterBuilder $filterBuilder;
 
     public function __construct(ContentCollectionFilterBuilder $filterBuilder)
     {
@@ -45,7 +43,20 @@ final class SearchQueryMapper implements QueryMapper
         return $query;
     }
 
-    private function mapInput($query, array $inputArray): void
+    /**
+     * @param array{
+     *     offset?: int,
+     *     limit?: int,
+     *     ContentTypeIdentifier?: string|string[],
+     *     Text?: string,
+     *     Field?: array<array{target: mixed}>,
+     *     ParentLocationId?: int|int[],
+     *     sortBy?: array<string|\Ibexa\Contracts\Core\Repository\Values\Content\Query::SORT_*>,
+     *     Modified?: array<string, mixed>,
+     *     Created?: array<string, mixed>
+     * } $inputArray
+     */
+    private function mapInput(LocationQuery|Query $query, array $inputArray): void
     {
         if (isset($inputArray['offset'])) {
             $query->offset = $inputArray['offset'];
@@ -87,9 +98,9 @@ final class SearchQueryMapper implements QueryMapper
         $criteria = array_merge($criteria, $this->mapDateMetadata($inputArray, 'Created'));
 
         if (isset($inputArray['sortBy'])) {
-            $query->sortClauses = array_map(
-                static function ($sortClauseClass) {
-                    /** @var Query\SortClause $lastSortClause */
+            /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause[]|null[] $sortClauses */
+            $sortClauses = array_map(
+                static function ($sortClauseClass): ?object {
                     static $lastSortClause;
 
                     if ($sortClauseClass === Query::SORT_DESC) {
@@ -115,7 +126,7 @@ final class SearchQueryMapper implements QueryMapper
                 $inputArray['sortBy']
             );
             // remove null entries left out because of sort direction
-            $query->sortClauses = array_filter($query->sortClauses);
+            $query->sortClauses = array_filter($sortClauses);
         }
 
         if (count($criteria) === 0) {
@@ -130,7 +141,7 @@ final class SearchQueryMapper implements QueryMapper
      *
      * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\DateMetadata[]
      */
-    private function mapDateMetadata(array $queryArg, $dateMetadata)
+    private function mapDateMetadata(array $queryArg, string $dateMetadata): array
     {
         if (!isset($queryArg[$dateMetadata]) || !is_array($queryArg[$dateMetadata])) {
             return [];
@@ -167,7 +178,7 @@ final class SearchQueryMapper implements QueryMapper
         return $criteria;
     }
 
-    private function mapInputToFieldCriterion($input)
+    private function mapInputToFieldCriterion($input): Field
     {
         $operators = ['in', 'eq', 'like', 'contains', 'between', 'lt', 'lte', 'gt', 'gte'];
         foreach ($operators as $opString) {
@@ -181,6 +192,6 @@ final class SearchQueryMapper implements QueryMapper
             throw new InvalidArgumentException('Unspecified operator');
         }
 
-        return new Query\Criterion\Field($input['target'], $operator, $value);
+        return new Field($input['target'], $operator, $value);
     }
 }

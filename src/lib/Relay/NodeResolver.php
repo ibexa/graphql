@@ -16,25 +16,13 @@ use Overblog\GraphQLBundle\Resolver\TypeResolver;
 
 class NodeResolver
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentService
-     */
-    private $contentService;
+    private ContentService $contentService;
 
-    /**
-     * @var \Overblog\GraphQLBundle\Resolver\TypeResolver
-     */
-    private $typeResolver;
+    private TypeResolver $typeResolver;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
-     */
-    private $contentTypeService;
+    private ContentTypeService $contentTypeService;
 
-    /**
-     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
-     */
-    private $nameHelper;
+    private NameHelper $nameHelper;
 
     public function __construct(ContentService $contentService, TypeResolver $typeResolver, ContentTypeService $contentTypeService, NameHelper $nameHelper)
     {

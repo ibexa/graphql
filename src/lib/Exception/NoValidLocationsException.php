@@ -13,16 +13,8 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 
 class NoValidLocationsException extends Exception
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content|\Ibexa\Contracts\Core\Repository\Values\Content\Content[]
-     */
-    private $content;
+    private Content $content;
 
-    /**
-     * NoValidLocationsException constructor.
-     *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Content $content
-     */
     public function __construct(Content $content)
     {
         parent::__construct("No valid location could be determined for content #{$content->id}");

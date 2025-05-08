@@ -1,23 +1,28 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
 
 use Ibexa\GraphQL\Schema\Builder\SchemaBuilder;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemOfTypeConnectionToGroup;
+use Prophecy\Argument;
 use spec\Ibexa\GraphQL\Tools\ContentTypeArgument;
 use spec\Ibexa\GraphQL\Tools\ContentTypeGroupArgument;
 use spec\Ibexa\GraphQL\Tools\FieldArgArgument;
 use spec\Ibexa\GraphQL\Tools\FieldArgument;
-use Prophecy\Argument;
 
 class AddItemOfTypeConnectionToGroupSpec extends ContentTypeWorkerBehavior
 {
-    const GROUP_TYPE = 'ItemTestGroup';
-    const TYPE_TYPE = 'TestItemConnection';
-    const CONNECTION_FIELD = 'testTypes';
+    public const GROUP_TYPE = 'ItemTestGroup';
+    public const TYPE_TYPE = 'TestItemConnection';
+    public const CONNECTION_FIELD = 'testTypes';
 
-    function let(NameHelper $nameHelper)
+    public function let(NameHelper $nameHelper): void
     {
         $this->setNameHelper($nameHelper);
 
@@ -34,30 +39,30 @@ class AddItemOfTypeConnectionToGroupSpec extends ContentTypeWorkerBehavior
             ->willReturn(self::TYPE_TYPE);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(AddItemOfTypeConnectionToGroup::class);
     }
 
-    function it_can_not_work_if_args_do_not_include_a_ContentTypeGroup(SchemaBuilder $schema)
+    public function it_can_not_work_if_args_do_not_include_a_ContentTypeGroup(SchemaBuilder $schema): void
     {
         $this->canWork($schema, [])->shouldBe(false);
     }
 
-    function it_can_not_work_if_args_do_not_include_a_ContentType(SchemaBuilder $schema)
+    public function it_can_not_work_if_args_do_not_include_a_ContentType(SchemaBuilder $schema): void
     {
         $args = $this->args();
         unset($args['ContentType']);
         $this->canWork($schema, $args)->shouldBe(false);
     }
 
-    function it_can_not_work_if_the_collection_field_is_already_set(SchemaBuilder $schema)
+    public function it_can_not_work_if_the_collection_field_is_already_set(SchemaBuilder $schema): void
     {
         $schema->hasTypeWithField(self::GROUP_TYPE, self::CONNECTION_FIELD)->willReturn(true);
         $this->canWork($schema, $this->args())->shouldBe(false);
     }
 
-    function it_adds_a_collection_field_for_the_ContentType_to_the_ContentTypeGroup(SchemaBuilder $schema)
+    public function it_adds_a_collection_field_for_the_ContentType_to_the_ContentTypeGroup(SchemaBuilder $schema): void
     {
         $schema
             ->addFieldToType(

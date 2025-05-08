@@ -38,57 +38,57 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
         $this->fieldNameOverrides = $fieldNameOverrides;
     }
 
-    public function itemConnectionField(ContentType $contentType)
+    public function itemConnectionField(ContentType $contentType): string
     {
         return $this->pluralize(lcfirst($this->toCamelCase($contentType->identifier)));
     }
 
-    public function itemName(ContentType $contentType)
+    public function itemName(ContentType $contentType): string
     {
         return ucfirst($this->toCamelCase($contentType->identifier)) . 'Item';
     }
 
-    public function itemConnectionName($contentType)
+    public function itemConnectionName($contentType): string
     {
         return ucfirst($this->toCamelCase($contentType->identifier)) . 'ItemConnection';
     }
 
-    public function itemCreateInputName(ContentType $contentType)
+    public function itemCreateInputName(ContentType $contentType): string
     {
         return ucfirst($this->toCamelCase($contentType->identifier)) . 'ItemCreateInput';
     }
 
-    public function itemUpdateInputName(ContentType $contentType)
+    public function itemUpdateInputName(ContentType $contentType): string
     {
         return ucfirst($this->toCamelCase($contentType->identifier)) . 'ItemUpdateInput';
     }
 
-    public function itemTypeName(ContentType $contentType)
+    public function itemTypeName(ContentType $contentType): string
     {
         return ucfirst($this->toCamelCase($contentType->identifier)) . 'ItemType';
     }
 
-    public function itemField(ContentType $contentType)
+    public function itemField(ContentType $contentType): string
     {
         return lcfirst($this->toCamelCase($contentType->identifier));
     }
 
-    public function itemMutationCreateItemField(ContentType $contentType)
+    public function itemMutationCreateItemField(ContentType $contentType): string
     {
         return 'create' . ucfirst($this->itemField($contentType));
     }
 
-    public function itemMutationUpdateItemField($contentType)
+    public function itemMutationUpdateItemField(ContentType $contentType): string
     {
         return 'update' . ucfirst($this->itemField($contentType));
     }
 
-    public function itemGroupName(ContentTypeGroup $contentTypeGroup)
+    public function itemGroupName(ContentTypeGroup $contentTypeGroup): string
     {
         return 'ItemGroup' . ucfirst($this->toCamelCase($this->sanitizeContentTypeGroupIdentifier($contentTypeGroup)));
     }
 
-    public function itemGroupTypesName(ContentTypeGroup $contentTypeGroup)
+    public function itemGroupTypesName(ContentTypeGroup $contentTypeGroup): string
     {
         return sprintf(
             'ItemGroup%sTypes',
@@ -98,12 +98,12 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
         );
     }
 
-    public function itemGroupField(ContentTypeGroup $contentTypeGroup)
+    public function itemGroupField(ContentTypeGroup $contentTypeGroup): string
     {
         return lcfirst($this->toCamelCase($this->sanitizeContentTypeGroupIdentifier($contentTypeGroup)));
     }
 
-    public function fieldDefinitionField(FieldDefinition $fieldDefinition)
+    public function fieldDefinitionField(FieldDefinition $fieldDefinition): string
     {
         $fieldName = lcfirst($this->toCamelCase($fieldDefinition->identifier));
 

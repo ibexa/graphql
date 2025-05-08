@@ -8,8 +8,11 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use GraphQL\Error\UserError;
-use Ibexa\Contracts\Core\Repository as API;
+use Ibexa\Contracts\Core\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\Contracts\Core\Repository\Exceptions as RepositoryExceptions;
+use Ibexa\Contracts\Core\Repository\LocationService;
+use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\Contracts\Core\Repository\Values as RepositoryValues;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\Exception\UnsupportedFieldTypeException;
@@ -26,26 +29,19 @@ use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
  */
 class DomainContentMutationResolver
 {
-    /**
-     * @var API\Repository
-     */
-    private $repository;
+    private Repository $repository;
 
     /**
      * @var \Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler[]
      */
-    private $fieldInputHandlers = [];
+    private array $fieldInputHandlers;
 
-    /**
-     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
-     */
-    private $nameHelper;
+    private NameHelper $nameHelper;
 
-    /** @var \Ibexa\GraphQL\ItemFactory */
-    private $itemFactory;
+    private ItemFactory $itemFactory;
 
     public function __construct(
-        API\Repository $repository,
+        Repository $repository,
         array $fieldInputHandlers,
         NameHelper $nameHelper,
         ItemFactory $relatedContentItemFactory
@@ -56,7 +52,7 @@ class DomainContentMutationResolver
         $this->itemFactory = $relatedContentItemFactory;
     }
 
-    public function updateDomainContent($input, Argument $args, $versionNo, $language): Item
+    public function updateDomainContent($input, Argument $args, $versionNo, ?string $language): Item
     {
         if (isset($args['id'])) {
             $idArray = GlobalId::fromGlobalId($args['id']);
@@ -140,11 +136,11 @@ class DomainContentMutationResolver
         return $this->itemFactory->fromContent($this->getContentService()->loadContent($contentDraft->id));
     }
 
-    public function createDomainContent($input, $contentTypeIdentifier, $parentLocationId, $language): Item
+    public function createDomainContent($input, string $contentTypeIdentifier, $parentLocationId, string $language): Item
     {
         try {
             $contentType = $this->getContentTypeService()->loadContentTypeByIdentifier($contentTypeIdentifier);
-        } catch (API\Exceptions\NotFoundException $e) {
+        } catch (RepositoryExceptions\NotFoundException $e) {
             throw new UserError($e->getMessage(), 0, $e);
         }
         $contentCreateStruct = $this->getContentService()->newContentCreateStruct($contentType, $language);
@@ -179,7 +175,10 @@ class DomainContentMutationResolver
         return $this->itemFactory->fromContent($content);
     }
 
-    public function deleteDomainContent(Argument $args)
+    /**
+     * @return array{id: string, contentId: int}
+     */
+    public function deleteDomainContent(Argument $args): array
     {
         $globalId = null;
 
@@ -195,9 +194,9 @@ class DomainContentMutationResolver
 
         try {
             $contentInfo = $this->getContentService()->loadContentInfo($contentId);
-        } catch (API\Exceptions\NotFoundException $e) {
+        } catch (RepositoryExceptions\NotFoundException $e) {
             throw new UserError("Could not find a Content item with ID $contentId");
-        } catch (API\Exceptions\UnauthorizedException $e) {
+        } catch (RepositoryExceptions\UnauthorizedException $e) {
             throw new UserError("You are not authorized to load the Content item with ID $contentId");
         }
         if (!isset($globalId)) {
@@ -209,7 +208,7 @@ class DomainContentMutationResolver
 
         try {
             $this->getContentService()->deleteContent($contentInfo);
-        } catch (API\Exceptions\UnauthorizedException $e) {
+        } catch (RepositoryExceptions\UnauthorizedException $e) {
             throw new UserError("You are not authorized to delete the Content item with ID $contentInfo->id");
         }
 
@@ -250,7 +249,7 @@ class DomainContentMutationResolver
         return $this->makeDomainContentTypeName($contentTypesMap[$contentInfo->contentTypeId]);
     }
 
-    private function makeDomainContentTypeName(RepositoryValues\ContentType\ContentType $contentType)
+    private function makeDomainContentTypeName(RepositoryValues\ContentType\ContentType $contentType): string
     {
         $converter = new CamelCaseToSnakeCaseNameConverter(null, false);
 
@@ -258,32 +257,35 @@ class DomainContentMutationResolver
     }
 
     /**
-     * @return API\ContentService
+     * @return \Ibexa\Contracts\Core\Repository\ContentService
      */
-    private function getContentService()
+    private function getContentService(): ContentService
     {
         return $this->repository->getContentService();
     }
 
     /**
-     * @return API\ContentTypeService
+     * @return \Ibexa\Contracts\Core\Repository\ContentTypeService
      */
-    private function getContentTypeService()
+    private function getContentTypeService(): ContentTypeService
     {
         return $this->repository->getContentTypeService();
     }
 
-    private function getLocationService()
+    private function getLocationService(): LocationService
     {
         return $this->repository->getLocationService();
     }
 
-    private function renderFieldValidationErrors(RepositoryExceptions\ContentFieldValidationException $e, API\Values\ContentType\ContentType $contentType)
+    /**
+     * @return string[]
+     */
+    private function renderFieldValidationErrors(RepositoryExceptions\ContentFieldValidationException $e, RepositoryValues\ContentType\ContentType $contentType): array
     {
         $errors = [];
         foreach ($e->getFieldErrors() as $fieldDefId => $fieldErrorByLanguage) {
             $fieldDefinition = $contentType->getFieldDefinitions()->filter(
-                static function (FieldDefinition $fieldDefinition) use ($fieldDefId) {
+                static function (FieldDefinition $fieldDefinition) use ($fieldDefId): bool {
                     return $fieldDefinition->id === $fieldDefId;
                 }
             )->first();
@@ -310,7 +312,7 @@ class DomainContentMutationResolver
      *
      * @return string
      */
-    private function getInputField(FieldDefinition $fieldDefinition)
+    private function getInputField(FieldDefinition $fieldDefinition): string
     {
         return $this->nameHelper->fieldDefinitionField($fieldDefinition);
     }

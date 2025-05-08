@@ -16,7 +16,7 @@ class RichTextInputConvertersPass implements CompilerPassInterface
 {
     private const RICHTEXT_INPUT_CONVERTER_TAG = 'ibexa.graphql.richtext.input.converter';
 
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->has(RichTextInputHandler::class)) {
             return;

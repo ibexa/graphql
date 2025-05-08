@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Tools;
 
 use Ibexa\GraphQL\Schema\Builder\Input;
@@ -21,9 +27,10 @@ class FieldArgArgument
         return self::has('type', $type);
     }
 
-    private static function has($property, $value) {
+    private static function has(string $property, $value): CallbackToken
+    {
         return new CallbackToken(
-            function(Input\Arg $arg) use ($property, $value) {
+            static function (Input\Arg $arg) use ($property, $value): bool {
                 return $arg->$property === $value;
             }
         );

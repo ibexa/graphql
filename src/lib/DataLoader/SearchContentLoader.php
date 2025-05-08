@@ -20,10 +20,7 @@ use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
  */
 class SearchContentLoader implements ContentLoader
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\SearchService
-     */
-    private $searchService;
+    private SearchService $searchService;
 
     public function __construct(SearchService $searchService)
     {

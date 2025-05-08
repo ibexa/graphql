@@ -16,11 +16,10 @@ class SearchQuerySortByMapper
      *
      * @return \Ibexa\Contracts\Core\Repository\Values\URL\Query\SortClause[]
      */
-    public function mapInputToSortClauses(array $sortInput)
+    public function mapInputToSortClauses(array $sortInput): array
     {
         $sortClauses = array_map(
-            static function (string $sortClauseClass) {
-                /** @var Query\SortClause $lastSortClause */
+            static function (string $sortClauseClass): ?object {
                 static $lastSortClause;
 
                 if ($sortClauseClass === Query::SORT_DESC) {

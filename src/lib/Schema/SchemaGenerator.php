@@ -12,7 +12,7 @@ class SchemaGenerator
     /**
      * @var SchemaBuilder[]
      */
-    private $schemaBuilders;
+    private array $schemaBuilders;
 
     public function __construct(array $schemaBuilders = [])
     {
@@ -22,7 +22,7 @@ class SchemaGenerator
     /**
      * @return array
      */
-    public function generate()
+    public function generate(): array
     {
         $schema = [];
         foreach ($this->schemaBuilders as $builder) {

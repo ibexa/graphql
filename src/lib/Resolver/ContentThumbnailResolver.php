@@ -13,8 +13,7 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 final class ContentThumbnailResolver implements QueryInterface
 {
-    /** @var \Ibexa\Contracts\Core\Repository\Strategy\ContentThumbnail\ThumbnailStrategy */
-    private $thumbnailStrategy;
+    private ThumbnailStrategy $thumbnailStrategy;
 
     public function __construct(
         ThumbnailStrategy $thumbnailStrategy

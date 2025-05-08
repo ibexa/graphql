@@ -21,7 +21,7 @@ class AddItemTypeToItemTypeIdentifierList extends BaseWorker implements Worker, 
 {
     public const TYPE = 'ContentTypeIdentifier';
 
-    public function work(Builder $schema, array $args)
+    public function work(Builder $schema, array $args): void
     {
         $contentType = $args['ContentType'];
 
@@ -37,7 +37,7 @@ class AddItemTypeToItemTypeIdentifierList extends BaseWorker implements Worker, 
         );
     }
 
-    public function init(Builder $schema)
+    public function init(Builder $schema): void
     {
         $schema->addType(new Input\Type(self::TYPE, 'enum'));
     }

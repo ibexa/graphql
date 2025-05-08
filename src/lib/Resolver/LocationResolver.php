@@ -9,8 +9,8 @@ namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\Contracts\Core\Repository\ContentService;
 use Ibexa\Contracts\Core\Repository\LocationService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
-use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 use Ibexa\GraphQL\DataLoader\LocationLoader;
@@ -27,25 +27,13 @@ class LocationResolver implements QueryInterface
 {
     public const DEFAULT_LIMIT = 10;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\LocationService
-     */
-    private $locationService;
+    private LocationService $locationService;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentService
-     */
-    private $contentService;
+    private ContentService $contentService;
 
-    /**
-     * @var \Ibexa\GraphQL\DataLoader\LocationLoader
-     */
-    private $locationLoader;
+    private LocationLoader $locationLoader;
 
-    /**
-     * @var \Ibexa\GraphQL\InputMapper\SearchQuerySortByMapper
-     */
-    private $sortMapper;
+    private SearchQuerySortByMapper $sortMapper;
 
     public function __construct(
         LocationService $locationService,
@@ -59,7 +47,7 @@ class LocationResolver implements QueryInterface
         $this->sortMapper = $sortMapper;
     }
 
-    public function resolveLocation($args)
+    public function resolveLocation($args): Location
     {
         if (isset($args['locationId'])) {
             return $this->locationLoader->findById($args['locationId']);
@@ -72,14 +60,17 @@ class LocationResolver implements QueryInterface
         throw new ArgumentsException('Requires one and only one of remoteId or locationId');
     }
 
-    public function resolveLocationsByContentId($contentId)
+    /**
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\Location>
+     */
+    public function resolveLocationsByContentId(int $contentId): iterable
     {
         return $this->locationService->loadLocations(
             $this->contentService->loadContentInfo($contentId)
         );
     }
 
-    public function resolveLocationById($locationId)
+    public function resolveLocationById(int $locationId): Location
     {
         return $this->locationService->loadLocation($locationId);
     }
@@ -119,6 +110,6 @@ class LocationResolver implements QueryInterface
 
     private function buildFilter(Argument $args): Criterion
     {
-        return new Query\Criterion\ParentLocationId($args['locationId']);
+        return new Criterion\ParentLocationId($args['locationId']);
     }
 }

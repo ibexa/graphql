@@ -9,10 +9,7 @@ namespace Ibexa\GraphQL\Schema;
 
 class Generator
 {
-    /**
-     * @var Builder
-     */
-    private $schema;
+    private Builder $schema;
 
     /**
      * Grouping of schema types for writing to disk (group => [types]).
@@ -24,12 +21,12 @@ class Generator
     /**
      * @var Domain\Iterator[]
      */
-    private $iterators;
+    private array $iterators;
 
     /**
      * @var Worker[]
      */
-    private $workers;
+    private array $workers;
 
     public function __construct(Builder $schema, array $iterators, array $workers)
     {
@@ -41,7 +38,7 @@ class Generator
     /**
      * @return array
      */
-    public function generate()
+    public function generate(): array
     {
         foreach ($this->workers as $worker) {
             if ($worker instanceof Initializer) {

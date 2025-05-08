@@ -17,7 +17,7 @@ class FieldInputHandlersPass implements CompilerPassInterface
 {
     private const FIELD_TYPE_INPUT_HANDLER_TAG = 'ibexa.graphql.field_type.input.handler';
 
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->has(DomainContentMutationResolver::class)) {
             return;

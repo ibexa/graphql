@@ -13,32 +13,21 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\Core\MVC\Symfony\SiteAccess;
 use Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessProviderInterface;
+use Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessServiceInterface;
 use Ibexa\GraphQL\Exception\NoValidSiteaccessException;
 
 class SiteaccessGuesser
 {
-    /**
-     * @var \Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessProviderInterface
-     */
-    private $provider;
+    private SiteAccessProviderInterface $provider;
 
-    /**
-     * @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private $configResolver;
+    private ConfigResolverInterface $configResolver;
 
-    /**
-     * @var \Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessServiceInterface
-     */
-    private $siteAccessService;
+    private SiteAccessServiceInterface $siteAccessService;
 
-    /**
-     * @var array
-     */
-    private $siteAccessGroups;
+    private array $siteAccessGroups;
 
     public function __construct(
-        SiteAccess\SiteAccessServiceInterface $siteAccessService,
+        SiteAccessServiceInterface $siteAccessService,
         SiteAccessProviderInterface $provider,
         ConfigResolverInterface $configResolver,
         array $siteAccessGroups
@@ -99,12 +88,12 @@ class SiteaccessGuesser
      *
      * @return int|false The root depth (used to select the deepest, most specific tree root), false if it isn't part of that subtree.
      */
-    private function isInSubtree(Location $location, int $treeRootLocationId)
+    private function isInSubtree(Location $location, int $treeRootLocationId): int|string|false
     {
         return array_search($treeRootLocationId, $location->path);
     }
 
-    private function isAdminSiteaccess(SiteAccess $siteaccess)
+    private function isAdminSiteaccess(SiteAccess $siteaccess): bool
     {
         return (new IsAdmin($this->siteAccessGroups))->isSatisfiedBy($siteaccess);
     }

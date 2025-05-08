@@ -16,17 +16,17 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class DefineDomainGroup extends BaseWorker implements Worker
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
-     */
-    private $contentTypeService;
+    private ContentTypeService $contentTypeService;
 
     public function __construct(ContentTypeService $contentTypeService)
     {
         $this->contentTypeService = $contentTypeService;
     }
 
-    public function work(Builder $schema, array $args)
+    /**
+     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
+    public function work(Builder $schema, array $args): void
     {
         $schema->addType(new Input\Type(
             $this->typeName($args),
@@ -44,7 +44,10 @@ class DefineDomainGroup extends BaseWorker implements Worker
         );
     }
 
-    public function canWork(Builder $schema, array $args)
+    /**
+     * @param array{ContentTypeGroup?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup|mixed} $args
+     */
+    public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['ContentTypeGroup'])
@@ -53,11 +56,17 @@ class DefineDomainGroup extends BaseWorker implements Worker
             && !empty($this->contentTypeService->loadContentTypes($args['ContentTypeGroup']));
     }
 
-    protected function typeName($args): string
+    /**
+     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
+    protected function typeName(array $args): string
     {
         return $this->getNameHelper()->itemGroupName($args['ContentTypeGroup']);
     }
 
+    /**
+     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
     private function groupTypesName(array $args): string
     {
         return $this->getNameHelper()->itemGroupTypesName($args['ContentTypeGroup']);

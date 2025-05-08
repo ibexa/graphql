@@ -17,10 +17,8 @@ interface Iterator
 {
     /**
      * Performs one-time initializations on the schema.
-     *
-     * @return
      */
-    public function init(Builder $schema);
+    public function init(Builder $schema): void;
 
     /**
      * Returns set of items from the domain.

@@ -24,30 +24,15 @@ use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
  */
 class SearchLocationLoader implements LocationLoader
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\SearchService
-     */
-    private $searchService;
+    private SearchService $searchService;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\LocationService
-     */
-    private $locationService;
+    private LocationService $locationService;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\URLAliasService
-     */
-    private $urlAliasService;
+    private URLAliasService $urlAliasService;
 
-    /**
-     * @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private $configResolver;
+    private ConfigResolverInterface $configResolver;
 
-    /**
-     * @var \Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator
-     */
-    private $urlAliasGenerator;
+    private UrlAliasGenerator $urlAliasGenerator;
 
     public function __construct(SearchService $searchService, LocationService $locationService, URLAliasService $urlAliasService, ConfigResolverInterface $configResolver, UrlAliasGenerator $urlAliasGenerator)
     {
@@ -119,7 +104,7 @@ class SearchLocationLoader implements LocationLoader
         }
     }
 
-    protected function getUrlAlias($pathinfo): URLAlias
+    protected function getUrlAlias(string $pathinfo): URLAlias
     {
         $rootLocationId = $this->configResolver->getParameter('content.tree_root.location_id');
         $pathPrefix = $this->urlAliasGenerator->getPathPrefixByRootLocationId($rootLocationId);

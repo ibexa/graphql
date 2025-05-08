@@ -16,7 +16,10 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class AddItemOfTypeConnectionToGroup extends BaseWorker implements Worker
 {
-    public function work(Builder $schema, array $args)
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType, ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
+    public function work(Builder $schema, array $args): void
     {
         $contentType = $args['ContentType'];
         $descriptions = $contentType->getDescriptions();
@@ -47,7 +50,10 @@ class AddItemOfTypeConnectionToGroup extends BaseWorker implements Worker
         ));
     }
 
-    public function canWork(Builder $schema, array $args)
+    /**
+     * @param array{ContentType?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType|mixed, ContentTypeGroup?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup|mixed} $args
+     */
+    public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['ContentType'])
@@ -57,22 +63,34 @@ class AddItemOfTypeConnectionToGroup extends BaseWorker implements Worker
             && !$schema->hasTypeWithField($this->groupName($args), $this->connectionField($args));
     }
 
+    /**
+     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
     protected function groupName(array $args): string
     {
         return $this->getNameHelper()->itemGroupName($args['ContentTypeGroup']);
     }
 
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
     protected function connectionField(array $args): string
     {
         return $this->getNameHelper()->itemConnectionField($args['ContentType']);
     }
 
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
     protected function connectionType(array $args): string
     {
         return $this->getNameHelper()->itemConnectionName($args['ContentType']);
     }
 
-    protected function typeName($args): string
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
+    protected function typeName(array $args): string
     {
         return $this->getNameHelper()->itemName($args['ContentType']);
     }

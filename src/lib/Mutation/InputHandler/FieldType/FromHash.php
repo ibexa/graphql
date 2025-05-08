@@ -16,10 +16,7 @@ use Ibexa\Core\FieldType\FieldType;
  */
 class FromHash implements FieldTypeInputHandler
 {
-    /**
-     * @var \Ibexa\Core\FieldType\FieldType
-     */
-    private $fieldType;
+    private FieldType $fieldType;
 
     public function __construct(FieldType $fieldType)
     {

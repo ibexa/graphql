@@ -18,6 +18,7 @@ use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Value\Field;
 use Ibexa\GraphQL\Value\Item;
+use Overblog\GraphQLBundle\Definition\ArgumentInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
@@ -29,20 +30,15 @@ use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
  */
 final class ItemResolver implements QueryInterface
 {
-    /** @var \Overblog\GraphQLBundle\Resolver\TypeResolver */
-    private $typeResolver;
+    private TypeResolver $typeResolver;
 
-    /** @var \Ibexa\GraphQL\InputMapper\QueryMapper */
-    private $queryMapper;
+    private QueryMapper $queryMapper;
 
-    /** @var \Ibexa\GraphQL\DataLoader\ContentLoader */
-    private $contentLoader;
+    private ContentLoader $contentLoader;
 
-    /** @var \Ibexa\GraphQL\DataLoader\LocationLoader */
-    private $locationLoader;
+    private LocationLoader $locationLoader;
 
-    /** @var \Ibexa\GraphQL\ItemFactory */
-    private $itemFactory;
+    private ItemFactory $itemFactory;
 
     public function __construct(
         TypeResolver $typeResolver,
@@ -120,7 +116,7 @@ final class ItemResolver implements QueryInterface
         return $item;
     }
 
-    public function resolveItemFieldValue(Item $item, $fieldDefinitionIdentifier, $args = null): ?Field
+    public function resolveItemFieldValue(Item $item, string $fieldDefinitionIdentifier, $args = null): ?Field
     {
         return Field::fromField($item->getContent()->getField($fieldDefinitionIdentifier, $args['language'] ?? null));
     }
@@ -128,14 +124,14 @@ final class ItemResolver implements QueryInterface
     /**
      * @return \GraphQL\Executor\Promise\Promise|\Overblog\GraphQLBundle\Relay\Connection\Output\Connection<\Ibexa\GraphQL\Value\Item>
      */
-    public function resolveItemsOfTypeAsConnection(string $contentTypeIdentifier, $args): Connection|Promise
+    public function resolveItemsOfTypeAsConnection(string $contentTypeIdentifier, ArgumentInterface $args): Connection|Promise
     {
         $query = $args['query'] ?: [];
         $query['ContentTypeIdentifier'] = $contentTypeIdentifier;
         $query['sortBy'] = $args['sortBy'];
         $query = $this->queryMapper->mapInputToLocationQuery($query);
 
-        $paginator = new Paginator(function ($offset, $limit) use ($query) {
+        $paginator = new Paginator(function ($offset, $limit) use ($query): array {
             $query->offset = $offset;
             $query->limit = $limit ?? 10;
 

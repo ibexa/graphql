@@ -9,7 +9,6 @@ namespace Ibexa\GraphQL\Schema\Domain\Content\Worker\FieldDefinition;
 
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
-use Ibexa\Contracts\Core\Repository\Values\MultiLanguageDescription;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
 use Ibexa\GraphQL\Schema\Builder;
 use Ibexa\GraphQL\Schema\Builder\Input;
@@ -18,17 +17,17 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class AddFieldDefinitionToItemType extends BaseWorker implements Worker
 {
-    /**
-     * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
-     */
-    private $fieldDefinitionMapper;
+    private FieldDefinitionMapper $fieldDefinitionMapper;
 
     public function __construct(FieldDefinitionMapper $fieldDefinitionMapper)
     {
         $this->fieldDefinitionMapper = $fieldDefinitionMapper;
     }
 
-    public function work(Builder $schema, array $args)
+    /**
+     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition, ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
+    public function work(Builder $schema, array $args): void
     {
         $schema->addFieldToType($this->typeName($args), new Input\Field(
             $this->fieldName($args),
@@ -43,37 +42,47 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
         ));
     }
 
-    public function canWork(Builder $schema, array $args)
+    /**
+     * @param array{FieldDefinition?: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition|mixed, ContentType?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType|mixed} $args
+     */
+    public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['FieldDefinition'])
             && $args['FieldDefinition'] instanceof FieldDefinition
-            & isset($args['ContentType'])
+            && isset($args['ContentType'])
             && $args['ContentType'] instanceof ContentType
             && !$schema->hasTypeWithField($this->typeName($args), $this->fieldName($args));
     }
 
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
     protected function typeName(array $args): string
     {
         return $this->getNameHelper()->itemTypeName($args['ContentType']);
     }
 
-    protected function fieldName($args): string
+    /**
+     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition} $args
+     */
+    protected function fieldName(array $args): string
     {
         return $this->getNameHelper()->fieldDefinitionField($args['FieldDefinition']);
     }
 
-    public function fieldDescription($args)
+    /**
+     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition} $args
+     */
+    public function fieldDescription(array $args)
     {
-        $description = '';
-        if ($args['FieldDefinition'] instanceof MultiLanguageDescription) {
-            $description = $args['FieldDefinition']->getDescription('eng-GB') ?? '';
-        }
-
-        return $description;
+        return $args['FieldDefinition']->getDescription('eng-GB') ?? '';
     }
 
-    private function fieldType($args)
+    /**
+     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition} $args
+     */
+    private function fieldType(array $args): ?string
     {
         return $this->fieldDefinitionMapper->mapToFieldDefinitionType($args['FieldDefinition']);
     }

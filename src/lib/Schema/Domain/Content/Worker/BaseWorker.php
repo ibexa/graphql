@@ -11,12 +11,9 @@ use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 
 class BaseWorker
 {
-    /**
-     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
-     */
-    private $nameHelper;
+    private ?NameHelper $nameHelper = null;
 
-    public function setNameHelper(NameHelper $nameHelper)
+    public function setNameHelper(NameHelper $nameHelper): void
     {
         $this->nameHelper = $nameHelper;
     }

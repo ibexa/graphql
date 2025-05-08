@@ -17,11 +17,9 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 final class RelationFieldResolver implements QueryInterface
 {
-    /** @var \Ibexa\GraphQL\DataLoader\ContentLoader */
-    private $contentLoader;
+    private ContentLoader $contentLoader;
 
-    /** @var \Ibexa\GraphQL\ItemFactory */
-    private $itemFactory;
+    private ItemFactory $itemFactory;
 
     public function __construct(ContentLoader $contentLoader, ItemFactory $relatedContentItemFactory)
     {

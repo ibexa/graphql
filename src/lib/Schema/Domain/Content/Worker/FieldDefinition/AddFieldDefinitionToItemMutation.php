@@ -19,10 +19,7 @@ class AddFieldDefinitionToItemMutation extends BaseWorker implements Worker
     public const OPERATION_CREATE = 'create';
     public const OPERATION_UPDATE = 'update';
 
-    /**
-     * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
-     */
-    private $mapper;
+    private FieldDefinitionMapper $mapper;
 
     /**
      * @param \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper $mapper
@@ -32,7 +29,7 @@ class AddFieldDefinitionToItemMutation extends BaseWorker implements Worker
         $this->mapper = $mapper;
     }
 
-    public function work(Builder $schema, array $args)
+    public function work(Builder $schema, array $args): void
     {
         $properties = ['description' => $this->mapDescription($args)];
 
@@ -80,7 +77,7 @@ class AddFieldDefinitionToItemMutation extends BaseWorker implements Worker
         return $this->getNameHelper()->fieldDefinitionField($args['FieldDefinition']);
     }
 
-    private function nameFieldType(array $args, $operation): string
+    private function nameFieldType(array $args, string $operation): string
     {
         $fieldDefinition = $args['FieldDefinition'];
         $contentType = $args['ContentType'];
@@ -96,7 +93,7 @@ class AddFieldDefinitionToItemMutation extends BaseWorker implements Worker
      *
      * @param array $args
      */
-    private function mapDescription($args): ?string
+    private function mapDescription(array $args): ?string
     {
         return $args['FieldDefinition']->getDescription($args['ContentType']->mainLanguageCode);
     }

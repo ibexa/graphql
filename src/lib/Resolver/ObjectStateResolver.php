@@ -20,8 +20,7 @@ use Overblog\GraphQLBundle\Definition\Argument;
  */
 class ObjectStateResolver
 {
-    /** @var \Ibexa\Contracts\Core\Repository\ObjectStateService */
-    private $objectStateService;
+    private ObjectStateService $objectStateService;
 
     public function __construct(ObjectStateService $objectStateService)
     {

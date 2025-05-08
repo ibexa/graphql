@@ -16,7 +16,10 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class AddItemToGroup extends BaseWorker implements Worker
 {
-    public function work(Builder $schema, array $args)
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType, ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
+    public function work(Builder $schema, array $args): void
     {
         $contentType = $args['ContentType'];
         $descriptions = $contentType->getDescriptions();
@@ -61,7 +64,10 @@ class AddItemToGroup extends BaseWorker implements Worker
         ));
     }
 
-    public function canWork(Builder $schema, array $args)
+    /**
+     * @param array{ContentType?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType|mixed, ContentTypeGroup?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup|mixed} $args
+     */
+    public function canWork(Builder $schema, array $args): bool
     {
         return
             isset($args['ContentType'])
@@ -71,17 +77,26 @@ class AddItemToGroup extends BaseWorker implements Worker
             && !$schema->hasTypeWithField($this->groupName($args), $this->typeField($args));
     }
 
+    /**
+     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     */
     protected function groupName(array $args): string
     {
         return $this->getNameHelper()->itemGroupName($args['ContentTypeGroup']);
     }
 
-    protected function typeField($args): string
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
+    protected function typeField(array $args): string
     {
         return $this->getNameHelper()->itemField($args['ContentType']);
     }
 
-    protected function typeName($args): string
+    /**
+     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     */
+    protected function typeName(array $args): string
     {
         return $this->getNameHelper()->itemName($args['ContentType']);
     }

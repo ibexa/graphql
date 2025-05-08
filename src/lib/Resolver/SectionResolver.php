@@ -17,17 +17,14 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Section;
  */
 class SectionResolver
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\SectionService
-     */
-    private $sectionService;
+    private SectionService $sectionService;
 
     public function __construct(SectionService $sectionService)
     {
         $this->sectionService = $sectionService;
     }
 
-    public function resolveSectionById($sectionId): ?Section
+    public function resolveSectionById(int $sectionId): ?Section
     {
         try {
             return $this->sectionService->loadSection($sectionId);

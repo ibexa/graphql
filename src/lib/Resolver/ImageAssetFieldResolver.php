@@ -7,7 +7,6 @@
 
 namespace Ibexa\GraphQL\Resolver;
 
-use Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface;
 use Ibexa\GraphQL\Value\Field;
 
 /**
@@ -15,19 +14,15 @@ use Ibexa\GraphQL\Value\Field;
  */
 class ImageAssetFieldResolver
 {
-    /* @var array<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> */
-    private $strategies;
+    /** @var iterable<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> */
+    private iterable $strategies;
 
     /**
      * @param iterable<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> $strategies
      */
-    public function __construct(iterable $strategies)
+    public function __construct(iterable $strategies = [])
     {
-        foreach ($strategies as $strategy) {
-            if ($strategy instanceof ImageAssetMapperStrategyInterface) {
-                $this->strategies[] = $strategy;
-            }
-        }
+        $this->strategies = $strategies;
     }
 
     public function resolveDomainImageAssetFieldValue(?Field $field): ?Field

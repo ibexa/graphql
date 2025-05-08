@@ -9,6 +9,7 @@ namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\InputMapper\SearchQueryMapper;
+use Overblog\GraphQLBundle\Definition\ArgumentInterface;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 /**
@@ -16,15 +17,9 @@ use Overblog\GraphQLBundle\Relay\Connection\Paginator;
  */
 class SearchResolver
 {
-    /**
-     * @var \Ibexa\GraphQL\InputMapper\SearchQueryMapper
-     */
-    private $queryMapper;
+    private SearchQueryMapper $queryMapper;
 
-    /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
-     */
-    private $contentLoader;
+    private ContentLoader $contentLoader;
 
     public function __construct(ContentLoader $contentLoader, SearchQueryMapper $queryMapper)
     {
@@ -32,14 +27,36 @@ class SearchResolver
         $this->queryMapper = $queryMapper;
     }
 
-    public function searchContent($args)
+    /**
+     * @param array{
+     *     query: array{
+     *         offset?: int,
+     *         limit?: int,
+     *         ContentTypeIdentifier?: string|string[],
+     *         Text?: string,
+     *         Field?: array<array{target: mixed}>,
+     *         ParentLocationId?: int|int[],
+     *         sortBy?: array<string|\Ibexa\Contracts\Core\Repository\Values\Content\Query::SORT_*>,
+     *         Modified?: array<string, mixed>,
+     *         Created?: array<string, mixed>
+     *     }
+     * } $args
+     *
+     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
+     */
+    public function searchContent(array $args): array
     {
         return $this->contentLoader->find(
             $this->queryMapper->mapInputToQuery($args['query'])
         );
     }
 
-    public function searchContentOfTypeAsConnection($contentTypeIdentifier, $args)
+    /**
+     * @param string $contentTypeIdentifier
+     *
+     * @return \GraphQL\Executor\Promise\Promise|\Overblog\GraphQLBundle\Relay\Connection\Output\Connection<\Ibexa\Contracts\Core\Repository\Values\Content\Content>
+     */
+    public function searchContentOfTypeAsConnection($contentTypeIdentifier, ArgumentInterface $args)
     {
         $query = $args['query'] ?: [];
         $query['ContentTypeIdentifier'] = $contentTypeIdentifier;

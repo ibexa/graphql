@@ -20,15 +20,9 @@ use Overblog\GraphQLBundle\Error\UserWarning;
  */
 class UserResolver
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\UserService
-     */
-    private $userService;
+    private UserService $userService;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\LocationService
-     */
-    private $locationService;
+    private LocationService $locationService;
 
     public function __construct(UserService $userService, LocationService $locationService)
     {
@@ -36,7 +30,12 @@ class UserResolver
         $this->locationService = $locationService;
     }
 
-    public function resolveUser($args)
+    /**
+     * @param array{id?: int, email?: string, login?: string} $args
+     *
+     * @return \Ibexa\Contracts\Core\Repository\Values\User\User|iterable<\Ibexa\Contracts\Core\Repository\Values\User\User>
+     */
+    public function resolveUser($args): User|iterable
     {
         if (isset($args['id'])) {
             return $this->userService->loadUser($args['id']);
@@ -49,9 +48,11 @@ class UserResolver
         if (isset($args['login'])) {
             return $this->userService->loadUserByLogin($args['login']);
         }
+
+        throw new UserWarning('Missing: id, email or login argument');
     }
 
-    public function resolveUserById($userId): ?User
+    public function resolveUserById(int $userId): ?User
     {
         try {
             return $this->userService->loadUser($userId);
@@ -63,14 +64,17 @@ class UserResolver
     /**
      * @return \Ibexa\Contracts\Core\Repository\Values\User\UserGroup[]
      */
-    public function resolveUserGroupsByUserId($userId)
+    public function resolveUserGroupsByUserId(int $userId): iterable
     {
         return $this->userService->loadUserGroupsOfUser(
             $this->userService->loadUser($userId)
         );
     }
 
-    public function resolveUsersOfGroup(UserGroup $userGroup)
+    /**
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\User\User>
+     */
+    public function resolveUsersOfGroup(UserGroup $userGroup): iterable
     {
         return $this->userService->loadUsersOfUserGroup(
             $userGroup
@@ -80,17 +84,25 @@ class UserResolver
     /**
      * @return \Ibexa\Contracts\Core\Repository\Values\User\UserGroup
      */
-    public function resolveUserGroupById($userGroupId)
+    public function resolveUserGroupById(int $userGroupId): UserGroup
     {
         return $this->userService->loadUserGroup($userGroupId);
     }
 
-    public function resolveUserGroupSubGroups(UserGroup $userGroup)
+    /**
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\User\UserGroup>
+     */
+    public function resolveUserGroupSubGroups(UserGroup $userGroup): iterable
     {
         return $this->userService->loadSubUserGroups($userGroup);
     }
 
-    public function resolveUserGroups($args)
+    /**
+     * @param array{id: int} $args
+     *
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\User\UserGroup>
+     */
+    public function resolveUserGroups(array $args): iterable
     {
         return $this->userService->loadSubUserGroups(
             $this->userService->loadUserGroup(
@@ -99,7 +111,12 @@ class UserResolver
         );
     }
 
-    public function resolveContentFields(Content $content, $args)
+    /**
+     * @param array{identifier?: string} $args
+     *
+     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\Field|null>
+     */
+    public function resolveContentFields(Content $content, array $args): iterable
     {
         if (isset($args['identifier'])) {
             return [$content->getField($args['identifier'])];

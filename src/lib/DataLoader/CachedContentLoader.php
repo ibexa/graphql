@@ -16,10 +16,7 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
  */
 class CachedContentLoader implements ContentLoader
 {
-    /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
-     */
-    private $innerLoader;
+    private ContentLoader $innerLoader;
 
     private $loadedItems = [];
 

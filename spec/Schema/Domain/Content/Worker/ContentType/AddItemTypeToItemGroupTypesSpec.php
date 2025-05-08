@@ -1,23 +1,28 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType;
 
 use Ibexa\GraphQL\Schema\Builder\SchemaBuilder;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Ibexa\GraphQL\Schema\Domain\Content\Worker\ContentType\AddItemTypeToItemGroupTypes;
+use Prophecy\Argument;
 use spec\Ibexa\GraphQL\Tools\ContentTypeArgument;
 use spec\Ibexa\GraphQL\Tools\ContentTypeGroupArgument;
 use spec\Ibexa\GraphQL\Tools\FieldArgument;
-use Prophecy\Argument;
 
 class AddItemTypeToItemGroupTypesSpec extends ContentTypeWorkerBehavior
 {
-    const GROUP_TYPES_TYPE = 'DomainGroupTestGroupTypes';
+    public const GROUP_TYPES_TYPE = 'DomainGroupTestGroupTypes';
 
-    const TYPE_FIELD = 'testType';
-    const TYPE_TYPE = 'TestTypeType';
+    public const TYPE_FIELD = 'testType';
+    public const TYPE_TYPE = 'TestTypeType';
 
-    public function let(NameHelper $nameHelper)
+    public function let(NameHelper $nameHelper): void
     {
         $this->setNameHelper($nameHelper);
 
@@ -40,30 +45,30 @@ class AddItemTypeToItemGroupTypesSpec extends ContentTypeWorkerBehavior
             ->willReturn(self::GROUP_TYPES_TYPE);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(AddItemTypeToItemGroupTypes::class);
     }
 
-    function it_can_not_work_if_args_do_not_have_a_ContentTypeGroup(SchemaBuilder $schema)
+    public function it_can_not_work_if_args_do_not_have_a_ContentTypeGroup(SchemaBuilder $schema): void
     {
         $this->canWork($schema, [])->shouldBe(false);
     }
 
-    function it_can_not_work_if_args_do_not_have_a_ContentType(SchemaBuilder $schema)
+    public function it_can_not_work_if_args_do_not_have_a_ContentType(SchemaBuilder $schema): void
     {
         $args = $this->args();
         unset($args['ContentType']);
         $this->canWork($schema, $args)->shouldBe(false);
     }
 
-    function it_can_not_work_if_the_field_is_already_defined(SchemaBuilder $schema)
+    public function it_can_not_work_if_the_field_is_already_defined(SchemaBuilder $schema): void
     {
         $schema->hasTypeWithField(self::GROUP_TYPES_TYPE, self::TYPE_FIELD)->willReturn(true);
         $this->canWork($schema, $this->args())->shouldBe(false);
     }
 
-    function it_adds_a_field_for_the_ContentType_to_the_DomainGroupTypes_object(SchemaBuilder $schema)
+    public function it_adds_a_field_for_the_ContentType_to_the_DomainGroupTypes_object(SchemaBuilder $schema): void
     {
         $schema
             ->addFieldToType(

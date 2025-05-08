@@ -1,26 +1,31 @@
 <?php
+
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
 namespace spec\Ibexa\GraphQL\Schema;
 
 use Ibexa\GraphQL\Schema;
-use spec\Ibexa\GraphQL\Tools\Stubs\InitializableWorker;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\Ibexa\GraphQL\Tools\Stubs\InitializableWorker;
 
 class GeneratorSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         Schema\Builder $schema,
         Schema\Domain\Iterator $iterator,
         Schema\Domain\Iterator $iterator2,
         InitializableWorker $worker1,
         Schema\Worker $worker2
-    )
-    {
-        $iterator->iterate()->will(function() { yield []; });
-        $iterator->init($schema)->willReturn(null);
+    ): void {
+        $iterator->iterate()->will(static function () { yield []; });
+        $iterator->init($schema)->hasReturnVoid();
 
-        $iterator2->iterate()->will(function() { yield []; });
-        $iterator2->init($schema)->willReturn(null);
+        $iterator2->iterate()->will(static function () { yield []; });
+        $iterator2->init($schema)->hasReturnVoid();
 
         $schema->getSchema()->willReturn([]);
 
@@ -31,17 +36,16 @@ class GeneratorSpec extends ObjectBehavior
         $this->beConstructedWith($schema, [$iterator, $iterator2], [$worker1, $worker2]);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Schema\Generator::class);
     }
 
-    function it_calls_init_on_each_iterator(
+    public function it_calls_init_on_each_iterator(
         Schema\Builder $schema,
         Schema\Domain\Iterator $iterator,
         Schema\Domain\Iterator $iterator2
-    )
-    {
+    ): void {
         $iterator->init($schema)->shouldBeCalled();
         $iterator->iterate()->shouldBeCalled();
 
@@ -51,18 +55,17 @@ class GeneratorSpec extends ObjectBehavior
         $this->generate();
     }
 
-    function it_passes_arguments_from_iterators_to_workers(
+    public function it_passes_arguments_from_iterators_to_workers(
         Schema\Domain\Iterator $iterator,
         Schema\Worker $worker1,
         Schema\Worker $worker2,
         Schema\Builder $schema
-    )
-    {
+    ): void {
         $arguments = [
             ['1_arg' => 'value'],
-            ['2_arg' => 'value']
+            ['2_arg' => 'value'],
         ];
-        $iterator->iterate()->will(function () use ($arguments) {
+        $iterator->iterate()->will(static function () use ($arguments) {
             foreach($arguments as $args) {
                 yield $args;
             }
@@ -90,11 +93,10 @@ class GeneratorSpec extends ObjectBehavior
         $this->generate();
     }
 
-    function it_calls_init_on_schema_initializer_workers(
+    public function it_calls_init_on_schema_initializer_workers(
         Schema\Builder $schema,
         InitializableWorker $worker1
-    )
-    {
+    ): void {
         $worker1->init($schema)->shouldBeCalled();
         $this->generate();
     }

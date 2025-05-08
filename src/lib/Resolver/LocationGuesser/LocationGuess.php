@@ -14,15 +14,12 @@ use Ibexa\GraphQL\Exception;
 
 class LocationGuess
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content
-     */
-    private $content;
+    private Content $content;
 
     /**
      * @var \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
      */
-    private $locations;
+    private array $locations;
 
     public function __construct(Content $content, array $locations)
     {

@@ -24,17 +24,11 @@ use Symfony\Component\Yaml\Yaml;
 )]
 class GeneratePlatformSchemaCommand extends Command
 {
-    /**
-     * @var \Ibexa\GraphQL\Schema\Generator
-     */
-    private $generator;
+    private Generator $generator;
 
     private Repository $repository;
 
-    /**
-     * @var string
-     */
-    private $schemaRootDir;
+    private string $schemaRootDir;
 
     public function __construct(Generator $generator, Repository $repository, string $schemaRootDir)
     {
@@ -94,7 +88,7 @@ class GeneratePlatformSchemaCommand extends Command
         return Command::SUCCESS;
     }
 
-    private function compileTypes(OutputInterface $output)
+    private function compileTypes(OutputInterface $output): void
     {
         $command = $this->getApplication()->find('graphql:compile');
         $command->run(new StringInput('graphql:compile'), $output);

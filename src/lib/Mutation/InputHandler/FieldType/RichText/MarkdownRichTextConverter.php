@@ -14,16 +14,11 @@ use Parsedown;
 
 class MarkdownRichTextConverter implements RichTextInputConverter
 {
-    /** @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter */
-    private $markdownConverter;
-
-    /** @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter */
-    private $xhtml5Converter;
+    private Converter $xhtml5Converter;
 
     public function __construct(Converter $xhtml5Converter)
     {
         $this->xhtml5Converter = $xhtml5Converter;
-        $this->markdownConverter = new Parsedown();
     }
 
     public function convertToXml($text): DOMDocument

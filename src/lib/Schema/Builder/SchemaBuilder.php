@@ -12,10 +12,35 @@ use Ibexa\GraphQL\Schema\Domain\NameValidator;
 
 class SchemaBuilder implements SchemaBuilderInterface
 {
-    private $schema = [];
+    /**
+     * @var array<string, array{
+     *     type: string,
+     *     inherits?: array<string>,
+     *     config?: array{
+     *         interfaces?: array<string>,
+     *         nodeType?: mixed,
+     *         connectionFields?: array<string, mixed>,
+     *         fields?: array<string, array{
+     *             type: string,
+     *             description?: string,
+     *             resolve?: callable,
+     *             argsBuilder?: mixed,
+     *             args?: array<string, array{
+     *                 type: string,
+     *                 description?: string,
+     *                 defaultValue?: mixed
+     *             }>
+     *         }>,
+     *         values?: array<string, array{
+     *             value?: mixed,
+     *             description?: string
+     *         }>
+     *     }
+     * }>
+     */
+    private array $schema = [];
 
-    /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */
-    private $nameValidator;
+    private NameValidator $nameValidator;
 
     public function __construct(NameValidator $nameValidator)
     {
@@ -27,7 +52,7 @@ class SchemaBuilder implements SchemaBuilderInterface
         return $this->schema;
     }
 
-    public function addType(Input\Type $typeInput)
+    public function addType(Input\Type $typeInput): void
     {
         if (!$this->nameValidator->isValidName($typeInput->name)) {
             $this->nameValidator->generateInvalidNameWarning($typeInput->type, $typeInput->name);
@@ -62,7 +87,7 @@ class SchemaBuilder implements SchemaBuilderInterface
         $this->schema[$typeInput->name] = $type;
     }
 
-    public function addFieldToType($type, Input\Field $fieldInput)
+    public function addFieldToType($type, Input\Field $fieldInput): void
     {
         if (!$this->nameValidator->isValidName($fieldInput->name)) {
             $this->nameValidator->generateInvalidNameWarning($fieldInput->type, $fieldInput->name);
@@ -92,7 +117,7 @@ class SchemaBuilder implements SchemaBuilderInterface
         $this->schema[$type]['config']['fields'][$fieldInput->name] = $field;
     }
 
-    public function addArgToField($type, $field, Input\Arg $argInput)
+    public function addArgToField($type, $field, Input\Arg $argInput): void
     {
         if (!$this->hasType($type)) {
             throw new \Exception("Expected type $type to be defined, but it was not");
@@ -118,7 +143,7 @@ class SchemaBuilder implements SchemaBuilderInterface
         $this->schema[$type]['config']['fields'][$field]['args'][$argInput->name] = $arg;
     }
 
-    public function addValueToEnum($enum, Input\EnumValue $valueInput)
+    public function addValueToEnum($enum, Input\EnumValue $valueInput): void
     {
         if (!$this->hasType($enum)) {
             throw new \Exception("Expected type $enum to be defined, but it was not");
