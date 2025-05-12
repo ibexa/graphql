@@ -18,6 +18,7 @@ class NoValidLocationsException extends Exception
     public function __construct(Content $content)
     {
         parent::__construct("No valid location could be determined for content #{$content->id}");
+
         $this->content = $content;
     }
 
