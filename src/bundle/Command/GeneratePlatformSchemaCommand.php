@@ -38,7 +38,7 @@ class GeneratePlatformSchemaCommand extends Command
         $this->schemaRootDir = $schemaRootDir;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->addOption('dry-run', null, InputOption::VALUE_OPTIONAL, 'Do not write, output the schema only', false)
