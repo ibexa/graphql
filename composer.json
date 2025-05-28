@@ -41,6 +41,7 @@
         "ibexa/notifications": "~5.0.x-dev",
         "ibexa/rector": "~5.0.x-dev",
         "ibexa/search": "~5.0.x-dev",
+        "ibexa/twig-components": "~5.0.x-dev",
         "ibexa/user": "~5.0.x-dev",
         "mikey179/vfsstream": "^1.6",
         "overblog/graphiql-bundle": "^1.0",
