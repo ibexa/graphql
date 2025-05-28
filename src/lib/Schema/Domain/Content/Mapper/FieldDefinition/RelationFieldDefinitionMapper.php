@@ -14,24 +14,22 @@ use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 
 class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper
 {
-    /**
-     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
-     */
-    private $nameHelper;
+    private NameHelper $nameHelper;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
-     */
-    private $contentTypeService;
+    private ContentTypeService $contentTypeService;
+
+    private bool $enablePagination;
 
     public function __construct(
         FieldDefinitionMapper $innerMapper,
         NameHelper $nameHelper,
-        ContentTypeService $contentTypeService
+        ContentTypeService $contentTypeService,
+        bool $enablePagination
     ) {
         parent::__construct($innerMapper);
         $this->nameHelper = $nameHelper;
         $this->contentTypeService = $contentTypeService;
+        $this->enablePagination = $enablePagination;
     }
 
     public function mapToFieldValueType(FieldDefinition $fieldDefinition): ?string
@@ -54,7 +52,18 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
         }
 
         if ($this->isMultiple($fieldDefinition)) {
-            $type = "[$type]";
+            if ($this->enablePagination) {
+                $type = 'RelationsConnection';
+            } else {
+                @trigger_error(
+                    'Disable pagination for ezobjectrelationlist has been deprecated since version 4.6 ' .
+                    'and will be removed in version 5.0. To start receiving `RelationsConnection` instead of the deprecated ' .
+                    '`[' . $type . ']`, set the parameter `ibexa.graphql.schema.ezobjectrelationlist.enable_pagination` to `true`.',
+                    E_USER_DEPRECATED
+                );
+
+                $type = "[$type]";
+            }
         }
 
         return $type;
@@ -68,12 +77,25 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
 
         $isMultiple = $this->isMultiple($fieldDefinition) ? 'true' : 'false';
 
-        return sprintf('@=resolver("RelationFieldValue", [field, %s])', $isMultiple);
+        return sprintf('@=resolver("RelationFieldValue", [field, %s, args])', $isMultiple);
     }
 
     protected function canMap(FieldDefinition $fieldDefinition)
     {
         return in_array($fieldDefinition->fieldTypeIdentifier, ['ezobjectrelation', 'ezobjectrelationlist']);
+    }
+
+    public function mapToFieldValueArgsBuilder(FieldDefinition $fieldDefinition): ?string
+    {
+        if (!$this->canMap($fieldDefinition)) {
+            return parent::mapToFieldValueArgsBuilder($fieldDefinition);
+        }
+
+        if ($this->isMultiple($fieldDefinition) && $this->enablePagination) {
+            return 'Relay::Connection';
+        }
+
+        return parent::mapToFieldValueArgsBuilder($fieldDefinition);
     }
 
     /**
