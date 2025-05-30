@@ -68,7 +68,7 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
 
     protected function canMap(FieldDefinition $fieldDefinition): bool
     {
-        return in_array($fieldDefinition->fieldTypeIdentifier, ['ezobjectrelation', 'ezobjectrelationlist']);
+        return in_array($fieldDefinition->fieldTypeIdentifier, ['ibexa_object_relation', 'ibexa_object_relation_list']);
     }
 
     /**

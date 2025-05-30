@@ -15,100 +15,100 @@ services:
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\Author\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezauthor' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_author' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\BinaryFile:
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezbinaryfile' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_binaryfile' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Boolean:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\Checkbox\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezboolean' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_boolean' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Country:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\Country\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezcountry' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_country' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Date:
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\Date\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezdate' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_date' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\DateAndTime:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\Date'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\DateAndTime\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezdatetime' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_datetime' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Float:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\Float\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezfloat' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_float' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Email:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\EmailAddress\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezemail' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_email' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Image:
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezimage' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_image' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Integer:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\Integer\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezinteger' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_integer' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\ISBN:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\ISBN\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezisbn' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_isbn' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Keyword:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\Keyword\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezkeyword' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_keyword' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\MapLocation:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\MapLocation\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezgmaplocation' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_gmap_location' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Media:
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezmedia' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_media' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Relation:
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\Relation\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezobjectrelation' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_object_relation' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\RelationList:
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\RelationList\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezobjectrelationlist' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_object_relation_list' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\RichText:
     arguments:
@@ -116,7 +116,7 @@ services:
         html: '@Ibexa\GraphQL\Mutation\InputHandler\FieldType\RichText\HtmlRichTextConverter'
         markdown: '@Ibexa\GraphQL\Mutation\InputHandler\FieldType\RichText\MarkdownRichTextConverter'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezrichtext' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_richtext' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\RichText\HtmlRichTextConverter:
     arguments:
@@ -135,25 +135,25 @@ services:
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\Selection\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezselection' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_selection' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\TextBlock:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\TextBlock\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'eztext' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_text' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\TextLine:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\TextLine\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezstring' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_string' }
 
   Ibexa\GraphQL\Mutation\InputHandler\FieldType\Url:
     class: 'Ibexa\GraphQL\Mutation\InputHandler\FieldType\FromHash'
     arguments:
       $fieldType: '@Ibexa\Core\FieldType\Url\Type'
     tags:
-      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ezurl' }
+      - { name: ibexa.graphql.field_type.input.handler, fieldtype: 'ibexa_url' }

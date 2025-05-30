@@ -129,7 +129,7 @@ services:
     Ibexa\GraphQL\Resolver\ImageFieldResolver:
         arguments:
             $imageFieldType: '@Ibexa\Core\FieldType\Image\Type'
-            $variationHandler: '@ibexa.field_type.ezimage.variation_service'
+            $variationHandler: '@ibexa.field_type.ibexa_image.variation_service'
             $contentService: '@ibexa.siteaccessaware.service.content'
         tags:
             - { name: overblog_graphql.query, alias: "ImageVariations", method: "resolveImageVariations" }

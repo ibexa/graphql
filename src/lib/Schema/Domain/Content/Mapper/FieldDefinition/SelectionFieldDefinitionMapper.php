@@ -32,6 +32,6 @@ class SelectionFieldDefinitionMapper extends DecoratingFieldDefinitionMapper imp
 
     protected function getFieldTypeIdentifier(): string
     {
-        return 'ezselection';
+        return 'ibexa_selection';
     }
 }

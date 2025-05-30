@@ -86,13 +86,13 @@ class UploadFiles
 
         $fieldDefinition = $contentType->getFieldDefinition($mapping['contentFieldIdentifier']);
         switch ($fieldDefinition->fieldTypeIdentifier) {
-            case 'ezimage':
+            case 'ibexa_image':
                 $valueType = FieldType\Image\Value::class;
                 break;
-            case 'ezbinaryfile':
+            case 'ibexa_binaryfile':
                 $valueType = FieldType\BinaryFile\Value::class;
                 break;
-            case 'ezmedia':
+            case 'ibexa_media':
                 $valueType = FieldType\Media\Value::class;
                 break;
             default:
