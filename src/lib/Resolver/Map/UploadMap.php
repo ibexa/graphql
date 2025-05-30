@@ -12,10 +12,15 @@ use Overblog\GraphQLBundle\Upload\Type\GraphQLUploadType;
 
 class UploadMap extends ResolverMap
 {
-    protected function map()
+    /**
+     * @return array<string, array<string, callable(): \Overblog\GraphQLBundle\Upload\Type\GraphQLUploadType>>
+     */
+    protected function map(): array
     {
         return [
-            'FileUpload' => [self::SCALAR_TYPE => static function (): GraphQLUploadType { return new GraphQLUploadType(); }],
+            'FileUpload' => [
+                self::SCALAR_TYPE => static fn (): GraphQLUploadType => new GraphQLUploadType(),
+            ],
         ];
     }
 }
