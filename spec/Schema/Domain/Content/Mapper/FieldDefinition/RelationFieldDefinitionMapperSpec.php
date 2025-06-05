@@ -98,7 +98,7 @@ class RelationFieldDefinitionMapperSpec extends ObjectBehavior
     private function createFieldDefinition(int $selectionLimit = 0, array $selectionContentTypes = []): FieldDefinition
     {
         return new FieldDefinition([
-            'fieldTypeIdentifier' => 'ezobjectrelationlist',
+            'fieldTypeIdentifier' => 'ibexa_object_relation_list',
             'fieldSettings' => [
                 'selectionContentTypes' => $selectionContentTypes,
             ],

@@ -19,7 +19,7 @@ Which one you choose depends if the field definition settings and constraints im
 
 ### Mapping with configuration
 You need to use a simple compiler pass to modify a container parameter, `ibexa.graphql.schema.content.mapping.field_definition_type`.
-It is a hash that maps a field type identifier (`ezstring`) to the following entries:
+It is a hash that maps a field type identifier (`ibexa_string`) to the following entries:
 - `value_type`: the GraphQL type values of this field are represented as. It can either be a native type
   (`String`, `Int`...), or a custom type that you will define.
   If not specified, `String` will be used.
@@ -161,7 +161,7 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
 ```
 
 #### Mutation input type handling
-If the input for a field depends on the field definition, like `ezmatrix`
+If the input for a field depends on the field definition, like `ibexa_matrix`
 which generates its own input types depending on the configured columns, use `mapToFieldValueInputType`
 which returns a GraphQL type for a Field Definition.
 

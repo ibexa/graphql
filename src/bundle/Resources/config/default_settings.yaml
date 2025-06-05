@@ -2,84 +2,84 @@ parameters:
   ibexa.graphql.schema.content.field_name.override:
     id: id_
   ibexa.graphql.schema.content.mapping.field_definition_type:
-    ezauthor:
+    ibexa_author:
       value_type: "[AuthorFieldValue]"
       value_resolver: 'field !== null ? field.authors : null'
       input_type: '[AuthorInput]'
-    ezbinaryfile:
+    ibexa_binaryfile:
       definition_type: BinaryFieldDefinition
       value_type: BinaryFileFieldValue
       input_type: BinaryFieldInput
-    ezboolean:
+    ibexa_boolean:
       definition_type: CheckboxFieldDefinition
       value_type: Boolean
       value_resolver: 'field !== null ? field.bool : null'
       input_type: Boolean
-    ezcountry:
+    ibexa_country:
       definition_type: CountryFieldDefinition
       value_type: String
       input_type: '[String]'
-    ezdate:
+    ibexa_date:
       value_type: DateTime
       value_resolver: 'field !== null ? field.date : null'
       input_type: DateFieldInput
-    ezdatetime:
+    ibexa_datetime:
       value_type: DateTime
       value_resolver: 'field !== null ? field.value : null'
       input_type: DateFieldInput
-    ezemail:
+    ibexa_email:
       value_type: String
-    ezuser:
+    ibexa_user:
       value_type: String
       value_resolver: 'field.id'
-    ezfloat:
+    ibexa_float:
       definition_type: FloatFieldDefinition
       value_type: Float
       value_resolver: 'field !== null ? field.value : null'
       input_type: Float
-    ezgmaplocation:
+    ibexa_gmap_location:
       value_type: MapLocationFieldValue
       input_type: 'MapLocationFieldInput'
-    ezimage:
+    ibexa_image:
       definition_type: BinaryFieldDefinition
       value_type: ImageFieldValue
       input_type: ImageFieldInput
-    ezimageasset:
+    ibexa_imageasset:
       value_type: ImageFieldValue
       value_resolver: 'query("DomainImageAssetFieldValue", field)'
-    ezinteger:
+    ibexa_integer:
       definition_type: IntegerFieldDefinition
       value_type: Int
       value_resolver: 'field !== null ? field.value : null'
       input_type: Int
-    ezkeyword:
+    ibexa_keyword:
       value_type: '[String]'
       value_resolver: 'field !== null ? field.values : null'
       input_type: '[String]'
-    ezmedia:
+    ibexa_media:
       definition_type: MediaFieldDefinition
       value_type: MediaFieldValue
       input_type: MediaFieldInput
-    ezobjectrelation:
+    ibexa_object_relation:
       definition_type: RelationFieldDefinition
       value_type: RelationFieldValue
       input_type: Int
-    ezobjectrelationlist:
+    ibexa_object_relation_list:
       definition_type: RelationListFieldDefinition
       value_type: RelationListFieldValue
       input_type: '[Int]'
-    ezrichtext:
+    ibexa_richtext:
       value_type: RichTextFieldValue
       input_type: RichTextFieldInput
-    ezselection:
+    ibexa_selection:
       definition_type: SelectionFieldDefinition
       input_type: '[Int]'
-    ezstring:
+    ibexa_string:
       definition_type: TextLineFieldDefinition
       value_type: String
-    eztext:
+    ibexa_text:
       definition_type: TextBlockFieldDefinition
       value_type: String
-    ezurl:
+    ibexa_url:
       value_type: UrlFieldValue
       input_type: UrlFieldInput

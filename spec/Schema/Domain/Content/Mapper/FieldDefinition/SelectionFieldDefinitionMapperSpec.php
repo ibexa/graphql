@@ -15,7 +15,7 @@ use PhpSpec\ObjectBehavior;
 class SelectionFieldDefinitionMapperSpec extends ObjectBehavior
 {
     public const FIELD_IDENTIFIER = 'test';
-    public const TYPE_IDENTIFIER = 'ezselection';
+    public const TYPE_IDENTIFIER = 'ibexa_selection';
 
     public function let(FieldDefinitionMapper $innerMapper): void
     {

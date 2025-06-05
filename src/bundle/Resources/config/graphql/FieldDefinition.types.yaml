@@ -33,7 +33,7 @@ FieldDefinition:
                 description: "The position of the field definition in the content type"
             fieldTypeIdentifier:
                 type: String
-                description: "The identifier of the field type (ezstring, ezinteger...)."
+                description: "The identifier of the field type (ibexa_string, ibexa_integer...)."
             isThumbnail:
                 type: Boolean
                 description: "Indicates if this field can be a thumbnail."

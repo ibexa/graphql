@@ -37,7 +37,7 @@ class RichText implements FieldTypeInputHandler
                 $this->inputConverters[$inputFormat]->convertToXml($input)
             );
         } else {
-            throw new UnsupportedFieldInputFormatException('ezrichtext', $inputFormat);
+            throw new UnsupportedFieldInputFormatException('ibexa_richtext', $inputFormat);
         }
 
         return $fieldValue;

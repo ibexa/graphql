@@ -23,7 +23,7 @@ class Date extends FromHash implements FieldTypeInputHandler
         }
 
         if (!in_array($inputFormat, ['timestring', 'rfc850', 'timestamp'])) {
-            throw new UnsupportedFieldInputFormatException('ezdate', $inputFormat);
+            throw new UnsupportedFieldInputFormatException('ibexa_date', $inputFormat);
         }
 
         return parent::toFieldValue(

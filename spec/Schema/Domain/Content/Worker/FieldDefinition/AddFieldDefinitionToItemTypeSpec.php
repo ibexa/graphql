@@ -24,7 +24,7 @@ class AddFieldDefinitionToItemTypeSpec extends ObjectBehavior
     public const FIELD_IDENTIFIER = 'test_field';
     public const FIELD_NAME = 'testField';
     public const FIELD_DESCRIPTION = ['eng-GB' => 'Description'];
-    public const FIELD_TYPE = 'ezstring';
+    public const FIELD_TYPE = 'ibexa_string';
     public const FIELD_DEFINITION_TYPE = 'TestFieldDefinition';
 
     /**
