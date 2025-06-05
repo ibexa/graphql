@@ -52,7 +52,7 @@ class ResolverVariables implements FieldDefinitionMapper
         );
 
         //we make sure no "field" (case insensitive) keyword in the actual field's identifier gets replaced
-        //only syntax like: '@=resolver("MatrixFieldValue", [value, "field_matrix"])' needs to be taken into account
+        //only syntax like: '@=query("MatrixFieldValue", [value, "field_matrix"])' needs to be taken into account
         //where [value, "field_matrix"] stands for the actual field's identifier
         if (preg_match('/value, "(.*field.*)"/i', $resolver) !== 1) {
             $resolver = str_replace(
