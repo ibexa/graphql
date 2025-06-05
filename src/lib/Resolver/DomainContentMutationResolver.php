@@ -291,14 +291,18 @@ class DomainContentMutationResolver
             )->first();
 
             // use error from first available language
-            $fieldError = reset($fieldErrorByLanguage);
+            $fieldErrors = reset($fieldErrorByLanguage);
 
-            // depending on $fieldError instance, values injected in Plural::__toString or Message::__toString
-            $errors[] = sprintf(
-                "Field '%s' failed validation: %s",
-                $fieldDefinition->identifier,
-                (string)$fieldError->getTranslatableMessage()
-            );
+            if ($fieldErrors === false) {
+                continue;
+            }
+            foreach ($fieldErrors as $fieldError) {
+                $errors[] = sprintf(
+                    "Field '%s' failed validation: %s",
+                    $fieldDefinition->identifier,
+                    (string)$fieldError->getTranslatableMessage()
+                );
+            }
         }
 
         return $errors;
