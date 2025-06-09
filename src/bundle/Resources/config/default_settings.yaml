@@ -44,7 +44,7 @@ parameters:
       definition_type: BinaryFieldDefinition
       value_type: ImageFieldValue
       input_type: ImageFieldInput
-    ibexa_imageasset:
+    ibexa_image_asset:
       value_type: ImageFieldValue
       value_resolver: 'query("DomainImageAssetFieldValue", field)'
     ibexa_integer:
