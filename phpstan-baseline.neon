@@ -817,30 +817,6 @@ parameters:
 			path: src/lib/Resolver/SelectionFieldResolver.php
 
 		-
-			message: '#^Method Ibexa\\GraphQL\\Resolver\\SiteaccessGuesser\\SiteaccessGuesser\:\:__construct\(\) has parameter \$siteAccessGroups with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/lib/Resolver/SiteaccessGuesser/SiteaccessGuesser.php
-
-		-
-			message: '#^Method Ibexa\\GraphQL\\Resolver\\SiteaccessGuesser\\SiteaccessGuesser\:\:guessForLocation\(\) should return Ibexa\\Core\\MVC\\Symfony\\SiteAccess but returns Ibexa\\Core\\MVC\\Symfony\\SiteAccess\|null\.$#'
-			identifier: return.type
-			count: 1
-			path: src/lib/Resolver/SiteaccessGuesser/SiteaccessGuesser.php
-
-		-
-			message: '#^Property Ibexa\\GraphQL\\Resolver\\SiteaccessGuesser\\SiteaccessGuesser\:\:\$siteAccessGroups type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/lib/Resolver/SiteaccessGuesser/SiteaccessGuesser.php
-
-		-
-			message: '#^Variable \$saList in PHPDoc tag @var does not match assigned variable \$matchingSiteaccessRootDepth\.$#'
-			identifier: varTag.differentVariable
-			count: 1
-			path: src/lib/Resolver/SiteaccessGuesser/SiteaccessGuesser.php
-
-		-
 			message: '#^Method Ibexa\\GraphQL\\Resolver\\ThumbnailResolver\:\:resolveThumbnail\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
