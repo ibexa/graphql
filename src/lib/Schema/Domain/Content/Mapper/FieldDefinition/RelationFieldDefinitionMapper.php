@@ -58,7 +58,7 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
                 @trigger_error(
                     'Disable pagination for ezobjectrelationlist has been deprecated since version 4.6 ' .
                     'and will be removed in version 5.0. To start receiving `RelationsConnection` instead of the deprecated ' .
-                    '`[' . $type . ']`, set the parameter `ibexa.graphql.schema.ezobjectrelationlist.enable_pagination` to `true`.',
+                    '`[' . $type . ']`, set the parameter `ibexa.graphql.schema.ibexa_object_relation_list.enable_pagination` to `true`.',
                     E_USER_DEPRECATED
                 );
 

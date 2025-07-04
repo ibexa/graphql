@@ -43,7 +43,7 @@ services:
         arguments:
             $contentTypeService: '@ibexa.siteaccessaware.service.content_type'
             $innerMapper: '@Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\RelationFieldDefinitionMapper.inner'
-            $enablePagination: '%ibexa.graphql.schema.ezobjectrelationlist.enable_pagination%'
+            $enablePagination: '%ibexa.graphql.schema.ibexa_object_relation_list.enable_pagination%'
 
     Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\SelectionFieldDefinitionMapper:
         decorates: Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
