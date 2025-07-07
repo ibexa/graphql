@@ -24,8 +24,12 @@ class SiteaccessGuesser
 
     private SiteAccessServiceInterface $siteAccessService;
 
+    /** @var array<string, string> */
     private array $siteAccessGroups;
 
+    /**
+     * @param array<string, string> $siteAccessGroups
+     */
     public function __construct(
         SiteAccessServiceInterface $siteAccessService,
         SiteAccessProviderInterface $provider,
@@ -45,42 +49,41 @@ class SiteaccessGuesser
     {
         // Test if the location is part of the current tree root, as it is the most likely
         $treeRootLocationId = $this->configResolver->getParameter('content.tree_root.location_id');
-        if ($this->isInSubtree($location, $treeRootLocationId)) {
-            return $this->siteAccessService->getCurrent();
+        if ($this->getDepthInSubtree($location, $treeRootLocationId) !== false) {
+            return $this->siteAccessService->getCurrent() ?? throw new NoValidSiteaccessException($location);
         }
 
-        // we won't look into siteaccesses that don't use the same repository
+        // we won't look into SiteAccess-es that don't use the same repository
         $currentRepository = $this->configResolver->getParameter('repository');
 
+        $matchingSiteAccessRootDepth = 0;
         /** @var \Ibexa\Core\MVC\Symfony\SiteAccess[] $saList */
-        $matchingSiteaccessRootDepth = 0;
         $saList = iterator_to_array($this->provider->getSiteAccesses());
 
-        foreach ($saList as $siteaccess) {
-            $repository = $this->configResolver->getParameter('repository', 'ibexa.site_access.config', $siteaccess->name);
+        foreach ($saList as $siteAccess) {
+            $repository = $this->configResolver->getParameter('repository', 'ibexa.site_access.config', $siteAccess->name);
 
-            if ($repository !== $currentRepository) {
+            if ($repository !== $currentRepository || $this->isAdminSiteAccess($siteAccess)) {
                 continue;
             }
 
-            if ($this->isAdminSiteaccess($siteaccess)) {
-                continue;
-            }
-
-            $treeRootLocationId = $this->configResolver->getParameter('content.tree_root.location_id', 'ibexa.site_access.config', $siteaccess->name);
-            if (($rootDepth = $this->isInSubtree($location, $treeRootLocationId)) !== false) {
-                if ($rootDepth > $matchingSiteaccessRootDepth) {
-                    $matchingSiteaccess = $siteaccess;
-                    $matchingSiteaccessRootDepth = $rootDepth;
-                }
+            $treeRootLocationId = $this->configResolver->getParameter(
+                'content.tree_root.location_id',
+                'ibexa.site_access.config',
+                $siteAccess->name
+            );
+            $rootDepth = $this->getDepthInSubtree($location, $treeRootLocationId);
+            if ($rootDepth !== false && $rootDepth > $matchingSiteAccessRootDepth) {
+                $matchingSiteAccess = $siteAccess;
+                $matchingSiteAccessRootDepth = $rootDepth;
             }
         }
 
-        if (!isset($matchingSiteaccess)) {
+        if (!isset($matchingSiteAccess)) {
             throw new NoValidSiteaccessException($location);
         }
 
-        return $matchingSiteaccess;
+        return $matchingSiteAccess;
     }
 
     /**
@@ -88,13 +91,13 @@ class SiteaccessGuesser
      *
      * @return int|false The root depth (used to select the deepest, most specific tree root), false if it isn't part of that subtree.
      */
-    private function isInSubtree(Location $location, int $treeRootLocationId): int|string|false
+    private function getDepthInSubtree(Location $location, int $treeRootLocationId): int|false
     {
-        return array_search($treeRootLocationId, $location->path);
+        return array_search($treeRootLocationId, array_map('intval', $location->getPath()), true);
     }
 
-    private function isAdminSiteaccess(SiteAccess $siteaccess): bool
+    private function isAdminSiteAccess(SiteAccess $siteAccess): bool
     {
-        return (new IsAdmin($this->siteAccessGroups))->isSatisfiedBy($siteaccess);
+        return (new IsAdmin($this->siteAccessGroups))->isSatisfiedBy($siteAccess);
     }
 }
