@@ -14,6 +14,7 @@ use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Relay\PageAwareConnection;
 use Ibexa\GraphQL\Value\Field;
+use Ibexa\GraphQL\Value\Item;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
@@ -54,7 +55,7 @@ final class RelationFieldResolver
                 $contentItems = $this->contentLoader->find($query);
 
                 return array_map(
-                    function (int $contentId) use ($contentItems) {
+                    function (int $contentId) use ($contentItems): Item {
                         return $this->itemFactory->fromContent(
                             $contentItems[array_search($contentId, array_column($contentItems, 'id'), true)]
                         );
@@ -63,13 +64,13 @@ final class RelationFieldResolver
                 );
             }
 
-            $paginator = new Paginator(function ($offset, $limit) use ($query) {
+            $paginator = new Paginator(function ($offset, $limit) use ($query): array {
                 $query->offset = $offset;
                 $query->limit = $limit ?? self::DEFAULT_LIMIT;
                 $contentItems = $this->contentLoader->find($query);
 
                 return array_map(
-                    function (Content $content) {
+                    function (Content $content): Item {
                         return $this->itemFactory->fromContent(
                             $content
                         );
@@ -81,7 +82,7 @@ final class RelationFieldResolver
             return PageAwareConnection::fromConnection(
                 $paginator->auto(
                     $args,
-                    function () use ($query) {
+                    function () use ($query): int {
                         return $this->contentLoader->count($query);
                     }
                 ),
