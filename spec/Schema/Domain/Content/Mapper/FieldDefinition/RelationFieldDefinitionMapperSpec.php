@@ -18,7 +18,7 @@ class RelationFieldDefinitionMapperSpec extends ObjectBehavior
 
     function let(NameHelper $nameHelper, ContentTypeService $contentTypeService, FieldDefinitionMapper $innerMapper)
     {
-        $this->beConstructedWith($innerMapper, $nameHelper, $contentTypeService);
+        $this->beConstructedWith($innerMapper, $nameHelper, $contentTypeService, true);
 
         $articleContentType = new ContentType(['identifier' => 'article']);
         $folderContentType = new ContentType(['identifier' => 'folder']);
@@ -56,19 +56,19 @@ class RelationFieldDefinitionMapperSpec extends ObjectBehavior
     function it_maps_multi_selection_without_type_limitations_to_an_array_of_generic_content()
     {
         $fieldDefinition = $this->createFieldDefinition(self::DEF_LIMIT_MULTI, []);
-        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('[Item]');
+        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('RelationsConnection');
     }
 
     function it_maps_multi_selection_with_multiple_type_limitations_to_an_array_of_generic_content()
     {
         $fieldDefinition = $this->createFieldDefinition(self::DEF_LIMIT_NONE, ['article', 'blog_post']);
-        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('[Item]');
+        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('RelationsConnection');
     }
 
     function it_maps_multi_selection_with_a_unique_type_limitations_to_an_array_of_that_type()
     {
         $fieldDefinition = $this->createFieldDefinition(self::DEF_LIMIT_MULTI, ['article']);
-        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('[ArticleItem]');
+        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('RelationsConnection');
     }
 
     function it_delegates_the_field_definition_type_to_the_inner_mapper(FieldDefinitionMapper $innerMapper)
@@ -81,13 +81,13 @@ class RelationFieldDefinitionMapperSpec extends ObjectBehavior
     function it_maps_multi_selection_to_resolve_multiple()
     {
         $fieldDefinition = $this->createFieldDefinition(self::DEF_LIMIT_MULTI);
-        $this->mapToFieldValueResolver($fieldDefinition)->shouldReturn('@=resolver("RelationFieldValue", [field, true])');
+        $this->mapToFieldValueResolver($fieldDefinition)->shouldReturn('@=resolver("RelationFieldValue", [field, true, args])');
     }
 
     function it_maps_single_selection_to_resolve_single()
     {
         $fieldDefinition = $this->createFieldDefinition(self::DEF_LIMIT_SINGLE);
-        $this->mapToFieldValueResolver($fieldDefinition)->shouldReturn('@=resolver("RelationFieldValue", [field, false])');
+        $this->mapToFieldValueResolver($fieldDefinition)->shouldReturn('@=resolver("RelationFieldValue", [field, false, args])');
     }
 
     private function createFieldDefinition($selectionLimit = 0, $selectionContentTypes = [])
