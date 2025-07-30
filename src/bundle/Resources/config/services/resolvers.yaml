@@ -50,7 +50,7 @@ services:
 
     Ibexa\GraphQL\Resolver\RelationFieldResolver:
         arguments:
-            $enablePagination: '%ibexa.graphql.schema.ezobjectrelationlist.enable_pagination%'
+            $enablePagination: '%ibexa.graphql.schema.ibexa_object_relation_list.enable_pagination%'
         tags:
             - { name: overblog_graphql.resolver, alias: "RelationFieldValue", method: "resolveRelationFieldValue" }
 
