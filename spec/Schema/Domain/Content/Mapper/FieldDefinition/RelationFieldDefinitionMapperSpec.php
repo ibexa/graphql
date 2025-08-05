@@ -61,19 +61,19 @@ class RelationFieldDefinitionMapperSpec extends ObjectBehavior
     public function it_maps_multi_selection_without_type_limitations_to_an_array_of_generic_content(): void
     {
         $fieldDefinition = $this->createFieldDefinition(self::DEF_LIMIT_MULTI, []);
-        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('[Item]');
+        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('RelationsConnection');
     }
 
     public function it_maps_multi_selection_with_multiple_type_limitations_to_an_array_of_generic_content(): void
     {
         $fieldDefinition = $this->createFieldDefinition(self::DEF_LIMIT_NONE, ['article', 'blog_post']);
-        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('[Item]');
+        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('RelationsConnection');
     }
 
     public function it_maps_multi_selection_with_a_unique_type_limitations_to_an_array_of_that_type(): void
     {
         $fieldDefinition = $this->createFieldDefinition(self::DEF_LIMIT_MULTI, ['article']);
-        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('[ArticleItem]');
+        $this->mapToFieldValueType($fieldDefinition)->shouldReturn('RelationsConnection');
     }
 
     public function it_delegates_the_field_definition_type_to_the_inner_mapper(FieldDefinitionMapper $innerMapper): void
@@ -86,13 +86,13 @@ class RelationFieldDefinitionMapperSpec extends ObjectBehavior
     public function it_maps_multi_selection_to_resolve_multiple(): void
     {
         $fieldDefinition = $this->createFieldDefinition(self::DEF_LIMIT_MULTI);
-        $this->mapToFieldValueResolver($fieldDefinition)->shouldReturn('@=query("RelationFieldValue", field, true)');
+        $this->mapToFieldValueResolver($fieldDefinition)->shouldReturn('@=query("RelationFieldValue", field, true, args)');
     }
 
     public function it_maps_single_selection_to_resolve_single(): void
     {
         $fieldDefinition = $this->createFieldDefinition(self::DEF_LIMIT_SINGLE);
-        $this->mapToFieldValueResolver($fieldDefinition)->shouldReturn('@=query("RelationFieldValue", field, false)');
+        $this->mapToFieldValueResolver($fieldDefinition)->shouldReturn('@=query("RelationFieldValue", field, false, args)');
     }
 
     private function createFieldDefinition(int $selectionLimit = 0, array $selectionContentTypes = []): FieldDefinition
