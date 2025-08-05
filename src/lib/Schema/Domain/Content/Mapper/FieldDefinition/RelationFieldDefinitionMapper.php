@@ -49,7 +49,7 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
         }
 
         if ($this->isMultiple($fieldDefinition)) {
-            $type = "[$type]";
+            $type = "RelationsConnection";
         }
 
         return $type;
@@ -63,12 +63,25 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
 
         $isMultiple = $this->isMultiple($fieldDefinition) ? 'true' : 'false';
 
-        return sprintf('@=query("RelationFieldValue", field, %s)', $isMultiple);
+        return sprintf('@=query("RelationFieldValue", field, %s, args)', $isMultiple);
     }
 
     protected function canMap(FieldDefinition $fieldDefinition): bool
     {
         return in_array($fieldDefinition->fieldTypeIdentifier, ['ibexa_object_relation', 'ibexa_object_relation_list']);
+    }
+
+    public function mapToFieldValueArgsBuilder(FieldDefinition $fieldDefinition): ?string
+    {
+        if (!$this->canMap($fieldDefinition)) {
+            return parent::mapToFieldValueArgsBuilder($fieldDefinition);
+        }
+
+        if ($this->isMultiple($fieldDefinition)) {
+            return 'Relay::Connection';
+        }
+
+        return parent::mapToFieldValueArgsBuilder($fieldDefinition);
     }
 
     /**
