@@ -7,27 +7,38 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use GraphQL\Error\UserError;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Core\FieldType;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\ItemFactory;
+use Ibexa\GraphQL\Relay\PageAwareConnection;
 use Ibexa\GraphQL\Value\Field;
+use Ibexa\GraphQL\Value\Item;
+use Overblog\GraphQLBundle\Definition\Argument;
+use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 final class RelationFieldResolver
 {
-    /** @var \Ibexa\GraphQL\DataLoader\ContentLoader */
-    private $contentLoader;
+    public const DEFAULT_LIMIT = 25;
 
-    /** @var \Ibexa\GraphQL\ItemFactory */
-    private $itemFactory;
+    private ContentLoader $contentLoader;
 
-    public function __construct(ContentLoader $contentLoader, ItemFactory $relatedContentItemFactory)
-    {
+    private ItemFactory $itemFactory;
+
+    private bool $enablePagination;
+
+    public function __construct(
+        ContentLoader $contentLoader,
+        ItemFactory $relatedContentItemFactory,
+        bool $enablePagination
+    ) {
         $this->contentLoader = $contentLoader;
         $this->itemFactory = $relatedContentItemFactory;
+        $this->enablePagination = $enablePagination;
     }
 
-    public function resolveRelationFieldValue(Field $field, $multiple = false)
+    public function resolveRelationFieldValue(Field $field, $multiple = false, ?Argument $args = null)
     {
         $destinationContentIds = $this->getContentIds($field);
 
@@ -35,20 +46,52 @@ final class RelationFieldResolver
             return $multiple ? [] : null;
         }
 
-        $contentItems = $this->contentLoader->find(new Query(
+        $query = new Query(
             ['filter' => new Query\Criterion\ContentId($destinationContentIds)]
-        ));
+        );
 
         if ($multiple) {
-            return array_map(
-                function ($contentId) use ($contentItems) {
-                    return $this->itemFactory->fromContent(
-                        $contentItems[array_search($contentId, array_column($contentItems, 'id'))]
-                    );
-                },
-                $destinationContentIds
+            if (!$this->enablePagination || $args === null) {
+                $contentItems = $this->contentLoader->find($query);
+
+                return array_map(
+                    function (int $contentId) use ($contentItems): Item {
+                        return $this->itemFactory->fromContent(
+                            $contentItems[array_search($contentId, array_column($contentItems, 'id'), true)]
+                        );
+                    },
+                    $destinationContentIds
+                );
+            }
+
+            $paginator = new Paginator(function ($offset, $limit) use ($query): array {
+                $query->offset = $offset;
+                $query->limit = $limit ?? self::DEFAULT_LIMIT;
+                $contentItems = $this->contentLoader->find($query);
+
+                return array_map(
+                    function (Content $content): Item {
+                        return $this->itemFactory->fromContent(
+                            $content
+                        );
+                    },
+                    $contentItems
+                );
+            });
+
+            return PageAwareConnection::fromConnection(
+                $paginator->auto(
+                    $args,
+                    function () use ($query): int {
+                        return $this->contentLoader->count($query);
+                    }
+                ),
+                $args
             );
         }
+
+        $query->limit = 1;
+        $contentItems = $this->contentLoader->find($query);
 
         return $contentItems[0] ? $this->itemFactory->fromContent($contentItems[0]) : null;
     }
@@ -62,11 +105,13 @@ final class RelationFieldResolver
     {
         if ($field->value instanceof FieldType\RelationList\Value) {
             return $field->value->destinationContentIds;
-        } elseif ($field->value instanceof FieldType\Relation\Value) {
-            return [$field->value->destinationContentId];
-        } else {
-            throw new UserError('\$field does not contain a RelationList or Relation Field value');
         }
+
+        if ($field->value instanceof FieldType\Relation\Value) {
+            return [$field->value->destinationContentId];
+        }
+
+        throw new UserError('\$field does not contain a RelationList or Relation Field value');
     }
 }
 

@@ -279,3 +279,13 @@ UrlFieldValue:
                 type: String
                 description: "The link's name or description"
                 resolve: "@=value.text"
+
+RelationsConnection:
+    type: relay-connection
+    config:
+        nodeType: Item
+        connectionFields:
+            sliceSize:
+                type: Int!
+            orderBy:
+                type: String

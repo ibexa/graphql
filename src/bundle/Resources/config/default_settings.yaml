@@ -1,5 +1,6 @@
 parameters:
   ibexa.graphql.schema.should.extend.ezurl: false
+  ibexa.graphql.schema.ibexa_object_relation_list.enable_pagination: false
   ibexa.graphql.schema.content.field_name.override:
     id: id_
   ibexa.graphql.schema.content.mapping.field_definition_type:
