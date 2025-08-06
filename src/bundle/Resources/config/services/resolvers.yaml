@@ -47,8 +47,6 @@ services:
             - { name: overblog_graphql.query, alias: "ItemsOfTypeAsConnection", method: "resolveItemsOfTypeAsConnection" }
 
     Ibexa\GraphQL\Resolver\RelationFieldResolver:
-        arguments:
-            $enablePagination: '%ibexa.graphql.schema.ibexa_object_relation_list.enable_pagination%'
         tags:
             - { name: overblog_graphql.query, alias: "RelationFieldValue", method: "resolveRelationFieldValue" }
 

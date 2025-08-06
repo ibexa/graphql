@@ -49,7 +49,7 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
         }
 
         if ($this->isMultiple($fieldDefinition)) {
-            $type = "RelationsConnection";
+            $type = 'RelationsConnection';
         }
 
         return $type;
