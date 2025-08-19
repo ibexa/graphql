@@ -15,14 +15,14 @@ use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Relay\PageAwareConnection;
 use Ibexa\GraphQL\Value\Field;
-use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Ibexa\GraphQL\Value\Item;
 use Overblog\GraphQLBundle\Definition\Argument;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 final class RelationFieldResolver implements QueryInterface
 {
-    public const DEFAULT_LIMIT = 25;
+    public const int DEFAULT_LIMIT = 25;
 
     private ContentLoader $contentLoader;
 
