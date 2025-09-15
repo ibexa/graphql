@@ -30,7 +30,7 @@ class NameHelper extends BaseNameHelper implements LoggerAwareInterface
     public function __construct(
         array $fieldNameOverrides,
         Pluralizer $pluralizer,
-        LoggerInterface $logger = null
+        ?LoggerInterface $logger = null
     ) {
         parent::__construct($pluralizer);
 

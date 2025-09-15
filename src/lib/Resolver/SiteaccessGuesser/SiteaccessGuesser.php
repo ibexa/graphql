@@ -24,11 +24,11 @@ class SiteaccessGuesser
 
     private SiteAccessServiceInterface $siteAccessService;
 
-    /** @var array<string, string> */
+    /** @var array<string, array<string>> */
     private array $siteAccessGroups;
 
     /**
-     * @param array<string, string> $siteAccessGroups
+     * @param array<string, array<string>> $siteAccessGroups
      */
     public function __construct(
         SiteAccessServiceInterface $siteAccessService,
