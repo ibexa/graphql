@@ -2,7 +2,7 @@
     "name": "ibexa/graphql",
     "description": "GraphQL server for Ibexa",
     "type": "ibexa-bundle",
-    "license": "GPL-2.0-only",
+    "license": ["(GPL-2.0-only or proprietary)"],
     "authors": [
         {
             "name": "Bertrand Dunogier",
