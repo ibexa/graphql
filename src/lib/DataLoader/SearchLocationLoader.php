@@ -78,7 +78,7 @@ class SearchLocationLoader implements LocationLoader
         $alias = $this->getUrlAlias($urlAlias);
 
         return ($alias->type == URLAlias::LOCATION)
-            ? $this->locationService->loadLocation($alias->destination)
+            ? $this->locationService->loadLocation((int) $alias->destination)
             : null;
     }
 

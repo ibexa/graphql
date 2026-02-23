@@ -55,7 +55,7 @@ class TreeRootLocationFilter implements LocationFilter
     {
         static $rootLocations = [];
 
-        $treeRootLocationId = $this->configResolver->getParameter('content.tree_root.location_id');
+        $treeRootLocationId = (int) $this->configResolver->getParameter('content.tree_root.location_id');
         if (!isset($rootLocations[$treeRootLocationId])) {
             $rootLocations[$treeRootLocationId] = $this->locationService->loadLocation($treeRootLocationId);
         }
@@ -84,7 +84,7 @@ class TreeRootLocationFilter implements LocationFilter
             foreach ($excludedUriPrefixes as $uri) {
                 $urlAlias = $this->urlAliasService->lookup($uri);
                 if ($urlAlias->type === URLAlias::LOCATION) {
-                    $excludedLocations[] = $this->locationService->loadLocation($urlAlias->destination);
+                    $excludedLocations[] = $this->locationService->loadLocation((int) $urlAlias->destination);
                 }
             }
         }

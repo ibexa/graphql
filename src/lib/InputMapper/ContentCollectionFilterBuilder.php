@@ -36,15 +36,15 @@ class ContentCollectionFilterBuilder
      */
     public function buildFilter(): Criterion
     {
-        $treeRootLocationId = $this->configResolver->getParameter('content.tree_root.location_id');
+        $treeRootLocationId = (int) $this->configResolver->getParameter('content.tree_root.location_id');
         $rootLocation = $this->repository->getLocationService()->loadLocation($treeRootLocationId);
 
-        $includedSubtrees = [$rootLocation->pathString ?? '/'];
+        $includedSubtrees = [$rootLocation->pathString];
 
         foreach ($this->configResolver->getParameter('content.tree_root.excluded_uri_prefixes') as $uriPrefix) {
             $urlAlias = $this->repository->getURLAliasService()->lookup($uriPrefix);
             if ($urlAlias->type === URLAlias::LOCATION) {
-                $includedSubtrees[] = $this->repository->getLocationService()->loadLocation($urlAlias->destination)->pathString;
+                $includedSubtrees[] = $this->repository->getLocationService()->loadLocation((int) $urlAlias->destination)->pathString;
             }
         }
 
