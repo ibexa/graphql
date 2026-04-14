@@ -7,11 +7,12 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 /**
  * @internal
  */
-class FieldDefinitionResolver
+class FieldDefinitionResolver implements QueryInterface
 {
     public function resolveFieldDefinitionName(FieldDefinition $fieldDefinition, $args)
     {
