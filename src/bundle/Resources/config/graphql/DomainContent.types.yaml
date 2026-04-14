@@ -29,7 +29,7 @@ DomainContent:
                 type: String
             _thumbnail:
                 type: Thumbnail
-        resolveType: "@=resolver('DomainContentType', [value])"
+        resolveType: "@=query('DomainContentType', value)"
 
 AbstractDomainContent:
     type: "object"
@@ -44,7 +44,7 @@ AbstractDomainContent:
             _type:
                 description: "The item's content type"
                 type: ContentType
-                resolve: '@=resolver("ContentTypeById", [value.contentInfo.contentTypeId])'
+                resolve: '@=query("ContentTypeById", value.contentInfo.contentTypeId)'
             _content:
                 description: 'Underlying content info item'
                 type: Content
@@ -57,11 +57,11 @@ AbstractDomainContent:
             _location:
                 description: 'Main location'
                 type: Location
-                resolve: '@=resolver("LocationById", [value.contentInfo.mainLocationId])'
+                resolve: '@=query("LocationById", value.contentInfo.mainLocationId)'
             _allLocations:
                 description: 'All the locations'
                 type: '[Location]'
-                resolve: '@=resolver("LocationsByContentId", [value.contentInfo.id])'
+                resolve: '@=query("LocationsByContentId", value.contentInfo.id)'
             _name:
                 description: "The content item's name, in the prioritized language(s), based on the object name pattern"
                 type: String
@@ -69,7 +69,7 @@ AbstractDomainContent:
             _url:
                 description: "The content item's url alias, based on the main location."
                 type: String
-                resolve: "@=resolver('MainUrlAlias', [value])"
+                resolve: "@=query('MainUrlAlias', value)"
             _thumbnail:
                 type: Thumbnail
                 resolve: "@=query('Thumbnail', value.getThumbnail())"

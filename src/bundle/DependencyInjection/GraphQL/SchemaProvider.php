@@ -14,7 +14,7 @@ interface SchemaProvider
     /**
      * Returns the overblog graphql schema configuration.
      *
-     * @return array Array with the keys from overlog graphql config: query, mutation, resolver_maps...
+     * @return array Array with the keys from overblog graphql config: query, mutation, types...
      */
     public function getSchemaConfiguration();
 }
