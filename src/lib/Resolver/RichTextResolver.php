@@ -13,7 +13,7 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 /**
  * @internal
  */
-class RichTextResolver  implements QueryInterface
+class RichTextResolver implements QueryInterface
 {
     /**
      * @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter
