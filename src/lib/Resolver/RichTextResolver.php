@@ -10,11 +10,12 @@ namespace Ibexa\GraphQL\Resolver;
 use DOMDocument;
 use Ibexa\Contracts\FieldTypeRichText\RichText\Converter;
 use Ibexa\Contracts\FieldTypeRichText\RichText\Converter as RichTextConverterInterface;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 /**
  * @internal
  */
-class RichTextResolver
+class RichTextResolver implements QueryInterface
 {
     private Converter $richTextConverter;
 

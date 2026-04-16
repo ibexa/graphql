@@ -15,13 +15,14 @@ use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator;
 use Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessServiceInterface;
 use Ibexa\GraphQL\Value\Item;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @internal
  */
-class UrlAliasResolver
+class UrlAliasResolver implements QueryInterface
 {
     private URLAliasService $urlAliasService;
 

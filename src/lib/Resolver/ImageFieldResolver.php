@@ -14,12 +14,13 @@ use Ibexa\Contracts\Core\Variation\VariationHandler;
 use Ibexa\Core\FieldType\Image\Type;
 use Ibexa\Core\FieldType\Image\Value as ImageFieldValue;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Error\UserError;
 
 /**
  * @internal
  */
-class ImageFieldResolver
+class ImageFieldResolver implements QueryInterface
 {
     private VariationHandler $variationHandler;
 

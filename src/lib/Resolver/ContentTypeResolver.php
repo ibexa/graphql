@@ -10,12 +10,13 @@ namespace Ibexa\GraphQL\Resolver;
 use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
 
 /**
  * @internal
  */
-class ContentTypeResolver
+class ContentTypeResolver implements QueryInterface
 {
     private ContentTypeService $contentTypeService;
 

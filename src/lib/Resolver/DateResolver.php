@@ -8,11 +8,12 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use DateTime;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 /**
  * @internal
  */
-class DateResolver
+class DateResolver implements QueryInterface
 {
     public function resolveDateToFormat($date, $args)
     {

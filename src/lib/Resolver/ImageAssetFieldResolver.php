@@ -8,11 +8,12 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\GraphQL\Value\Field;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 /**
  * @internal
  */
-class ImageAssetFieldResolver
+class ImageAssetFieldResolver implements QueryInterface
 {
     /** @var iterable<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> */
     private iterable $strategies;

@@ -10,12 +10,13 @@ namespace Ibexa\GraphQL\Resolver;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\InputMapper\SearchQueryMapper;
 use Overblog\GraphQLBundle\Definition\ArgumentInterface;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 /**
  * @internal
  */
-class SearchResolver
+class SearchResolver implements QueryInterface
 {
     private SearchQueryMapper $queryMapper;
 

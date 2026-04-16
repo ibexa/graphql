@@ -13,12 +13,13 @@ use Ibexa\Contracts\Core\Repository\UserService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\User\User;
 use Ibexa\Contracts\Core\Repository\Values\User\UserGroup;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Error\UserWarning;
 
 /**
  * @internal
  */
-class UserResolver
+class UserResolver implements QueryInterface
 {
     private UserService $userService;
 

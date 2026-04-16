@@ -11,11 +11,12 @@ use GraphQL\Error\UserError;
 use Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException;
 use Ibexa\Contracts\Core\Repository\SectionService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Section;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 /**
  * @internal
  */
-class SectionResolver
+class SectionResolver implements QueryInterface
 {
     private SectionService $sectionService;
 
