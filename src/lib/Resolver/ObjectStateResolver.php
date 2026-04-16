@@ -13,11 +13,12 @@ use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
 use Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState;
 use Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectStateGroup;
 use Overblog\GraphQLBundle\Definition\Argument;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 /**
  * @internal
  */
-class ObjectStateResolver
+class ObjectStateResolver implements QueryInterface
 {
     /** @var \Ibexa\Contracts\Core\Repository\ObjectStateService */
     private $objectStateService;

@@ -11,11 +11,12 @@ use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
 use Ibexa\Contracts\Core\Repository\ObjectStateService;
 use Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectStateGroup;
 use Overblog\GraphQLBundle\Definition\Argument;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 /**
  * @internal
  */
-class ObjectStateGroupResolver
+class ObjectStateGroupResolver implements QueryInterface
 {
     /** @var \Ibexa\Contracts\Core\Repository\ObjectStateService */
     private $objectStateService;

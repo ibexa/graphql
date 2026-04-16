@@ -16,9 +16,10 @@ use Ibexa\GraphQL\Relay\PageAwareConnection;
 use Ibexa\GraphQL\Value\Field;
 use Ibexa\GraphQL\Value\Item;
 use Overblog\GraphQLBundle\Definition\Argument;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
-final class RelationFieldResolver
+final class RelationFieldResolver implements QueryInterface
 {
     public const DEFAULT_LIMIT = 25;
 

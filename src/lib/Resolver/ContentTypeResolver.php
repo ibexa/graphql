@@ -7,12 +7,13 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Resolver\TypeResolver;
 
 /**
  * @internal
  */
-class ContentTypeResolver
+class ContentTypeResolver implements QueryInterface
 {
     /**
      * @var \Ibexa\Contracts\Core\Repository\ContentTypeService

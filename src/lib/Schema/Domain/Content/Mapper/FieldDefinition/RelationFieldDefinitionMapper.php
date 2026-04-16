@@ -77,7 +77,7 @@ class RelationFieldDefinitionMapper extends DecoratingFieldDefinitionMapper impl
 
         $isMultiple = $this->isMultiple($fieldDefinition) ? 'true' : 'false';
 
-        return sprintf('@=resolver("RelationFieldValue", [field, %s, args])', $isMultiple);
+        return sprintf('@=query("RelationFieldValue", field, %s, args)', $isMultiple);
     }
 
     protected function canMap(FieldDefinition $fieldDefinition)

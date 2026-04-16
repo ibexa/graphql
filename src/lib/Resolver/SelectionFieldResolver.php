@@ -10,11 +10,12 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\DataLoader\ContentTypeLoader;
 use Ibexa\GraphQL\Value\Field;
+use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
 /**
  * @internal
  */
-class SelectionFieldResolver
+class SelectionFieldResolver implements QueryInterface
 {
     /**
      * @var \Ibexa\GraphQL\DataLoader\ContentTypeLoader
