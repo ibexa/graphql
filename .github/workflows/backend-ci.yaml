@@ -16,22 +16,15 @@ jobs:
                 php:
                     - '8.0'
         steps:
-            - uses: actions/checkout@v2
+            -   uses: actions/checkout@v6
 
-            - name: Setup PHP Action
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: ${{ matrix.php }}
-                  coverage: none
-                  extensions: 'pdo_sqlite, gd'
-                  tools: cs2pr
+            -   uses: ibexa/gh-workflows/actions/composer-install@main
+                with:
+                    gh-client-id: ${{ secrets.AUTOMATION_CLIENT_ID }}
+                    gh-client-secret: ${{ secrets.AUTOMATION_CLIENT_SECRET }}
 
-            - uses: "ramsey/composer-install@v1"
-              with:
-                  dependency-versions: "highest"
-
-            - name: Run code style check
-              run: composer run-script check-cs -- --format=checkstyle | cs2pr
+            -   name: Run code style check
+                run: composer run-script check-cs -- --format=checkstyle | cs2pr
 
     tests:
         name: Unit tests
@@ -48,23 +41,15 @@ jobs:
                 composer_options: [ "" ]
 
         steps:
-            - uses: actions/checkout@v2
+            -   uses: actions/checkout@v6
 
-            - name: Setup PHP Action
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: ${{ matrix.php }}
-                  coverage: none
-                  extensions: pdo_sqlite, gd
-                  tools: cs2pr
+            -   uses: ibexa/gh-workflows/actions/composer-install@main
+                with:
+                    gh-client-id: ${{ secrets.AUTOMATION_CLIENT_ID }}
+                    gh-client-secret: ${{ secrets.AUTOMATION_CLIENT_SECRET }}
 
-            - uses: "ramsey/composer-install@v1"
-              with:
-                  dependency-versions: "highest"
-                  composer-options: "${{ matrix.composer_options }}"
+            -   name: Setup problem matchers for PHPUnit
+                run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
-            - name: Setup problem matchers for PHPUnit
-              run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
-
-            - name: Run unit test suite
-              run: composer test
+            -   name: Run unit test suite
+                run: composer test
