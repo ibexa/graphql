@@ -44,6 +44,10 @@ services:
             $provider: '@ibexa.siteaccess.provider'
             $siteAccessGroups: '%ibexa.site_access.groups%'
 
+    Ibexa\GraphQL\EventListener\ArgumentsExceptionListener:
+        arguments:
+            $logger: '@monolog.logger.graphql'
+
     Ibexa\GraphQL\Mapper\ContentImageAssetMapperStrategy:
         arguments:
             $assetMapper: '@Ibexa\Core\FieldType\ImageAsset\AssetMapper'
