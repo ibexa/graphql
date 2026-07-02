@@ -45,8 +45,8 @@ services:
             $siteAccessGroups: '%ibexa.site_access.groups%'
 
     Ibexa\GraphQL\EventListener\ArgumentsExceptionListener:
-        arguments:
-            $logger: '@monolog.logger.graphql'
+        tags:
+            - { name: monolog.logger, channel: ibexa.graphql }
 
     Ibexa\GraphQL\Mapper\ContentImageAssetMapperStrategy:
         arguments:

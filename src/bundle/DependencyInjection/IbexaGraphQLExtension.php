@@ -73,7 +73,6 @@ class IbexaGraphQLExtension extends Extension implements PrependExtensionInterfa
             'dir' => $container->getParameter('kernel.project_dir') . self::SCHEMA_DIR_PATH,
         ];
         $container->prependExtensionConfig('overblog_graphql', $graphQLConfig);
-        $container->prependExtensionConfig('monolog', ['channels' => ['graphql']]);
     }
 
     /**

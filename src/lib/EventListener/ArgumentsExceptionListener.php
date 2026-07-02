@@ -36,7 +36,7 @@ final class ArgumentsExceptionListener implements EventSubscriberInterface
             return;
         }
 
-        $this->logger->critical(
+        $this->logger->debug(
             sprintf('[GraphQL] %s: %s', ArgumentsException::class, $exception->getMessage()),
             ['exception' => $exception]
         );
