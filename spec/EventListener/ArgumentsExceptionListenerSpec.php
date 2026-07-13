@@ -40,7 +40,7 @@ class ArgumentsExceptionListenerSpec extends ObjectBehavior
     function it_logs_and_stops_propagation_for_an_arguments_exception(LoggerInterface $logger)
     {
         $exception = new ArgumentsException('invalid arguments');
-        $event = new ErrorFormattingEvent(new Error('Internal server error', null, null, null, null, $exception), []);
+        $event = new ErrorFormattingEvent(new Error('Internal server error', null, null, [], null, $exception), []);
 
         $logger->debug(
             sprintf('[GraphQL] %s: %s', ArgumentsException::class, 'invalid arguments'),
@@ -57,7 +57,7 @@ class ArgumentsExceptionListenerSpec extends ObjectBehavior
     function it_ignores_exceptions_that_are_not_arguments_exceptions(LoggerInterface $logger)
     {
         $exception = new RuntimeException('some other error');
-        $event = new ErrorFormattingEvent(new Error('Internal server error', null, null, null, null, $exception), []);
+        $event = new ErrorFormattingEvent(new Error('Internal server error', null, null, [], null, $exception), []);
 
         $logger->debug(Argument::cetera())->shouldNotBeCalled();
 
