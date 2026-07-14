@@ -41,7 +41,7 @@ final class ArgumentsExceptionListenerTest extends TestCase
     public function testOnErrorFormattingLogsAndStopsPropagationForArgumentsException(): void
     {
         $exception = new ArgumentsException('invalid arguments');
-        $event = new ErrorFormattingEvent(new Error('Internal server error', null, null, [], null, $exception), []);
+        $event = $this->createErrorFormattingEvent($exception);
 
         $this->logger
             ->expects(self::once())
@@ -59,7 +59,7 @@ final class ArgumentsExceptionListenerTest extends TestCase
     public function testOnErrorFormattingIgnoresExceptionsThatAreNotArgumentsExceptions(): void
     {
         $exception = new RuntimeException('some other error');
-        $event = new ErrorFormattingEvent(new Error('Internal server error', null, null, [], null, $exception), []);
+        $event = $this->createErrorFormattingEvent($exception);
 
         $this->logger
             ->expects(self::never())
@@ -68,5 +68,13 @@ final class ArgumentsExceptionListenerTest extends TestCase
         $this->listener->onErrorFormatting($event);
 
         self::assertFalse($event->isPropagationStopped());
+    }
+
+    private function createErrorFormattingEvent(\Throwable $exception): ErrorFormattingEvent
+    {
+        return new ErrorFormattingEvent(
+            new Error('Internal server error', null, null, [], null, $exception),
+            [],
+        );
     }
 }
