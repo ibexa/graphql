@@ -48,7 +48,9 @@
         "phpspec/phpspec": "^7.1 || ^8.0",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "phpstan/phpstan-symfony": "^2.0"
+        "phpstan/phpstan-symfony": "^2.0",
+        "phpunit/phpunit": "^9.6",
+        "symfony/phpunit-bridge": "^7.4"
     },
     "autoload": {
         "psr-4": {
@@ -79,7 +81,12 @@
     "scripts": {
         "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots",
         "check-cs": "@fix-cs --dry-run",
-        "test": "phpspec run --format=pretty",
+        "test-phpspec": "phpspec run --format=pretty",
+        "test-phpunit": "phpunit -c phpunit.xml.dist",
+        "test": [
+            "@test-phpspec",
+            "@test-phpunit"
+        ],
         "phpstan": "phpstan analyse"
     }
 }
