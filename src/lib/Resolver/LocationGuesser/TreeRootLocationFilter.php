@@ -17,6 +17,7 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Filters a Location based on the tree root site settings.
@@ -39,14 +40,21 @@ class TreeRootLocationFilter implements LocationFilter
      */
     private $urlAliasService;
 
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
     public function __construct(
         LocationService $locationService,
         URLAliasService $urlAliasService,
-        ConfigResolverInterface $configResolver
+        ConfigResolverInterface $configResolver,
+        LoggerInterface $logger
     ) {
         $this->locationService = $locationService;
         $this->configResolver = $configResolver;
         $this->urlAliasService = $urlAliasService;
+        $this->logger = $logger;
     }
 
     public function filter(
@@ -85,7 +93,6 @@ class TreeRootLocationFilter implements LocationFilter
      *
      * @param Location $candidateLocation
      *
-     * @throws NotFoundException
      * @throws UnauthorizedException
      * @throws InvalidArgumentException
      */
@@ -98,10 +105,22 @@ class TreeRootLocationFilter implements LocationFilter
             if (empty($excludedUriPrefixes)) {
                 return false;
             }
+            $excludedLocations = [];
             foreach ($excludedUriPrefixes as $uri) {
-                $urlAlias = $this->urlAliasService->lookup($uri);
-                if ($urlAlias->type === URLAlias::LOCATION) {
-                    $excludedLocations[] = $this->locationService->loadLocation($urlAlias->destination);
+                try {
+                    $urlAlias = $this->urlAliasService->lookup($uri);
+                    if ($urlAlias->type === URLAlias::LOCATION) {
+                        $excludedLocations[] = $this->locationService->loadLocation($urlAlias->destination);
+                    }
+                } catch (NotFoundException $e) {
+                    $this->logger->warning(
+                        sprintf(
+                            '[GraphQL] Invalid content.tree_root.excluded_uri_prefixes entry "%s": %s',
+                            $uri,
+                            $e->getMessage()
+                        ),
+                        ['exception' => $e]
+                    );
                 }
             }
         }
