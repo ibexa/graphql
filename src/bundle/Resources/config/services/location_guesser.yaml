@@ -4,7 +4,9 @@ services:
         autowire: true
         public: false
 
-    Ibexa\GraphQL\Resolver\LocationGuesser\TreeRootLocationFilter: ~
+    Ibexa\GraphQL\Resolver\LocationGuesser\TreeRootLocationFilter:
+        tags:
+            - { name: monolog.logger, channel: ibexa.graphql }
 
     Ibexa\GraphQL\Resolver\LocationGuesser\MainLocationFilter: ~
 
