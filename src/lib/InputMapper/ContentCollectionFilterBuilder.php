@@ -8,13 +8,9 @@ declare(strict_types=1);
 
 namespace Ibexa\GraphQL\InputMapper;
 
-use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
-use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\Subtree;
-use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
-use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
-use Psr\Log\LoggerInterface;
+use Ibexa\GraphQL\Repository\TreeRootLocationResolver;
 
 /**
  * Builds the base query used to retrieve locations collections.
@@ -23,26 +19,11 @@ use Psr\Log\LoggerInterface;
  */
 class ContentCollectionFilterBuilder
 {
-    /**
-     * @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private $configResolver;
+    private TreeRootLocationResolver $treeRootLocationResolver;
 
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\Repository
-     */
-    private $repository;
-
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    private $logger;
-
-    public function __construct(ConfigResolverInterface $configResolver, Repository $repository, LoggerInterface $logger)
+    public function __construct(TreeRootLocationResolver $treeRootLocationResolver)
     {
-        $this->configResolver = $configResolver;
-        $this->repository = $repository;
-        $this->logger = $logger;
+        $this->treeRootLocationResolver = $treeRootLocationResolver;
     }
 
     /**
@@ -50,27 +31,12 @@ class ContentCollectionFilterBuilder
      */
     public function buildFilter(): Criterion
     {
-        $treeRootLocationId = $this->configResolver->getParameter('content.tree_root.location_id');
-        $rootLocation = $this->repository->getLocationService()->loadLocation($treeRootLocationId);
+        $rootLocation = $this->treeRootLocationResolver->resolveRootLocation();
 
         $includedSubtrees = [$rootLocation->pathString ?? '/'];
 
-        foreach ($this->configResolver->getParameter('content.tree_root.excluded_uri_prefixes') as $uriPrefix) {
-            try {
-                $urlAlias = $this->repository->getURLAliasService()->lookup($uriPrefix);
-                if ($urlAlias->type === URLAlias::LOCATION) {
-                    $includedSubtrees[] = $this->repository->getLocationService()->loadLocation($urlAlias->destination)->pathString;
-                }
-            } catch (NotFoundException $e) {
-                $this->logger->warning(
-                    sprintf(
-                        '[GraphQL] Invalid content.tree_root.excluded_uri_prefixes entry "%s": %s',
-                        $uriPrefix,
-                        $e->getMessage()
-                    ),
-                    ['exception' => $e]
-                );
-            }
+        foreach ($this->treeRootLocationResolver->resolveExcludedLocations() as $excludedLocation) {
+            $includedSubtrees[] = $excludedLocation->pathString;
         }
 
         return new Subtree($includedSubtrees);
