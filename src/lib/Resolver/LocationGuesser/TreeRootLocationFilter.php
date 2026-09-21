@@ -8,12 +8,9 @@ declare(strict_types=1);
 
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
-use Ibexa\Contracts\Core\Repository\LocationService;
-use Ibexa\Contracts\Core\Repository\URLAliasService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Location;
-use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
-use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
+use Ibexa\GraphQL\Repository\TreeRootLocationResolver;
 
 /**
  * Filters a Location based on the tree root site settings.
@@ -21,26 +18,11 @@ use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
  */
 class TreeRootLocationFilter implements LocationFilter
 {
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\LocationService
-     */
-    private $locationService;
+    private TreeRootLocationResolver $treeRootLocationResolver;
 
-    /**
-     * @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private $configResolver;
-
-    /**
-     * @var \Ibexa\Contracts\Core\Repository\URLAliasService
-     */
-    private $urlAliasService;
-
-    public function __construct(LocationService $locationService, URLAliasService $urlAliasService, ConfigResolverInterface $configResolver)
+    public function __construct(TreeRootLocationResolver $treeRootLocationResolver)
     {
-        $this->locationService = $locationService;
-        $this->configResolver = $configResolver;
-        $this->urlAliasService = $urlAliasService;
+        $this->treeRootLocationResolver = $treeRootLocationResolver;
     }
 
     public function filter(Content $content, LocationList $locationList): void
@@ -55,50 +37,25 @@ class TreeRootLocationFilter implements LocationFilter
     /**
      * Checks if a location is valid in regards to the tree root setting.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Location $location
-     *
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      */
     private function locationIsInTreeRoot(Location $location): bool
     {
-        static $rootLocations = [];
+        $rootLocation = $this->treeRootLocationResolver->resolveRootLocation();
 
-        $treeRootLocationId = $this->configResolver->getParameter('content.tree_root.location_id');
-        if (!isset($rootLocations[$treeRootLocationId])) {
-            $rootLocations[$treeRootLocationId] = $this->locationService->loadLocation($treeRootLocationId);
-        }
-
-        return $this->containsRootPath($location->path, $rootLocations[$treeRootLocationId]->path);
+        return $this->containsRootPath($location->path, $rootLocation->path);
     }
 
     /**
      * Tests if the location is excluded from tree root.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Location $candidateLocation
-     *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      */
     private function locationPrefixIsExcluded(Location $candidateLocation): bool
     {
-        static $excludedLocations = null;
-
-        if ($excludedLocations === null) {
-            $excludedUriPrefixes = $this->configResolver->getParameter('content.tree_root.excluded_uri_prefixes');
-            if (empty($excludedUriPrefixes)) {
-                return false;
-            }
-            foreach ($excludedUriPrefixes as $uri) {
-                $urlAlias = $this->urlAliasService->lookup($uri);
-                if ($urlAlias->type === URLAlias::LOCATION) {
-                    $excludedLocations[] = $this->locationService->loadLocation($urlAlias->destination);
-                }
-            }
-        }
-
-        foreach ($excludedLocations as $excludedLocation) {
+        foreach ($this->treeRootLocationResolver->resolveExcludedLocations() as $excludedLocation) {
             if ($this->containsRootPath($candidateLocation->path, $excludedLocation->path)) {
                 return true;
             }
