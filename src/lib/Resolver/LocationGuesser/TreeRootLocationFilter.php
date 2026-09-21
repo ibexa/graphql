@@ -8,16 +8,9 @@ declare(strict_types=1);
 
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
-use Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException;
-use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
-use Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException;
-use Ibexa\Contracts\Core\Repository\LocationService;
-use Ibexa\Contracts\Core\Repository\URLAliasService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Location;
-use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
-use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
-use Psr\Log\LoggerInterface;
+use Ibexa\GraphQL\Repository\TreeRootLocationResolver;
 
 /**
  * Filters a Location based on the tree root site settings.
@@ -25,42 +18,15 @@ use Psr\Log\LoggerInterface;
  */
 class TreeRootLocationFilter implements LocationFilter
 {
-    /**
-     * @var LocationService
-     */
-    private $locationService;
+    private TreeRootLocationResolver $treeRootLocationResolver;
 
-    /**
-     * @var ConfigResolverInterface
-     */
-    private $configResolver;
-
-    /**
-     * @var URLAliasService
-     */
-    private $urlAliasService;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    public function __construct(
-        LocationService $locationService,
-        URLAliasService $urlAliasService,
-        ConfigResolverInterface $configResolver,
-        LoggerInterface $logger
-    ) {
-        $this->locationService = $locationService;
-        $this->configResolver = $configResolver;
-        $this->urlAliasService = $urlAliasService;
-        $this->logger = $logger;
+    public function __construct(TreeRootLocationResolver $treeRootLocationResolver)
+    {
+        $this->treeRootLocationResolver = $treeRootLocationResolver;
     }
 
-    public function filter(
-        Content $content,
-        LocationList $locationList
-    ): void {
+    public function filter(Content $content, LocationList $locationList): void
+    {
         foreach ($locationList->getLocations() as $location) {
             if (!$this->locationIsInTreeRoot($location) && !$this->locationPrefixIsExcluded($location)) {
                 $locationList->removeLocation($location);
@@ -71,61 +37,25 @@ class TreeRootLocationFilter implements LocationFilter
     /**
      * Checks if a location is valid in regards to the tree root setting.
      *
-     * @param Location $location
-     *
-     * @throws NotFoundException
-     * @throws UnauthorizedException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
      */
     private function locationIsInTreeRoot(Location $location): bool
     {
-        static $rootLocations = [];
+        $rootLocation = $this->treeRootLocationResolver->resolveRootLocation();
 
-        $treeRootLocationId = $this->configResolver->getParameter('content.tree_root.location_id');
-        if (!isset($rootLocations[$treeRootLocationId])) {
-            $rootLocations[$treeRootLocationId] = $this->locationService->loadLocation($treeRootLocationId);
-        }
-
-        return $this->containsRootPath($location->path, $rootLocations[$treeRootLocationId]->path);
+        return $this->containsRootPath($location->path, $rootLocation->path);
     }
 
     /**
      * Tests if the location is excluded from tree root.
      *
-     * @param Location $candidateLocation
-     *
-     * @throws UnauthorizedException
-     * @throws InvalidArgumentException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
      */
     private function locationPrefixIsExcluded(Location $candidateLocation): bool
     {
-        static $excludedLocations = null;
-
-        if ($excludedLocations === null) {
-            $excludedUriPrefixes = $this->configResolver->getParameter('content.tree_root.excluded_uri_prefixes');
-            if (empty($excludedUriPrefixes)) {
-                return false;
-            }
-            $excludedLocations = [];
-            foreach ($excludedUriPrefixes as $uri) {
-                try {
-                    $urlAlias = $this->urlAliasService->lookup($uri);
-                    if ($urlAlias->type === URLAlias::LOCATION) {
-                        $excludedLocations[] = $this->locationService->loadLocation($urlAlias->destination);
-                    }
-                } catch (NotFoundException $e) {
-                    $this->logger->warning(
-                        sprintf(
-                            '[GraphQL] Invalid content.tree_root.excluded_uri_prefixes entry "%s": %s',
-                            $uri,
-                            $e->getMessage()
-                        ),
-                        ['exception' => $e]
-                    );
-                }
-            }
-        }
-
-        foreach ($excludedLocations as $excludedLocation) {
+        foreach ($this->treeRootLocationResolver->resolveExcludedLocations() as $excludedLocation) {
             if ($this->containsRootPath($candidateLocation->path, $excludedLocation->path)) {
                 return true;
             }
@@ -138,10 +68,8 @@ class TreeRootLocationFilter implements LocationFilter
      * @param array $path
      * @param array $rootPath
      */
-    private function containsRootPath(
-        array $path,
-        array $rootPath
-    ): bool {
+    private function containsRootPath(array $path, array $rootPath): bool
+    {
         return array_slice($path, 0, count($rootPath)) === $rootPath;
     }
 }
