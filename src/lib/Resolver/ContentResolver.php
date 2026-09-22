@@ -47,7 +47,7 @@ class ContentResolver implements QueryInterface
         );
 
         return array_map(
-            static function (SearchHit $searchHit) {
+            static function (SearchHit $searchHit): ContentInfo {
                 return $searchHit->valueObject;
             },
             $searchResults->searchHits
@@ -111,7 +111,7 @@ class ContentResolver implements QueryInterface
         }
 
         return array_map(
-            static function (SearchHit $searchHit) {
+            static function (SearchHit $searchHit): ContentInfo {
                 return $searchHit->valueObject;
             },
             $searchResults->searchHits

@@ -136,7 +136,7 @@ final class ItemResolver implements QueryInterface
             $query->limit = $limit ?? 10;
 
             return array_map(
-                function (Content $content) {
+                function (Content $content): Item {
                     return $this->itemFactory->fromContent($content);
                 },
                 $this->contentLoader->find($query)
@@ -145,7 +145,7 @@ final class ItemResolver implements QueryInterface
 
         return $paginator->auto(
             $args,
-            function () use ($query) {
+            function () use ($query): int {
                 return $this->contentLoader->count($query);
             }
         );
