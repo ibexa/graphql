@@ -142,7 +142,7 @@ class DomainContentResolver implements QueryInterface
 
         if ($multiple) {
             return array_map(
-                static function ($contentId) use ($contentItems) {
+                static function ($contentId) use ($contentItems): Content {
                     return $contentItems[array_search($contentId, array_column($contentItems, 'id'))];
                 },
                 $destinationContentIds

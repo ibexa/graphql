@@ -81,7 +81,7 @@ final class SearchQueryMapper implements QueryMapper
                 $criteria = array_merge(
                     $criteria,
                     array_map(
-                        function ($input) {
+                        function ($input): Field {
                             return $this->mapInputToFieldCriterion($input);
                         },
                         $inputArray['Field']

@@ -64,7 +64,7 @@ class SearchResolver implements QueryInterface
         $query['sortBy'] = $args['sortBy'];
         $query = $this->queryMapper->mapInputToQuery($query);
 
-        $paginator = new Paginator(function ($offset, $limit) use ($query) {
+        $paginator = new Paginator(function ($offset, $limit) use ($query): array {
             $query->offset = $offset;
             $query->limit = $limit ?? 10;
 
@@ -73,7 +73,7 @@ class SearchResolver implements QueryInterface
 
         return $paginator->auto(
             $args,
-            function () use ($query) {
+            function () use ($query): int {
                 return $this->contentLoader->count($query);
             }
         );

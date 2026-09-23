@@ -46,7 +46,7 @@ class SearchLocationLoader implements LocationLoader
     public function find(LocationQuery $query): array
     {
         return array_map(
-            static function (SearchHit $searchHit) {
+            static function (SearchHit $searchHit): Location {
                 return $searchHit->valueObject;
             },
             $this->searchService->findLocations($query)->searchHits

@@ -39,7 +39,7 @@ class SearchContentLoader implements ContentLoader
     public function find(Query $query): array
     {
         return array_map(
-            static function (SearchHit $searchHit) {
+            static function (SearchHit $searchHit): Content {
                 return $searchHit->valueObject;
             },
             $this->searchService->findContent($query)->searchHits

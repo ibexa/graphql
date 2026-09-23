@@ -8,6 +8,7 @@
 namespace Ibexa\GraphQL\Relay;
 
 use Ibexa\Contracts\Core\Repository\SearchService;
+use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionBuilder;
@@ -62,7 +63,7 @@ class SearchResolver
         $searchResult = $this->searchService->findContentInfo($query);
 
         $contentItems = array_map(
-            static function (SearchHit $hit) {
+            static function (SearchHit $hit): ContentInfo {
                 return $hit->valueObject;
             },
             $searchResult->searchHits
