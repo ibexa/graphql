@@ -46,7 +46,6 @@
         "ibexa/twig-components": "~6.0.x-dev",
         "ibexa/user": "~6.0.x-dev",
         "mikey179/vfsstream": "^1.6",
-        "overblog/graphiql-bundle": "^1.0",
         "phpspec/phpspec": "^7.1 || ^8.0",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",

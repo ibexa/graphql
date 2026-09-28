@@ -1,0 +1,8 @@
+{# Points API Platform's bundled GraphiQL IDE at the Ibexa/overblog GraphQL endpoint
+   instead of API Platform's own GraphQL schema. Replaces the dead overblog/graphiql-bundle. #}
+{% extends '@!ApiPlatform/Graphiql/index.html.twig' %}
+
+{% block head_javascript %}
+    {# json_encode(65) is for JSON_UNESCAPED_SLASHES|JSON_HEX_TAG to avoid JS XSS #}
+    <script id="graphiql-data" type="application/json">{{ {'entrypoint': path('overblog_graphql_endpoint')}|json_encode(65)|raw }}</script>
+{% endblock %}

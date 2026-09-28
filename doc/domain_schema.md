@@ -81,8 +81,9 @@ Run `php bin/console ezplatform:graphql:generate-schema` from the root of your
 eZ Platform installation. It will go over your repository, and generate the matching
 types in `app/config/graphql/ezplatform`.
 
-Open `<host>/graphiql`. The content type groups, content types and their fields
-will be exposed as the schema.
+Open `<host>/api/ibexa/v3/graphql/graphiql` (API Platform's GraphiQL, pointed at the
+Ibexa GraphQL endpoint; only available in the `dev` environment). The content type groups,
+content types and their fields will be exposed as the schema.
 
 ## Schema generation
 
