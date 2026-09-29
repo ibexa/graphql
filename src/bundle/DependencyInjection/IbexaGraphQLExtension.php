@@ -74,6 +74,40 @@ class IbexaGraphQLExtension extends Extension implements PrependExtensionInterfa
             'dir' => $container->getParameter('kernel.project_dir') . self::SCHEMA_DIR_PATH,
         ];
         $container->prependExtensionConfig('overblog_graphql', $graphQLConfig);
+
+        $this->prependApiPlatformGraphiQL($container);
+    }
+
+    /**
+     * Reuses API Platform's bundled GraphiQL as the IDE for the Ibexa/overblog GraphQL
+     * endpoint (`overblog_graphql_endpoint`), replacing the dead `overblog/graphiql-bundle`.
+     *
+     * Only takes effect when API Platform's GraphQL support is actually registered, and only
+     * in the `dev` environment (GraphiQL is a development tool).
+     */
+    private function prependApiPlatformGraphiQL(ContainerBuilder $container): void
+    {
+        if (!$container->hasExtension('api_platform')) {
+            return;
+        }
+
+        if ('dev' !== $container->getParameter('kernel.environment')) {
+            return;
+        }
+
+        $container->prependExtensionConfig('api_platform', [
+            'graphql' => [
+                'graphiql' => [
+                    'enabled' => true,
+                ],
+            ],
+        ]);
+
+        $container->prependExtensionConfig('twig', [
+            'paths' => [
+                __DIR__ . '/../Resources/views/api_platform' => 'ApiPlatform',
+            ],
+        ]);
     }
 
     /**

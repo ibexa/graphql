@@ -4,7 +4,7 @@ The eZ Platform GraphQL schema supports binary files in two ways:
 - binary field types: image, binary file and media
 - multi-file upload, where a set of files are uploaded to a container, and created as content based on the system's configuration
 
-In both cases, it is not possible to upload binary files through GraphiQL. Some 3rd party clients, such as [Altair GraphQL](https://altair.sirmuel.design/), support it. However, at this time, eZ Platform is limited to session (cookie) based authentication, and cookies are not supported by the GraphQL specification. Therefore, this how-to will use curl for the examples.
+In both cases, it is not possible to upload binary files through GraphiQL (the bundled IDE at `/api/ibexa/v3/graphql/graphiql`). Some 3rd party clients, such as [Altair GraphQL](https://altair.sirmuel.design/), support it. However, at this time, eZ Platform is limited to session (cookie) based authentication, and cookies are not supported by the GraphQL specification. Therefore, this how-to will use curl for the examples.
 
 ## Approach
 
