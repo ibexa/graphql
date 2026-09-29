@@ -19,6 +19,10 @@ services:
 
     Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder: ~
 
+    Ibexa\GraphQL\Repository\TreeRootLocationResolver:
+        tags:
+            - { name: monolog.logger, channel: ibexa.graphql }
+
     Ibexa\GraphQL\Security\NonAdminGraphQLRequestMatcher:
         arguments:
             $siteAccessGroups: '%ibexa.site_access.groups%'
