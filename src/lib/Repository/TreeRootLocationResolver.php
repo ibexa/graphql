@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Ibexa\GraphQL\Repository;
 
+use Ibexa\Contracts\Core\MVC\EventSubscriber\ConfigScopeChangeSubscriber;
+use Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException;
 use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
 use Ibexa\Contracts\Core\Repository\LocationService;
 use Ibexa\Contracts\Core\Repository\URLAliasService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
+use Ibexa\Core\MVC\Symfony\Event\ScopeChangeEvent;
 use Psr\Log\LoggerInterface;
+use Symfony\Contracts\Service\ResetInterface;
 
 /**
  * Resolves the tree root location and its excluded locations from the
@@ -22,7 +26,7 @@ use Psr\Log\LoggerInterface;
  *
  * @internal
  */
-class TreeRootLocationResolver
+class TreeRootLocationResolver implements ConfigScopeChangeSubscriber, ResetInterface
 {
     private LocationService $locationService;
 
@@ -49,6 +53,10 @@ class TreeRootLocationResolver
         $this->logger = $logger;
     }
 
+    /**
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException if the configured
+     *         `content.tree_root.location_id` does not match an existing Location
+     */
     public function resolveRootLocation(): Location
     {
         if ($this->rootLocation === null) {
@@ -64,6 +72,9 @@ class TreeRootLocationResolver
      * Entries that can't be resolved to an existing Location are logged and skipped.
      *
      * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
+     *
+     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException if a resolved
+     *         URLAlias destination does not match an existing Location
      */
     public function resolveExcludedLocations(): array
     {
@@ -75,10 +86,10 @@ class TreeRootLocationResolver
                     if ($urlAlias->type === URLAlias::LOCATION) {
                         $this->excludedLocations[] = $this->locationService->loadLocation($urlAlias->destination);
                     }
-                } catch (NotFoundException $e) {
+                } catch (NotFoundException|InvalidArgumentException $e) {
                     $this->logger->warning(
                         sprintf(
-                            '[GraphQL] Invalid content.tree_root.excluded_uri_prefixes entry "%s": %s',
+                            'Invalid content.tree_root.excluded_uri_prefixes entry "%s": %s',
                             $uriPrefix,
                             $e->getMessage()
                         ),
@@ -89,5 +100,16 @@ class TreeRootLocationResolver
         }
 
         return $this->excludedLocations;
+    }
+
+    public function onConfigScopeChange(ScopeChangeEvent $event): void
+    {
+        $this->reset();
+    }
+
+    public function reset(): void
+    {
+        $this->rootLocation = null;
+        $this->excludedLocations = null;
     }
 }

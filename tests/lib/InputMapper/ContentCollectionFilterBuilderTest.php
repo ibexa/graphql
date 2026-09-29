@@ -16,14 +16,14 @@ use PHPUnit\Framework\TestCase;
 
 final class ContentCollectionFilterBuilderTest extends TestCase
 {
-    /** @var \Ibexa\GraphQL\Repository\TreeRootLocationResolver&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var \Ibexa\GraphQL\Repository\TreeRootLocationResolver&\PHPUnit\Framework\MockObject\Stub */
     private TreeRootLocationResolver $treeRootLocationResolver;
 
     private ContentCollectionFilterBuilder $filterBuilder;
 
     protected function setUp(): void
     {
-        $this->treeRootLocationResolver = $this->createMock(TreeRootLocationResolver::class);
+        $this->treeRootLocationResolver = $this->createStub(TreeRootLocationResolver::class);
         $this->filterBuilder = new ContentCollectionFilterBuilder($this->treeRootLocationResolver);
     }
 
