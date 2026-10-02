@@ -39,32 +39,20 @@ class ResolverVariables implements FieldDefinitionMapper
     public function mapToFieldValueResolver(FieldDefinition $fieldDefinition): string
     {
         $resolver = $this->innerMapper->mapToFieldValueResolver($fieldDefinition);
-        $resolver = str_replace(
-            [
-                'content',
-                'location',
-                'item',
-            ],
-            [
-                'value.getContent()',
-                'value.getLocation()',
-                'value',
-            ],
+
+        $replacements = [
+            'content' => 'value.getContent()',
+            'location' => 'value.getLocation()',
+            'item' => 'value',
+            'field' => 'query("ItemFieldValue", value, "' . $fieldDefinition->identifier . '", args)',
+        ];
+
+        // Only bare variables are replaced, quoted strings (like the field's identifier) are skipped.
+        return preg_replace_callback(
+            '/(?:"(?:[^"\\\\]|\\\\.)*"|\'(?:[^\'\\\\]|\\\\.)*\')(*SKIP)(*FAIL)|\b(content|location|item|field)\b/',
+            static fn (array $matches): string => $replacements[$matches[1]],
             $resolver
         );
-
-        //we make sure no "field" (case insensitive) keyword in the actual field's identifier gets replaced
-        //only syntax like: '@=query("MatrixFieldValue", value, "field_matrix")' needs to be taken into account
-        //where [value, "field_matrix"] stands for the actual field's identifier
-        if (preg_match('/value, "(.*field.*)"/i', $resolver) !== 1) {
-            $resolver = str_replace(
-                'field',
-                'query("ItemFieldValue", value, "' . $fieldDefinition->identifier . '", args)',
-                $resolver
-            );
-        }
-
-        return $resolver;
     }
 
     public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
