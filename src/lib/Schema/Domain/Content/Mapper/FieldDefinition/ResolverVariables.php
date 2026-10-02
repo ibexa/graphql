@@ -47,9 +47,9 @@ class ResolverVariables implements FieldDefinitionMapper
             'field' => 'query("ItemFieldValue", value, "' . $fieldDefinition->identifier . '", args)',
         ];
 
-        // Only bare variables are replaced, quoted strings (like the field's identifier) are skipped.
+        // Only bare variables are replaced: quoted strings (like the field's identifier) and members (field.location) are skipped.
         return preg_replace_callback(
-            '/(?:"(?:[^"\\\\]|\\\\.)*"|\'(?:[^\'\\\\]|\\\\.)*\')(*SKIP)(*FAIL)|\b(content|location|item|field)\b/',
+            '/(?:"(?:[^"\\\\]|\\\\.)*"|\'(?:[^\'\\\\]|\\\\.)*\')(*SKIP)(*FAIL)|(?<![.\w$])(content|location|item|field)\b/',
             static fn (array $matches): string => $replacements[$matches[1]],
             $resolver
         );
