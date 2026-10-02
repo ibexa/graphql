@@ -85,6 +85,12 @@ final class ResolverVariablesTest extends TestCase
             '@=query("X", "a\\"content", query("ItemFieldValue", value, "title", args))',
         ];
 
+        yield 'ternary from the default field type mapping' => [
+            'title',
+            '@=field !== null ? field.authors : null',
+            '@=query("ItemFieldValue", value, "title", args) !== null ? query("ItemFieldValue", value, "title", args).authors : null',
+        ];
+
         yield 'name after a dot is a member, not a variable' => [
             'title',
             '@=field.location',
