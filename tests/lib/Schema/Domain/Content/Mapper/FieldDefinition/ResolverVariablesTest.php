@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Ibexa\Tests\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 
-use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
+use Ibexa\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\ResolverVariables;
 use PHPUnit\Framework\TestCase;
 
@@ -30,7 +30,7 @@ final class ResolverVariablesTest extends TestCase
 
         self::assertSame(
             $expectedResolver,
-            $mapper->mapToFieldValueResolver($this->createFieldDefinition($fieldDefinitionIdentifier))
+            $mapper->mapToFieldValueResolver(new FieldDefinition(['identifier' => $fieldDefinitionIdentifier]))
         );
     }
 
@@ -75,18 +75,28 @@ final class ResolverVariablesTest extends TestCase
             '@=query("SelectionFieldValue", query("ItemFieldValue", value, "title", args), value.getContent())',
         ];
 
+        yield 'single quoted identifier is not rewritten' => [
+            'content_matrix',
+            "@=query('MatrixFieldValue', value, 'content_matrix')",
+            "@=query('MatrixFieldValue', value, 'content_matrix')",
+        ];
+
+        yield 'single quoted string is skipped, field variable is replaced' => [
+            'title',
+            "@=query('X', field)",
+            "@=query('X', query(\"ItemFieldValue\", value, \"title\", args))",
+        ];
+
+        yield 'escaped quote does not end the string' => [
+            'title',
+            '@=query("X", "a\\"content", field)',
+            '@=query("X", "a\\"content", query("ItemFieldValue", value, "title", args))',
+        ];
+
         yield 'location and item variables are replaced' => [
             'title',
             '@=query("Custom", location, item)',
             '@=query("Custom", value.getLocation(), value)',
         ];
-    }
-
-    private function createFieldDefinition(string $identifier): FieldDefinition
-    {
-        $fieldDefinition = $this->createStub(FieldDefinition::class);
-        $fieldDefinition->method('__get')->with('identifier')->willReturn($identifier);
-
-        return $fieldDefinition;
     }
 }
