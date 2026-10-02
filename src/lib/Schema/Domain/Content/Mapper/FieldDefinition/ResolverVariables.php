@@ -10,6 +10,7 @@ namespace Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
+use RuntimeException;
 
 /**
  * Maps a Field Definition to its GraphQL components.
@@ -48,11 +49,22 @@ class ResolverVariables implements FieldDefinitionMapper
         ];
 
         // Only bare variables are replaced: quoted strings (like the field's identifier) and members (field.location) are skipped.
-        return preg_replace_callback(
-            '/(?:"(?:[^"\\\\]|\\\\.)*"|\'(?:[^\'\\\\]|\\\\.)*\')(*SKIP)(*FAIL)|(?<![.\w$])(content|location|item|field)\b/',
+        // Possessive quantifiers keep long string literals from exhausting the PCRE JIT stack.
+        $resolver = preg_replace_callback(
+            '/(?:"(?:[^"\\\\]++|\\\\.)*+"|\'(?:[^\'\\\\]++|\\\\.)*+\')(*SKIP)(*FAIL)|(?<![.\w$])(content|location|item|field)\b/',
             static fn (array $matches): string => $replacements[$matches[1]],
             $resolver
         );
+
+        if ($resolver === null) {
+            throw new RuntimeException(sprintf(
+                'Failed to replace the resolver variables of field definition "%s" (PCRE error %d)',
+                $fieldDefinition->identifier,
+                preg_last_error()
+            ));
+        }
+
+        return $resolver;
     }
 
     public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
