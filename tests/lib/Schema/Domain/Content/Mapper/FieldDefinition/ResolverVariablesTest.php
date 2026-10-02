@@ -93,6 +93,12 @@ final class ResolverVariablesTest extends TestCase
             '@=query("X", "a\\"content", query("ItemFieldValue", value, "title", args))',
         ];
 
+        yield 'name after a dot is a member, not a variable' => [
+            'title',
+            '@=field.location',
+            '@=query("ItemFieldValue", value, "title", args).location',
+        ];
+
         yield 'location and item variables are replaced' => [
             'title',
             '@=query("Custom", location, item)',
