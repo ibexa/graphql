@@ -99,6 +99,12 @@ final class ResolverVariablesTest extends TestCase
             '@=query("ItemFieldValue", value, "title", args).location',
         ];
 
+        yield 'very long string literal' => [
+            'title',
+            '@=query("X", "' . str_repeat('a', 20000) . '", field)',
+            '@=query("X", "' . str_repeat('a', 20000) . '", query("ItemFieldValue", value, "title", args))',
+        ];
+
         yield 'location and item variables are replaced' => [
             'title',
             '@=query("Custom", location, item)',
