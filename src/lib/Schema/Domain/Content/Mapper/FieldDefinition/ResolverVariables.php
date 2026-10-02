@@ -10,7 +10,7 @@ namespace Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
-use RuntimeException;
+use UnexpectedValueException;
 
 /**
  * Maps a Field Definition to its GraphQL components.
@@ -60,7 +60,7 @@ class ResolverVariables implements FieldDefinitionMapper
         );
 
         if ($resolver === null) {
-            throw new RuntimeException(sprintf(
+            throw new UnexpectedValueException(sprintf(
                 'Failed to replace the resolver variables of field definition "%s" (PCRE error %d)',
                 $fieldDefinition->identifier,
                 preg_last_error()
