@@ -34,6 +34,16 @@ final class ResolverVariablesTest extends TestCase
         );
     }
 
+    public function testMapToFieldValueResolverKeepsNullFromInnerMapper(): void
+    {
+        $innerMapper = $this->createStub(FieldDefinitionMapper::class);
+        $innerMapper->method('mapToFieldValueResolver')->willReturn(null);
+
+        $mapper = new ResolverVariables($innerMapper);
+
+        self::assertNull($mapper->mapToFieldValueResolver(new FieldDefinition(['identifier' => 'title'])));
+    }
+
     /**
      * @return iterable<string, array{string, string, string}>
      */
