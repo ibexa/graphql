@@ -23,15 +23,15 @@ final class ResolverVariablesTest extends TestCase
         string $innerResolver,
         string $expectedResolver
     ): void {
-        $innerMapper = $this->createStub(FieldDefinitionMapper::class);
-        $innerMapper->method('mapToFieldValueResolver')->willReturn($innerResolver);
+        $this->assertResolvesTo($expectedResolver, $fieldDefinitionIdentifier, $innerResolver);
+    }
 
-        $mapper = new ResolverVariables($innerMapper);
-
-        self::assertSame(
-            $expectedResolver,
-            $mapper->mapToFieldValueResolver(new FieldDefinition(['identifier' => $fieldDefinitionIdentifier]))
-        );
+    /**
+     * @dataProvider provideResolversWithQuotedIdentifier
+     */
+    public function testMapToFieldValueResolverKeepsQuotedIdentifier(string $fieldDefinitionIdentifier, string $resolver): void
+    {
+        $this->assertResolvesTo($resolver, $fieldDefinitionIdentifier, $resolver);
     }
 
     public function testMapToFieldValueResolverKeepsNullFromInnerMapper(): void
@@ -45,34 +45,22 @@ final class ResolverVariablesTest extends TestCase
     }
 
     /**
+     * @return iterable<string, array{string, string}>
+     */
+    public static function provideResolversWithQuotedIdentifier(): iterable
+    {
+        yield 'identifier containing "content"' => ['content_matrix', '@=query("MatrixFieldValue", value, "content_matrix")'];
+        yield 'identifier containing "location"' => ['location_data', '@=query("MatrixFieldValue", value, "location_data")'];
+        yield 'identifier containing "item"' => ['item_list', '@=query("MatrixFieldValue", value, "item_list")'];
+        yield 'identifier containing "field"' => ['field_6216205b32553', '@=query("MatrixFieldValue", value, "field_6216205b32553")'];
+        yield 'single quoted identifier' => ['content_matrix', "@=query('MatrixFieldValue', value, 'content_matrix')"];
+    }
+
+    /**
      * @return iterable<string, array{string, string, string}>
      */
     public static function provideResolvers(): iterable
     {
-        yield 'identifier containing "content" is not rewritten' => [
-            'content_matrix',
-            '@=query("MatrixFieldValue", value, "content_matrix")',
-            '@=query("MatrixFieldValue", value, "content_matrix")',
-        ];
-
-        yield 'identifier containing "location" is not rewritten' => [
-            'location_data',
-            '@=query("MatrixFieldValue", value, "location_data")',
-            '@=query("MatrixFieldValue", value, "location_data")',
-        ];
-
-        yield 'identifier containing "item" is not rewritten' => [
-            'item_list',
-            '@=query("MatrixFieldValue", value, "item_list")',
-            '@=query("MatrixFieldValue", value, "item_list")',
-        ];
-
-        yield 'identifier containing "field" is not rewritten' => [
-            'field_6216205b32553',
-            '@=query("MatrixFieldValue", value, "field_6216205b32553")',
-            '@=query("MatrixFieldValue", value, "field_6216205b32553")',
-        ];
-
         yield 'bare field variable is resolved with the field identifier' => [
             'content_title',
             '@=field',
@@ -83,12 +71,6 @@ final class ResolverVariablesTest extends TestCase
             'title',
             '@=query("SelectionFieldValue", field, content)',
             '@=query("SelectionFieldValue", query("ItemFieldValue", value, "title", args), value.getContent())',
-        ];
-
-        yield 'single quoted identifier is not rewritten' => [
-            'content_matrix',
-            "@=query('MatrixFieldValue', value, 'content_matrix')",
-            "@=query('MatrixFieldValue', value, 'content_matrix')",
         ];
 
         yield 'single quoted string is skipped, field variable is replaced' => [
@@ -120,5 +102,18 @@ final class ResolverVariablesTest extends TestCase
             '@=query("Custom", location, item)',
             '@=query("Custom", value.getLocation(), value)',
         ];
+    }
+
+    private function assertResolvesTo(string $expectedResolver, string $fieldDefinitionIdentifier, string $innerResolver): void
+    {
+        $innerMapper = $this->createStub(FieldDefinitionMapper::class);
+        $innerMapper->method('mapToFieldValueResolver')->willReturn($innerResolver);
+
+        $mapper = new ResolverVariables($innerMapper);
+
+        self::assertSame(
+            $expectedResolver,
+            $mapper->mapToFieldValueResolver(new FieldDefinition(['identifier' => $fieldDefinitionIdentifier]))
+        );
     }
 }
