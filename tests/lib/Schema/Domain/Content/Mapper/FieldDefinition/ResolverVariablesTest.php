@@ -34,14 +34,14 @@ final class ResolverVariablesTest extends TestCase
         $this->assertResolvesTo($resolver, $fieldDefinitionIdentifier, $resolver);
     }
 
-    public function testMapToFieldValueResolverKeepsNullFromInnerMapper(): void
+    public function testMapToFieldValueResolverReturnsEmptyStringForNullFromInnerMapper(): void
     {
         $innerMapper = $this->createStub(FieldDefinitionMapper::class);
         $innerMapper->method('mapToFieldValueResolver')->willReturn(null);
 
         $mapper = new ResolverVariables($innerMapper);
 
-        self::assertNull($mapper->mapToFieldValueResolver(new FieldDefinition(['identifier' => 'title'])));
+        self::assertSame('', $mapper->mapToFieldValueResolver(new FieldDefinition(['identifier' => 'title'])));
     }
 
     /**
