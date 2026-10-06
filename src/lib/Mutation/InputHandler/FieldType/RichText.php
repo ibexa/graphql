@@ -26,13 +26,13 @@ class RichText implements FieldTypeInputHandler
 
     /**
      * @param array $input
-     * @param null $inputFormat
+     * @param string|null $inputFormat
      *
      * @return \Ibexa\FieldTypeRichText\FieldType\RichText\Value
      */
     public function toFieldValue($input, $inputFormat = null): Value
     {
-        if (isset($this->inputConverters[$inputFormat])) {
+        if ($inputFormat !== null && isset($this->inputConverters[$inputFormat])) {
             $fieldValue = new RichTextFieldType\Value(
                 $this->inputConverters[$inputFormat]->convertToXml($input)
             );
