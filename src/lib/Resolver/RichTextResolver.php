@@ -8,7 +8,6 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use DOMDocument;
-use Ibexa\Contracts\FieldTypeRichText\RichText\Converter;
 use Ibexa\Contracts\FieldTypeRichText\RichText\Converter as RichTextConverterInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 
@@ -18,12 +17,12 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 class RichTextResolver implements QueryInterface
 {
     /**
-     * @var Converter
+     * @var RichTextConverterInterface
      */
     private $richTextConverter;
 
     /**
-     * @var Converter
+     * @var RichTextConverterInterface
      */
     private $richTextEditConverter;
 
