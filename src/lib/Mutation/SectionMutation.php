@@ -13,7 +13,7 @@ use Ibexa\Contracts\Core\Repository\Values\Content\SectionCreateStruct;
 class SectionMutation
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\SectionService
+     * @var SectionService
      */
     private $sectionService;
 
@@ -61,8 +61,10 @@ class SectionMutation
      *
      * @return array
      */
-    private function mapSectionToPayLoad($value, $section)
-    {
+    private function mapSectionToPayLoad(
+        $value,
+        $section
+    ) {
         return [
             'clientMutationId' => $value['clientMutationId'],
             'id' => $section->id,

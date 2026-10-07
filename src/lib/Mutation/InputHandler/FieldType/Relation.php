@@ -15,8 +15,10 @@ use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
  */
 class Relation extends FromHash implements FieldTypeInputHandler
 {
-    public function toFieldValue($input, $inputFormat = null): Value
-    {
+    public function toFieldValue(
+        $input,
+        $inputFormat = null
+    ): Value {
         return parent::toFieldValue(
             ['destinationContentId' => $input],
             null

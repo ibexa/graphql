@@ -16,10 +16,10 @@ use Ibexa\GraphQL\Schema\Domain\NameValidator;
 
 class ContentDomainIterator implements Iterator
 {
-    /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
+    /** @var ContentTypeService */
     private $contentTypeService;
 
-    /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */
+    /** @var NameValidator */
     private $nameValidator;
 
     public function __construct(

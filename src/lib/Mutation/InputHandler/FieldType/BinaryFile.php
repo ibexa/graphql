@@ -14,15 +14,17 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class BinaryFile implements FieldTypeInputHandler
 {
-    public function toFieldValue($input, $inputFormat = null): Value
-    {
+    public function toFieldValue(
+        $input,
+        $inputFormat = null
+    ): Value {
         if (!$input['file'] instanceof UploadedFile) {
             return null;
         }
 
         $file = $input['file'];
 
-        return new BinaryFileFieldType\Value([
+        return new BInaryFileFieldType\Value([
             'fileName' => $file->getClientOriginalName(),
             'inputUri' => $file->getPathname(),
             'fileSize' => $file->getSize(),

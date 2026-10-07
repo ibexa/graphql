@@ -14,7 +14,7 @@ use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDe
 abstract class DecoratingFieldDefinitionMapper implements FieldDefinitionMapper
 {
     /**
-     * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+     * @var FieldDefinitionMapper
      */
     protected $innerMapper;
 
@@ -38,8 +38,10 @@ abstract class DecoratingFieldDefinitionMapper implements FieldDefinitionMapper
         return $this->innerMapper->mapToFieldValueResolver($fieldDefinition);
     }
 
-    public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
-    {
+    public function mapToFieldValueInputType(
+        ContentType $contentType,
+        FieldDefinition $fieldDefinition
+    ): ?string {
         return $this->innerMapper->mapToFieldValueInputType($contentType, $fieldDefinition);
     }
 

@@ -22,17 +22,19 @@ use Overblog\GraphQLBundle\Error\UserWarning;
 class UserResolver implements QueryInterface
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\UserService
+     * @var UserService
      */
     private $userService;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\LocationService
+     * @var LocationService
      */
     private $locationService;
 
-    public function __construct(UserService $userService, LocationService $locationService)
-    {
+    public function __construct(
+        UserService $userService,
+        LocationService $locationService
+    ) {
         $this->userService = $userService;
         $this->locationService = $locationService;
     }
@@ -62,7 +64,7 @@ class UserResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\User\UserGroup[]
+     * @return UserGroup[]
      */
     public function resolveUserGroupsByUserId($userId)
     {
@@ -79,7 +81,7 @@ class UserResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\User\UserGroup
+     * @return UserGroup
      */
     public function resolveUserGroupById($userGroupId)
     {
@@ -100,8 +102,10 @@ class UserResolver implements QueryInterface
         );
     }
 
-    public function resolveContentFields(Content $content, $args)
-    {
+    public function resolveContentFields(
+        Content $content,
+        $args
+    ) {
         if (isset($args['identifier'])) {
             return [$content->getField($args['identifier'])];
         }

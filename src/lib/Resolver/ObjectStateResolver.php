@@ -21,7 +21,7 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
  */
 class ObjectStateResolver implements QueryInterface
 {
-    /** @var \Ibexa\Contracts\Core\Repository\ObjectStateService */
+    /** @var ObjectStateService */
     private $objectStateService;
 
     public function __construct(ObjectStateService $objectStateService)
@@ -39,7 +39,7 @@ class ObjectStateResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState[]
+     * @return ObjectState[]
      */
     public function resolveObjectStatesByGroup(ObjectStateGroup $objectStateGroup): array
     {
@@ -47,7 +47,7 @@ class ObjectStateResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState[]
+     * @return ObjectState[]
      */
     public function resolveObjectStatesByGroupId(Argument $args): array
     {
@@ -61,7 +61,7 @@ class ObjectStateResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState[]
+     * @return ObjectState[]
      */
     public function resolveObjectStateByContentInfo(ContentInfo $contentInfo): array
     {

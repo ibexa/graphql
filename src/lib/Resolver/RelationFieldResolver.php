@@ -40,8 +40,11 @@ final class RelationFieldResolver implements QueryInterface
         $this->enablePagination = $enablePagination;
     }
 
-    public function resolveRelationFieldValue(Field $field, $multiple = false, ?Argument $args = null)
-    {
+    public function resolveRelationFieldValue(
+        Field $field,
+        $multiple = false,
+        ?Argument $args = null
+    ) {
         $destinationContentIds = $this->getContentIds($field);
 
         if (empty($destinationContentIds) || array_key_exists(0, $destinationContentIds) && null === $destinationContentIds[0]) {
@@ -66,7 +69,10 @@ final class RelationFieldResolver implements QueryInterface
                 );
             }
 
-            $paginator = new Paginator(function ($offset, $limit) use ($query): array {
+            $paginator = new Paginator(function (
+                $offset,
+                $limit
+            ) use ($query): array {
                 $query->offset = $offset;
                 $query->limit = $limit ?? self::DEFAULT_LIMIT;
                 $contentItems = $this->contentLoader->find($query);
@@ -101,7 +107,7 @@ final class RelationFieldResolver implements QueryInterface
     /**
      * @return array
      *
-     * @throws \GraphQL\Error\UserError if the field isn't a Relation or RelationList value
+     * @throws UserError if the field isn't a Relation or RelationList value
      */
     private function getContentIds(Field $field): array
     {

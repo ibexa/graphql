@@ -15,8 +15,10 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
  */
 class DateResolver implements QueryInterface
 {
-    public function resolveDateToFormat($date, $args)
-    {
+    public function resolveDateToFormat(
+        $date,
+        $args
+    ) {
         if (!$date instanceof DateTime) {
             return null;
         }

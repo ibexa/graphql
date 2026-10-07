@@ -15,15 +15,19 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
  */
 class FieldDefinitionResolver implements QueryInterface
 {
-    public function resolveFieldDefinitionName(FieldDefinition $fieldDefinition, $args)
-    {
+    public function resolveFieldDefinitionName(
+        FieldDefinition $fieldDefinition,
+        $args
+    ) {
         $languageCode = isset($args['language']) ? $args['language'] : null;
 
         return $fieldDefinition->getName($languageCode);
     }
 
-    public function resolveFieldDefinitionDescription(FieldDefinition $fieldDefinition, $args)
-    {
+    public function resolveFieldDefinitionDescription(
+        FieldDefinition $fieldDefinition,
+        $args
+    ) {
         $languageCode = isset($args['language']) ? $args['language'] : null;
 
         return $fieldDefinition->getDescription($languageCode);

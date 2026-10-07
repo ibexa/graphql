@@ -18,8 +18,10 @@ class Page
     /** @var string */
     public $cursor;
 
-    public function __construct(int $number, string $cursor)
-    {
+    public function __construct(
+        int $number,
+        string $cursor
+    ) {
         $this->number = $number;
         $this->cursor = $cursor;
     }

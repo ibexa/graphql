@@ -17,7 +17,7 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 class AllAllowedLocationProvider implements LocationProvider
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\LocationService
+     * @var LocationService
      */
     private $locationService;
 

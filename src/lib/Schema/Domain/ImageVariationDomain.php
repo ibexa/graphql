@@ -11,20 +11,19 @@ use Generator;
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\GraphQL\Schema;
 use Ibexa\GraphQL\Schema\Builder;
-use Ibexa\GraphQL\Schema\Domain;
 
 /**
  * Adds configured image variations to the ImageVariationIdentifier type.
  */
-class ImageVariationDomain implements Domain\Iterator, Schema\Worker
+class ImageVariationDomain implements Iterator, Schema\Worker
 {
     public const TYPE = 'ImageVariationIdentifier';
     public const ARG = 'ImageVariation';
 
-    /** @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface */
+    /** @var ConfigResolverInterface */
     private $configResolver;
 
-    /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */
+    /** @var NameValidator */
     private $nameValidator;
 
     public function __construct(
@@ -53,16 +52,20 @@ class ImageVariationDomain implements Domain\Iterator, Schema\Worker
         $schema->addType(new Builder\Input\Type(self::TYPE, 'enum'));
     }
 
-    public function work(Builder $schema, array $args)
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ) {
         $schema->addValueToEnum(
             self::TYPE,
             new Builder\Input\EnumValue($args[self::ARG]['identifier'])
         );
     }
 
-    public function canWork(Builder $schema, array $args)
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ) {
         return isset($args[self::ARG]['identifier']);
     }
 }
