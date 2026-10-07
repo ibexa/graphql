@@ -17,17 +17,19 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 class RichTextResolver implements QueryInterface
 {
     /**
-     * @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter
+     * @var RichTextConverterInterface
      */
     private $richTextConverter;
 
     /**
-     * @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter
+     * @var RichTextConverterInterface
      */
     private $richTextEditConverter;
 
-    public function __construct(RichTextConverterInterface $richTextConverter, RichTextConverterInterface $richTextEditConverter)
-    {
+    public function __construct(
+        RichTextConverterInterface $richTextConverter,
+        RichTextConverterInterface $richTextEditConverter
+    ) {
         $this->richTextConverter = $richTextConverter;
         $this->richTextEditConverter = $richTextEditConverter;
     }

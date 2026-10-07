@@ -15,8 +15,10 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Content;
  */
 class MainLocationFilter implements LocationFilter
 {
-    public function filter(Content $content, LocationList $locationList): void
-    {
+    public function filter(
+        Content $content,
+        LocationList $locationList
+    ): void {
         foreach ($locationList->getLocations() as $location) {
             if ($location->id !== $content->contentInfo->mainLocationId) {
                 $locationList->removeLocation($location);

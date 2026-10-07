@@ -9,8 +9,10 @@ namespace Ibexa\GraphQL\Schema\Builder\Input;
 
 class EnumValue extends Input
 {
-    public function __construct($name, array $properties = [])
-    {
+    public function __construct(
+        $name,
+        array $properties = []
+    ) {
         parent::__construct($properties);
         $this->name = $name;
     }

@@ -31,8 +31,10 @@ class NameValidator implements LoggerAwareInterface
         return preg_match(self::NAME_PATTERN, $name) === 1;
     }
 
-    public function generateInvalidNameWarning(string $type, string $name): void
-    {
+    public function generateInvalidNameWarning(
+        string $type,
+        string $name
+    ): void {
         $message = "Skipping schema generation for %s with identifier '%s' as it stands against GraphQL specification. "
             . 'For more details see http://spec.graphql.org/[latest-release]/#sec-Names.';
 

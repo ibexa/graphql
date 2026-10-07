@@ -17,7 +17,7 @@ use Ibexa\GraphQL\Schema\Worker;
 final class AddDomainGroupToDomain extends BaseWorker implements Worker
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
+     * @var ContentTypeService
      */
     private $contentTypeService;
 
@@ -26,8 +26,10 @@ final class AddDomainGroupToDomain extends BaseWorker implements Worker
         $this->contentTypeService = $contentTypeService;
     }
 
-    public function work(Builder $schema, array $args)
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ) {
         $contentTypeGroup = $args['ContentTypeGroup'];
         $schema->addFieldToType('Domain', new Input\Field(
             $this->fieldName($args),
@@ -42,8 +44,10 @@ final class AddDomainGroupToDomain extends BaseWorker implements Worker
         ));
     }
 
-    public function canWork(Builder $schema, array $args)
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ) {
         return
             isset($args['ContentTypeGroup'])
             && $args['ContentTypeGroup'] instanceof ContentTypeGroup

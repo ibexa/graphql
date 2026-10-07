@@ -7,8 +7,11 @@
 
 namespace Ibexa\GraphQL\Relay;
 
+use GraphQL\Type\Definition\Type;
 use Ibexa\Contracts\Core\Repository\ContentService;
 use Ibexa\Contracts\Core\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
+use Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException;
 use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 use Overblog\GraphQLBundle\Relay\Node\GlobalId;
@@ -17,27 +20,31 @@ use Overblog\GraphQLBundle\Resolver\TypeResolver;
 class NodeResolver
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentService
+     * @var ContentService
      */
     private $contentService;
 
     /**
-     * @var \Overblog\GraphQLBundle\Resolver\TypeResolver
+     * @var TypeResolver
      */
     private $typeResolver;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
+     * @var ContentTypeService
      */
     private $contentTypeService;
 
     /**
-     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
+     * @var NameHelper
      */
     private $nameHelper;
 
-    public function __construct(ContentService $contentService, TypeResolver $typeResolver, ContentTypeService $contentTypeService, NameHelper $nameHelper)
-    {
+    public function __construct(
+        ContentService $contentService,
+        TypeResolver $typeResolver,
+        ContentTypeService $contentTypeService,
+        NameHelper $nameHelper
+    ) {
         $this->contentService = $contentService;
         $this->typeResolver = $typeResolver;
         $this->contentTypeService = $contentTypeService;
@@ -47,10 +54,10 @@ class NodeResolver
     /**
      * @param $globalId
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo|null
+     * @return ContentInfo|null
      *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
+     * @throws NotFoundException
+     * @throws UnauthorizedException
      */
     public function resolveNode($globalId)
     {
@@ -66,7 +73,7 @@ class NodeResolver
     /**
      * @param $object
      *
-     * @return \GraphQL\Type\Definition\Type
+     * @return Type
      */
     public function resolveType($object)
     {

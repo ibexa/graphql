@@ -10,7 +10,6 @@ namespace Ibexa\GraphQL\Resolver;
 use Ibexa\Contracts\Core\Repository\ContentService;
 use Ibexa\Contracts\Core\Repository\LocationService;
 use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
-use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 use Ibexa\GraphQL\DataLoader\LocationLoader;
@@ -18,6 +17,7 @@ use Ibexa\GraphQL\InputMapper\SearchQuerySortByMapper;
 use Ibexa\GraphQL\Relay\PageAwareConnection;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
+use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 /**
@@ -28,22 +28,22 @@ class LocationResolver implements QueryInterface
     public const DEFAULT_LIMIT = 10;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\LocationService
+     * @var LocationService
      */
     private $locationService;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentService
+     * @var ContentService
      */
     private $contentService;
 
     /**
-     * @var \Ibexa\GraphQL\DataLoader\LocationLoader
+     * @var LocationLoader
      */
     private $locationLoader;
 
     /**
-     * @var \Ibexa\GraphQL\InputMapper\SearchQuerySortByMapper
+     * @var SearchQuerySortByMapper
      */
     private $sortMapper;
 
@@ -87,10 +87,12 @@ class LocationResolver implements QueryInterface
     /**
      * @param int $locationId
      *
-     * @return \Overblog\GraphQLBundle\Relay\Connection\Output\Connection
+     * @return Connection
      */
-    public function resolveLocationChildren($locationId, Argument $args): PageAwareConnection
-    {
+    public function resolveLocationChildren(
+        $locationId,
+        Argument $args
+    ): PageAwareConnection {
         $args['locationId'] = $locationId;
         $sortClauses = isset($args['sortBy']) ? $this->sortMapper->mapInputToSortClauses($args['sortBy']) : [];
 
@@ -99,7 +101,10 @@ class LocationResolver implements QueryInterface
             'sortClauses' => $sortClauses,
         ]);
 
-        $paginator = new Paginator(function ($offset, $limit) use ($query) {
+        $paginator = new Paginator(function (
+            $offset,
+            $limit
+        ) use ($query) {
             $query->offset = $offset;
             $query->limit = $limit ?? self::DEFAULT_LIMIT;
 
@@ -119,7 +124,7 @@ class LocationResolver implements QueryInterface
 
     private function buildFilter(Argument $args): Criterion
     {
-        return new Query\Criterion\ParentLocationId($args['locationId']);
+        return new Criterion\ParentLocationId($args['locationId']);
     }
 }
 

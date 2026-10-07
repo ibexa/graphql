@@ -9,8 +9,6 @@ namespace Ibexa\GraphQL\DataLoader\Exception;
 
 use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException as NotFoundApiException;
 
-class NotFoundException extends NotFoundApiException
-{
-}
+class NotFoundException extends NotFoundApiException {}
 
 class_alias(NotFoundException::class, 'EzSystems\EzPlatformGraphQL\GraphQL\DataLoader\Exception\NotFoundException');

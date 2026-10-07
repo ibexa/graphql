@@ -14,10 +14,13 @@ interface LocationFilter
     /**
      * Given a Content and a LocationList, filters out locations.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Content $content
+     * @param Content $content
      * @param LocationList $locationList
      */
-    public function filter(Content $content, LocationList $locationList): void;
+    public function filter(
+        Content $content,
+        LocationList $locationList
+    ): void;
 }
 
 class_alias(LocationFilter::class, 'EzSystems\EzPlatformGraphQL\GraphQL\Resolver\LocationGuesser\LocationFilter');

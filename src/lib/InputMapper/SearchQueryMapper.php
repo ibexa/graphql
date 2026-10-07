@@ -9,12 +9,13 @@ namespace Ibexa\GraphQL\InputMapper;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\DateMetadata;
 use InvalidArgumentException;
 
 final class SearchQueryMapper implements QueryMapper
 {
     /**
-     * @var \Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder
+     * @var ContentCollectionFilterBuilder
      */
     private $filterBuilder;
 
@@ -24,7 +25,7 @@ final class SearchQueryMapper implements QueryMapper
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery
+     * @return LocationQuery
      */
     public function mapInputToLocationQuery(array $inputArray): LocationQuery
     {
@@ -35,7 +36,7 @@ final class SearchQueryMapper implements QueryMapper
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query
+     * @return Query
      */
     public function mapInputToQuery(array $inputArray): Query
     {
@@ -45,8 +46,10 @@ final class SearchQueryMapper implements QueryMapper
         return $query;
     }
 
-    private function mapInput($query, array $inputArray): void
-    {
+    private function mapInput(
+        $query,
+        array $inputArray
+    ): void {
         if (isset($inputArray['offset'])) {
             $query->offset = $inputArray['offset'];
         }
@@ -128,17 +131,19 @@ final class SearchQueryMapper implements QueryMapper
     /**
      * @param $dateMetadata
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\DateMetadata[]
+     * @return DateMetadata[]
      */
-    private function mapDateMetadata(array $queryArg, $dateMetadata)
-    {
+    private function mapDateMetadata(
+        array $queryArg,
+        $dateMetadata
+    ) {
         if (!isset($queryArg[$dateMetadata]) || !is_array($queryArg[$dateMetadata])) {
             return [];
         }
 
         $targetMap = [
-            'Created' => Query\Criterion\DateMetadata::CREATED,
-            'Modified' => Query\Criterion\DateMetadata::MODIFIED,
+            'Created' => DateMetadata::CREATED,
+            'Modified' => DateMetadata::MODIFIED,
         ];
 
         if (!isset($targetMap[$dateMetadata])) {
@@ -157,7 +162,7 @@ final class SearchQueryMapper implements QueryMapper
                 continue;
             }
 
-            $criteria[] = new Query\Criterion\DateMetadata(
+            $criteria[] = new DateMetadata(
                 $targetMap[$dateMetadata],
                 $dateOperatorsMap[$operator],
                 strtotime($dateString)

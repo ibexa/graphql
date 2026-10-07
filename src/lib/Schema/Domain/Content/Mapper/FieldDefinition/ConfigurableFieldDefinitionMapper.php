@@ -20,12 +20,14 @@ class ConfigurableFieldDefinitionMapper implements FieldDefinitionMapper, FieldD
     private $typesMap;
 
     /**
-     * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+     * @var FieldDefinitionMapper
      */
     private $innerMapper;
 
-    public function __construct(FieldDefinitionMapper $innerMapper, $typesMap = [])
-    {
+    public function __construct(
+        FieldDefinitionMapper $innerMapper,
+        $typesMap = []
+    ) {
         $this->typesMap = $typesMap;
         $this->innerMapper = $innerMapper;
     }
@@ -36,8 +38,10 @@ class ConfigurableFieldDefinitionMapper implements FieldDefinitionMapper, FieldD
             ?? $this->innerMapper->mapToFieldValueType($fieldDefinition);
     }
 
-    public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
-    {
+    public function mapToFieldValueInputType(
+        ContentType $contentType,
+        FieldDefinition $fieldDefinition
+    ): ?string {
         if (isset($this->typesMap[$fieldDefinition->fieldTypeIdentifier]['input_type'])) {
             return $this->typesMap[$fieldDefinition->fieldTypeIdentifier]['input_type'];
         }

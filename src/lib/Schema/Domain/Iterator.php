@@ -25,7 +25,7 @@ interface Iterator
     /**
      * Returns set of items from the domain.
      *
-     * @return \Generator a generator yielding the items
+     * @return Generator a generator yielding the items
      */
     public function iterate(): Generator;
 }

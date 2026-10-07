@@ -15,7 +15,7 @@ use Ibexa\GraphQL\Schema\Domain\Iterator;
 class LanguagesIterator implements Iterator
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\LanguageService
+     * @var LanguageService
      */
     private $languageService;
 
@@ -24,9 +24,7 @@ class LanguagesIterator implements Iterator
         $this->languageService = $languageService;
     }
 
-    public function init(Builder $schema)
-    {
-    }
+    public function init(Builder $schema) {}
 
     public function iterate(): Generator
     {

@@ -13,8 +13,6 @@ namespace Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
  *
  * @deprecated since 2.0, will be removed in 3.0. Use the FieldDefinitionMapper interface instead.
  */
-interface FieldDefinitionInputMapper
-{
-}
+interface FieldDefinitionInputMapper {}
 
 class_alias(FieldDefinitionInputMapper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionInputMapper');

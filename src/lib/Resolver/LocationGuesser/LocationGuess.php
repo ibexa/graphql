@@ -10,22 +10,25 @@ namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Location;
-use Ibexa\GraphQL\Exception;
+use Ibexa\GraphQL\Exception\MultipleValidLocationsException;
+use Ibexa\GraphQL\Exception\NoValidLocationsException;
 
 class LocationGuess
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content
+     * @var Content
      */
     private $content;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
+     * @var Location[]
      */
     private $locations;
 
-    public function __construct(Content $content, array $locations)
-    {
+    public function __construct(
+        Content $content,
+        array $locations
+    ) {
         $this->content = $content;
         $this->locations = $locations;
     }
@@ -33,17 +36,17 @@ class LocationGuess
     /**
      * Returns the location guess result if the guess was successful.
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location
+     * @return Location
      *
-     * @throws \Ibexa\GraphQL\Exception\MultipleValidLocationsException
-     * @throws \Ibexa\GraphQL\Exception\NoValidLocationsException
+     * @throws MultipleValidLocationsException
+     * @throws NoValidLocationsException
      */
     public function getLocation(): Location
     {
         if (count($this->locations) > 1) {
-            throw new Exception\MultipleValidLocationsException($this->content, $this->locations);
+            throw new MultipleValidLocationsException($this->content, $this->locations);
         } elseif (count($this->locations) === 0) {
-            throw new Exception\NoValidLocationsException($this->content);
+            throw new NoValidLocationsException($this->content);
         }
 
         return $this->locations[0];

@@ -9,6 +9,7 @@ namespace Ibexa\GraphQL\Value;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\ValueObject;
+use Ibexa\Core\FieldType\Value;
 
 /**
  * A FieldValue Proxy that holds the content and field definition identifier.
@@ -32,12 +33,12 @@ class ContentFieldValue extends ValueObject
     protected $contentTypeId;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content
+     * @var Content
      */
     protected $content;
 
     /**
-     * @var \Ibexa\Core\FieldType\Value
+     * @var Value
      */
     protected $value;
 

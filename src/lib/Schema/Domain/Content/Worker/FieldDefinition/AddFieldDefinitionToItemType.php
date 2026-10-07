@@ -19,7 +19,7 @@ use Ibexa\GraphQL\Schema\Worker;
 class AddFieldDefinitionToItemType extends BaseWorker implements Worker
 {
     /**
-     * @var \Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+     * @var FieldDefinitionMapper
      */
     private $fieldDefinitionMapper;
 
@@ -28,8 +28,10 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
         $this->fieldDefinitionMapper = $fieldDefinitionMapper;
     }
 
-    public function work(Builder $schema, array $args)
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ) {
         $schema->addFieldToType($this->typeName($args), new Input\Field(
             $this->fieldName($args),
             $this->fieldType($args),
@@ -43,8 +45,10 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
         ));
     }
 
-    public function canWork(Builder $schema, array $args)
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ) {
         return
             isset($args['FieldDefinition'])
             && $args['FieldDefinition'] instanceof FieldDefinition

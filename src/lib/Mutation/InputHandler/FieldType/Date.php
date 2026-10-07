@@ -16,8 +16,10 @@ use Ibexa\GraphQL\Exception\UnsupportedFieldInputFormatException;
  */
 class Date extends FromHash implements FieldTypeInputHandler
 {
-    public function toFieldValue($input, $inputFormat = null): Value
-    {
+    public function toFieldValue(
+        $input,
+        $inputFormat = null
+    ): Value {
         if ($inputFormat === null) {
             $inputFormat = 'timestring';
         }

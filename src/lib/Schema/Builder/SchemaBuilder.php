@@ -14,7 +14,7 @@ class SchemaBuilder implements SchemaBuilderInterface
 {
     private $schema = [];
 
-    /** @var \Ibexa\GraphQL\Schema\Domain\NameValidator */
+    /** @var NameValidator */
     private $nameValidator;
 
     public function __construct(NameValidator $nameValidator)
@@ -62,8 +62,10 @@ class SchemaBuilder implements SchemaBuilderInterface
         $this->schema[$typeInput->name] = $type;
     }
 
-    public function addFieldToType($type, Input\Field $fieldInput)
-    {
+    public function addFieldToType(
+        $type,
+        Input\Field $fieldInput
+    ) {
         if (!$this->nameValidator->isValidName($fieldInput->name)) {
             $this->nameValidator->generateInvalidNameWarning($fieldInput->type, $fieldInput->name);
 
@@ -92,8 +94,11 @@ class SchemaBuilder implements SchemaBuilderInterface
         $this->schema[$type]['config']['fields'][$fieldInput->name] = $field;
     }
 
-    public function addArgToField($type, $field, Input\Arg $argInput)
-    {
+    public function addArgToField(
+        $type,
+        $field,
+        Input\Arg $argInput
+    ) {
         if (!$this->hasType($type)) {
             throw new \Exception("Expected type $type to be defined, but it was not");
         }
@@ -118,8 +123,10 @@ class SchemaBuilder implements SchemaBuilderInterface
         $this->schema[$type]['config']['fields'][$field]['args'][$argInput->name] = $arg;
     }
 
-    public function addValueToEnum($enum, Input\EnumValue $valueInput)
-    {
+    public function addValueToEnum(
+        $enum,
+        Input\EnumValue $valueInput
+    ) {
         if (!$this->hasType($enum)) {
             throw new \Exception("Expected type $enum to be defined, but it was not");
         }
@@ -151,8 +158,10 @@ class SchemaBuilder implements SchemaBuilderInterface
      * @param string $type
      * @param string $field
      */
-    public function hasTypeWithField($type, $field): bool
-    {
+    public function hasTypeWithField(
+        $type,
+        $field
+    ): bool {
         return
             $this->hasType($type)
             && isset($this->schema[$type]['config']['fields'][$field]);
@@ -163,8 +172,11 @@ class SchemaBuilder implements SchemaBuilderInterface
      * @param string $field
      * @param $arg
      */
-    public function hasTypeFieldWithArg($type, $field, $arg): bool
-    {
+    public function hasTypeFieldWithArg(
+        $type,
+        $field,
+        $arg
+    ): bool {
         return
             $this->hasTypeWithField($type, $field)
             && isset($this->schema[$type]['config']['fields'][$field]['args'][$arg]);

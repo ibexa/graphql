@@ -8,6 +8,8 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\Contracts\Core\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
+use Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\Contracts\Core\Variation\VariationHandler;
 use Ibexa\Core\FieldType;
@@ -22,12 +24,12 @@ use Overblog\GraphQLBundle\Error\UserError;
 class ImageFieldResolver implements QueryInterface
 {
     /**
-     * @var \Ibexa\Contracts\Core\Variation\VariationHandler
+     * @var VariationHandler
      */
     private $variationHandler;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentService
+     * @var ContentService
      */
     private $contentService;
 
@@ -37,7 +39,7 @@ class ImageFieldResolver implements QueryInterface
     private $fieldType;
 
     /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
+     * @var ContentLoader
      */
     private $contentLoader;
 
@@ -53,8 +55,10 @@ class ImageFieldResolver implements QueryInterface
         $this->contentLoader = $contentLoader;
     }
 
-    public function resolveImageVariations(ImageFieldValue $fieldValue, $args)
-    {
+    public function resolveImageVariations(
+        ImageFieldValue $fieldValue,
+        $args
+    ) {
         if ($this->fieldType->isEmptyValue($fieldValue)) {
             return null;
         }
@@ -68,8 +72,10 @@ class ImageFieldResolver implements QueryInterface
         return $variations;
     }
 
-    public function resolveImageVariation(ImageFieldValue $fieldValue, $args)
-    {
+    public function resolveImageVariation(
+        ImageFieldValue $fieldValue,
+        $args
+    ) {
         if ($this->fieldType->isEmptyValue($fieldValue)) {
             return null;
         }
@@ -83,8 +89,8 @@ class ImageFieldResolver implements QueryInterface
     /**
      * @return [Content, Field]
      *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
+     * @throws NotFoundException
+     * @throws UnauthorizedException
      */
     protected function getImageField(ImageFieldValue $fieldValue): array
     {

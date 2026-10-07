@@ -19,7 +19,7 @@ interface LocationLoader
     /**
      * Loads a list of locations given a Query Criterion.
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
+     * @return Location[]
      */
     public function find(LocationQuery $query): array;
 

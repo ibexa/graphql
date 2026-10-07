@@ -8,6 +8,8 @@
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\Location;
+use Ibexa\GraphQL\Exception\MultipleValidLocationsException;
+use Ibexa\GraphQL\Exception\NoValidLocationsException;
 
 /**
  * List of locations used by the LocationGuesser.
@@ -17,15 +19,15 @@ interface LocationList
     public function addLocation(Location $location): void;
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location
+     * @return Location
      *
-     * @throws \Ibexa\GraphQL\Exception\MultipleValidLocationsException
-     * @throws \Ibexa\GraphQL\Exception\NoValidLocationsException
+     * @throws MultipleValidLocationsException
+     * @throws NoValidLocationsException
      */
     public function getLocation(): Location;
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
+     * @return Location[]
      */
     public function getLocations(): array;
 

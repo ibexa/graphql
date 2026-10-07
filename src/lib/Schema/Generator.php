@@ -31,8 +31,11 @@ class Generator
      */
     private $workers;
 
-    public function __construct(Builder $schema, array $iterators, array $workers)
-    {
+    public function __construct(
+        Builder $schema,
+        array $iterators,
+        array $workers
+    ) {
         $this->schema = $schema;
         $this->workers = $workers;
         $this->iterators = $iterators;

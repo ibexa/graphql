@@ -18,17 +18,19 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class UploadFiles
 {
     /**
-     * @var \Ibexa\AdminUi\UI\Config\Provider\ContentTypeMappings
+     * @var ContentTypeMappings
      */
     private $contentTypeMappings;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\Repository
+     * @var Repository
      */
     private $repository;
 
-    public function __construct(Repository $repository, ContentTypeMappings $contentTypeMappings)
-    {
+    public function __construct(
+        Repository $repository,
+        ContentTypeMappings $contentTypeMappings
+    ) {
         $this->repository = $repository;
         $this->contentTypeMappings = $contentTypeMappings;
     }
@@ -78,8 +80,12 @@ class UploadFiles
      * @param $locationId The parent location ID
      * @param $languageCode
      */
-    private function createContent(array $mapping, UploadedFile $file, $locationId, $languageCode): Content
-    {
+    private function createContent(
+        array $mapping,
+        UploadedFile $file,
+        $locationId,
+        $languageCode
+    ): Content {
         $contentService = $this->repository->getContentService();
         $locationService = $this->repository->getLocationService();
 

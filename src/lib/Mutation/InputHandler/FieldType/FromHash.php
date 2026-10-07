@@ -17,7 +17,7 @@ use Ibexa\Core\FieldType\FieldType;
 class FromHash implements FieldTypeInputHandler
 {
     /**
-     * @var \Ibexa\Core\FieldType\FieldType
+     * @var FieldType
      */
     private $fieldType;
 
@@ -26,8 +26,10 @@ class FromHash implements FieldTypeInputHandler
         $this->fieldType = $fieldType;
     }
 
-    public function toFieldValue($input, $inputFormat = null): Value
-    {
+    public function toFieldValue(
+        $input,
+        $inputFormat = null
+    ): Value {
         return $this->fieldType->fromHash($input);
     }
 }

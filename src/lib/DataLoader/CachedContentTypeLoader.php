@@ -15,12 +15,12 @@ use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 class CachedContentTypeLoader implements ContentTypeLoader
 {
     /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentTypeLoader
+     * @var ContentTypeLoader
      */
     private $innerLoader;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType[]
+     * @var ContentType[]
      */
     private $loadedItems = [];
 
