@@ -18,18 +18,28 @@ interface Builder
     /**
      * @param string $type
      */
-    public function addFieldToType($type, Input\Field $field);
+    public function addFieldToType(
+        $type,
+        Input\Field $field
+    );
 
     /**
      * @param string $type
      * @param string $field
      */
-    public function addArgToField($type, $field, Input\Arg $argInput);
+    public function addArgToField(
+        $type,
+        $field,
+        Input\Arg $argInput
+    );
 
     /**
      * @param string $enum
      */
-    public function addValueToEnum($enum, Input\EnumValue $value);
+    public function addValueToEnum(
+        $enum,
+        Input\EnumValue $value
+    );
 
     /**
      * @param string $type
@@ -40,14 +50,21 @@ interface Builder
      * @param string $type
      * @param string $field
      */
-    public function hasTypeWithField($type, $field): bool;
+    public function hasTypeWithField(
+        $type,
+        $field
+    ): bool;
 
     /**
      * @param string $type
      * @param string $field
      * @param $arg
      */
-    public function hasTypeFieldWithArg($type, $field, $arg): bool;
+    public function hasTypeFieldWithArg(
+        $type,
+        $field,
+        $arg
+    ): bool;
 
     /**
      * @param string $enum

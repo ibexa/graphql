@@ -14,14 +14,14 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 class NoValidLocationsException extends Exception
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content|\Ibexa\Contracts\Core\Repository\Values\Content\Content[]
+     * @var Content|Content[]
      */
     private $content;
 
     /**
      * NoValidLocationsException constructor.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Content $content
+     * @param Content $content
      */
     public function __construct(Content $content)
     {

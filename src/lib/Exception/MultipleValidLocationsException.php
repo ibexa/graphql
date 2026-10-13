@@ -9,25 +9,28 @@ declare(strict_types=1);
 namespace Ibexa\GraphQL\Exception;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 
 class MultipleValidLocationsException extends \Exception
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
+     * @var Location[]
      */
     private $locations = [];
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\Content\Content
+     * @var Content
      */
     private $content;
 
     /**
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Content $content
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Location[] $locations
+     * @param Content $content
+     * @param Location[] $locations
      */
-    public function __construct(Content $content, array $locations)
-    {
+    public function __construct(
+        Content $content,
+        array $locations
+    ) {
         parent::__construct(
             sprintf(
                 'Could not determine which location to return for content with id %s. Possible candidates: %s)',
@@ -40,7 +43,7 @@ class MultipleValidLocationsException extends \Exception
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
+     * @return Location[]
      */
     public function getLocations(): array
     {

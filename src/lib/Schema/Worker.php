@@ -12,7 +12,10 @@ interface Worker
     /**
      * Does the work on $schema.
      */
-    public function work(Builder $schema, array $args);
+    public function work(
+        Builder $schema,
+        array $args
+    );
 
     /**
      * Tests the arguments and schema, and says if the worker can work on that state.
@@ -20,7 +23,10 @@ interface Worker
      *
      * @return bool
      */
-    public function canWork(Builder $schema, array $args);
+    public function canWork(
+        Builder $schema,
+        array $args
+    );
 }
 
 class_alias(Worker::class, 'EzSystems\EzPlatformGraphQL\Schema\Worker');

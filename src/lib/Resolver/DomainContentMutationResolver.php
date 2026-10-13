@@ -12,6 +12,7 @@ use Ibexa\Contracts\Core\Repository as API;
 use Ibexa\Contracts\Core\Repository\Exceptions as RepositoryExceptions;
 use Ibexa\Contracts\Core\Repository\Values as RepositoryValues;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 use Ibexa\GraphQL\Exception\UnsupportedFieldTypeException;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
@@ -32,16 +33,16 @@ class DomainContentMutationResolver
     private $repository;
 
     /**
-     * @var \Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler[]
+     * @var FieldTypeInputHandler[]
      */
     private $fieldInputHandlers = [];
 
     /**
-     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
+     * @var NameHelper
      */
     private $nameHelper;
 
-    /** @var \Ibexa\GraphQL\ItemFactory */
+    /** @var ItemFactory */
     private $itemFactory;
 
     public function __construct(
@@ -56,8 +57,12 @@ class DomainContentMutationResolver
         $this->itemFactory = $relatedContentItemFactory;
     }
 
-    public function updateDomainContent($input, Argument $args, $versionNo, $language): Item
-    {
+    public function updateDomainContent(
+        $input,
+        Argument $args,
+        $versionNo,
+        $language
+    ): Item {
         if (isset($args['id'])) {
             $idArray = GlobalId::fromGlobalId($args['id']);
             $contentId = $idArray['id'];
@@ -140,11 +145,15 @@ class DomainContentMutationResolver
         return $this->itemFactory->fromContent($this->getContentService()->loadContent($contentDraft->id));
     }
 
-    public function createDomainContent($input, $contentTypeIdentifier, $parentLocationId, $language): Item
-    {
+    public function createDomainContent(
+        $input,
+        $contentTypeIdentifier,
+        $parentLocationId,
+        $language
+    ): Item {
         try {
             $contentType = $this->getContentTypeService()->loadContentTypeByIdentifier($contentTypeIdentifier);
-        } catch (API\Exceptions\NotFoundException $e) {
+        } catch (RepositoryExceptions\NotFoundException $e) {
             throw new UserError($e->getMessage(), 0, $e);
         }
         $contentCreateStruct = $this->getContentService()->newContentCreateStruct($contentType, $language);
@@ -195,9 +204,9 @@ class DomainContentMutationResolver
 
         try {
             $contentInfo = $this->getContentService()->loadContentInfo($contentId);
-        } catch (API\Exceptions\NotFoundException $e) {
+        } catch (RepositoryExceptions\NotFoundException $e) {
             throw new UserError("Could not find a Content item with ID $contentId");
-        } catch (API\Exceptions\UnauthorizedException $e) {
+        } catch (RepositoryExceptions\UnauthorizedException $e) {
             throw new UserError("You are not authorized to load the Content item with ID $contentId");
         }
         if (!isset($globalId)) {
@@ -209,7 +218,7 @@ class DomainContentMutationResolver
 
         try {
             $this->getContentService()->deleteContent($contentInfo);
-        } catch (API\Exceptions\UnauthorizedException $e) {
+        } catch (RepositoryExceptions\UnauthorizedException $e) {
             throw new UserError("You are not authorized to delete the Content item with ID $contentInfo->id");
         }
 
@@ -219,8 +228,10 @@ class DomainContentMutationResolver
         ];
     }
 
-    private function getInputFieldValue($fieldInput, FieldDefinition $fieldDefinition)
-    {
+    private function getInputFieldValue(
+        $fieldInput,
+        FieldDefinition $fieldDefinition
+    ) {
         if (isset($this->fieldInputHandlers[$fieldDefinition->fieldTypeIdentifier])) {
             $format = null;
             if (isset($fieldInput['input'])) {
@@ -278,8 +289,10 @@ class DomainContentMutationResolver
         return $this->repository->getLocationService();
     }
 
-    private function renderFieldValidationErrors(RepositoryExceptions\ContentFieldValidationException $e, API\Values\ContentType\ContentType $contentType)
-    {
+    private function renderFieldValidationErrors(
+        RepositoryExceptions\ContentFieldValidationException $e,
+        RepositoryValues\ContentType\ContentType $contentType
+    ) {
         $errors = [];
         foreach ($e->getFieldErrors() as $fieldDefId => $fieldErrorByLanguage) {
             $fieldDefinition = $contentType->getFieldDefinitions()->filter(
@@ -306,7 +319,7 @@ class DomainContentMutationResolver
      * Returns the GraphQL schema input field for a field definition.
      * Example: text_line -> textLine.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition $fieldDefinition
+     * @param FieldDefinition $fieldDefinition
      *
      * @return string
      */

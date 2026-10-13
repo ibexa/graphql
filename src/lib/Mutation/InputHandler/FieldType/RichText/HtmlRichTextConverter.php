@@ -13,7 +13,7 @@ use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInp
 
 class HtmlRichTextConverter implements RichTextInputConverter
 {
-    /** @var \Ibexa\Contracts\FieldTypeRichText\RichText\Converter */
+    /** @var Converter */
     private $xhtml5Converter;
 
     public function __construct(Converter $xhtml5Converter)

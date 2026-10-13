@@ -8,13 +8,14 @@
 namespace Ibexa\GraphQL\InputMapper;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\URL\Query\SortClause;
 
 class SearchQuerySortByMapper
 {
     /**
      * @param string[] $sortInput
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\URL\Query\SortClause[]
+     * @return SortClause[]
      */
     public function mapInputToSortClauses(array $sortInput)
     {

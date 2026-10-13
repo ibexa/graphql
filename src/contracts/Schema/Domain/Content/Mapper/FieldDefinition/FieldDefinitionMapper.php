@@ -19,12 +19,15 @@ interface FieldDefinitionMapper
 
     public function mapToFieldValueType(FieldDefinition $fieldDefinition): ?string;
 
-    public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string;
+    public function mapToFieldValueInputType(
+        ContentType $contentType,
+        FieldDefinition $fieldDefinition
+    ): ?string;
 
     public function mapToFieldValueResolver(FieldDefinition $fieldDefinition): ?string;
 
     /**
-     * @param \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition $fieldDefinition
+     * @param FieldDefinition $fieldDefinition
      *
      * @return string|null the argsBuilder string, or null if there are none.
      */

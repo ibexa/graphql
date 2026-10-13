@@ -15,8 +15,10 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class DefineItemConnection extends BaseWorker implements Worker
 {
-    public function work(Builder $schema, array $args)
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ) {
         $schema->addType(new Input\Type(
             $this->connectionTypeName($args),
             'relay-connection',
@@ -30,8 +32,10 @@ class DefineItemConnection extends BaseWorker implements Worker
         ));
     }
 
-    public function canWork(Builder $schema, array $args)
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ) {
         return isset($args['ContentType']) && $args['ContentType'] instanceof ContentType
                && !$schema->hasType($this->connectionTypeName($args));
     }

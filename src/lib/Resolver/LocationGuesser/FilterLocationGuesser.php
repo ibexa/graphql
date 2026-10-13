@@ -16,17 +16,19 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 class FilterLocationGuesser implements LocationGuesser
 {
     /**
-     * @var \Ibexa\GraphQL\Resolver\LocationGuesser\LocationFilter[]
+     * @var LocationFilter[]
      */
     private $filters;
 
     /**
-     * @var \Ibexa\GraphQL\Resolver\LocationGuesser\LocationProvider
+     * @var LocationProvider
      */
     private $provider;
 
-    public function __construct(LocationProvider $provider, array $filters)
-    {
+    public function __construct(
+        LocationProvider $provider,
+        array $filters
+    ) {
         $this->provider = $provider;
         $this->filters = $filters;
     }

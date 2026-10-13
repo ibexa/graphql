@@ -19,22 +19,25 @@ use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 class SearchResolver implements QueryInterface
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\SearchService
+     * @var SearchService
      */
     private $searchService;
 
     /**
-     * @var \Ibexa\GraphQL\InputMapper\SearchQueryMapper
+     * @var SearchQueryMapper
      */
     private $queryMapper;
 
     /**
-     * @var \Ibexa\GraphQL\DataLoader\ContentLoader
+     * @var ContentLoader
      */
     private $contentLoader;
 
-    public function __construct(ContentLoader $contentLoader, SearchService $searchService, SearchQueryMapper $queryMapper)
-    {
+    public function __construct(
+        ContentLoader $contentLoader,
+        SearchService $searchService,
+        SearchQueryMapper $queryMapper
+    ) {
         $this->contentLoader = $contentLoader;
         $this->searchService = $searchService;
         $this->queryMapper = $queryMapper;
@@ -47,14 +50,19 @@ class SearchResolver implements QueryInterface
         );
     }
 
-    public function searchContentOfTypeAsConnection($contentTypeIdentifier, $args)
-    {
+    public function searchContentOfTypeAsConnection(
+        $contentTypeIdentifier,
+        $args
+    ) {
         $query = $args['query'] ?: [];
         $query['ContentTypeIdentifier'] = $contentTypeIdentifier;
         $query['sortBy'] = $args['sortBy'];
         $query = $this->queryMapper->mapInputToQuery($query);
 
-        $paginator = new Paginator(function ($offset, $limit) use ($query) {
+        $paginator = new Paginator(function (
+            $offset,
+            $limit
+        ) use ($query) {
             $query->offset = $offset;
             $query->limit = $limit ?? 10;
 

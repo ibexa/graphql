@@ -12,6 +12,7 @@ use Ibexa\Contracts\Core\Repository\ContentTypeService;
 use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\Relation;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
 use Ibexa\Contracts\Core\Repository\Values\Content\VersionInfo;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
@@ -22,22 +23,25 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 class ContentResolver implements QueryInterface
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentService
+     * @var ContentService
      */
     private $contentService;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\SearchService
+     * @var SearchService
      */
     private $searchService;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
+     * @var ContentTypeService
      */
     private $contentTypeService;
 
-    public function __construct(ContentService $contentService, SearchService $searchService, ContentTypeService $contentTypeService)
-    {
+    public function __construct(
+        ContentService $contentService,
+        SearchService $searchService,
+        ContentTypeService $contentTypeService
+    ) {
         $this->contentService = $contentService;
         $this->searchService = $searchService;
         $this->contentTypeService = $contentTypeService;
@@ -60,10 +64,12 @@ class ContentResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Relation[]
+     * @return Relation[]
      */
-    public function findContentRelations(ContentInfo $contentInfo, $version = null)
-    {
+    public function findContentRelations(
+        ContentInfo $contentInfo,
+        $version = null
+    ) {
         return $this->contentService->loadRelations(
             $this->contentService->loadVersionInfo($contentInfo, $version)
         );

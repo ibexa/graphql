@@ -17,7 +17,7 @@ use Ibexa\Bundle\Core\DependencyInjection\Configuration\ConfigResolver;
 class ImagesVariationsBuilder implements SchemaBuilder
 {
     /**
-     * @var \Ibexa\Bundle\Core\DependencyInjection\Configuration\ConfigResolver
+     * @var ConfigResolver
      */
     private $configResolver;
 

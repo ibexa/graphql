@@ -10,14 +10,15 @@ namespace Ibexa\GraphQL\Relay;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionBuilder;
 use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
+use Overblog\GraphQLBundle\Relay\Connection\Output\Edge;
 use Overblog\GraphQLBundle\Relay\Connection\PageInfoInterface;
 
 final class PageAwareConnection
 {
-    /** @var \Overblog\GraphQLBundle\Relay\Connection\Output\Edge[] */
+    /** @var Edge[] */
     public $edges = [];
 
-    /** @var \Overblog\GraphQLBundle\Relay\Connection\PageInfoInterface */
+    /** @var PageInfoInterface */
     public $pageInfo;
 
     /** @var int */
@@ -26,14 +27,18 @@ final class PageAwareConnection
     /** @var Page[] */
     public $pages;
 
-    public function __construct(array $edges, PageInfoInterface $pageInfo)
-    {
+    public function __construct(
+        array $edges,
+        PageInfoInterface $pageInfo
+    ) {
         $this->edges = $edges;
         $this->pageInfo = $pageInfo;
     }
 
-    public static function fromConnection(Connection $connection, Argument $args): PageAwareConnection
-    {
+    public static function fromConnection(
+        Connection $connection,
+        Argument $args
+    ): PageAwareConnection {
         $return = new self($connection->edges, $connection->pageInfo);
         $return->totalCount = $connection->totalCount;
 

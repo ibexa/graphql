@@ -14,7 +14,7 @@ interface LocationGuesser
     /**
      * Tries to guess a valid location for a content item.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Content $content
+     * @param Content $content
      *
      * @return LocationGuess
      */

@@ -26,8 +26,10 @@ class DefineItemMutation extends BaseWorker implements Worker, Initializer
         ));
     }
 
-    public function work(Builder $schema, array $args)
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ) {
         $contentType = $args['ContentType'];
 
         // ex: createArticle
@@ -107,8 +109,10 @@ class DefineItemMutation extends BaseWorker implements Worker, Initializer
         $schema->addType(new Builder\Input\Type($this->getUpdateInputName($contentType), 'input-object'));
     }
 
-    public function canWork(Builder $schema, array $args)
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ) {
         return isset($args['ContentType'])
                && $args['ContentType'] instanceof ContentType
                && !isset($args['FieldDefinition'])

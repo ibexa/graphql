@@ -12,7 +12,7 @@ use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
 class BaseWorker
 {
     /**
-     * @var \Ibexa\GraphQL\Schema\Domain\Content\NameHelper
+     * @var NameHelper
      */
     private $nameHelper;
 

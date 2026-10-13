@@ -8,6 +8,7 @@
 namespace Ibexa\GraphQL\Mutation\InputHandler\FieldType;
 
 use Ibexa\Contracts\Core\FieldType\Value;
+use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter;
 use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 use Ibexa\FieldTypeRichText\FieldType\RichText as RichTextFieldType;
 use Ibexa\GraphQL\Exception\UnsupportedFieldInputFormatException;
@@ -15,7 +16,7 @@ use Ibexa\GraphQL\Exception\UnsupportedFieldInputFormatException;
 class RichText implements FieldTypeInputHandler
 {
     /**
-     * @var \Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldType\RichText\RichTextInputConverter[]
+     * @var RichTextInputConverter[]
      */
     private $inputConverters;
 
@@ -28,10 +29,12 @@ class RichText implements FieldTypeInputHandler
      * @param array $input
      * @param null $inputFormat
      *
-     * @return \Ibexa\FieldTypeRichText\FieldType\RichText\Value
+     * @return RichTextFieldType\Value
      */
-    public function toFieldValue($input, $inputFormat = null): Value
-    {
+    public function toFieldValue(
+        $input,
+        $inputFormat = null
+    ): Value {
         if (isset($this->inputConverters[$inputFormat])) {
             $fieldValue = new RichTextFieldType\Value(
                 $this->inputConverters[$inputFormat]->convertToXml($input)

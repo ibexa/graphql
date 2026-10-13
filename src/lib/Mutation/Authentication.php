@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Ibexa\GraphQL\Mutation;
 
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
 use Ibexa\Core\MVC\Symfony\Security\Authentication\AuthenticatorInterface;
 use Ibexa\GraphQL\Security\JWTUser;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
@@ -16,13 +17,13 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 final class Authentication
 {
-    /** @var \Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface */
+    /** @var JWTTokenManagerInterface */
     private $tokenManager;
 
-    /** @var \Symfony\Component\HttpFoundation\RequestStack */
+    /** @var RequestStack */
     private $requestStack;
 
-    /** @var \Ibexa\Core\MVC\Symfony\Security\Authentication\AuthenticatorInterface|null */
+    /** @var AuthenticatorInterface|null */
     private $authenticator;
 
     public function __construct(
@@ -36,7 +37,7 @@ final class Authentication
     }
 
     /**
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws NotFoundException
      */
     public function createToken($args): array
     {

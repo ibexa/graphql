@@ -14,8 +14,10 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Image implements FieldTypeInputHandler
 {
-    public function toFieldValue($input, $inputFormat = null): Value
-    {
+    public function toFieldValue(
+        $input,
+        $inputFormat = null
+    ): Value {
         if (!$input['file'] instanceof UploadedFile) {
             return null;
         }

@@ -13,22 +13,23 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\Core\MVC\Symfony\SiteAccess;
 use Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessProviderInterface;
+use Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessServiceInterface;
 use Ibexa\GraphQL\Exception\NoValidSiteaccessException;
 
 class SiteaccessGuesser
 {
     /**
-     * @var \Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessProviderInterface
+     * @var SiteAccessProviderInterface
      */
     private $provider;
 
     /**
-     * @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
+     * @var ConfigResolverInterface
      */
     private $configResolver;
 
     /**
-     * @var \Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessServiceInterface
+     * @var SiteAccessServiceInterface
      */
     private $siteAccessService;
 
@@ -38,7 +39,7 @@ class SiteaccessGuesser
     private $siteAccessGroups;
 
     public function __construct(
-        SiteAccess\SiteAccessServiceInterface $siteAccessService,
+        SiteAccessServiceInterface $siteAccessService,
         SiteAccessProviderInterface $provider,
         ConfigResolverInterface $configResolver,
         array $siteAccessGroups
@@ -50,7 +51,7 @@ class SiteaccessGuesser
     }
 
     /**
-     * @throws \Ibexa\GraphQL\Exception\NoValidSiteaccessException
+     * @throws NoValidSiteaccessException
      */
     public function guessForLocation(Location $location): SiteAccess
     {
@@ -63,7 +64,7 @@ class SiteaccessGuesser
         // we won't look into siteaccesses that don't use the same repository
         $currentRepository = $this->configResolver->getParameter('repository');
 
-        /** @var \Ibexa\Core\MVC\Symfony\SiteAccess[] $saList */
+        /** @var SiteAccess[] $saList */
         $matchingSiteaccessRootDepth = 0;
         $saList = iterator_to_array($this->provider->getSiteAccesses());
 
@@ -99,8 +100,10 @@ class SiteaccessGuesser
      *
      * @return int|false The root depth (used to select the deepest, most specific tree root), false if it isn't part of that subtree.
      */
-    private function isInSubtree(Location $location, int $treeRootLocationId)
-    {
+    private function isInSubtree(
+        Location $location,
+        int $treeRootLocationId
+    ) {
         return array_search($treeRootLocationId, $location->path);
     }
 

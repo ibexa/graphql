@@ -16,7 +16,7 @@ use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 class RepositoryContentTypeLoader implements ContentTypeLoader
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\ContentTypeService
+     * @var ContentTypeService
      */
     private $contentTypeService;
 

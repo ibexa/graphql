@@ -19,7 +19,7 @@ use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 class SectionResolver implements QueryInterface
 {
     /**
-     * @var \Ibexa\Contracts\Core\Repository\SectionService
+     * @var SectionService
      */
     private $sectionService;
 

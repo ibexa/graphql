@@ -12,8 +12,6 @@ namespace Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
  *
  * @deprecated since 2.0, will be removed in 3.0. Use the FieldDefinitionMapper interface instead.
  */
-interface FieldDefinitionArgsBuilderMapper
-{
-}
+interface FieldDefinitionArgsBuilderMapper {}
 
 class_alias(FieldDefinitionArgsBuilderMapper::class, 'EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionArgsBuilderMapper');

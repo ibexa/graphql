@@ -9,23 +9,25 @@ namespace Ibexa\GraphQL;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Location;
+use Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser;
+use Ibexa\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser;
 use Ibexa\GraphQL\Value\Item;
 
 class ItemFactory
 {
     /**
-     * @var \Ibexa\GraphQL\Resolver\LocationGuesser\LocationGuesser
+     * @var LocationGuesser
      */
     private $locationGuesser;
 
     /**
-     * @var \Ibexa\GraphQL\Resolver\SiteaccessGuesser\SiteaccessGuesser
+     * @var SiteaccessGuesser
      */
     private $siteaccessGuesser;
 
     public function __construct(
-        Resolver\LocationGuesser\LocationGuesser $locationGuesser,
-        Resolver\SiteaccessGuesser\SiteaccessGuesser $siteaccessGuesser
+        LocationGuesser $locationGuesser,
+        SiteaccessGuesser $siteaccessGuesser
     ) {
         $this->locationGuesser = $locationGuesser;
         $this->siteaccessGuesser = $siteaccessGuesser;

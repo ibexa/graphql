@@ -13,13 +13,14 @@ use Ibexa\GraphQL\DataLoader\Exception\ArgumentsException;
 use Ibexa\GraphQL\EventListener\ArgumentsExceptionListener;
 use Overblog\GraphQLBundle\Event\ErrorFormattingEvent;
 use Overblog\GraphQLBundle\Event\Events;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 
 final class ArgumentsExceptionListenerTest extends TestCase
 {
-    /** @var \Psr\Log\LoggerInterface&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var LoggerInterface&MockObject */
     private LoggerInterface $logger;
 
     private ArgumentsExceptionListener $listener;
