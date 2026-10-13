@@ -19,14 +19,14 @@ interface ContentLoader
     /**
      * Loads a list of content items given a Query Criterion.
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
+     * @return Content[]
      */
     public function find(Query $query): array;
 
     /**
      * Loads a single content item given a Query Criterion.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion $criterion A Query Criterion.
+     * @param Criterion $criterion A Query Criterion.
      *        Use Criterion\ContentId, Criterion\RemoteId or Criterion\LocationId for basic loading.
      */
     public function findSingle(Criterion $criterion): Content;

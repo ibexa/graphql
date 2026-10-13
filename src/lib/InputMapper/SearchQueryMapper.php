@@ -9,7 +9,9 @@ namespace Ibexa\GraphQL\InputMapper;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\DateMetadata;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\Field;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause;
 use InvalidArgumentException;
 
 final class SearchQueryMapper implements QueryMapper
@@ -22,7 +24,7 @@ final class SearchQueryMapper implements QueryMapper
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery
+     * @return LocationQuery
      */
     public function mapInputToLocationQuery(array $inputArray): LocationQuery
     {
@@ -33,7 +35,7 @@ final class SearchQueryMapper implements QueryMapper
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query
+     * @return Query
      */
     public function mapInputToQuery(array $inputArray): Query
     {
@@ -51,13 +53,15 @@ final class SearchQueryMapper implements QueryMapper
      *     Text?: string,
      *     Field?: array<array{target: mixed}>,
      *     ParentLocationId?: int|int[],
-     *     sortBy?: array<string|\Ibexa\Contracts\Core\Repository\Values\Content\Query::SORT_*>,
+     *     sortBy?: array<string|Query::SORT_*>,
      *     Modified?: array<string, mixed>,
      *     Created?: array<string, mixed>
      * } $inputArray
      */
-    private function mapInput(LocationQuery|Query $query, array $inputArray): void
-    {
+    private function mapInput(
+        LocationQuery | Query $query,
+        array $inputArray
+    ): void {
         if (isset($inputArray['offset'])) {
             $query->offset = $inputArray['offset'];
         }
@@ -98,13 +102,13 @@ final class SearchQueryMapper implements QueryMapper
         $criteria = array_merge($criteria, $this->mapDateMetadata($inputArray, 'Created'));
 
         if (isset($inputArray['sortBy'])) {
-            /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause[]|null[] $sortClauses */
+            /** @var SortClause[]|null[] $sortClauses */
             $sortClauses = array_map(
                 static function ($sortClauseClass): ?object {
                     static $lastSortClause;
 
                     if ($sortClauseClass === Query::SORT_DESC) {
-                        if (!$lastSortClause instanceof Query\SortClause) {
+                        if (!$lastSortClause instanceof SortClause) {
                             return null;
                         }
 
@@ -117,7 +121,7 @@ final class SearchQueryMapper implements QueryMapper
                         return null;
                     }
 
-                    if (!in_array(Query\SortClause::class, class_parents($sortClauseClass))) {
+                    if (!in_array(SortClause::class, class_parents($sortClauseClass))) {
                         return null;
                     }
 
@@ -139,17 +143,19 @@ final class SearchQueryMapper implements QueryMapper
     /**
      * @param $dateMetadata
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\DateMetadata[]
+     * @return DateMetadata[]
      */
-    private function mapDateMetadata(array $queryArg, string $dateMetadata): array
-    {
+    private function mapDateMetadata(
+        array $queryArg,
+        string $dateMetadata
+    ): array {
         if (!isset($queryArg[$dateMetadata]) || !is_array($queryArg[$dateMetadata])) {
             return [];
         }
 
         $targetMap = [
-            'Created' => Query\Criterion\DateMetadata::CREATED,
-            'Modified' => Query\Criterion\DateMetadata::MODIFIED,
+            'Created' => DateMetadata::CREATED,
+            'Modified' => DateMetadata::MODIFIED,
         ];
 
         if (!isset($targetMap[$dateMetadata])) {
@@ -168,7 +174,7 @@ final class SearchQueryMapper implements QueryMapper
                 continue;
             }
 
-            $criteria[] = new Query\Criterion\DateMetadata(
+            $criteria[] = new DateMetadata(
                 $targetMap[$dateMetadata],
                 $dateOperatorsMap[$operator],
                 strtotime($dateString)

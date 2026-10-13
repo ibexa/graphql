@@ -18,6 +18,7 @@ use Ibexa\GraphQL\InputMapper\QueryMapper;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Value\Field;
 use Ibexa\GraphQL\Value\Item;
+use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Definition\ArgumentInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
 use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
@@ -57,14 +58,16 @@ final class ItemResolver implements QueryInterface
     /**
      * Resolves a domain content item by id, and checks that it is of the requested type.
      *
-     * @param \Overblog\GraphQLBundle\Definition\Argument|array $args
+     * @param Argument|array $args
      * @param string|null $contentTypeIdentifier
      *
-     * @throws \GraphQL\Error\UserError if the loaded item's type didn't match the requested type
-     * @throws \GraphQL\Error\UserError if no argument was provided
+     * @throws UserError if the loaded item's type didn't match the requested type
+     * @throws UserError if no argument was provided
      */
-    public function resolveItemOfType($args, $contentTypeIdentifier): Item
-    {
+    public function resolveItemOfType(
+        $args,
+        $contentTypeIdentifier
+    ): Item {
         $item = $this->resolveItem($args);
 
         $contentType = $item->getContentInfo()->getContentType();
@@ -78,10 +81,10 @@ final class ItemResolver implements QueryInterface
     /**
      * Resolves a domain content item by one of its identifiers.
      *
-     * @param \Overblog\GraphQLBundle\Definition\Argument|array $args
+     * @param Argument|array $args
      *
-     * @throws \GraphQL\Error\UserError if $contentTypeIdentifier was specified, and the loaded item's type didn't match it
-     * @throws \GraphQL\Error\UserError if no argument was provided
+     * @throws UserError if $contentTypeIdentifier was specified, and the loaded item's type didn't match it
+     * @throws UserError if no argument was provided
      */
     public function resolveItem($args): Item
     {
@@ -116,22 +119,30 @@ final class ItemResolver implements QueryInterface
         return $item;
     }
 
-    public function resolveItemFieldValue(Item $item, string $fieldDefinitionIdentifier, $args = null): ?Field
-    {
+    public function resolveItemFieldValue(
+        Item $item,
+        string $fieldDefinitionIdentifier,
+        $args = null
+    ): ?Field {
         return Field::fromField($item->getContent()->getField($fieldDefinitionIdentifier, $args['language'] ?? null));
     }
 
     /**
-     * @return \GraphQL\Executor\Promise\Promise|\Overblog\GraphQLBundle\Relay\Connection\Output\Connection<\Ibexa\GraphQL\Value\Item>
+     * @return Promise|Connection<Item>
      */
-    public function resolveItemsOfTypeAsConnection(string $contentTypeIdentifier, ArgumentInterface $args): Connection|Promise
-    {
+    public function resolveItemsOfTypeAsConnection(
+        string $contentTypeIdentifier,
+        ArgumentInterface $args
+    ): Connection | Promise {
         $query = $args['query'] ?: [];
         $query['ContentTypeIdentifier'] = $contentTypeIdentifier;
         $query['sortBy'] = $args['sortBy'];
         $query = $this->queryMapper->mapInputToLocationQuery($query);
 
-        $paginator = new Paginator(function ($offset, $limit) use ($query): array {
+        $paginator = new Paginator(function (
+            $offset,
+            $limit
+        ) use ($query): array {
             $query->offset = $offset;
             $query->limit = $limit ?? 10;
 
@@ -157,7 +168,7 @@ final class ItemResolver implements QueryInterface
             $item->getContentInfo()->getContentType()
         );
 
-        return  ($this->typeResolver->hasSolution($typeName))
+        return ($this->typeResolver->hasSolution($typeName))
             ? $typeName
             : 'UntypedItem';
     }

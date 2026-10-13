@@ -11,6 +11,7 @@ use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
 use Ibexa\Contracts\Core\Repository\LocationService;
 use Ibexa\Contracts\Core\Repository\UserService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Field;
 use Ibexa\Contracts\Core\Repository\Values\User\User;
 use Ibexa\Contracts\Core\Repository\Values\User\UserGroup;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
@@ -25,8 +26,10 @@ class UserResolver implements QueryInterface
 
     private LocationService $locationService;
 
-    public function __construct(UserService $userService, LocationService $locationService)
-    {
+    public function __construct(
+        UserService $userService,
+        LocationService $locationService
+    ) {
         $this->userService = $userService;
         $this->locationService = $locationService;
     }
@@ -34,9 +37,9 @@ class UserResolver implements QueryInterface
     /**
      * @param array{id?: int, email?: string, login?: string} $args
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\User\User|iterable<\Ibexa\Contracts\Core\Repository\Values\User\User>
+     * @return User|iterable<User>
      */
-    public function resolveUser($args): User|iterable
+    public function resolveUser($args): User | iterable
     {
         if (isset($args['id'])) {
             return $this->userService->loadUser($args['id']);
@@ -63,7 +66,7 @@ class UserResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\User\UserGroup[]
+     * @return UserGroup[]
      */
     public function resolveUserGroupsByUserId(int $userId): iterable
     {
@@ -73,7 +76,7 @@ class UserResolver implements QueryInterface
     }
 
     /**
-     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\User\User>
+     * @return iterable<User>
      */
     public function resolveUsersOfGroup(UserGroup $userGroup): iterable
     {
@@ -83,7 +86,7 @@ class UserResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\User\UserGroup
+     * @return UserGroup
      */
     public function resolveUserGroupById(int $userGroupId): UserGroup
     {
@@ -91,7 +94,7 @@ class UserResolver implements QueryInterface
     }
 
     /**
-     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\User\UserGroup>
+     * @return iterable<UserGroup>
      */
     public function resolveUserGroupSubGroups(UserGroup $userGroup): iterable
     {
@@ -101,7 +104,7 @@ class UserResolver implements QueryInterface
     /**
      * @param array{id: int} $args
      *
-     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\User\UserGroup>
+     * @return iterable<UserGroup>
      */
     public function resolveUserGroups(array $args): iterable
     {
@@ -115,10 +118,12 @@ class UserResolver implements QueryInterface
     /**
      * @param array{identifier?: string} $args
      *
-     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\Field|null>
+     * @return iterable<Field|null>
      */
-    public function resolveContentFields(Content $content, array $args): iterable
-    {
+    public function resolveContentFields(
+        Content $content,
+        array $args
+    ): iterable {
         if (isset($args['identifier'])) {
             return [$content->getField($args['identifier'])];
         }

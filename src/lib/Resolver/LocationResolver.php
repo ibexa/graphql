@@ -61,7 +61,7 @@ class LocationResolver implements QueryInterface
     }
 
     /**
-     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\Location>
+     * @return iterable<Location>
      */
     public function resolveLocationsByContentId(int $contentId): iterable
     {
@@ -78,10 +78,12 @@ class LocationResolver implements QueryInterface
     /**
      * @param int $locationId
      *
-     * @return \Ibexa\GraphQL\Relay\PageAwareConnection<\Ibexa\Contracts\Core\Repository\Values\Content\Location>
+     * @return PageAwareConnection<Location>
      */
-    public function resolveLocationChildren($locationId, Argument $args): PageAwareConnection
-    {
+    public function resolveLocationChildren(
+        $locationId,
+        Argument $args
+    ): PageAwareConnection {
         $args['locationId'] = $locationId;
         $sortClauses = isset($args['sortBy']) ? $this->sortMapper->mapInputToSortClauses($args['sortBy']) : [];
 
@@ -90,7 +92,10 @@ class LocationResolver implements QueryInterface
             'sortClauses' => $sortClauses,
         ]);
 
-        $paginator = new Paginator(function ($offset, $limit) use ($query) {
+        $paginator = new Paginator(function (
+            $offset,
+            $limit
+        ) use ($query) {
             $query->offset = $offset;
             $query->limit = $limit ?? self::DEFAULT_LIMIT;
 

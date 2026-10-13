@@ -23,8 +23,10 @@ class CurrentSiteLocationProvider implements LocationProvider
 
     private ContentCollectionFilterBuilder $filterBuilder;
 
-    public function __construct(SearchService $searchService, ContentCollectionFilterBuilder $filterBuilder)
-    {
+    public function __construct(
+        SearchService $searchService,
+        ContentCollectionFilterBuilder $filterBuilder
+    ) {
         $this->searchService = $searchService;
         $this->filterBuilder = $filterBuilder;
     }

@@ -66,8 +66,10 @@ class SectionMutation
      *     name: string
      * }
      */
-    private function mapSectionToPayLoad(array $value, Section $section): array
-    {
+    private function mapSectionToPayLoad(
+        array $value,
+        Section $section
+    ): array {
         return [
             'clientMutationId' => $value['clientMutationId'],
             'id' => $section->id,

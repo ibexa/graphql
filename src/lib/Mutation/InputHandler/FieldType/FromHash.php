@@ -23,8 +23,10 @@ class FromHash implements FieldTypeInputHandler
         $this->fieldType = $fieldType;
     }
 
-    public function toFieldValue($input, $inputFormat = null): Value
-    {
+    public function toFieldValue(
+        $input,
+        $inputFormat = null
+    ): Value {
         return $this->fieldType->fromHash($input);
     }
 }

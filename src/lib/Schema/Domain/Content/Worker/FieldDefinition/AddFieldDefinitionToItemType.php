@@ -25,10 +25,12 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
     }
 
     /**
-     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition, ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     * @param array{FieldDefinition: FieldDefinition, ContentType: ContentType} $args
      */
-    public function work(Builder $schema, array $args): void
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ): void {
         $schema->addFieldToType($this->typeName($args), new Input\Field(
             $this->fieldName($args),
             $this->fieldType($args),
@@ -43,10 +45,12 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
     }
 
     /**
-     * @param array{FieldDefinition?: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition|mixed, ContentType?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType|mixed} $args
+     * @param array{FieldDefinition?: FieldDefinition|mixed, ContentType?: ContentType|mixed} $args
      */
-    public function canWork(Builder $schema, array $args): bool
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ): bool {
         return
             isset($args['FieldDefinition'])
             && $args['FieldDefinition'] instanceof FieldDefinition
@@ -56,7 +60,7 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
     }
 
     /**
-     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     * @param array{ContentType: ContentType} $args
      */
     protected function typeName(array $args): string
     {
@@ -64,7 +68,7 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
     }
 
     /**
-     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition} $args
+     * @param array{FieldDefinition: FieldDefinition} $args
      */
     protected function fieldName(array $args): string
     {
@@ -72,7 +76,7 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
     }
 
     /**
-     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition} $args
+     * @param array{FieldDefinition: FieldDefinition} $args
      */
     public function fieldDescription(array $args)
     {
@@ -80,7 +84,7 @@ class AddFieldDefinitionToItemType extends BaseWorker implements Worker
     }
 
     /**
-     * @param array{FieldDefinition: \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition} $args
+     * @param array{FieldDefinition: FieldDefinition} $args
      */
     private function fieldType(array $args): ?string
     {

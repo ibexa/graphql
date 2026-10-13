@@ -19,7 +19,7 @@ class ImageAssetFieldResolver implements QueryInterface
     private iterable $strategies;
 
     /**
-     * @param iterable<\Ibexa\GraphQL\Mapper\ImageAssetMapperStrategyInterface> $strategies
+     * @param iterable<ImageAssetMapperStrategyInterface> $strategies
      */
     public function __construct(iterable $strategies = [])
     {

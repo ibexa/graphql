@@ -21,8 +21,10 @@ class ConfigurableFieldDefinitionMapper implements FieldDefinitionMapper
 
     private FieldDefinitionMapper $innerMapper;
 
-    public function __construct(FieldDefinitionMapper $innerMapper, $typesMap = [])
-    {
+    public function __construct(
+        FieldDefinitionMapper $innerMapper,
+        $typesMap = []
+    ) {
         $this->typesMap = $typesMap;
         $this->innerMapper = $innerMapper;
     }
@@ -33,8 +35,10 @@ class ConfigurableFieldDefinitionMapper implements FieldDefinitionMapper
             ?? $this->innerMapper->mapToFieldValueType($fieldDefinition);
     }
 
-    public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
-    {
+    public function mapToFieldValueInputType(
+        ContentType $contentType,
+        FieldDefinition $fieldDefinition
+    ): ?string {
         if (isset($this->typesMap[$fieldDefinition->fieldTypeIdentifier]['input_type'])) {
             return $this->typesMap[$fieldDefinition->fieldTypeIdentifier]['input_type'];
         }

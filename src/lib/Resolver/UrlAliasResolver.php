@@ -13,6 +13,7 @@ use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\Core\MVC\Symfony\Routing\Generator\UrlAliasGenerator;
+use Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessService;
 use Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessServiceInterface;
 use Ibexa\GraphQL\Value\Item;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
@@ -35,7 +36,7 @@ class UrlAliasResolver implements QueryInterface
     private UrlAliasGenerator $urlGenerator;
 
     /**
-     * @var \Ibexa\Core\MVC\Symfony\SiteAccess\SiteAccessService
+     * @var SiteAccessService
      */
     private SiteAccessServiceInterface $siteaccessService;
 
@@ -58,10 +59,12 @@ class UrlAliasResolver implements QueryInterface
     /**
      * @param array{custom ?: bool} $args
      *
-     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\URLAlias>
+     * @return iterable<URLAlias>
      */
-    public function resolveLocationUrlAliases(Location $location, $args): iterable
-    {
+    public function resolveLocationUrlAliases(
+        Location $location,
+        $args
+    ): iterable {
         return $this->urlAliasService->listLocationAliases(
             $location,
             isset($args['custom']) ? $args['custom'] : false

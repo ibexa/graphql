@@ -22,14 +22,16 @@ class ContentTypeResolver implements QueryInterface
 
     private TypeResolver $typeResolver;
 
-    public function __construct(TypeResolver $typeResolver, ContentTypeService $contentTypeService)
-    {
+    public function __construct(
+        TypeResolver $typeResolver,
+        ContentTypeService $contentTypeService
+    ) {
         $this->typeResolver = $typeResolver;
         $this->contentTypeService = $contentTypeService;
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType[]
+     * @return ContentType[]
      */
     public function resolveContentTypesFromGroup($args)
     {

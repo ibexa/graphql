@@ -36,7 +36,7 @@ class ObjectStateGroupResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectStateGroup[]
+     * @return ObjectStateGroup[]
      */
     public function resolveObjectStateGroups(): array
     {

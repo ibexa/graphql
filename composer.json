@@ -33,9 +33,10 @@
         "symfony/yaml": "^7.4"
     },
     "require-dev": {
-        "ibexa/code-style": "~2.0.0",
+        "ibexa/code-style": "~2.3.1",
         "ibexa/content-forms": "~5.0.x-dev",
         "ibexa/design-engine": "~5.0.x-dev",
+        "ibexa/doctrine-migrations": "~5.0.x-dev",
         "ibexa/doctrine-schema": "~5.0.x-dev",
         "ibexa/http-cache": "~5.0.x-dev",
         "ibexa/notifications": "~5.0.x-dev",

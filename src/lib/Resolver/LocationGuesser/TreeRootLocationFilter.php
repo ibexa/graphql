@@ -8,6 +8,9 @@ declare(strict_types=1);
 
 namespace Ibexa\GraphQL\Resolver\LocationGuesser;
 
+use Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException;
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
+use Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException;
 use Ibexa\Contracts\Core\Repository\LocationService;
 use Ibexa\Contracts\Core\Repository\URLAliasService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
@@ -27,15 +30,20 @@ class TreeRootLocationFilter implements LocationFilter
 
     private URLAliasService $urlAliasService;
 
-    public function __construct(LocationService $locationService, URLAliasService $urlAliasService, ConfigResolverInterface $configResolver)
-    {
+    public function __construct(
+        LocationService $locationService,
+        URLAliasService $urlAliasService,
+        ConfigResolverInterface $configResolver
+    ) {
         $this->locationService = $locationService;
         $this->configResolver = $configResolver;
         $this->urlAliasService = $urlAliasService;
     }
 
-    public function filter(Content $content, LocationList $locationList): void
-    {
+    public function filter(
+        Content $content,
+        LocationList $locationList
+    ): void {
         foreach ($locationList->getLocations() as $location) {
             if (!$this->locationIsInTreeRoot($location) && !$this->locationPrefixIsExcluded($location)) {
                 $locationList->removeLocation($location);
@@ -46,10 +54,10 @@ class TreeRootLocationFilter implements LocationFilter
     /**
      * Checks if a location is valid in regards to the tree root setting.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Location $location
+     * @param Location $location
      *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
+     * @throws NotFoundException
+     * @throws UnauthorizedException
      */
     private function locationIsInTreeRoot(Location $location): bool
     {
@@ -66,11 +74,11 @@ class TreeRootLocationFilter implements LocationFilter
     /**
      * Tests if the location is excluded from tree root.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Location $candidateLocation
+     * @param Location $candidateLocation
      *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
+     * @throws NotFoundException
+     * @throws UnauthorizedException
+     * @throws InvalidArgumentException
      */
     private function locationPrefixIsExcluded(Location $candidateLocation): bool
     {
@@ -102,8 +110,10 @@ class TreeRootLocationFilter implements LocationFilter
      * @param array $path
      * @param array $rootPath
      */
-    private function containsRootPath(array $path, array $rootPath): bool
-    {
+    private function containsRootPath(
+        array $path,
+        array $rootPath
+    ): bool {
         return array_slice($path, 0, count($rootPath)) === $rootPath;
     }
 }

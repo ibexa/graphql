@@ -19,13 +19,12 @@ final readonly class AuthenticationMutation
     public function __construct(
         private JWTTokenManagerInterface $tokenManager,
         private UserService $userService
-    ) {
-    }
+    ) {}
 
     /**
      * @return array<string, ?string>
      *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
+     * @throws NotFoundException
      */
     public function createToken(Argument $args): array
     {

@@ -7,6 +7,9 @@
 
 namespace Ibexa\GraphQL\Mapper;
 
+use Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException;
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
+use Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException;
 use Ibexa\Contracts\Core\Repository\Values\Content\Field;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\Core\FieldType\ImageAsset;
@@ -32,9 +35,9 @@ final class ContentImageAssetMapperStrategy implements ImageAssetMapperStrategyI
     }
 
     /**
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
+     * @throws NotFoundException
+     * @throws InvalidArgumentException
+     * @throws UnauthorizedException
      */
     public function process(ImageAsset\Value $value): Field
     {

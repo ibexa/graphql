@@ -12,6 +12,7 @@ use GraphQL\Executor\Promise\Promise;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionBuilder;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface;
+use Overblog\GraphQLBundle\Relay\Connection\EdgeInterface;
 use Overblog\GraphQLBundle\Relay\Connection\PageInfoInterface;
 use UnexpectedValueException;
 
@@ -20,7 +21,7 @@ use UnexpectedValueException;
  */
 final class PageAwareConnection
 {
-    /** @var iterable<\Overblog\GraphQLBundle\Relay\Connection\EdgeInterface<T>> */
+    /** @var iterable<EdgeInterface<T>> */
     public iterable $edges = [];
 
     public PageInfoInterface $pageInfo;
@@ -32,21 +33,25 @@ final class PageAwareConnection
     public array $pages;
 
     /**
-     * @param iterable<\Overblog\GraphQLBundle\Relay\Connection\EdgeInterface<T>> $edges
+     * @param iterable<EdgeInterface<T>> $edges
      */
-    public function __construct(iterable $edges, PageInfoInterface $pageInfo)
-    {
+    public function __construct(
+        iterable $edges,
+        PageInfoInterface $pageInfo
+    ) {
         $this->edges = $edges;
         $this->pageInfo = $pageInfo;
     }
 
     /**
-     * @param \GraphQL\Executor\Promise\Promise|\Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface<T> $connection
+     * @param Promise|ConnectionInterface<T> $connection
      *
-     * @return \Ibexa\GraphQL\Relay\PageAwareConnection<T>
+     * @return PageAwareConnection<T>
      */
-    public static function fromConnection(ConnectionInterface|Promise $connection, Argument $args): PageAwareConnection
-    {
+    public static function fromConnection(
+        ConnectionInterface | Promise $connection,
+        Argument $args
+    ): PageAwareConnection {
         $connection = self::resolvePromise(
             $connection,
             static fn ($resolved): bool => $resolved instanceof ConnectionInterface,
@@ -76,8 +81,11 @@ final class PageAwareConnection
         return $return;
     }
 
-    private static function resolvePromise(mixed $value, callable $validator, string $errorMessage): mixed
-    {
+    private static function resolvePromise(
+        mixed $value,
+        callable $validator,
+        string $errorMessage
+    ): mixed {
         if ($value instanceof Promise) {
             $promiseAdapter = new SyncPromiseAdapter();
             $resolvedValue = $promiseAdapter->wait($value);

@@ -27,8 +27,10 @@ class ContentResolver implements QueryInterface
 
     private SearchService $searchService;
 
-    public function __construct(ContentService $contentService, SearchService $searchService)
-    {
+    public function __construct(
+        ContentService $contentService,
+        SearchService $searchService
+    ) {
         $this->contentService = $contentService;
         $this->searchService = $searchService;
     }
@@ -36,7 +38,7 @@ class ContentResolver implements QueryInterface
     /**
      * @param int $contentTypeId
      *
-     * @return array<\Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo>
+     * @return array<ContentInfo>
      */
     public function findContentByType($contentTypeId): array
     {
@@ -55,10 +57,12 @@ class ContentResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Relation[]
+     * @return Relation[]
      */
-    public function findContentRelations(ContentInfo $contentInfo, ?int $version = null): array
-    {
+    public function findContentRelations(
+        ContentInfo $contentInfo,
+        ?int $version = null
+    ): array {
         return array_filter(array_map(
             static fn (RelationListItemInterface $relationListItem): ?Relation => $relationListItem->getRelation(),
             $this->contentService->loadRelationList(
@@ -68,7 +72,7 @@ class ContentResolver implements QueryInterface
     }
 
     /**
-     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\Relation>
+     * @return iterable<Relation>
      */
     public function findContentReverseRelations(ContentInfo $contentInfo): iterable
     {
@@ -96,7 +100,7 @@ class ContentResolver implements QueryInterface
     /**
      * @param array<int> $contentIdList
      *
-     * @return array<\Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo>
+     * @return array<ContentInfo>
      */
     public function resolveContentByIdList(array $contentIdList): array
     {
@@ -121,7 +125,7 @@ class ContentResolver implements QueryInterface
     /**
      * @param int $contentId
      *
-     * @return iterable<\Ibexa\Contracts\Core\Repository\Values\Content\VersionInfo>
+     * @return iterable<VersionInfo>
      */
     public function resolveContentVersions(int $contentId): iterable
     {

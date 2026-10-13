@@ -13,6 +13,7 @@ use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\URLAliasService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Location;
 use Ibexa\Contracts\Core\Repository\Values\Content\LocationQuery;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
 use Ibexa\Contracts\Core\Repository\Values\Content\URLAlias;
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
@@ -34,8 +35,13 @@ class SearchLocationLoader implements LocationLoader
 
     private UrlAliasGenerator $urlAliasGenerator;
 
-    public function __construct(SearchService $searchService, LocationService $locationService, URLAliasService $urlAliasService, ConfigResolverInterface $configResolver, UrlAliasGenerator $urlAliasGenerator)
-    {
+    public function __construct(
+        SearchService $searchService,
+        LocationService $locationService,
+        URLAliasService $urlAliasService,
+        ConfigResolverInterface $configResolver,
+        UrlAliasGenerator $urlAliasGenerator
+    ) {
         $this->searchService = $searchService;
         $this->locationService = $locationService;
         $this->urlAliasService = $urlAliasService;
@@ -85,11 +91,11 @@ class SearchLocationLoader implements LocationLoader
     /**
      * Counts the results of a query.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query $query
+     * @param Query $query
      *
      * @return int
      *
-     * @throws \Ibexa\GraphQL\DataLoader\Exception\ArgumentsException
+     * @throws ArgumentsException
      */
     public function count(LocationQuery $query)
     {

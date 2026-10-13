@@ -7,9 +7,11 @@
 
 namespace Ibexa\GraphQL\Relay;
 
+use Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException;
 use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\Contracts\Core\Repository\Values\Content\Search\SearchHit;
+use Ibexa\Contracts\Core\Repository\Values\ValueObject;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionBuilder;
 use Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface;
 
@@ -35,9 +37,9 @@ class SearchResolver
      *     offset?: int
      * } $args
      *
-     * @return \Overblog\GraphQLBundle\Relay\Connection\ConnectionInterface<\Ibexa\Contracts\Core\Repository\Values\ValueObject>
+     * @return ConnectionInterface<ValueObject>
      *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function searchContent(array $args): ConnectionInterface
     {

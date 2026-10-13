@@ -26,8 +26,10 @@ class SelectionFieldResolver implements QueryInterface
         $this->contentTypeLoader = $contentTypeLoader;
     }
 
-    public function resolveSelectionFieldValue(?Field $field, Content $content)
-    {
+    public function resolveSelectionFieldValue(
+        ?Field $field,
+        Content $content
+    ) {
         if ($field === null || empty($field->value->selection)) {
             return null;
         }
@@ -56,8 +58,11 @@ class SelectionFieldResolver implements QueryInterface
      *
      * @return array
      */
-    private function getOptions(Content $content, Field $field, FieldDefinition $fieldDefinition)
-    {
+    private function getOptions(
+        Content $content,
+        Field $field,
+        FieldDefinition $fieldDefinition
+    ) {
         $fieldSettings = $fieldDefinition->getFieldSettings();
 
         if (isset($fieldSettings['multilingualOptions'])) {

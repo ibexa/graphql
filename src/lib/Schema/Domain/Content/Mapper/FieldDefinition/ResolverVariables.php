@@ -65,8 +65,10 @@ class ResolverVariables implements FieldDefinitionMapper
         return $resolver;
     }
 
-    public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
-    {
+    public function mapToFieldValueInputType(
+        ContentType $contentType,
+        FieldDefinition $fieldDefinition
+    ): ?string {
         return $this->innerMapper->mapToFieldValueInputType($contentType, $fieldDefinition);
     }
 

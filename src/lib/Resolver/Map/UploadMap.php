@@ -13,7 +13,7 @@ use Overblog\GraphQLBundle\Upload\Type\GraphQLUploadType;
 class UploadMap extends ResolverMap
 {
     /**
-     * @return array<string, array<string, callable(): \Overblog\GraphQLBundle\Upload\Type\GraphQLUploadType>>
+     * @return array<string, array<string, callable(): GraphQLUploadType>>
      */
     protected function map(): array
     {

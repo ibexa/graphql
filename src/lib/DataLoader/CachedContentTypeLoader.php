@@ -17,7 +17,7 @@ class CachedContentTypeLoader implements ContentTypeLoader
     private ContentTypeLoader $innerLoader;
 
     /**
-     * @var \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType[]
+     * @var ContentType[]
      */
     private array $loadedItems = [];
 

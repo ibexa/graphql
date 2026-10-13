@@ -11,5 +11,8 @@ use Ibexa\Contracts\Core\FieldType\Value;
 
 interface FieldTypeInputHandler
 {
-    public function toFieldValue($input, $inputFormat = null): Value;
+    public function toFieldValue(
+        $input,
+        $inputFormat = null
+    ): Value;
 }
