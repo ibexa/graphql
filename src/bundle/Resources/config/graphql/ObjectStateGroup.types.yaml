@@ -12,6 +12,7 @@ ObjectStateGroup:
             defaultLanguageCode:
                 type: "String"
                 description: "The ObjectStateGroup's default language code."
+                resolve: "@=value.mainLanguageCode"
             languageCodes:
                 type: "[String]"
                 description: "The ObjectStateGroup's language codes."
