@@ -8,6 +8,9 @@
 namespace Ibexa\GraphQL\Resolver;
 
 use Ibexa\Contracts\Core\Repository\ContentService;
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
+use Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Field;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\Contracts\Core\Variation\VariationHandler;
@@ -45,8 +48,10 @@ class ImageFieldResolver implements QueryInterface
     /**
      * @param array{identifier: array<string>} $args
      */
-    public function resolveImageVariations(ImageFieldValue $fieldValue, array $args)
-    {
+    public function resolveImageVariations(
+        ImageFieldValue $fieldValue,
+        array $args
+    ) {
         if ($this->fieldType->isEmptyValue($fieldValue)) {
             return null;
         }
@@ -63,8 +68,10 @@ class ImageFieldResolver implements QueryInterface
     /**
      * @param array{identifier: string} $args
      */
-    public function resolveImageVariation(ImageFieldValue $fieldValue, array $args)
-    {
+    public function resolveImageVariation(
+        ImageFieldValue $fieldValue,
+        array $args
+    ) {
         if ($this->fieldType->isEmptyValue($fieldValue)) {
             return null;
         }
@@ -76,10 +83,10 @@ class ImageFieldResolver implements QueryInterface
     }
 
     /**
-     * @return array{\Ibexa\Contracts\Core\Repository\Values\Content\Content, \Ibexa\Contracts\Core\Repository\Values\Content\Field}
+     * @return array{Content, Field}
      *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\UnauthorizedException
+     * @throws NotFoundException
+     * @throws UnauthorizedException
      */
     protected function getImageField(ImageFieldValue $fieldValue): array
     {
@@ -88,7 +95,7 @@ class ImageFieldResolver implements QueryInterface
         $content = $this->contentLoader->findSingle(new Criterion\ContentId($contentId));
 
         $fieldFound = false;
-        /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Field $field */
+        /** @var Field $field */
         foreach ($content->getFields() as $field) {
             if ($field->id == $fieldId) {
                 $fieldFound = true;

@@ -44,7 +44,7 @@ final class ArgumentsExceptionListenerTest extends TestCase
         $event = $this->createErrorFormattingEvent($exception);
 
         $this->logger
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('debug')
             ->with(
                 sprintf('[GraphQL] %s: %s', ArgumentsException::class, 'invalid arguments'),
@@ -62,7 +62,7 @@ final class ArgumentsExceptionListenerTest extends TestCase
         $event = $this->createErrorFormattingEvent($exception);
 
         $this->logger
-            ->expects(self::never())
+            ->expects($this->never())
             ->method('debug');
 
         $this->listener->onErrorFormatting($event);

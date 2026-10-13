@@ -17,10 +17,12 @@ use Ibexa\GraphQL\Schema\Worker;
 class AddItemToGroup extends BaseWorker implements Worker
 {
     /**
-     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType, ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     * @param array{ContentType: ContentType, ContentTypeGroup: ContentTypeGroup} $args
      */
-    public function work(Builder $schema, array $args): void
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ): void {
         $contentType = $args['ContentType'];
         $descriptions = $contentType->getDescriptions();
 
@@ -65,10 +67,12 @@ class AddItemToGroup extends BaseWorker implements Worker
     }
 
     /**
-     * @param array{ContentType?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType|mixed, ContentTypeGroup?: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup|mixed} $args
+     * @param array{ContentType?: ContentType|mixed, ContentTypeGroup?: ContentTypeGroup|mixed} $args
      */
-    public function canWork(Builder $schema, array $args): bool
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ): bool {
         return
             isset($args['ContentType'])
             && $args['ContentType'] instanceof ContentType
@@ -78,7 +82,7 @@ class AddItemToGroup extends BaseWorker implements Worker
     }
 
     /**
-     * @param array{ContentTypeGroup: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup} $args
+     * @param array{ContentTypeGroup: ContentTypeGroup} $args
      */
     protected function groupName(array $args): string
     {
@@ -86,7 +90,7 @@ class AddItemToGroup extends BaseWorker implements Worker
     }
 
     /**
-     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     * @param array{ContentType: ContentType} $args
      */
     protected function typeField(array $args): string
     {
@@ -94,7 +98,7 @@ class AddItemToGroup extends BaseWorker implements Worker
     }
 
     /**
-     * @param array{ContentType: \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType} $args
+     * @param array{ContentType: ContentType} $args
      */
     protected function typeName(array $args): string
     {

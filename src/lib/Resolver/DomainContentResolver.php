@@ -55,26 +55,30 @@ class DomainContentResolver implements QueryInterface
     /**
      * @param string $contentTypeIdentifier
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
+     * @return Content[]
      */
-    public function resolveDomainContentItems($contentTypeIdentifier, Argument $query): array
-    {
+    public function resolveDomainContentItems(
+        $contentTypeIdentifier,
+        Argument $query
+    ): array {
         return $this->findContentItemsByTypeIdentifier($contentTypeIdentifier, $query);
     }
 
     /**
      * Resolves a domain content item by id, and checks that it is of the requested type.
      *
-     * @param \Overblog\GraphQLBundle\Definition\Argument|array $args
+     * @param Argument|array $args
      * @param string|null $contentTypeIdentifier
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content
+     * @return Content
      *
-     * @throws \GraphQL\Error\UserError if $contentTypeIdentifier was specified, and the loaded item's type didn't match it
-     * @throws \GraphQL\Error\UserError if no argument was provided
+     * @throws UserError if $contentTypeIdentifier was specified, and the loaded item's type didn't match it
+     * @throws UserError if no argument was provided
      */
-    public function resolveDomainContentItem($args, $contentTypeIdentifier)
-    {
+    public function resolveDomainContentItem(
+        $args,
+        $contentTypeIdentifier
+    ) {
         if (isset($args['id'])) {
             $criterion = new Query\Criterion\ContentId($args['id']);
         } elseif (isset($args['remoteId'])) {
@@ -99,10 +103,12 @@ class DomainContentResolver implements QueryInterface
     /**
      * @param string $contentTypeIdentifier
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
+     * @return Content[]
      */
-    private function findContentItemsByTypeIdentifier($contentTypeIdentifier, Argument $args): array
-    {
+    private function findContentItemsByTypeIdentifier(
+        $contentTypeIdentifier,
+        Argument $args
+    ): array {
         $input = $args['query'];
         $input['ContentTypeIdentifier'] = $contentTypeIdentifier;
         if (isset($args['sortBy'])) {
@@ -124,8 +130,10 @@ class DomainContentResolver implements QueryInterface
         return isset($aliases[0]->path) ? $aliases[0]->path : null;
     }
 
-    public function resolveDomainRelationFieldValue(?Field $field, $multiple = false)
-    {
+    public function resolveDomainRelationFieldValue(
+        ?Field $field,
+        $multiple = false
+    ) {
         if ($field === null) {
             return null;
         }
@@ -158,7 +166,7 @@ class DomainContentResolver implements QueryInterface
             $this->contentTypeLoader->load($content->contentInfo->contentTypeId)
         );
 
-        return  ($this->typeResolver->hasSolution($typeName))
+        return ($this->typeResolver->hasSolution($typeName))
             ? $typeName
             : 'UntypedContent';
     }
@@ -171,7 +179,7 @@ class DomainContentResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\LocationService
+     * @return LocationService
      */
     private function getLocationService(): LocationService
     {
@@ -181,7 +189,7 @@ class DomainContentResolver implements QueryInterface
     /**
      * @return array
      *
-     * @throws \GraphQL\Error\UserError if the field isn't a Relation or RelationList value
+     * @throws UserError if the field isn't a Relation or RelationList value
      */
     private function getContentIds(Field $field)
     {

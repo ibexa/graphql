@@ -18,8 +18,10 @@ class DefaultFieldDefinitionMapper implements FieldDefinitionMapper
         return 'String';
     }
 
-    public function mapToFieldValueInputType(ContentType $contentType, FieldDefinition $fieldDefinition): ?string
-    {
+    public function mapToFieldValueInputType(
+        ContentType $contentType,
+        FieldDefinition $fieldDefinition
+    ): ?string {
         return 'String';
     }
 

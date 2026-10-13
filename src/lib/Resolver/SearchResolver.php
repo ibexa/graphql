@@ -7,10 +7,14 @@
 
 namespace Ibexa\GraphQL\Resolver;
 
+use GraphQL\Executor\Promise\Promise;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
 use Ibexa\GraphQL\DataLoader\ContentLoader;
 use Ibexa\GraphQL\InputMapper\SearchQueryMapper;
 use Overblog\GraphQLBundle\Definition\ArgumentInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\QueryInterface;
+use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Paginator;
 
 /**
@@ -22,8 +26,10 @@ class SearchResolver implements QueryInterface
 
     private ContentLoader $contentLoader;
 
-    public function __construct(ContentLoader $contentLoader, SearchQueryMapper $queryMapper)
-    {
+    public function __construct(
+        ContentLoader $contentLoader,
+        SearchQueryMapper $queryMapper
+    ) {
         $this->contentLoader = $contentLoader;
         $this->queryMapper = $queryMapper;
     }
@@ -37,13 +43,13 @@ class SearchResolver implements QueryInterface
      *         Text?: string,
      *         Field?: array<array{target: mixed}>,
      *         ParentLocationId?: int|int[],
-     *         sortBy?: array<string|\Ibexa\Contracts\Core\Repository\Values\Content\Query::SORT_*>,
+     *         sortBy?: array<string|Query::SORT_*>,
      *         Modified?: array<string, mixed>,
      *         Created?: array<string, mixed>
      *     }
      * } $args
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
+     * @return Content[]
      */
     public function searchContent(array $args): array
     {
@@ -55,16 +61,21 @@ class SearchResolver implements QueryInterface
     /**
      * @param string $contentTypeIdentifier
      *
-     * @return \GraphQL\Executor\Promise\Promise|\Overblog\GraphQLBundle\Relay\Connection\Output\Connection<\Ibexa\Contracts\Core\Repository\Values\Content\Content>
+     * @return Promise|Connection<Content>
      */
-    public function searchContentOfTypeAsConnection($contentTypeIdentifier, ArgumentInterface $args)
-    {
+    public function searchContentOfTypeAsConnection(
+        $contentTypeIdentifier,
+        ArgumentInterface $args
+    ) {
         $query = $args['query'] ?: [];
         $query['ContentTypeIdentifier'] = $contentTypeIdentifier;
         $query['sortBy'] = $args['sortBy'];
         $query = $this->queryMapper->mapInputToQuery($query);
 
-        $paginator = new Paginator(function ($offset, $limit) use ($query): array {
+        $paginator = new Paginator(function (
+            $offset,
+            $limit
+        ) use ($query): array {
             $query->offset = $offset;
             $query->limit = $limit ?? 10;
 

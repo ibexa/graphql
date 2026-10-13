@@ -11,8 +11,10 @@ use InvalidArgumentException;
 
 class UnsupportedFieldInputFormatException extends InvalidArgumentException
 {
-    public function __construct($fieldType, $format)
-    {
+    public function __construct(
+        $fieldType,
+        $format
+    ) {
         parent::__construct("Unsupported $fieldType input format $format");
     }
 }

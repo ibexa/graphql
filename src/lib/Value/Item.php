@@ -22,21 +22,25 @@ use Overblog\GraphQLBundle\Error\UserError;
  */
 class Item
 {
-    /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Content */
+    /** @var Content */
     private $content;
 
-    /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Location */
+    /** @var Location */
     private $location;
 
     private LocationGuesser $locationGuesser;
 
-    /** @var \Ibexa\Core\MVC\Symfony\SiteAccess */
+    /** @var SiteAccess */
     private $siteaccess;
 
     private SiteaccessGuesser $siteaccessGuesser;
 
-    private function __construct(LocationGuesser $locationGuesser, SiteaccessGuesser $siteaccessGuesser, ?Location $location = null, ?Content $content = null)
-    {
+    private function __construct(
+        LocationGuesser $locationGuesser,
+        SiteaccessGuesser $siteaccessGuesser,
+        ?Location $location = null,
+        ?Content $content = null
+    ) {
         if ($location === null && $content === null) {
             throw new InvalidArgumentException('content or location', 'one of content or location is required');
         }
@@ -73,13 +77,19 @@ class Item
         return $this->getContent()->contentInfo;
     }
 
-    public static function fromContent(LocationGuesser $locationGuesser, SiteaccessGuesser $siteaccessGuesser, Content $content): self
-    {
+    public static function fromContent(
+        LocationGuesser $locationGuesser,
+        SiteaccessGuesser $siteaccessGuesser,
+        Content $content
+    ): self {
         return new self($locationGuesser, $siteaccessGuesser, null, $content);
     }
 
-    public static function fromLocation(LocationGuesser $locationGuesser, SiteaccessGuesser $siteaccessGuesser, Location $location): self
-    {
+    public static function fromLocation(
+        LocationGuesser $locationGuesser,
+        SiteaccessGuesser $siteaccessGuesser,
+        Location $location
+    ): self {
         return new self($locationGuesser, $siteaccessGuesser, $location, null);
     }
 

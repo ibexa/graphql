@@ -21,9 +21,7 @@ class LanguagesIterator implements Iterator
         $this->languageService = $languageService;
     }
 
-    public function init(Builder $schema): void
-    {
-    }
+    public function init(Builder $schema): void {}
 
     public function iterate(): Generator
     {

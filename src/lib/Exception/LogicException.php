@@ -7,6 +7,4 @@
 
 namespace Ibexa\GraphQL\Exception;
 
-class LogicException extends \LogicException
-{
-}
+class LogicException extends \LogicException {}

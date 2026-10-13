@@ -21,18 +21,20 @@ class RichTextResolver implements QueryInterface
 
     private Converter $richTextEditConverter;
 
-    public function __construct(RichTextConverterInterface $richTextConverter, RichTextConverterInterface $richTextEditConverter)
-    {
+    public function __construct(
+        RichTextConverterInterface $richTextConverter,
+        RichTextConverterInterface $richTextEditConverter
+    ) {
         $this->richTextConverter = $richTextConverter;
         $this->richTextEditConverter = $richTextEditConverter;
     }
 
-    public function xmlToHtml5(DOMDocument $document): string|false
+    public function xmlToHtml5(DOMDocument $document): string | false
     {
         return $this->richTextConverter->convert($document)->saveHTML();
     }
 
-    public function xmlToHtml5Edit(DOMDocument $document): string|false
+    public function xmlToHtml5Edit(DOMDocument $document): string | false
     {
         return $this->richTextEditConverter->convert($document)->saveHTML();
     }

@@ -8,6 +8,7 @@
 namespace Ibexa\GraphQL\DataLoader;
 
 use Ibexa\Contracts\Core\Repository\Exceptions as ApiException;
+use Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException;
 use Ibexa\Contracts\Core\Repository\SearchService;
 use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query;
@@ -30,11 +31,11 @@ class SearchContentLoader implements ContentLoader
     /**
      * Loads a list of content items given a Query Criterion.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query $query A Query Criterion. To use multiple criteria, group them with a LogicalAnd.
+     * @param Query $query A Query Criterion. To use multiple criteria, group them with a LogicalAnd.
      *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Content[]
+     * @return Content[]
      *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function find(Query $query): array
     {
@@ -49,13 +50,13 @@ class SearchContentLoader implements ContentLoader
     /**
      * Loads a single content item given a Query Criterion.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion $filter A Query Criterion. Use Criterion\ContentId, Criterion\RemoteId or Criterion\LocationId for basic loading.
+     * @param Criterion $filter A Query Criterion. Use Criterion\ContentId, Criterion\RemoteId or Criterion\LocationId for basic loading.
      */
     public function findSingle(Criterion $filter): Content
     {
         try {
             return $this->searchService->findSingle($filter);
-        } catch (ApiException\NotFoundException|ApiException\InvalidArgumentException $e) {
+        } catch (ApiException\NotFoundException | InvalidArgumentException $e) {
             throw new ArgumentsException($e->getMessage(), $e->getCode(), $e);
         }
     }
@@ -65,7 +66,7 @@ class SearchContentLoader implements ContentLoader
      *
      * @return int
      *
-     * @throws \Ibexa\GraphQL\DataLoader\Exception\ArgumentsException
+     * @throws ArgumentsException
      */
     public function count(Query $query)
     {
@@ -75,7 +76,7 @@ class SearchContentLoader implements ContentLoader
 
         try {
             return $this->searchService->findContent($countQuery)->totalCount;
-        } catch (ApiException\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             throw new ArgumentsException($e->getMessage(), $e->getCode(), $e);
         }
     }

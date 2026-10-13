@@ -30,8 +30,11 @@ class GeneratePlatformSchemaCommand extends Command
 
     private string $schemaRootDir;
 
-    public function __construct(Generator $generator, Repository $repository, string $schemaRootDir)
-    {
+    public function __construct(
+        Generator $generator,
+        Repository $repository,
+        string $schemaRootDir
+    ) {
         parent::__construct();
         $this->generator = $generator;
         $this->repository = $repository;
@@ -52,15 +55,19 @@ class GeneratePlatformSchemaCommand extends Command
             );
     }
 
-    protected function initialize(InputInterface $input, OutputInterface $output): void
-    {
+    protected function initialize(
+        InputInterface $input,
+        OutputInterface $output
+    ): void {
         $this->repository->getPermissionResolver()->setCurrentUserReference(
             $this->repository->getUserService()->loadUserByLogin($input->getOption('user'))
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
+    protected function execute(
+        InputInterface $input,
+        OutputInterface $output
+    ): int {
         $schema = $this->generator->generate();
 
         $include = $input->getOption('include');

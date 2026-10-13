@@ -15,6 +15,7 @@ use Ibexa\Contracts\Core\Repository\LocationService;
 use Ibexa\Contracts\Core\Repository\Repository;
 use Ibexa\Contracts\Core\Repository\Values as RepositoryValues;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
 use Ibexa\GraphQL\Exception\UnsupportedFieldTypeException;
 use Ibexa\GraphQL\ItemFactory;
 use Ibexa\GraphQL\Schema\Domain\Content\NameHelper;
@@ -32,7 +33,7 @@ class DomainContentMutationResolver
     private Repository $repository;
 
     /**
-     * @var \Ibexa\Contracts\GraphQL\Mutation\InputHandler\FieldTypeInputHandler[]
+     * @var FieldTypeInputHandler[]
      */
     private array $fieldInputHandlers;
 
@@ -52,8 +53,12 @@ class DomainContentMutationResolver
         $this->itemFactory = $relatedContentItemFactory;
     }
 
-    public function updateDomainContent($input, Argument $args, $versionNo, ?string $language): Item
-    {
+    public function updateDomainContent(
+        $input,
+        Argument $args,
+        $versionNo,
+        ?string $language
+    ): Item {
         if (isset($args['id'])) {
             $idArray = GlobalId::fromGlobalId($args['id']);
             $contentId = $idArray['id'];
@@ -136,8 +141,12 @@ class DomainContentMutationResolver
         return $this->itemFactory->fromContent($this->getContentService()->loadContent($contentDraft->id));
     }
 
-    public function createDomainContent($input, string $contentTypeIdentifier, $parentLocationId, string $language): Item
-    {
+    public function createDomainContent(
+        $input,
+        string $contentTypeIdentifier,
+        $parentLocationId,
+        string $language
+    ): Item {
         try {
             $contentType = $this->getContentTypeService()->loadContentTypeByIdentifier($contentTypeIdentifier);
         } catch (RepositoryExceptions\NotFoundException $e) {
@@ -218,8 +227,10 @@ class DomainContentMutationResolver
         ];
     }
 
-    private function getInputFieldValue($fieldInput, FieldDefinition $fieldDefinition)
-    {
+    private function getInputFieldValue(
+        $fieldInput,
+        FieldDefinition $fieldDefinition
+    ) {
         if (isset($this->fieldInputHandlers[$fieldDefinition->fieldTypeIdentifier])) {
             $format = null;
             if (isset($fieldInput['input'])) {
@@ -257,7 +268,7 @@ class DomainContentMutationResolver
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\ContentService
+     * @return ContentService
      */
     private function getContentService(): ContentService
     {
@@ -265,7 +276,7 @@ class DomainContentMutationResolver
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\ContentTypeService
+     * @return ContentTypeService
      */
     private function getContentTypeService(): ContentTypeService
     {
@@ -280,8 +291,10 @@ class DomainContentMutationResolver
     /**
      * @return string[]
      */
-    private function renderFieldValidationErrors(RepositoryExceptions\ContentFieldValidationException $e, RepositoryValues\ContentType\ContentType $contentType): array
-    {
+    private function renderFieldValidationErrors(
+        RepositoryExceptions\ContentFieldValidationException $e,
+        RepositoryValues\ContentType\ContentType $contentType
+    ): array {
         $errors = [];
         foreach ($e->getFieldErrors() as $fieldDefId => $fieldErrorByLanguage) {
             $fieldDefinition = $contentType->getFieldDefinitions()->filter(
@@ -312,7 +325,7 @@ class DomainContentMutationResolver
      * Returns the GraphQL schema input field for a field definition.
      * Example: text_line -> textLine.
      *
-     * @param \Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition $fieldDefinition
+     * @param FieldDefinition $fieldDefinition
      *
      * @return string
      */

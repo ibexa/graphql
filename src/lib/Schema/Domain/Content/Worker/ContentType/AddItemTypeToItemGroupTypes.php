@@ -16,8 +16,10 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class AddItemTypeToItemGroupTypes extends BaseWorker implements Worker
 {
-    public function work(Builder $schema, array $args): void
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ): void {
         $resolve = sprintf(
             '@=query("ContentType", {"identifier": "%s"})',
             $args['ContentType']->identifier
@@ -33,8 +35,10 @@ class AddItemTypeToItemGroupTypes extends BaseWorker implements Worker
         );
     }
 
-    public function canWork(Builder $schema, array $args): bool
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ): bool {
         return
             isset($args['ContentType'])
             && $args['ContentType'] instanceof ContentType

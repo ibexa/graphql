@@ -21,14 +21,16 @@ class UploadFiles
 
     private Repository $repository;
 
-    public function __construct(Repository $repository, ContentTypeMappings $contentTypeMappings)
-    {
+    public function __construct(
+        Repository $repository,
+        ContentTypeMappings $contentTypeMappings
+    ) {
         $this->repository = $repository;
         $this->contentTypeMappings = $contentTypeMappings;
     }
 
     /**
-     * @return array{files: array<\Ibexa\Contracts\Core\Repository\Values\Content\Content>, warnings: array<string>}
+     * @return array{files: array<Content>, warnings: array<string>}
      */
     public function uploadFiles(Argument $args): array
     {
@@ -75,8 +77,12 @@ class UploadFiles
      * @param $locationId The parent location ID
      * @param $languageCode
      */
-    private function createContent(array $mapping, UploadedFile $file, int $locationId, string $languageCode): Content
-    {
+    private function createContent(
+        array $mapping,
+        UploadedFile $file,
+        int $locationId,
+        string $languageCode
+    ): Content {
         $contentService = $this->repository->getContentService();
         $locationService = $this->repository->getLocationService();
 

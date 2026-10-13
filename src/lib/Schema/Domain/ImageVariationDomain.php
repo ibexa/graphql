@@ -50,16 +50,20 @@ class ImageVariationDomain implements Iterator, Schema\Worker
         $schema->addType(new Builder\Input\Type(self::TYPE, 'enum'));
     }
 
-    public function work(Builder $schema, array $args): void
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ): void {
         $schema->addValueToEnum(
             self::TYPE,
             new Builder\Input\EnumValue($args[self::ARG]['identifier'])
         );
     }
 
-    public function canWork(Builder $schema, array $args): bool
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ): bool {
         return isset($args[self::ARG]['identifier']);
     }
 }

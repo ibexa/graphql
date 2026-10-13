@@ -43,7 +43,7 @@ class SiteaccessGuesser
     }
 
     /**
-     * @throws \Ibexa\GraphQL\Exception\NoValidSiteaccessException
+     * @throws NoValidSiteaccessException
      */
     public function guessForLocation(Location $location): SiteAccess
     {
@@ -57,7 +57,7 @@ class SiteaccessGuesser
         $currentRepository = $this->configResolver->getParameter('repository');
 
         $matchingSiteAccessRootDepth = 0;
-        /** @var \Ibexa\Core\MVC\Symfony\SiteAccess[] $saList */
+        /** @var SiteAccess[] $saList */
         $saList = iterator_to_array($this->provider->getSiteAccesses());
 
         foreach ($saList as $siteAccess) {
@@ -91,8 +91,10 @@ class SiteaccessGuesser
      *
      * @return int|false The root depth (used to select the deepest, most specific tree root), false if it isn't part of that subtree.
      */
-    private function getDepthInSubtree(Location $location, int $treeRootLocationId): int|false
-    {
+    private function getDepthInSubtree(
+        Location $location,
+        int $treeRootLocationId
+    ): int | false {
         return array_search($treeRootLocationId, array_map('intval', $location->getPath()), true);
     }
 

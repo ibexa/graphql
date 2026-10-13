@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Ibexa\GraphQL\Security;
 
+use Ibexa\AdminUi\Exception\InvalidArgumentException;
 use Ibexa\AdminUi\Specification\SiteAccess\IsAdmin;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestMatcherInterface;
@@ -23,11 +24,10 @@ final readonly class NonAdminGraphQLRequestMatcher implements RequestMatcherInte
      */
     public function __construct(
         private array $siteAccessGroups
-    ) {
-    }
+    ) {}
 
     /**
-     * @throws \Ibexa\AdminUi\Exception\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function matches(Request $request): bool
     {

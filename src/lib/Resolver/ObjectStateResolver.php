@@ -38,7 +38,7 @@ class ObjectStateResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState[]
+     * @return ObjectState[]
      */
     public function resolveObjectStatesByGroup(ObjectStateGroup $objectStateGroup): array
     {
@@ -46,7 +46,7 @@ class ObjectStateResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState[]
+     * @return ObjectState[]
      */
     public function resolveObjectStatesByGroupId(Argument $args): array
     {
@@ -60,7 +60,7 @@ class ObjectStateResolver implements QueryInterface
     }
 
     /**
-     * @return \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectState[]
+     * @return ObjectState[]
      */
     public function resolveObjectStateByContentInfo(ContentInfo $contentInfo): array
     {

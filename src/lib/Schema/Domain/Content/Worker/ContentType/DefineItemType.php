@@ -15,8 +15,10 @@ use Ibexa\GraphQL\Schema\Worker;
 
 class DefineItemType extends BaseWorker implements Worker
 {
-    public function work(Builder $schema, array $args): void
-    {
+    public function work(
+        Builder $schema,
+        array $args
+    ): void {
         $schema->addType(new Input\Type(
             $this->typeName($args),
             'object',
@@ -27,8 +29,10 @@ class DefineItemType extends BaseWorker implements Worker
         ));
     }
 
-    public function canWork(Builder $schema, array $args): bool
-    {
+    public function canWork(
+        Builder $schema,
+        array $args
+    ): bool {
         return
             isset($args['ContentType'])
             && $args['ContentType'] instanceof ContentType

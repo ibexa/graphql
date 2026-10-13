@@ -15,9 +15,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 final readonly class ArgumentsExceptionListener implements EventSubscriberInterface
 {
-    public function __construct(private LoggerInterface $logger)
-    {
-    }
+    public function __construct(private LoggerInterface $logger) {}
 
     public static function getSubscribedEvents(): array
     {
