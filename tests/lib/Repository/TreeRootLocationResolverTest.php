@@ -18,21 +18,23 @@ use Ibexa\Core\MVC\Symfony\Event\ScopeChangeEvent;
 use Ibexa\Core\MVC\Symfony\SiteAccess;
 use Ibexa\Core\Repository\Values\Content\Location;
 use Ibexa\GraphQL\Repository\TreeRootLocationResolver;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 final class TreeRootLocationResolverTest extends TestCase
 {
-    /** @var \Ibexa\Contracts\Core\Repository\LocationService&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var LocationService&MockObject */
     private LocationService $locationService;
 
-    /** @var \Ibexa\Contracts\Core\Repository\URLAliasService&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var URLAliasService&MockObject */
     private URLAliasService $urlAliasService;
 
-    /** @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface&\PHPUnit\Framework\MockObject\Stub */
+    /** @var ConfigResolverInterface&Stub */
     private ConfigResolverInterface $configResolver;
 
-    /** @var \Psr\Log\LoggerInterface&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var LoggerInterface&MockObject */
     private LoggerInterface $logger;
 
     private TreeRootLocationResolver $resolver;
@@ -132,47 +134,65 @@ final class TreeRootLocationResolverTest extends TestCase
         self::assertSame([$excludedLocation], $this->resolver->resolveExcludedLocations());
     }
 
-    public function testResetClearsCachedRootLocationAndExcludedLocations(): void
+    /**
+     * @dataProvider provideCacheResetTriggers
+     *
+     * @param callable(TreeRootLocationResolver): void $resetCache
+     */
+    public function testCacheResetClearsCachedRootLocationAndExcludedLocations(callable $resetCache): void
     {
         $firstRootLocation = new Location(['id' => 2]);
-        $secondRootLocation = new Location(['id' => 3]);
+        $firstExcludedLocation = new Location(['id' => 42]);
+        $secondRootLocation = new Location(['id' => 2]);
+        $secondExcludedLocation = new Location(['id' => 42]);
 
         $this->configResolver
             ->method('getParameter')
-            ->with('content.tree_root.location_id')
-            ->willReturnOnConsecutiveCalls(2, 3);
+            ->willReturnMap([
+                ['content.tree_root.location_id', null, null, 2],
+                ['content.tree_root.excluded_uri_prefixes', null, null, ['/excluded']],
+            ]);
+
+        $this->urlAliasService
+            ->expects(self::exactly(2))
+            ->method('lookup')
+            ->with('/excluded')
+            ->willReturn(new URLAlias(['type' => URLAlias::LOCATION, 'destination' => 42]));
 
         $this->locationService
-            ->expects(self::exactly(2))
+            ->expects(self::exactly(4))
             ->method('loadLocation')
-            ->willReturnOnConsecutiveCalls($firstRootLocation, $secondRootLocation);
+            ->willReturnOnConsecutiveCalls(
+                $firstRootLocation,
+                $firstExcludedLocation,
+                $secondRootLocation,
+                $secondExcludedLocation,
+            );
 
         self::assertSame($firstRootLocation, $this->resolver->resolveRootLocation());
+        self::assertSame([$firstExcludedLocation], $this->resolver->resolveExcludedLocations());
 
-        $this->resolver->reset();
+        $resetCache($this->resolver);
 
         self::assertSame($secondRootLocation, $this->resolver->resolveRootLocation());
+        self::assertSame([$secondExcludedLocation], $this->resolver->resolveExcludedLocations());
     }
 
-    public function testOnConfigScopeChangeClearsCachedRootLocationAndExcludedLocations(): void
+    /**
+     * @return iterable<string, array{callable(TreeRootLocationResolver): void}>
+     */
+    public static function provideCacheResetTriggers(): iterable
     {
-        $firstRootLocation = new Location(['id' => 2]);
-        $secondRootLocation = new Location(['id' => 3]);
+        yield 'kernel reset' => [
+            static function (TreeRootLocationResolver $resolver): void {
+                $resolver->reset();
+            },
+        ];
 
-        $this->configResolver
-            ->method('getParameter')
-            ->with('content.tree_root.location_id')
-            ->willReturnOnConsecutiveCalls(2, 3);
-
-        $this->locationService
-            ->expects(self::exactly(2))
-            ->method('loadLocation')
-            ->willReturnOnConsecutiveCalls($firstRootLocation, $secondRootLocation);
-
-        self::assertSame($firstRootLocation, $this->resolver->resolveRootLocation());
-
-        $this->resolver->onConfigScopeChange(new ScopeChangeEvent($this->createMock(SiteAccess::class)));
-
-        self::assertSame($secondRootLocation, $this->resolver->resolveRootLocation());
+        yield 'config scope change' => [
+            static function (TreeRootLocationResolver $resolver): void {
+                $resolver->onConfigScopeChange(new ScopeChangeEvent(new SiteAccess('test')));
+            },
+        ];
     }
 }

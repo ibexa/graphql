@@ -10,7 +10,7 @@ namespace Ibexa\GraphQL\InputMapper;
 
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\Subtree;
-use Ibexa\GraphQL\Repository\TreeRootLocationResolver;
+use Ibexa\GraphQL\Repository\TreeRootLocationResolverInterface;
 
 /**
  * Builds the base query used to retrieve locations collections.
@@ -19,9 +19,9 @@ use Ibexa\GraphQL\Repository\TreeRootLocationResolver;
  */
 class ContentCollectionFilterBuilder
 {
-    private TreeRootLocationResolver $treeRootLocationResolver;
+    private TreeRootLocationResolverInterface $treeRootLocationResolver;
 
-    public function __construct(TreeRootLocationResolver $treeRootLocationResolver)
+    public function __construct(TreeRootLocationResolverInterface $treeRootLocationResolver)
     {
         $this->treeRootLocationResolver = $treeRootLocationResolver;
     }

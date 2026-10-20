@@ -23,6 +23,9 @@ services:
         tags:
             - { name: monolog.logger, channel: ibexa.graphql }
 
+    Ibexa\GraphQL\Repository\TreeRootLocationResolverInterface:
+        alias: Ibexa\GraphQL\Repository\TreeRootLocationResolver
+
     Ibexa\GraphQL\Security\NonAdminGraphQLRequestMatcher:
         arguments:
             $siteAccessGroups: '%ibexa.site_access.groups%'

@@ -11,19 +11,20 @@ namespace Ibexa\Tests\GraphQL\InputMapper;
 use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion\Subtree;
 use Ibexa\Core\Repository\Values\Content\Location;
 use Ibexa\GraphQL\InputMapper\ContentCollectionFilterBuilder;
-use Ibexa\GraphQL\Repository\TreeRootLocationResolver;
+use Ibexa\GraphQL\Repository\TreeRootLocationResolverInterface;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 final class ContentCollectionFilterBuilderTest extends TestCase
 {
-    /** @var \Ibexa\GraphQL\Repository\TreeRootLocationResolver&\PHPUnit\Framework\MockObject\Stub */
-    private TreeRootLocationResolver $treeRootLocationResolver;
+    /** @var TreeRootLocationResolverInterface&Stub */
+    private TreeRootLocationResolverInterface $treeRootLocationResolver;
 
     private ContentCollectionFilterBuilder $filterBuilder;
 
     protected function setUp(): void
     {
-        $this->treeRootLocationResolver = $this->createStub(TreeRootLocationResolver::class);
+        $this->treeRootLocationResolver = $this->createStub(TreeRootLocationResolverInterface::class);
         $this->filterBuilder = new ContentCollectionFilterBuilder($this->treeRootLocationResolver);
     }
 

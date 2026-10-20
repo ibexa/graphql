@@ -21,12 +21,9 @@ use Psr\Log\LoggerInterface;
 use Symfony\Contracts\Service\ResetInterface;
 
 /**
- * Resolves the tree root location and its excluded locations from the
- * `content.tree_root.location_id` and `content.tree_root.excluded_uri_prefixes` settings.
- *
  * @internal
  */
-class TreeRootLocationResolver implements ConfigScopeChangeSubscriber, ResetInterface
+final class TreeRootLocationResolver implements TreeRootLocationResolverInterface, ConfigScopeChangeSubscriber, ResetInterface
 {
     private LocationService $locationService;
 
@@ -38,7 +35,7 @@ class TreeRootLocationResolver implements ConfigScopeChangeSubscriber, ResetInte
 
     private ?Location $rootLocation = null;
 
-    /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Location[]|null */
+    /** @var Location[]|null */
     private ?array $excludedLocations = null;
 
     public function __construct(
@@ -53,10 +50,6 @@ class TreeRootLocationResolver implements ConfigScopeChangeSubscriber, ResetInte
         $this->logger = $logger;
     }
 
-    /**
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException if the configured
-     *         `content.tree_root.location_id` does not match an existing Location
-     */
     public function resolveRootLocation(): Location
     {
         if ($this->rootLocation === null) {
@@ -68,13 +61,7 @@ class TreeRootLocationResolver implements ConfigScopeChangeSubscriber, ResetInte
     }
 
     /**
-     * Resolves `content.tree_root.excluded_uri_prefixes` entries into Locations.
-     * Entries that can't be resolved to an existing Location are logged and skipped.
-     *
-     * @return \Ibexa\Contracts\Core\Repository\Values\Content\Location[]
-     *
-     * @throws \Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException if a resolved
-     *         URLAlias destination does not match an existing Location
+     * @return Location[]
      */
     public function resolveExcludedLocations(): array
     {
