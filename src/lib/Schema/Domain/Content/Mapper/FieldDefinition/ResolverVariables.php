@@ -10,6 +10,7 @@ namespace Ibexa\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
 use Ibexa\Contracts\GraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper;
+use UnexpectedValueException;
 
 /**
  * Maps a Field Definition to its GraphQL components.
@@ -38,30 +39,29 @@ class ResolverVariables implements FieldDefinitionMapper
 
     public function mapToFieldValueResolver(FieldDefinition $fieldDefinition): string
     {
-        $resolver = $this->innerMapper->mapToFieldValueResolver($fieldDefinition);
-        $resolver = str_replace(
-            [
-                'content',
-                'location',
-                'item',
-            ],
-            [
-                'value.getContent()',
-                'value.getLocation()',
-                'value',
-            ],
+        $resolver = $this->innerMapper->mapToFieldValueResolver($fieldDefinition) ?? '';
+
+        $replacements = [
+            'content' => 'value.getContent()',
+            'location' => 'value.getLocation()',
+            'item' => 'value',
+            'field' => 'query("ItemFieldValue", value, "' . $fieldDefinition->identifier . '", args)',
+        ];
+
+        // Only bare variables are replaced: quoted strings (like the field's identifier) and members (field.location) are skipped.
+        // Possessive quantifiers keep long string literals from exhausting the PCRE JIT stack.
+        $resolver = preg_replace_callback(
+            '/(?:"(?:[^"\\\\]++|\\\\.)*+"|\'(?:[^\'\\\\]++|\\\\.)*+\')(*SKIP)(*FAIL)|(?<![.\w$])(content|location|item|field)\b/',
+            static fn (array $matches): string => $replacements[$matches[1]],
             $resolver
         );
 
-        //we make sure no "field" (case insensitive) keyword in the actual field's identifier gets replaced
-        //only syntax like: '@=query("MatrixFieldValue", value, "field_matrix")' needs to be taken into account
-        //where [value, "field_matrix"] stands for the actual field's identifier
-        if (preg_match('/value, "(.*field.*)"/i', $resolver) !== 1) {
-            $resolver = str_replace(
-                'field',
-                'query("ItemFieldValue", value, "' . $fieldDefinition->identifier . '", args)',
-                $resolver
-            );
+        if ($resolver === null) {
+            throw new UnexpectedValueException(sprintf(
+                'Failed to replace the resolver variables of field definition "%s" (PCRE error %d)',
+                $fieldDefinition->identifier,
+                preg_last_error()
+            ));
         }
 
         return $resolver;
