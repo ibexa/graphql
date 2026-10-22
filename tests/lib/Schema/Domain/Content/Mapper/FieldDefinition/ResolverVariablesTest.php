@@ -29,8 +29,10 @@ final class ResolverVariablesTest extends TestCase
     /**
      * @dataProvider provideResolversWithQuotedIdentifier
      */
-    public function testMapToFieldValueResolverKeepsQuotedIdentifier(string $fieldDefinitionIdentifier, string $resolver): void
-    {
+    public function testMapToFieldValueResolverKeepsQuotedIdentifier(
+        string $fieldDefinitionIdentifier,
+        string $resolver
+    ): void {
         $this->assertResolvesTo($resolver, $fieldDefinitionIdentifier, $resolver);
     }
 
@@ -110,8 +112,11 @@ final class ResolverVariablesTest extends TestCase
         ];
     }
 
-    private function assertResolvesTo(string $expectedResolver, string $fieldDefinitionIdentifier, string $innerResolver): void
-    {
+    private function assertResolvesTo(
+        string $expectedResolver,
+        string $fieldDefinitionIdentifier,
+        string $innerResolver
+    ): void {
         $innerMapper = $this->createStub(FieldDefinitionMapper::class);
         $innerMapper->method('mapToFieldValueResolver')->willReturn($innerResolver);
 
